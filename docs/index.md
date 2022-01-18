@@ -1,7 +1,7 @@
 --- 
 title: "Applied Linear Models"
 author: "Nick Syring"
-date: "2022-01-17"
+date: "2022-01-18"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]

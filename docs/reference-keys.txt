@@ -6,7 +6,13 @@ data-analysis-and-statistical-inference
 data-experiments-and-studies
 james-linds-scurvy-trial
 framingham-heart-study
+harris-bank-sex-pay-study
+study-concepts
 randomization-control-and-causation
+populations-and-scope-of-inference
+statistical-inference-in-randomly-sampled-randomized-experiments
+one--and-two-sample-inference-for-a-population-mean
+exercises
 cross
 chapters-and-sub-chapters
 captioned-figures-and-tables
