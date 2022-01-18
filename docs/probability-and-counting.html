@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | A First Course in Probability and Statistics</title>
+  <title>Chapter 3 Probability and Counting | A First Course in Probability and Statistics</title>
   <meta name="description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | A First Course in Probability and Statistics" />
+  <meta property="og:title" content="Chapter 3 Probability and Counting | A First Course in Probability and Statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | A First Course in Probability and Statistics" />
+  <meta name="twitter:title" content="Chapter 3 Probability and Counting | A First Course in Probability and Statistics" />
   
   <meta name="twitter:description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="experiments-and-the-role-of-probability.html"/>
+<link rel="next" href="parts.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -215,19 +215,62 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="probability-and-counting" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Probability and Counting</h1>
+<p>Probability is a tricky subject. We have an intuitive sense about probability, but we use it in different ways, which can sometimes lead to confusion. Probability is used in at least two ways:<br>
+-to describe the relative frequency of events, e.g., what is the chance of observing 5 heads in the next ten flips of a fair coin; and,<br>
+-to communicate degrees of belief, e.g., the Packers have a 30% chance of winning the Super Bowl.</p>
+<p>We will use probability exclusively in the sense of the first interpretation—to characterize the chances of different outcomes in repeatable trials. This sense of probability corresponds to characterizing the possible outcomes of random sampling. Although probability is often used to communicate degrees of belief there are good reasons not to use it for this purpose, but a formal, nuanced discussion of quantification of beliefs is outside our present purview.</p>
+<div id="terminology" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Terminology</h2>
+<p>In our discussion of probability we will think of an <em>experiment</em> as the act of measuring/observing a variable one one or more samples from a population. The <em>sample space</em> is the set of possible realizations of the experiment. For example, if the experiment is to flip one coin and record whether it is heads or tails, then we can think of this as a random sampling from sample space <span class="math inline">\(\{H, T\}\)</span> where the outcome may be either <span class="math inline">\(\{H\}\)</span> or <span class="math inline">\(\{T\}\)</span>. Any subset of the sample space of an experiment is an <em>event</em>; for example, <span class="math inline">\(\{H\}\)</span> and <span class="math inline">\(\{H,T\}\)</span> are events, and so is <span class="math inline">\(\emptyset\)</span> which denotes the “empty set,” the set of nothing.</p>
+</div>
+<div id="set-relations" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Set relations</h2>
+<p>Events and sample spaces are sets, and we will make use of relations between sets. <br>
+-Set union: for sets/events A and B, <span class="math inline">\(A\cup B\)</span> denotes the set of elements in at least one of <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span>. For example, <span class="math inline">\(\{1,2,3\}\cup\{3,4,5\} = \{1,2,3,4,5\}\)</span>. <br>
+-Set intersection: <span class="math inline">\(A\cap B\)</span> denotes the set of elements in both A and B. For example, <span class="math inline">\(\{1,2,3\}\cap\{3,4,5\} = \{3\}\)</span>. <br>
+-Set complement: <span class="math inline">\(A^c\)</span> denotes the set of elements in the sample space <span class="math inline">\(\mathcal{S}\)</span> but not in <span class="math inline">\(A\)</span>. For example, if <span class="math inline">\(\mathcal{S} = \{1,2,3,4,5\}\)</span> then <span class="math inline">\(A^c = \{4,5\}\)</span>.<br>
+-Set subtraction: <span class="math inline">\(A\backslash B\)</span> of <span class="math inline">\(A-B\)</span> means <span class="math inline">\(A\cap B^c\)</span> which is the set of elements in <span class="math inline">\(A\)</span> but not in <span class="math inline">\(B\)</span>. For example, <span class="math inline">\(\{1,2,3\}-\{3,4,5\} = \{1,2\}\)</span>.<br />
+<br><br></p>
+<div id="sample-space-example" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Sample space example</h3>
+<p>Here’s an example to illustrate sample spaces. A gas station has six pumps, A, B, C, D, E, F. <br>
+-What is the sample space of the number of pumps in use? <span class="math inline">\(\mathcal{S} =\{0,1,2,3,4,5,6\}\)</span>.<br>
+-What is the sample space of pumps in use? <span class="math inline">\(\mathcal{S} = \{\{A,B,C,D,E,F\},\{A,B,C,D,E\}, \ldots,\{F\}, \emptyset \}\)</span>. This is the <em>power set</em> of <span class="math inline">\(\{A,B,C,D,E,F\}\)</span>, the set of all subsets of those pumps.<br>
+-Suppose you test pump A every day until it fails to function. What is the sample space of this experiment? <span class="math inline">\(\mathcal{S} = \{F, SF, SSF, \ldots \}\)</span>. This is a <em>countably infinite</em> sample space.<br>
+-You measure the amount of gas pumped by the next customer. <span class="math inline">\(\mathcal{S} = (0, ?)\)</span>, an interval with some upper bound equal to however much gas the station has available. This is an <em>uncountably infinite</em> sample space.</p>
+</div>
+<div id="set-relations-example" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Set relations example</h3>
+<p>This next example illustrates set relations.<br />
+<img src="system.PNG" width="396" />
+Consider this system of series and parallel components. Each component either functions/succeeds (S) or fails (F). The experiment simply observes if the system functions/succeeds or fails. <br>
+-What i the sample space in terms of the three components? <span class="math inline">\(\mathcal{S} = \{SSS, SSF, SFS, FSS, SFF, FFS, FSF, FFF\}\)</span>. <br>
+-Find the even two components succeed. <span class="math inline">\(A = \{SSF, SFS, FSS\}\)</span>.<br>
+-Find the even at leas two components succeed. <span class="math inline">\(B = \{SSF, SFS, FSS, SSS\} = A\cup \{SSS\}\)</span>.<br>
+-Find the event the system functions. <span class="math inline">\(C = \{SSS, SFS, SSF\}\)</span>.</p>
+</div>
+</div>
+<div id="probability-axioms" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Probability Axioms</h2>
+<p>Andrey Kolmogorov formalized rules/axioms of probability we are mostly, intuitively familiar with.<br><br></p>
+<ol style="list-style-type: decimal">
+<li>The probability of the sample space is 1, <span class="math inline">\(P(\mathcal{S})=1\)</span>.<br></li>
+<li>Probabilities are non-negative. If <span class="math inline">\(A\subset\mathcal{S}\)</span> then <span class="math inline">\(P(A)\geq 0\)</span>.<br></li>
+<li>Countable additivity. This last one is a bit tricky. Let’s start with an intuitive, simpler case. Suppose <span class="math inline">\(\mathcal{S} = \{1,2,3,4,5\}\)</span>. The important part is <span class="math inline">\(\mathcal{S}\)</span> is finite and includes only different things that don’t “overlap.” Then, we know that, for example, <span class="math inline">\(P(\{1\}\cup \{2\}) = P(\{1\}) + P(\{2\})\)</span>, which says that the probability of the union of <em>disjoint</em> events equals the sum of probabilities of each event. Kolmogorov requires this extends to countably infinite <span class="math inline">\(\mathcal{S}\)</span>, hence the name countable additivity. Specifically, let events <span class="math inline">\(A_1\)</span>, <span class="math inline">\(A_2\)</span>, <span class="math inline">\(\ldots\)</span> be a sequence of mutually disjoint events (none overlap, like pizza slices) so that <span class="math inline">\(A_i \cap A_j = \emptyset\)</span> for every <span class="math inline">\(i\ne j\)</span>. Then,
+<span class="math display">\[P\left(\bigcup_{i=1}^\infty A_i\right) = \sum_{i=1}^\infty P(A_i).\]</span></li>
+</ol>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="experiments-and-the-role-of-probability.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="parts.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -258,7 +301,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/%s",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-probability-and-counting.Rmd",
 "text": "Edit"
 },
 "history": {
