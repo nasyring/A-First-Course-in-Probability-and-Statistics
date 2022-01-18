@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Parts | Applied Linear Models</title>
+  <title>Chapter 2 Data Analysis and Statistical Inference | Applied Linear Models</title>
   <meta name="description" content="These are a collection of notes related to STAT 500 at Iowa State University. This is a work in progress." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Parts | Applied Linear Models" />
+  <meta property="og:title" content="Chapter 2 Data Analysis and Statistical Inference | Applied Linear Models" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Parts | Applied Linear Models" />
+  <meta name="twitter:title" content="Chapter 2 Data Analysis and Statistical Inference | Applied Linear Models" />
   
   <meta name="twitter:description" content="These are a collection of notes related to STAT 500 at Iowa State University. This is a work in progress." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="cross.html"/>
-<link rel="next" href="footnotes-and-citations.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="cross.html"/>
 <script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -157,21 +157,35 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="parts" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> Parts</h1>
-<p>You can add parts to organize one or more book chapters together. Parts can be inserted at the top of an .Rmd file, before the first-level chapter heading in that same file.</p>
-<p>Add a numbered part: <code># (PART) Act one {-}</code> (followed by <code># A chapter</code>)</p>
-<p>Add an unnumbered part: <code># (PART\*) Act one {-}</code> (followed by <code># A chapter</code>)</p>
-<p>Add an appendix as a special kind of un-numbered part: <code># (APPENDIX) Other stuff {-}</code> (followed by <code># A chapter</code>). Chapters in an appendix are prepended with letters instead of numbers.</p>
+<div id="data-analysis-and-statistical-inference" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Data Analysis and Statistical Inference</h1>
+<p>In this first chapter we define and discuss some important concepts regarding data and scientific investigation.</p>
+<div id="data-experiments-and-studies" class="section level2">
+<h2><span class="header-section-number">2.1</span> Data, Experiments, and Studies</h2>
+<p>There are, roughly, two ways we encounter data: in designed, interventional experiments and in observational studies. In the former a scientist (researcher/investigator) first poses a question and then designs an experiment with the intention of answering their question. They perform the experiment, observing the outcome (perhaps more than one time), and these observations are referred to as their experimental data. In experiments the experimenter is an active participant, affecting the individuals observed in order to obtain a specific outcome. Observational studies, in contrast, lack any kind of intervention; the researcher simply records and interprets observations. Regardless of the source, experiment or observational study, data is anything observed by the researcher that is relevant for answerig their research questions</p>
+<div id="james-linds-scurvy-trial" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> James Lind's Scurvy Trial</h3>
+<p>Clinical trials are familiar designed, interventional experiments. A famous, early example is James Lind's Scurvy trial. Lind was a doctor aboard a British ship. Several sailors with him were suffering from scurvy. He selected 12 sailors in similar, poor condition, and assigned to pairs of them 6 different treatments (the intervention). The two who received oranges and lemons to eat recovered fully; those who received apple cider fared next best.</p>
+</div>
+<div id="framingham-heart-study" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Framingham Heart Study</h3>
+<p>Named for Framingham, Massachusetts, where the participants were first recruited, is a long-running observational study of Americans aimed at understanding risks associated with heart disease. Participants agreed to medical testing every 3-5 years, from which the study researchers concluded a number of important findings, such as cigarett smoking substantially increases the risk of heart disease. There are no interventions; the researchers simply observe the patients and make conclusions based on how the patients choose to live, e.g., tobacco use.</p>
+</div>
+</div>
+<div id="randomization-control-and-causation" class="section level2">
+<h2><span class="header-section-number">2.2</span> Randomization, control, and causation</h2>
+<p>Several characteristics of experiments and observational studies contribute to how their corresponding data should be analyzed. In experiments the researcher performs one or more interventions---such as giving patients cider versus citrus fruits in Lind's scurvy trial. The principle of {} asserts that interventions in experiments should be assigned to subjects randomly. These subjects are often referred to as experimental units. When experimental units are heterogeneous---not all the same---it stands to reason that some of their differencees apart from the intervention may impact the response to the experiment recorded by the researcher. Randomization is a way to even out these heterogeneities between groups receiving different interventions. That way, it is the intervention, rather than some other difference, which is responsible for substantially different outcomes. Randomization systematically accounts for heterogeneities, but the extent to which it works depends on the number of experimental units, the number of groups being randomized, and the presence of one or more important heterogeneities. For examples, consider the following: 1. Suppose in ten experimental units there is one unobserved, dichotomous trait that affects the experimental response. Three of the ten have version &quot;0&quot; of the trait and 7 have version &quot;1&quot;. Randomly split the ten into two groups of five, each group to receive a different intervention. The chance all three end up in the same group is 1/6, not ignorably small... 2. On the other hand, suppose there are 100 experimental units, half have trait &quot;0&quot; and half trait &quot;1&quot;. The chance at least 35 of either trait type end up in the same one half random split is <span class="math inline">\(\approx 0\)</span>.<br />
+Generally when an intervention is randomized over experimental units we interpret any significant difference in outcome/response between intervenion groups as having been {} by the intervention itself, as opposed to some other unobserved characteristic---these are sometimes called {} or {}. But, randomization is not foolproof; small sample sizes (few experimental units) and/or the presence of many confounding variables can reduce the effectiveness of randomization.</p>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="cross.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="footnotes-and-citations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cross.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -202,7 +216,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-parts.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-intro.Rmd",
 "text": "Edit"
 },
 "history": {
