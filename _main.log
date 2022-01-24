@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.1.17)  24 JAN 2022 09:19
+=======
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.1.17)  18 JAN 2022 18:29
+>>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -299,6 +303,7 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip54
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count303
+<<<<<<< HEAD
 ) (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
 \LTleft=\skip55
@@ -336,6 +341,68 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count311
 \@lastruleclass=\count312
 \@thisrulewidth=\dimen168
+=======
+) (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2021/12/07 v1.3c Standard LaTeX Color (DPC)
+(c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: xetex.def on input line 149.
+(c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2021/03/18 v5.0k Graphics/color driver for xetex
+)) (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2021/12/21 4.1b verbatim text (tvz,hv)
+\FV@CodeLineNo=\count304
+\FV@InFile=\read2
+\FV@TabBox=\box54
+\c@FancyVerbLine=\count305
+\FV@StepNumber=\count306
+\FV@OutFile=\write3
+) (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip55
+\fb@frw=\dimen155
+\fb@frh=\dimen156
+\FrameRule=\dimen157
+\FrameSep=\dimen158
+) (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
+\LTleft=\skip56
+\LTright=\skip57
+\LTpre=\skip58
+\LTpost=\skip59
+\LTchunksize=\count307
+\LTcapwidth=\dimen159
+\LT@head=\box55
+\LT@firsthead=\box56
+\LT@foot=\box57
+\LT@lastfoot=\box58
+\LT@gbox=\box59
+\LT@cols=\count308
+\LT@rows=\count309
+\c@LT@tables=\count310
+\c@LT@chunks=\count311
+\LT@p@ftn=\toks24
+) (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen160
+\lightrulewidth=\dimen161
+\cmidrulewidth=\dimen162
+\belowrulesep=\dimen163
+\belowbottomsep=\dimen164
+\aboverulesep=\dimen165
+\abovetopsep=\dimen166
+\cmidrulesep=\dimen167
+\cmidrulekern=\dimen168
+\defaultaddspace=\dimen169
+\@cmidla=\count312
+\@cmidlb=\count313
+\@aboverulesep=\dimen170
+\@belowrulesep=\dimen171
+\@thisruleclass=\count314
+\@lastruleclass=\count315
+\@thisrulewidth=\dimen172
+>>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 ) (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
@@ -346,17 +413,24 @@ Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: xetex.def on input line 107.
+<<<<<<< HEAD
 (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-def/xetex.def
 File: xetex.def 2021/03/18 v5.0k Graphics/color driver for xetex
 ))
 \Gin@req@height=\dimen169
 \Gin@req@width=\dimen170
+=======
+)
+\Gin@req@height=\dimen173
+\Gin@req@width=\dimen174
+>>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 ) (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/grffile/grffile.sty
 Package: grffile 2019/11/11 v2.1 Extended file name support for graphics (legacy)
 Package grffile Info: This package is an empty stub for compatibility on input line 40.
 ) (./_main.aux)
 \openout1 = `_main.aux'.
 
+<<<<<<< HEAD
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
 LaTeX Font Info:    ... okay on input line 68.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
@@ -382,6 +456,33 @@ LaTeX Font Info:    ... okay on input line 68.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 68.
 LaTeX Font Info:    ... okay on input line 68.
 Package hyperref Info: Link coloring OFF on input line 68.
+=======
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 108.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 108.
+(c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+Package hyperref Info: Link coloring OFF on input line 108.
+>>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
@@ -389,6 +490,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
+<<<<<<< HEAD
 \c@section@level=\count313
 )
 LaTeX Info: Redefining \ref on input line 68.
@@ -411,10 +513,35 @@ LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 7
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 70.
+=======
+\c@section@level=\count316
+)
+LaTeX Info: Redefining \ref on input line 108.
+LaTeX Info: Redefining \pageref on input line 108.
+LaTeX Info: Redefining \nameref on input line 108.
+(./_main.out) (./_main.out)
+\@outlinefile=\write4
+\openout4 = `_main.out'.
+
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 110.
+(c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 110.
+(c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 110.
+(c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 110.
+>>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
+<<<<<<< HEAD
 (Font)              <12> on input line 70.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 70.
@@ -425,6 +552,18 @@ LaTeX Font Info:    Trying to load font information for U+msa on input line 70.
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 70.
+=======
+(Font)              <12> on input line 110.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 110.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 110.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 110.
+(c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 110.
+>>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
@@ -440,6 +579,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 3.
 )
+<<<<<<< HEAD
 \tf@toc=\write4
 \openout4 = `_main.toc'.
 
@@ -448,11 +588,25 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 ]
 Chapter 1.
 [5] [6
+=======
+\tf@toc=\write5
+\openout5 = `_main.toc'.
+
+[3] [4]
+Chapter 1.
+[5
+
+] [6
+>>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 
 ]
 Chapter 2.
 
+<<<<<<< HEAD
 Underfull \hbox (badness 10000) in paragraph at lines 117--152
+=======
+Underfull \hbox (badness 10000) in paragraph at lines 157--192
+>>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 
  []
 
@@ -460,25 +614,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 117--152
 File: rsediagram.png Graphic file (type bmp)
 <rsediagram.png>
 
+<<<<<<< HEAD
 Overfull \hbox (301.32224pt too wide) in paragraph at lines 185--198
+=======
+Overfull \hbox (301.32224pt too wide) in paragraph at lines 225--238
+>>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 [][]
  []
 
 
 Underfull \vbox (badness 1412) has occurred while \output is active []
 
+<<<<<<< HEAD
 [9] [10] [11] [12] [13] [14
 
 ]
 Chapter 3.
 
 Underfull \hbox (badness 10000) in paragraph at lines 405--416
+=======
+[9] [10] [11] [12]
+Chapter 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 415--426
+>>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 
  []
 
 
 Underfull \vbox (badness 3460) has occurred while \output is active []
 
+<<<<<<< HEAD
 [15]
 File: system.png Graphic file (type bmp)
 <system.png>
@@ -509,3 +675,63 @@ Here is how much of TeX's memory you used:
  87i,8n,91p,285b,341s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on _main.pdf (20 pages).
+=======
+[13
+
+]
+File: system.png Graphic file (type bmp)
+<system.png>
+
+Underfull \hbox (badness 2922) in paragraph at lines 447--457
+[][] \TU/lmr/m/n/10 Consider
+ []
+
+[14] [15] [16
+
+]
+Chapter 4.
+
+Underfull \hbox (badness 1859) in paragraph at lines 495--498
+[]\TU/lmr/m/n/10 Add an unnumbered part: \TU/lmtt/m/n/10 # (PART\*) Act one {-} \TU/lmr/m/n/10 (followed by \TU/lmtt/m/n/10 # A
+ []
+
+[17] [18
+
+]
+Chapter 5.
+[19] [20
+
+]
+Chapter 6.
+
+LaTeX Warning: Reference `thm:tri' on page 21 undefined on input line 545.
+
+
+Overfull \hbox (61.69997pt too wide) in paragraph at lines 551--553
+[]\TU/lmr/m/n/10 Read more here []$[][][][][] [] [] [] [][][][][][][][] [] [][][] [] [][][][][] [] [][][][][][][][] [] [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] []
+ []
+
+[21] [22
+
+]
+Chapter 7.
+[23] (./_main.bbl [24]) [25
+
+] (./_main.aux)
+
+LaTeX Warning: There were undefined references.
+
+Package rerunfilecheck Info: File `_main.out' has not changed.
+(rerunfilecheck)             Checksum: 4BBEA8C11F4693D1072B12EB514E2B25;2650.
+ ) 
+Here is how much of TeX's memory you used:
+ 13743 strings out of 478189
+ 267033 string characters out of 5852888
+ 615550 words of memory out of 5000000
+ 34113 multiletter control sequences out of 15000+600000
+ 494046 words of font info for 77 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 87i,8n,91p,285b,408s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on _main.pdf (25 pages).
+>>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
