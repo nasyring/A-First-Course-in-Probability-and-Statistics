@@ -30,48 +30,6 @@
 \urlstyle{same}  % don't use monospace font for urls
 \usepackage{natbib}
 \bibliographystyle{plainnat}
-<<<<<<< HEAD
-=======
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{{#1}}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
-\newcommand{\ImportTok}[1]{{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{{#1}}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{{#1}}}}
-\newcommand{\BuiltInTok}[1]{{#1}}
-\newcommand{\ExtensionTok}[1]{{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{{#1}}}
-\newcommand{\RegionMarkerTok}[1]{{#1}}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{{#1}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{{#1}}}}
-\newcommand{\NormalTok}[1]{{#1}}
 \usepackage{longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
@@ -141,8 +99,8 @@ below.
 Both of these settings start with a \emph{research question} of interest
 in the the context of a \emph{population} or set of individuals. For
 example, in a political poll the population is the set of eligible
-voters and the research question is "which of two candidates has
-majority support?"
+voters and the research question is ``which of two candidates has
+majority support?''
 
 Experiments like polls necessarily only measure an outcome or
 \emph{response} (like voter preference) for a limited number of
@@ -155,7 +113,6 @@ all possible information is gathered, whereas in an experiment only a
 limited subset of information is obtained. We will be concerned only
 with experiments and how best to use the limited information gathered in
 order to answer research questions.
-
 
 When only a sample of a population is available a natural question is
 ``how is the sample determined?'' If there is freedom in the choice of
@@ -198,7 +155,6 @@ experiment} as the process by which we select a SRS from a population
 and record a response from sampled individuals for the purpose of
 answering a research question. As noted, an important example is a poll.
 
-
 Random sampling experiments are valuable, but limited to addressing
 questions about one variable at a time. In many cases researchers are
 interested in how one variable affects the value of another, and these
@@ -238,8 +194,7 @@ two (abstract or hypothetical) populations: a sample from the set of
 treated patients and a sample from the set of untreated patients. The
 research question typically concerns the relationship between these two
 populations, such as, ``are treated patients, on average, healthier than
-untreated patients, with respect to the response variable?"
-
+untreated patients, with respect to the response variable?''
 
 We will only consider randomized interventional experiments. Briefly,
 consider what can go wrong if we do not randomize intervention. Suppose
@@ -319,7 +274,6 @@ Probability plays a key role in statistics problems, and the first part
 of our course is devoted to developing methods for computing
 probabilities of samples in a variety of useful special cases.
 
-
 Let's illustrate this interplay of probability and statistics by
 continuing the example of a poll. The population, again, can be
 represented by \(N\) values, each either a \(0\) or a \(1\) indicating
@@ -348,7 +302,6 @@ values near \(1/2\) are more plausible than values far from \(1/2\).
 This correspondence between the probability calculation and plausible
 values of the \emph{population parameter} is called the \emph{maximum
 likelihood principle} which we will study in a later chapter.
-
 
 \section{Exercises}\label{exercises}
 
@@ -523,7 +476,6 @@ intuitively familiar with.
   \[P\left(\bigcup_{i=1}^\infty A_i\right) = \sum_{i=1}^\infty P(A_i).\]
 \end{enumerate}
 
-
 There are a number of important consequences of the axioms: *
 Complementarity - \(P(A^c) = 1-P(A)\) * Inclusion-exclusion principle
 \[P(A\cup B) = P(\{A\cap B\}\cup\{A-B\}\cup\{B-A\})\]
@@ -572,7 +524,6 @@ random sampling experiments.
 
 \section{Some counting rules}\label{some-counting-rules}
 
-
 The \emph{product rule} considers the probability of a complex event
 that can be decomposed into several independent events. For example,
 suppose the event is generating a random ``word'' that is five (English)
@@ -584,7 +535,6 @@ ways to generate the word (the number of ways the event can happen) is
 equal to the product of the numbers of ways each letter can be randomly
 selected (the number of ways each sub-event can happen). For the word
 example, that's \(26^5\).
-
 
 Example: You are remodeling your kitchen and have to buy a new
 refrigerator, oven, and dishwasher. Four brands make fridges, 3 make
@@ -654,5 +604,6 @@ random. There are \({15 \choose 3}\) ways to select 3 microsoft and
 probability is the ratio
 \[\frac{{15 \choose 3}\times {10 \choose 3}}{{25 \choose 6}}.\]
 
+\bibliography{book.bib,packages.bib}
 
 \end{document}
