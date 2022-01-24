@@ -1,7 +1,7 @@
 --- 
 title: "A First Course in Probability and Statistics"
 author: "Nick Syring"
-date: "2022-01-18"
+date: "2022-01-24"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -19,4 +19,4 @@ This is a collection of notes intended for students studying probability and sta
 
 <br><br>
 
-Some relevant textbook references include John E. Freund's Mathematical Statistics with Applications by Miller and Miller, although many boks on this material are available.
+Some relevant textbook references include John E. Freund's Mathematical Statistics with Applications by Miller and Miller, although many books on this material are available.

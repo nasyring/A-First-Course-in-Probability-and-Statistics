@@ -1,5 +1,4 @@
 tab:unnamed-chunk-2
-eq:binom
 about
 experiments-and-the-role-of-probability
 experiments
@@ -11,15 +10,7 @@ set-relations
 sample-space-example
 set-relations-example
 probability-axioms
-parts
-footnotes-and-citations
-footnotes
-citations
-blocks
-equations
-theorems-and-proofs
-callout-blocks
-sharing-your-book
-publishing
-pages
-metadata-for-sharing
+example-of-using-the-probability-axioms
+equally-likely-outcomes
+some-counting-rules
+applications-to-random-sampling
