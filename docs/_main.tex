@@ -72,7 +72,6 @@
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{{#1}}}
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{{#1}}}}
 \newcommand{\NormalTok}[1]{{#1}}
->>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 \usepackage{longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
@@ -123,13 +122,8 @@ University. Specifically, these notes are modeled after course notes for
 STAT 588, 341, and 342. This site is a work in progress.
 
 Some relevant textbook references include John E. Freund's Mathematical
-<<<<<<< HEAD
 Statistics with Applications by Miller and Miller, although many books
 on this material are available.
-=======
-Statistics with Applications by Miller and Miller, although many boks on
-this material are available.
->>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 
 \chapter{Experiments and the role of
 probability}\label{experiments-and-the-role-of-probability}
@@ -147,12 +141,8 @@ below.
 Both of these settings start with a \emph{research question} of interest
 in the the context of a \emph{population} or set of individuals. For
 example, in a political poll the population is the set of eligible
-voters and the research question is ``which of two candidates has
-<<<<<<< HEAD
-majority support?''
-=======
+voters and the research question is "which of two candidates has
 majority support?"
->>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 
 Experiments like polls necessarily only measure an outcome or
 \emph{response} (like voter preference) for a limited number of
@@ -164,11 +154,8 @@ population is observed, and we call this a \emph{census}. In a census,
 all possible information is gathered, whereas in an experiment only a
 limited subset of information is obtained. We will be concerned only
 with experiments and how best to use the limited information gathered in
-<<<<<<< HEAD
 order to answer research questions.
-=======
-order to best answer research questions.
->>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
+
 
 When only a sample of a population is available a natural question is
 ``how is the sample determined?'' If there is freedom in the choice of
@@ -207,15 +194,10 @@ the polling example they require a list of population individuals, which
 may be difficult to obtain.\\
 
 We are at the point where we can define a \emph{random sampling
-<<<<<<< HEAD
 experiment} as the process by which we select a SRS from a population
 and record a response from sampled individuals for the purpose of
 answering a research question. As noted, an important example is a poll.
-=======
-experiment} as an endeavor that selects a SRS from a population and
-records a response from sampled individuals for the purpose of answering
-a research question. As noted, an important example is a poll.
->>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
+
 
 Random sampling experiments are valuable, but limited to addressing
 questions about one variable at a time. In many cases researchers are
@@ -256,11 +238,8 @@ two (abstract or hypothetical) populations: a sample from the set of
 treated patients and a sample from the set of untreated patients. The
 research question typically concerns the relationship between these two
 populations, such as, ``are treated patients, on average, healthier than
-<<<<<<< HEAD
-untreated patients, with respect to the response variable?''
-=======
 untreated patients, with respect to the response variable?"
->>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
+
 
 We will only consider randomized interventional experiments. Briefly,
 consider what can go wrong if we do not randomize intervention. Suppose
@@ -312,7 +291,6 @@ preference between the two candidates. Let these 0-1 preferences be
 denoted \(x_1, \ldots, x_N\) where \(N\) is the population size. There
 exists a population level value \(\theta\) equal to
 \[\theta:=N^{-1}\sum_{j=1}^N x_j\] denoting the population voter
-<<<<<<< HEAD
 preference; this is the \emph{population proportion}. Most research
 questions of interest concern the unknown value of \(\theta\). In the
 polling experiment we observe a random subset of \(x_1, \ldots, x_N\)
@@ -332,26 +310,6 @@ population.
 That last phrase ``given knowledge of the population'' is very
 important, and illustrates the difference between probability and
 statistics (inference) quite succinctly. Probability characterizes the
-=======
-preference. Most research questions of interest concern the unknown
-value of \(\theta\). In the polling experiment we observe a random
-subset of \(x_1, \ldots, x_N\) values, say, \(X_1, \ldots, X_n\) for
-\(n<N\)---keep in mind these are not the first \(n\) x's, but a random
-subset of \(n\) x's. Correspondingly, we can compute the sample voter
-preference \[\hat\theta_n := n^{-1}\sum_{i=1}^n X_i.\] For every
-possible sample of \(n\) voters, there is a corresponding value of
-\(\hat\theta_n\). We can think of the polling experiment as randomly
-choosing one of these \(\hat\theta_n\) values out of a hat containing
-all of them. Randomly sampling voters causes randomness in the observed
-\(\hat\theta_n\) preference value. And, the goal of \emph{probability}
-is to quantify this randomness, e.g., to be able to compute the chance
-of \(\hat\theta_n\) taking on any particular value, given knowledge of
-the population.
-
-That last phrase ``given knowledge of the population'' is very
-important, and illustrates the difference between probability and
-statistics (inference) quite succintly. Probability characterizes the
->>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 chance of observing a particular random sample given the population,
 whereas statistics seeks to explain some characteristic of the
 unknown/unobserved population given only one sample (subset of
@@ -361,7 +319,7 @@ Probability plays a key role in statistics problems, and the first part
 of our course is devoted to developing methods for computing
 probabilities of samples in a variety of useful special cases.
 
-<<<<<<< HEAD
+
 Let's illustrate this interplay of probability and statistics by
 continuing the example of a poll. The population, again, can be
 represented by \(N\) values, each either a \(0\) or a \(1\) indicating
@@ -391,8 +349,7 @@ This correspondence between the probability calculation and plausible
 values of the \emph{population parameter} is called the \emph{maximum
 likelihood principle} which we will study in a later chapter.
 
-=======
->>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
+
 \section{Exercises}\label{exercises}
 
 \begin{enumerate}
@@ -480,7 +437,6 @@ discussion of quantification of beliefs is outside our present purview.
 \section{Terminology}\label{terminology}
 
 In our discussion of probability we will think of an \emph{experiment}
-<<<<<<< HEAD
 as the act of measuring/observing a variable on one or more random
 samples from a population. The \emph{sample space} is the set of
 possible realizations of the experiment. For example, if the experiment
@@ -489,16 +445,6 @@ think of this as a random sampling from sample space \(\{H, T\}\) where
 the outcome may be either \(\{H\}\) or \(\{T\}\). Any subset of the
 sample space of an experiment is an \emph{event}; for example, \(\{H\}\)
 and \(\{H,T\}\) are events, and so is \(\emptyset\) which denotes the
-=======
-as the act of measuring/observing a variable one one or more samples
-from a population. The \emph{sample space} is the set of possible
-realizations of the experiment. For example, if the experiment is to
-flip one coin and record whether it is heads or tails, then we can think
-of this as a random sampling from sample space \(\{H, T\}\) where the
-outcome may be either \(\{H\}\) or \(\{T\}\). Any subset of the sample
-space of an experiment is an \emph{event}; for example, \(\{H\}\) and
-\(\{H,T\}\) are events, and so is \(\emptyset\) which denotes the
->>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 ``empty set'', the set of nothing.
 
 \section{Set relations}\label{set-relations}
@@ -523,16 +469,11 @@ pumps in use? \(\mathcal{S} =\{0,1,2,3,4,5,6\}\). -What is the sample
 space of pumps in use?
 \(\mathcal{S} = \{\{A,B,C,D,E,F\},\{A,B,C,D,E\}, \ldots,\{F\}, \emptyset \}\).
 This is the \emph{power set} of \(\{A,B,C,D,E,F\}\), the set of all
-<<<<<<< HEAD
 subsets of those pumps. Fun fact: if the sample space \(\mathcal{S}\)
 consists of \(N\) elements then its power set, written
 \(2^{\mathcal{S}}\), contains \(2^N\) elements. Can you see why?
 -Suppose you test pump A every day until it fails to function. What is
 the sample space of this experiment?
-=======
-subsets of those pumps. -Suppose you test pump A every day until it
-fails to function. What is the sample space of this experiment?
->>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 \(\mathcal{S} = \{F, SF, SSF, \ldots \}\). This is a \emph{countably
 infinite} sample space. -You measure the amount of gas pumped by the
 next customer. \(\mathcal{S} = (0, ?)\), an interval with some upper
@@ -546,11 +487,7 @@ This next example illustrates set relations.
 \includegraphics[width=11in]{system} Consider this system of series and
 parallel components. Each component either functions/succeeds (S) or
 fails (F). The experiment simply observes if the system
-<<<<<<< HEAD
 functions/succeeds or fails. -What is the sample space in terms of the
-=======
-functions/succeeds or fails. -What i the sample space in terms of the
->>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 three components?
 \(\mathcal{S} = \{SSS, SSF, SFS, FSS, SFF, FFS, FSF, FFF\}\). -Find the
 even two components succeed. \(A = \{SSF, SFS, FSS\}\). -Find the even
@@ -586,7 +523,7 @@ intuitively familiar with.
   \[P\left(\bigcup_{i=1}^\infty A_i\right) = \sum_{i=1}^\infty P(A_i).\]
 \end{enumerate}
 
-<<<<<<< HEAD
+
 There are a number of important consequences of the axioms: *
 Complementarity - \(P(A^c) = 1-P(A)\) * Inclusion-exclusion principle
 \[P(A\cup B) = P(\{A\cap B\}\cup\{A-B\}\cup\{B-A\})\]
@@ -634,34 +571,7 @@ correspondence between the probability setup we're considering here and
 random sampling experiments.
 
 \section{Some counting rules}\label{some-counting-rules}
-=======
-\chapter{Parts}\label{parts}
 
-You can add parts to organize one or more book chapters together. Parts
-can be inserted at the top of an .Rmd file, before the first-level
-chapter heading in that same file.
-
-Add a numbered part: \texttt{\#\ (PART)\ Act\ one\ \{-\}} (followed by
-\texttt{\#\ A\ chapter})
-
-Add an unnumbered part:
-\texttt{\#\ (PART\textbackslash{}*)\ Act\ one\ \{-\}} (followed by
-\texttt{\#\ A\ chapter})
-
-Add an appendix as a special kind of un-numbered part:
-\texttt{\#\ (APPENDIX)\ Other\ stuff\ \{-\}} (followed by
-\texttt{\#\ A\ chapter}). Chapters in an appendix are prepended with
-letters instead of numbers.
-
-\chapter{Footnotes and citations}\label{footnotes-and-citations}
-
-\section{Footnotes}\label{footnotes}
-
-Footnotes are put inside the square brackets after a caret
-\texttt{\^{}{[}{]}}. Like this one \footnote{This is a footnote.}.
-
-\section{Citations}\label{citations}
->>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 
 The \emph{product rule} considers the probability of a complex event
 that can be decomposed into several independent events. For example,
@@ -675,7 +585,7 @@ equal to the product of the numbers of ways each letter can be randomly
 selected (the number of ways each sub-event can happen). For the word
 example, that's \(26^5\).
 
-<<<<<<< HEAD
+
 Example: You are remodeling your kitchen and have to buy a new
 refrigerator, oven, and dishwasher. Four brands make fridges, 3 make
 ovens, and 5 dishwashers. In how many ways can you select three brands?
@@ -694,23 +604,6 @@ Example: Suppose you win 3 tickets to an NFL playoff game (I wish!). You
 will choose 2 out of 4 of your closest friends to go with you. How many
 different choices can you make? It's
 \({4\choose 2} = \frac{4*3*2*1}{(2*1)(2*1) } = 6\) choices.
-=======
-For example, we are using the \textbf{bookdown} package
-\citep{R-bookdown} (check out the last code chunk in index.Rmd to see
-how this citation key was added) in this sample book, which was built on
-top of R Markdown and \textbf{knitr} \citep{xie2015} (this citation was
-added manually in an external file book.bib). Note that the
-\texttt{.bib} files need to be listed in the index.Rmd with the YAML
-\texttt{bibliography} key.
-
-The RStudio Visual Markdown Editor can also make it easier to insert
-citations:
-\url{https://rstudio.github.io/visual-markdown-editing/\#/citations}
-
-\chapter{Blocks}\label{blocks}
-
-\section{Equations}\label{equations}
->>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
 
 Example: In ranked-choice voting you rank your choices by order of
 preference rather than by voting for only one option. If there are ten
@@ -725,7 +618,6 @@ Items of the same type are indistinguishable. The number of
 distinct/distinguishable arrangements of the \(n\) objects is
 \(\frac{n!}{n_1!\times n_2! \times \cdots \times n_k! }\).
 
-<<<<<<< HEAD
 For example, if we file a 6-sided die 20 times and obtain 6 ones 3 twos
 4 threes and 7 fours the number of distinct orderings of those outcomes
 is \(\frac{20!}{6!3!4!7!}\).
@@ -762,73 +654,5 @@ random. There are \({15 \choose 3}\) ways to select 3 microsoft and
 probability is the ratio
 \[\frac{{15 \choose 3}\times {10 \choose 3}}{{25 \choose 6}}.\]
 
-=======
-You may refer to using \texttt{\textbackslash{}@ref(eq:binom)}, like see
-Equation \eqref{eq:binom}.
-
-\section{Theorems and proofs}\label{theorems-and-proofs}
-
-Labeled theorems can be referenced in text using
-\texttt{\textbackslash{}@ref(thm:tri)}, for example, check out this
-smart theorem \ref{thm:tri}.
-
-::: \{.theorem \#tri\} For a right triangle, if \(c\) denotes the
-\emph{length} of the hypotenuse and \(a\) and \(b\) denote the lengths
-of the \textbf{other} two sides, we have \[a^2 + b^2 = c^2\] :::
-
-Read more here
-\url{https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html}.
-
-\section{Callout blocks}\label{callout-blocks}
-
-The R Markdown Cookbook provides more help on how to use custom blocks
-to design your own callouts:
-\url{https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html}
-
-\chapter{Sharing your book}\label{sharing-your-book}
-
-\section{Publishing}\label{publishing}
-
-HTML books can be published online, see:
-\url{https://bookdown.org/yihui/bookdown/publishing.html}
-
-\section{404 pages}\label{pages}
-
-By default, users will be directed to a 404 page if they try to access a
-webpage that cannot be found. If you'd like to customize your 404 page
-instead of using the default, you may add either a \texttt{\_404.Rmd} or
-\texttt{\_404.md} file to your project root and use code and/or Markdown
-syntax.
-
-\section{Metadata for sharing}\label{metadata-for-sharing}
-
-Bookdown HTML books will provide HTML metadata for social sharing on
-platforms like Twitter, Facebook, and LinkedIn, using information you
-provide in the \texttt{index.Rmd} YAML. To setup, set the \texttt{url}
-for your book and the path to your \texttt{cover-image} file. Your
-book's \texttt{title} and \texttt{description} are also used.
-
-This \texttt{gitbook} uses the same social sharing data across all
-chapters in your book- all links shared will look the same.
-
-Specify your book's source repository on GitHub using the \texttt{edit}
-key under the configuration options in the \texttt{\_output.yml} file,
-which allows users to suggest an edit by linking to a chapter's source
-file.
-
-Read more about the features of this output format here:
-
-\url{https://pkgs.rstudio.com/bookdown/reference/gitbook.html}
-
-Or use:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{?bookdown::gitbook}
-\end{Highlighting}
-\end{Shaded}
-
->>>>>>> 669d67ecf37785ec1a63b84652d4253acaaedc82
-\bibliography{book.bib,packages.bib}
 
 \end{document}
