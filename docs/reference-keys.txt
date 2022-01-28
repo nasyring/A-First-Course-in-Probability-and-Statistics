@@ -14,3 +14,16 @@ example-of-using-the-probability-axioms
 equally-likely-outcomes
 some-counting-rules
 applications-to-random-sampling
+exercises-1
+conditional-probabilities-of-events
+example
+example-1
+example-2
+bayes-rule
+example-3
+independence
+exercises-2
+random-variables
+random-variables-1
+examples
+probability-mass-functions

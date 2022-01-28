@@ -24,7 +24,7 @@
 <meta name="author" content="Nick Syring" />
 
 
-<meta name="date" content="2022-01-24" />
+<meta name="date" content="2022-01-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="experiments-and-the-role-of-probability.html"/>
-
+<link rel="next" href="conditional-probabilities-of-events.html"/>
 <script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -90,6 +90,23 @@
 <li class="chapter" data-level="3.4" data-path="probability-and-counting.html"><a href="probability-and-counting.html#equally-likely-outcomes"><i class="fa fa-check"></i><b>3.4</b> Equally likely outcomes</a></li>
 <li class="chapter" data-level="3.5" data-path="probability-and-counting.html"><a href="probability-and-counting.html#some-counting-rules"><i class="fa fa-check"></i><b>3.5</b> Some counting rules</a></li>
 <li class="chapter" data-level="3.6" data-path="probability-and-counting.html"><a href="probability-and-counting.html#applications-to-random-sampling"><i class="fa fa-check"></i><b>3.6</b> Applications to random sampling</a></li>
+<li class="chapter" data-level="3.7" data-path="probability-and-counting.html"><a href="probability-and-counting.html#exercises-1"><i class="fa fa-check"></i><b>3.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html"><i class="fa fa-check"></i><b>4</b> Conditional probabilities of events</a><ul>
+<li class="chapter" data-level="4.0.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example"><i class="fa fa-check"></i><b>4.0.1</b> Example</a></li>
+<li class="chapter" data-level="4.0.2" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example-1"><i class="fa fa-check"></i><b>4.0.2</b> Example</a></li>
+<li class="chapter" data-level="4.0.3" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example-2"><i class="fa fa-check"></i><b>4.0.3</b> Example</a></li>
+<li class="chapter" data-level="4.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#bayes-rule"><i class="fa fa-check"></i><b>4.1</b> Bayes' rule</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example-3"><i class="fa fa-check"></i><b>4.1.1</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#independence"><i class="fa fa-check"></i><b>4.2</b> Independence</a></li>
+<li class="chapter" data-level="4.3" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#exercises-2"><i class="fa fa-check"></i><b>4.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>5</b> Random Variables</a><ul>
+<li class="chapter" data-level="5.1" data-path="random-variables.html"><a href="random-variables.html#random-variables-1"><i class="fa fa-check"></i><b>5.1</b> Random variables</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="random-variables.html"><a href="random-variables.html#examples"><i class="fa fa-check"></i><b>5.1.1</b> Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="random-variables.html"><a href="random-variables.html#probability-mass-functions"><i class="fa fa-check"></i><b>5.2</b> Probability Mass Functions</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -171,6 +188,48 @@
 <p>This coin-flipping experiment is an example of random sampling with replacement. Each flip is a random draw from a population of <span class="math inline">\(2\)</span> coins in which <span class="math inline">\(1\)</span> is heads and <span class="math inline">\(1\)</span> is tails. Each coin is equally likely to be chosen. And, once selected and recorded, the coin is then returned. Alternatively, we could imagine the experiment as random sampling without replacement from an infinite population of coins for which &quot;half&quot; are heads.</p>
 <p><br><br></p>
 <p>For a more concrete example of sampling without replacement, consider the following. Suppose the statistics department has 15 microsoft and 10 mac laptops available for lending, and suppose 6 are chosen as a SRS. What is the probability 3 of the chosen laptops are microsoft and the other 3 mac? There are <span class="math inline">\(N = {25 \choose 6}\)</span> ways to select 6 at random. There are <span class="math inline">\({15 \choose 3}\)</span> ways to select 3 microsoft and <span class="math inline">\({10 \choose 3}\)</span> ways to select <span class="math inline">\(3\)</span> mac laptops. Therefore, the probability is the ratio <span class="math display">\[\frac{{15 \choose 3}\times {10 \choose 3}}{{25 \choose 6}}.\]</span></p>
+</div>
+<div id="exercises-1" class="section level2">
+<h2><span class="header-section-number">3.7</span> Exercises</h2>
+<ol style="list-style-type: decimal">
+<li>An Amazon warehouse employs twenty workers on early shift, 15 on the late shift, and 10 on the overnight shift. Six workers are randomly selected (without replacement) fora safety interview. <br></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>How many selections result in 6 workers from the early shift? What is the probability of this event?<br></li>
+<li>What is the probability all 6 workers selected come from the same shift?<br></li>
+<li>What is the probability at least two different shifts are represented among the six workers selected?<br></li>
+<li>What is the probability at least one shift is not represented?</li>
+</ol>
+<p><br><br></p>
+<p>Answers:<br> a. <span class="math inline">\({20 \choose 6}\)</span>, and <span class="math inline">\(\frac{{20 \choose 6}}{{45 \choose 6}}\)</span><br> b. <span class="math inline">\(\frac{{20 \choose 6}+{15 \choose 6}+{10 \choose 6}}{{45 \choose 6}}\)</span><br> c. <span class="math inline">\(1-\)</span>the probability in b.<br> d. <span class="math inline">\(\frac{{35 \choose 6}+{30 \choose 6}+{25 \choose 6}}{{45 \choose 6}}\)</span></p>
+<p><br><br></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Suppose a chain molecule consists of 3 sub-molecules of type A, 3 of B, 3 of C, and 3 of D, e.g., ABCDABCDABCD.<br><br />
+</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>How many such distinguishable chain molecules are there of any order? <br></li>
+<li>If we randomly selected a chain molecule, what tis the probability that all three sub-molecules of each type are &quot;lined up&quot;, e.g., BBBAAADDDCCC?<br></li>
+</ol>
+<p><br></p>
+<p>Answers:<br> a. <span class="math inline">\(\frac{12!}{(3!)^4}\)</span><br> b. <span class="math inline">\(\frac{4!(3!)^4}{12!}\)</span> <br><br> 3. A quality control inspector must examine a part from each of 4 different bins. The bins contain 5, 2, 6, and 3 parts, respectively. In how many different ways can the inspector choose the 4 parts?</p>
+<p><br><br></p>
+<ol start="4" style="list-style-type: decimal">
+<li>In order to meet the requirements of a new housing code, each apartment complex in a certain neighborhood must have the smoke detectors from 3 apartments checked by the fire chief each year. In how many ways can the fire chief choose 3 apartments from a complex containing 20 apartments?</li>
+</ol>
+<p><br><br></p>
+<ol start="5" style="list-style-type: decimal">
+<li>A ten person City Council must elect a Chair, a Vice Chair, and a Secretary. In how many ways can the positions be filled?</li>
+</ol>
+<p><br><br></p>
+<ol start="6" style="list-style-type: decimal">
+<li>The driving route you use to travel to and from work and your home includes two stop lights. Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> denote the events you stop and the first light and the second light, respectively. Suppose <span class="math inline">\(P(A) = 0.4\)</span>, <span class="math inline">\(P(B) = 0.5\)</span>, and <span class="math inline">\(P(A\cup B) = 0.6\)</span>. Find:<br></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(P(A\cap B)\)</span>, the probability you stop at both lights<br></li>
+<li><span class="math inline">\(P(A \cap B^c)\)</span>, the probability you stop at only the first light<br></li>
+<li><span class="math inline">\(P(B \cap A^c)\)</span>, the probability you stop at only the second light</li>
+</ol>
 
 </div>
 </div>
@@ -179,8 +238,8 @@
           </div>
         </div>
       </div>
-<a href="experiments-and-the-role-of-probability.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="experiments-and-the-role-of-probability.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conditional-probabilities-of-events.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

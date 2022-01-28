@@ -108,3 +108,52 @@ This coin-flipping experiment is an example of random sampling with replacement.
 For a more concrete example of sampling without replacement, consider the following.  Suppose the statistics department has 15 microsoft and 10 mac laptops available for lending, and suppose 6 are chosen as a SRS.  What is the probability 3 of the chosen laptops are microsoft and the other 3 mac?  There are $N = {25 \choose 6}$ ways to select 6 at random.  There are ${15 \choose 3}$ ways to select 3 microsoft and ${10 \choose 3}$ ways to select $3$ mac laptops.  Therefore, the probability is the ratio
 \[\frac{{15 \choose 3}\times {10 \choose 3}}{{25 \choose 6}}.\]
 
+
+
+
+## Exercises
+
+1. An Amazon warehouse employs twenty workers on early shift, 15 on the late shift, and 10 on the overnight shift.  Six workers are randomly selected (without replacement) fora  safety interview.  <br>
+a. How many selections result in 6 workers from the early shift?  What is the probability of this event?<br>
+b. What is the probability all 6 workers selected come from the same shift?<br>
+c. What is the probability at least two different shifts are represented among the six workers selected?<br>
+d. What is the probability at least one shift is not represented?
+
+<br><br>
+
+Answers:<br>
+a. ${20 \choose 6}$, and $\frac{{20 \choose 6}}{{45 \choose 6}}$<br>
+b. $\frac{{20 \choose 6}+{15 \choose 6}+{10 \choose 6}}{{45 \choose 6}}$<br>
+c. $1-$the probability in b.<br>
+d. $\frac{{35 \choose 6}+{30 \choose 6}+{25 \choose 6}}{{45 \choose 6}}$
+
+<br><br>
+
+2. Suppose a chain molecule consists of 3 sub-molecules of type A, 3 of B, 3 of C, and 3 of D, e.g., ABCDABCDABCD.<br>  
+a. How many such distinguishable chain molecules are there of any order? <br>
+b. If we randomly selected a chain molecule, what tis the probability that all three sub-molecules of each type are "lined up", e.g., BBBAAADDDCCC?<br>
+
+<br>
+
+Answers:<br>
+a. $\frac{12!}{(3!)^4}$<br>
+b. $\frac{4!(3!)^4}{12!}$
+<br><br>
+3. A quality control inspector must examine a part from each of 4 different bins. The bins contain 5, 2, 6, and 3 parts, respectively. In how many different ways can the inspector choose the 4 parts? 
+
+<br><br>
+
+4. In order to meet the requirements of a new housing code, each apartment complex in a certain neighborhood must have the smoke detectors from 3 apartments checked by the fire chief each year. In how many ways can the fire chief choose 3 apartments from a complex containing 20 apartments?
+
+<br><br>
+
+5. A ten person City Council must elect a Chair, a Vice Chair, and a Secretary.  In how many ways can the positions be filled?
+
+<br><br>
+
+6. The driving route you use to travel to and from work and your home includes two stop lights.  Let $A$ and $B$ denote the events you stop and the first light and the second light, respectively.  Suppose $P(A) = 0.4$, $P(B) = 0.5$, and $P(A\cup B) = 0.6$.  Find:<br>
+a. $P(A\cap B)$, the probability you stop at both lights<br>
+b. $P(A \cap B^c)$, the probability you stop at only the first light<br>
+c. $P(B \cap A^c)$, the probability you stop at only the second light
+
+

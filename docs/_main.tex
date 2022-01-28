@@ -63,7 +63,7 @@
 
 \title{A First Course in Probability and Statistics}
 \author{Nick Syring}
-\date{2022-01-24}
+\date{2022-01-28}
 
 \begin{document}
 \maketitle
@@ -603,6 +603,408 @@ random. There are \({15 \choose 3}\) ways to select 3 microsoft and
 \({10 \choose 3}\) ways to select \(3\) mac laptops. Therefore, the
 probability is the ratio
 \[\frac{{15 \choose 3}\times {10 \choose 3}}{{25 \choose 6}}.\]
+
+\section{Exercises}\label{exercises-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  An Amazon warehouse employs twenty workers on early shift, 15 on the
+  late shift, and 10 on the overnight shift. Six workers are randomly
+  selected (without replacement) fora safety interview. 
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  How many selections result in 6 workers from the early shift? What is
+  the probability of this event?
+\item
+  What is the probability all 6 workers selected come from the same
+  shift?
+\item
+  What is the probability at least two different shifts are represented
+  among the six workers selected?
+\item
+  What is the probability at least one shift is not represented?
+\end{enumerate}
+
+Answers: a. \({20 \choose 6}\), and
+\(\frac{{20 \choose 6}}{{45 \choose 6}}\) b.
+\(\frac{{20 \choose 6}+{15 \choose 6}+{10 \choose 6}}{{45 \choose 6}}\)
+c. \(1-\)the probability in b. d.
+\(\frac{{35 \choose 6}+{30 \choose 6}+{25 \choose 6}}{{45 \choose 6}}\)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Suppose a chain molecule consists of 3 sub-molecules of type A, 3 of
+  B, 3 of C, and 3 of D, e.g., ABCDABCDABCD.\\
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  How many such distinguishable chain molecules are there of any order? 
+\item
+  If we randomly selected a chain molecule, what tis the probability
+  that all three sub-molecules of each type are ``lined up'', e.g.,
+  BBBAAADDDCCC?
+\end{enumerate}
+
+Answers: a. \(\frac{12!}{(3!)^4}\) b. \(\frac{4!(3!)^4}{12!}\) 3. A
+quality control inspector must examine a part from each of 4 different
+bins. The bins contain 5, 2, 6, and 3 parts, respectively. In how many
+different ways can the inspector choose the 4 parts?
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  In order to meet the requirements of a new housing code, each
+  apartment complex in a certain neighborhood must have the smoke
+  detectors from 3 apartments checked by the fire chief each year. In
+  how many ways can the fire chief choose 3 apartments from a complex
+  containing 20 apartments?
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  A ten person City Council must elect a Chair, a Vice Chair, and a
+  Secretary. In how many ways can the positions be filled?
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  The driving route you use to travel to and from work and your home
+  includes two stop lights. Let \(A\) and \(B\) denote the events you
+  stop and the first light and the second light, respectively. Suppose
+  \(P(A) = 0.4\), \(P(B) = 0.5\), and \(P(A\cup B) = 0.6\). Find:
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  \(P(A\cap B)\), the probability you stop at both lights
+\item
+  \(P(A \cap B^c)\), the probability you stop at only the first light
+\item
+  \(P(B \cap A^c)\), the probability you stop at only the second light
+\end{enumerate}
+
+\chapter{Conditional probabilities of
+events}\label{conditional-probabilities-of-events}
+
+Let \(A\) and \(B\) denote events in a sample space \(\mathcal{S}\).
+Suppose we know \(B\) occurs. Then, \(P(A|B)\) denotes the
+\textbf{conditional probability} of \(A\) given \(B\). This has the
+mathematical formula \[P(A|B) = \frac{P(A\cap B)}{P(B)}.\] In this
+formula, \(B\) acts as the new or conditional sample space. It is always
+true
+\[P(A|\mathcal{S}) = \frac{P(A\cap \mathcal{S})}{P(\mathcal{S})} = \frac{P(A)}{1} = P(A).\]
+Knowing \(B\) happens is equivalent to changing the sample space to
+\(B\).
+
+\subsection{Example}\label{example}
+
+Four individuals are donating blood to a blood bank. Their blood types
+are unknown. If exactly 1 of them is O+, then what is the probability at
+least 3 are typed in order to obtain an O+ sample? Answer:
+\[P(\text{at least three must be typed}) = P(3) + P(4).\]
+\[P(3) = P(\text{first is not O+ and second is not O+ and third is O+}).\]
+\[ = P(\text{first is not O+})P(\text{second is not O+ given first is not O+})P(\text{third is O+ given first two are not})\]
+\[ = \frac{3}{4}\times \frac{2}{3}\times \frac{1}{2}.\] We used a
+(perhaps intuitive) extension of the conditional probability formula
+above:
+\[P(A\cap B\cap C) = P(C|A\cap B)P(A \cap B) = P(C|A\cap B)P(B|A)P(A)\]
+Here, \(A\), \(B\), and \(C\) represent the first, second, and third
+blood typings.
+
+\subsection{Example}\label{example-1}
+
+Let \(A\) be the event a randomly selected adult male US citizen is at
+least 6'3" tall. Let \(B\) be the event a randomly selected adult male
+US citizen is an NBA player. Which is larger, \(P(A|B)\) or \(P(B|A)\)?
+
+Answer: Be careful; these can be tricky. \(P(A)\) is much larger than
+\(P(B)\) because there are many more male US citizens 6'3" or taller
+than there are NBA players (some also may not be US citizens). And,
+\(P(A|B)\) is much larger than \(P(B|A)\). The reason is that if we
+condition on US citizen NBA players, almost all of them are 6'3" or
+taller. However, if we condition on US males 6'3" or taller, NBA players
+are still a tiny proportion.
+
+\subsection{Example}\label{example-2}
+
+Bertrand's Boxes --- There are three boxes: the first has two gold
+coins, the second one gold and one silver, and the third two silver
+coins. You choose a box at random and a coin from the box at random.
+Given you choose a gold coin, what is the probability the other coin in
+that box is gold?
+
+Answer:
+
+Let \(G_1\) be the event the first coin chosen is gold and let \(G_2\)
+be the event the second coin chosen (same box) is gold. Let \(B_1\),
+\(B_2\), and \(B_3\) denote events corresponding to choosing boxes 1, 2,
+and 3. Then, we seek \[P(G_2|G_1) = \frac{P(G_1\cap G_2)}{P(G_1)}.\]
+\[P(G_1) = P(G_1 \cap B_1) + P(G_1 \cap B_2) + P(G_1 \cap B_3)\]
+\[ = P(G_1 | B_1)P(B_1) + P(G_1 | B_2)P(B_2)+ P(G_1 | B_3)P(B_3)\]
+\[ = 1 \times 1/3 + 1/2 \times 1/3 + 0 \times 1 /3 = 1/2.\]
+\[P(G_1\cap G_2) = P(\text{chose box 1}) = P(B_1) = 1/3.\] Therefore,
+\[P(G_2|G_1) = \frac{1/3}{1/2} = 2/3.\]
+
+Note: This question, which is often called ``Bertrand's Paradox'', has
+caused an awful lot of consternation and controversy. When pondering
+this question for the first time, many people will (incorrectly) suppose
+the answer is 1/2. Their logic is that since the first coin was gold,
+then either the first or second box was chosen. Then, those boxes being
+equally likely, there is a 1/2 chance box 1 was chosen, and, therefore,
+the chance of the second coin being gold is 1/2. The first part of that
+logic is well-founded: the third box could not have been chosen.
+However, the fact the first coin is gold also implies we were more
+likely to have chosen the first box than the second---those two boxes
+are not equally likely in light of the information that the first coin
+was gold. Indeed, we could have simply asked ``what is the chance we
+selected box 1 given the coin is gold?''---that question is equivalent
+to asking the chance the second coin is gold. When rephrased this way,
+most people find it easier to see that the chosen box is more likely box
+1 than box 2 (twice as likely, in particular), given the first coin
+selected is gold.
+
+\section{Bayes' rule}\label{bayes-rule}
+
+In the example of Bertrand's Paradox you might have noticed we used a
+slick trick to compute \(P(G_1)\)---we \textbf{partitioned} the event
+\(G_1\) into three pieces
+\(G_1 = \{G_1 \cap B_1\}\cup \{G_1 \cap B_2\}\cup \{G_1 \cap B_3\}\)
+where \(\{B_1 \cup B_2 \cup B_3\} = \mathcal{S}\). Partitioning is the
+act of subdividing a set into non-overlapping, or \textbf{disjoint},
+subsets. This way, we can represent a set as a union of subsets, much
+like a pizza is equivalent to the collection of pizza slices. This
+partitioning trick is useful enough to be given a name, \emph{the Law of
+Total Probability}: If \(A_1, \ldots, A_n\) is a collection of disjoint
+subsets of \(\mathcal{S}\) such that
+\(\mathcal{S} = \bigcup_{i=1}^n A_i\) (i.e., the collection is
+exhaustive), then for any \(B\subset \mathcal{S}\)
+\[P(B) = \sum_{i=1}^n P(B \cap A_i) = \sum_{i=1}^n P(B | A_i)P(A_i).\]
+Recall the axiom of countable additivity; it's basically equivalent to
+the law of total probability.
+
+Often times information is known about certain conditional
+probabilities---\(P(A|B)\)---but we want to know the reverse conditional
+probability \(P(B|A)\). Bayes' rule provides a formula for computing
+these reverse conditional probabilities. There's not really anything
+special about the formula; after all, it follows immediately from the
+definition of conditional probability:
+\[P(A|B) = \frac{P(A\cap B)}{P(B)} = \frac{P(A\cap B)P(A)}{P(B)P(A)} = \frac{P(B|A)P(A)}{P(B)}.\]
+Or, in other words, \[P(A|B)P(B) = P(B|A)P(A).\]
+
+\subsection{Example}\label{example-3}
+
+Perhaps the most famous example of Bayes' rule illustrates the
+difficulty in detecting rare events. Suppose 1 in 1000 adults suffers
+from a (fairly rare) disease. A diagnostic test is 99\% effective in
+detecting disease among individuals who have the disease. Among people
+who do not have the disease, the diagnostic test is nevertheless
+positive 2\% of the time. Given the test is positive, what is the chance
+the individual tested has the disease?
+
+Answer: Let \(A\) be the event the test is positive and let \(B\) be the
+event the individual tested has the disease. Then, we are given
+\(P(B) = 0.001\). By the law of total probablity
+\[P(A) = P(A\cap B)+P(A\cap B^c) = P(A| B)P(B)+P(A| B^c)P(B^c) = 0.99\times 0.001 + 0.02\times 0.999 = 0.02097\]
+We want to find \(P(B|A)\), which is equal to \(P(A|B)P(B)/P(A)\) by
+Bayes' rule. So,
+\[P(B|A) = P(A|B)P(B)/P(A) = 0.99\times 0.001 / 0.02097 = 0.0472103.\]
+This is a terrible diagnostic test. Less than 5\% of people who test
+positive actually have the disease.
+
+\section{Independence}\label{independence}
+
+Two events \(A\) and \(B\) are independent if \[P(A|B) = P(A).\] In
+other words, knowing \(B\) happens does not affect the chance of \(A\)
+happening. By using the definition of conditional probablity, it follows
+that
+\[P(A|B) = \frac{P(A\cap B)}{P(B)} \stackrel{ind.}{=}P(A)\Rightarrow P(A\cap B) = P(A)P(B).\]
+Further, if \(P(A\cap B) = P(A)P(B)\) then, again using the definition
+of conditional probability
+\[P(A|B) = \frac{P(A\cap B)}{P(B)} = \frac{P(A)P(B)}{P(B)} = P(A).\]
+Therefore, independence of two events \(A\) and \(B\) is equivalent to
+the \emph{product rule} being satisfied:
+\[A\text{ and }B\text{ independent } \iff P(A\cap B) = P(A)P(B).\]
+
+Independence extends to collections of events. For example, intuitively
+we know two rolls of a die are independent. But, ther'e nothing special
+about rolling a die twice; three or more rolls are also, intuitively,
+mutually independent. To be precise, we say a collection of events
+\(A_1, A_2, \ldots\) is \emph{pairwise independent} if for every pair
+\(A_i, A_j\), \(i\ne j\) the product rule holds:
+\(P(A_i \cap A_j) = P(A_i)P(A_j)\). Furthermore, a collection of events
+\(A_1, A_2, \ldots\) with index set equal to the natural numbers
+\(\mathbb{N}\) (or a finite subset) is \emph{mutually independent} if
+every subset \(\{A_i, i\in I, I\subset \mathbb{N}\}\) of events obeys
+the product rule:
+\(P( \bigcap_{i \in I} A_i) = \prod_{i \in I} P(A_i)\).
+
+Example: Consider rolling a fair die \(n\) times and recording the
+outcomes. Let \(A_i,\) \(i = 1,\ldots,n\) be the event the \(i^{th}\)
+roll is odd. The set \(\{A_i, i=1, \ldots, n\}\) is mutually
+independent.
+
+Example: Let \(A\) and \(B\) denote the events that the first and second
+tosses of a fair coin are heads. These are independent events. Define
+\(C = \{\{A\cup B\}-\{A\cap B\}\}\). Then, \(A\) and \(C\) are pairwise
+independent. To see this, compute:
+\[P(A \cap C) = P(A \cap \{\{A \cap B^c\} \cup \{A^c \cap  B\}\}) = P(A \cap \{A \cap B^c\}) + P(A \cap \{A^c \cap  B\}) = P(A \cap B^c) = P(A)(1-P(B)) = 0.25\]
+\[P(C) = P(A \cap B^c) + P(A^c \cap B) = P(A) - P(A)P(B) + P(B)- P(A)P(B) = 0.5\]
+\[P(A)P(C) = 0.25\] But, A, B, and C are not mutually independent
+because
+\[\{A\cap B\cap C\} = \{\{A\cap B\}\cap \{A \cap B^c\}\} \cup \{\{A\cap B\}\cap \{A^c \cap B\}\} = \emptyset\]
+So, \(P(A\cap B\cap C) = 0\), while \(P(A)P(B)P(C) = 0.125\).
+
+\section{Exercises}\label{exercises-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Seventy percent of small, private-use aircraft that disappear in
+  flight are eventually discovered. Of the aircraft that are discovered,
+  \(60\%\) have a black box, whereas \(90\%\) of the missing aircraft
+  that are not discovered do not have a black box. Suppose an aircraft
+  has disappeared.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  If it has a black box what is the probability it will not be
+  discovered?
+\item
+  If it does not have a black box what is the probability it will be
+  discovered?
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Consider rolling two different fair, six-sided dice, one red and one
+  green. Let \(A\) be the event the red die is 3, \(B\) be the event the
+  green die is \(4\), and \(C\) be the event the sum of the two die is
+  \(7\).
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Are \(A\) and \(B\) independent?
+\item
+  Are \(B\) and \(C\) independent?
+\item
+  Are \(A\) and \(C\) independent?
+\item
+  Are the three events mutually independent?
+\end{enumerate}
+
+\chapter{Random Variables}\label{random-variables}
+
+\section{Random variables}\label{random-variables-1}
+
+So far, we've discussed probabilities for events that are subsets of
+simple, finite sample spaces. However, often we are interested in
+continuous measurements/responses on sampled individuals, so we need to
+expand our probability calculus to accomodate this more general
+situation.
+
+Let \(X\) denote a numerical response or function of a random sample
+from \(\mathcal{S}\). For a basic example, consider the experiment of
+flipping a fair coin and recording the outcome. Then
+\(\mathcal{S} = \{H, T\}\), but we might map heads and tails to the
+numbers 1 and 0. Therefore, let \(X:\{H,T\}\mapsto \{1,0\}\) with
+\(X(H) = 1\) and \(X(T) = 0\) denote this mapping/function. \(X\) is a
+\emph{random variable}---or mapping---defined on the space \(\{0,1\}\),
+taking the sample space as domain and some space of numbers as its
+codomain.
+
+In many cases we will consider \emph{continuous random variables},
+mappings with codomain equal to the real numbers, denoted
+\(\mathbb{R}\), or some (uncountable) subset thereof, like the inteval
+\((0,1)\).
+
+In contrast, when the codomain of a random variable is a countable set
+of numbers, e.g., the positive integers, then we call it a
+\emph{discrete random variable}.
+
+\subsection{Examples}\label{examples}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Consider an experiment in ehich a mechanical dialer machine randomly
+  dials phone numbers with a given area code. This is a common practice
+  in polling. Let \(Y\) denote the random variable with value \(1\) if
+  the dialed number is on a ``do not call list'' and zero otherwise. A
+  random variable (r.v.) that can only take values 0 or 1 is called a
+  Bernoulli random variable. (Oddly enough, a random variable that can
+  only take values 1 or -1 is called a Rademacher r.v. !)
+\item
+  A quality control test is used to test the strength of concrete beams.
+  The test exposes beams to both shear forces and flexure forces until
+  each beam fails. An experiment randomly selects three failed beams and
+  observes whether each failed due to shear (S) or flexure (F) forces.
+  The sample space is:
+  \[\mathcal{S} = \{SSS, SSF, SFS, FSS, SFF, FFS, FSF, FFF\}.\] Let
+  \(X\) denote the random variable that counts the number of beams that
+  fail due to flexure force. It has codomain \(\{0,1,2,3\}\) and is
+  defined by the mapping
+  \[X(SSS) = 3, \, X(SSF) = 1, \, \ldots, X(FFF) = 0.\]
+\item
+  In the context of 2. above suppose an experiment randomly selects a
+  failed beam and measures the force \(X\) applied at point of failure
+  in Newtons. Consider the sample space of all hypothetical concrete
+  beams that could be tested. Then, \(X\) is a continuous r.v. with
+  codomain \((0,U)\) for some upper bound \(U\). Depending on what is
+  known about the beams, we may take \(U\) to be a specified upper
+  bound, or we may set \(U = \infty\). More on this later\ldots{}
+\end{enumerate}
+
+\section{Probability Mass Functions}\label{probability-mass-functions}
+
+A \emph{probability mass function} or PMF is a function that assigns
+probabilities to values of discrete r.v.'s. We'll write \(p(x)\) for the
+PMF of a r.v. \(X\) where \(x\) indicates any value in the codomain of
+\(X\). When \(X\) is a finite r.v. with only a small number of possible
+values its PMF can be conveniently expressed as a table of values. For
+example, in the concrete beam example in 2. above we have
+\[x: 0 \quad 1\quad 2\quad 3\] \[p(x):1/8\quad 3/8\quad 3/8 \quad 1/8\]
+
+We can also represent PMFs using a function. For example, the
+probability \(x\) heads are observed in 20 flips of a fair coins is
+given by \(p(x) = {20 \choose x}(\frac{1}{2})^{20}\).
+
+Example: Suppose a contractor needs between 1 and 5 (inclusive) permits
+for a construction job. If \(p(x)\propto x^2\) then find \(p(x)\). The
+key is that \(\sum_{x=1}^5 p(x) = 1\). Therefore, we need to find the
+proportionality constant \(C\) satisfying
+\(C(1^2+2^2+3^2+4^2+5^2) = 1\). Verify \(p(x) = x^2 / 55\).
 
 \bibliography{book.bib,packages.bib}
 
