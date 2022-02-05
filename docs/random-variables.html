@@ -24,7 +24,7 @@
 <meta name="author" content="Nick Syring" />
 
 
-<meta name="date" content="2022-01-28" />
+<meta name="date" content="2022-01-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="conditional-probabilities-of-events.html"/>
-
+<link rel="next" href="expectation-of-random-variables.html"/>
 <script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -104,9 +104,25 @@
 </ul></li>
 <li class="chapter" data-level="5" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>5</b> Random Variables</a><ul>
 <li class="chapter" data-level="5.1" data-path="random-variables.html"><a href="random-variables.html#random-variables-1"><i class="fa fa-check"></i><b>5.1</b> Random variables</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="random-variables.html"><a href="random-variables.html#examples"><i class="fa fa-check"></i><b>5.1.1</b> Examples</a></li>
+<li class="chapter" data-level="5.1.1" data-path="random-variables.html"><a href="random-variables.html#examples-of-discrete-r.v.s"><i class="fa fa-check"></i><b>5.1.1</b> Examples of Discrete r.v.'s</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="random-variables.html"><a href="random-variables.html#probability-mass-functions"><i class="fa fa-check"></i><b>5.2</b> Probability Mass Functions</a></li>
+<li class="chapter" data-level="5.3" data-path="random-variables.html"><a href="random-variables.html#cumulative-mass-functions"><i class="fa fa-check"></i><b>5.3</b> Cumulative Mass Functions</a></li>
+<li class="chapter" data-level="5.4" data-path="random-variables.html"><a href="random-variables.html#examples-of-continuous-r.v.s"><i class="fa fa-check"></i><b>5.4</b> Examples of Continuous r.v.'s</a></li>
+<li class="chapter" data-level="5.5" data-path="random-variables.html"><a href="random-variables.html#probability-assignments-for-continuous-r.v.s"><i class="fa fa-check"></i><b>5.5</b> Probability assignments for continuous r.v.'s</a></li>
+<li class="chapter" data-level="5.6" data-path="random-variables.html"><a href="random-variables.html#transformations-of-random-variables"><i class="fa fa-check"></i><b>5.6</b> Transformations of random variables</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html"><i class="fa fa-check"></i><b>6</b> Expectation of Random Variables</a><ul>
+<li class="chapter" data-level="6.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#mean-of-a-random-variable"><i class="fa fa-check"></i><b>6.1</b> Mean of a Random Variable</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#examples"><i class="fa fa-check"></i><b>6.1.1</b> Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#variance-of-a-random-variable"><i class="fa fa-check"></i><b>6.2</b> Variance of a random variable</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#examples-1"><i class="fa fa-check"></i><b>6.2.1</b> Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#special-uses-of-mean-and-variance"><i class="fa fa-check"></i><b>6.3</b> Special uses of mean and variance</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#examples-2"><i class="fa fa-check"></i><b>6.3.1</b> Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#expectations-of-functions-of-random-variables"><i class="fa fa-check"></i><b>6.4</b> Expectations of functions of random variables</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -134,10 +150,10 @@
 <h2><span class="header-section-number">5.1</span> Random variables</h2>
 <p>So far, we've discussed probabilities for events that are subsets of simple, finite sample spaces. However, often we are interested in continuous measurements/responses on sampled individuals, so we need to expand our probability calculus to accomodate this more general situation. <br><br></p>
 <p>Let <span class="math inline">\(X\)</span> denote a numerical response or function of a random sample from <span class="math inline">\(\mathcal{S}\)</span>. For a basic example, consider the experiment of flipping a fair coin and recording the outcome. Then <span class="math inline">\(\mathcal{S} = \{H, T\}\)</span>, but we might map heads and tails to the numbers 1 and 0. Therefore, let <span class="math inline">\(X:\{H,T\}\mapsto \{1,0\}\)</span> with <span class="math inline">\(X(H) = 1\)</span> and <span class="math inline">\(X(T) = 0\)</span> denote this mapping/function. <span class="math inline">\(X\)</span> is a <em>random variable</em>---or mapping---defined on the space <span class="math inline">\(\{0,1\}\)</span>, taking the sample space as domain and some space of numbers as its codomain. <br><br></p>
-<p>In many cases we will consider <em>continuous random variables</em>, mappings with codomain equal to the real numbers, denoted <span class="math inline">\(\mathbb{R}\)</span>, or some (uncountable) subset thereof, like the inteval <span class="math inline">\((0,1)\)</span>.<br><br></p>
+<p>In many cases we will consider <em>continuous random variables</em>, mappings with codomain equal to the real numbers, denoted <span class="math inline">\(\mathbb{R}\)</span>, or some (uncountable) subset thereof, like the interval <span class="math inline">\((0,1)\)</span>.<br><br></p>
 <p>In contrast, when the codomain of a random variable is a countable set of numbers, e.g., the positive integers, then we call it a <em>discrete random variable</em>.<br><br></p>
-<div id="examples" class="section level3">
-<h3><span class="header-section-number">5.1.1</span> Examples</h3>
+<div id="examples-of-discrete-r.v.s" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Examples of Discrete r.v.'s</h3>
 <ol style="list-style-type: decimal">
 <li><p>Consider an experiment in ehich a mechanical dialer machine randomly dials phone numbers with a given area code. This is a common practice in polling. Let <span class="math inline">\(Y\)</span> denote the random variable with value <span class="math inline">\(1\)</span> if the dialed number is on a &quot;do not call list&quot; and zero otherwise. A random variable (r.v.) that can only take values 0 or 1 is called a Bernoulli random variable. (Oddly enough, a random variable that can only take values 1 or -1 is called a Rademacher r.v. !)<br><br></p></li>
 <li><p>A quality control test is used to test the strength of concrete beams. The test exposes beams to both shear forces and flexure forces until each beam fails. An experiment randomly selects three failed beams and observes whether each failed due to shear (S) or flexure (F) forces. The sample space is: <span class="math display">\[\mathcal{S} = \{SSS, SSF, SFS, FSS, SFF, FFS, FSF, FFF\}.\]</span> Let <span class="math inline">\(X\)</span> denote the random variable that counts the number of beams that fail due to flexure force. It has codomain <span class="math inline">\(\{0,1,2,3\}\)</span> and is defined by the mapping <span class="math display">\[X(SSS) = 3, \, X(SSF) = 1, \, \ldots, X(FFF) = 0.\]</span></p></li>
@@ -148,8 +164,45 @@
 <div id="probability-mass-functions" class="section level2">
 <h2><span class="header-section-number">5.2</span> Probability Mass Functions</h2>
 <p>A <em>probability mass function</em> or PMF is a function that assigns probabilities to values of discrete r.v.'s. We'll write <span class="math inline">\(p(x)\)</span> for the PMF of a r.v. <span class="math inline">\(X\)</span> where <span class="math inline">\(x\)</span> indicates any value in the codomain of <span class="math inline">\(X\)</span>. When <span class="math inline">\(X\)</span> is a finite r.v. with only a small number of possible values its PMF can be conveniently expressed as a table of values. For example, in the concrete beam example in 2. above we have <span class="math display">\[x: 0 \quad 1\quad 2\quad 3\]</span> <span class="math display">\[p(x):1/8\quad 3/8\quad 3/8 \quad 1/8\]</span></p>
-<p>We can also represent PMFs using a function. For example, the probability <span class="math inline">\(x\)</span> heads are observed in 20 flips of a fair coins is given by <span class="math inline">\(p(x) = {20 \choose x}(\frac{1}{2})^{20}\)</span>. <br><br></p>
+<p>We can also represent PMFs using a function. For example, the probability <span class="math inline">\(x\)</span> heads are observed in 20 flips of a fair coins is given by <span class="math inline">\(p(x) = {20 \choose x}(\frac{1}{2})^{20}\)</span>. Find a plot of this PMF below. Notice it is a graph of a discontinuous function, a plot of 21 discrete points or &quot;masses&quot;. This is how we get the name &quot;probability mass function&quot;---the probabilities are like discrete &quot;masses&quot; when displayed in a plot, in contrast to a smooth continuous function.<br><br> <img src="04-Random-Variables_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>Example: Suppose a contractor needs between 1 and 5 (inclusive) permits for a construction job. If <span class="math inline">\(p(x)\propto x^2\)</span> then find <span class="math inline">\(p(x)\)</span>. The key is that <span class="math inline">\(\sum_{x=1}^5 p(x) = 1\)</span>. Therefore, we need to find the proportionality constant <span class="math inline">\(C\)</span> satisfying <span class="math inline">\(C(1^2+2^2+3^2+4^2+5^2) = 1\)</span>. Verify <span class="math inline">\(p(x) = x^2 / 55\)</span>.</p>
+</div>
+<div id="cumulative-mass-functions" class="section level2">
+<h2><span class="header-section-number">5.3</span> Cumulative Mass Functions</h2>
+<p>A <em>cumulative mass function</em> or CMF is a function <span class="math inline">\(F(t)\)</span> that assigns probabilities to sets of values <span class="math inline">\(\{x: x\leq t\}\)</span>. The CMF is related to the PMF <span class="math inline">\(p(x)\)</span> in the following way: <span class="math display">\[F(t) = \sum_{x\leq t} p(x).\]</span></p>
+<p>Example: the probability there are at least <span class="math inline">\(t\)</span> heads in the next <span class="math inline">\(20\)</span> flips of a fair coin is <span class="math display">\[F(t) = \sum_{x\leq t} {20 \choose t}\left(\frac{1}{2}\right)^{20}\]</span> where <span class="math inline">\(t\)</span> can be any non-negative real number. The plot of the CMF is below. Notice it is a step-function. It's smooth and continuous except for the jumps at each integer value. And, notice the heights of the jumps are precisely the PMF values a those jumps. <img src="04-Random-Variables_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Example: The CMF in the construciton permits example above may be expressed as follows: <span class="math display">\[F(t) =\left\{ \begin{matrix} 
+0  &amp; t &lt; 1 \\ 
+1/55 &amp; 1\leq t\leq 2 \\ 
+5/55 &amp; 2\leq t\leq 3 \\
+14/55 &amp; 3\leq t\leq 4 \\
+30/55 &amp; 4\leq t\leq 5 \\
+1 &amp; 5\leq t \\
+\end{matrix}\right\}   \]</span></p>
+</div>
+<div id="examples-of-continuous-r.v.s" class="section level2">
+<h2><span class="header-section-number">5.4</span> Examples of Continuous r.v.'s</h2>
+<ol style="list-style-type: decimal">
+<li><p>Iowa DoT (Department of Transportation) records the locations of car accidents along interstate 80. Suppose these measurements are recorded as the number of feet past the last mile marker. It makes sense to treat these are continuous measurements on an interval <span class="math inline">\((0,5280)\)</span> feet. <br><br></p></li>
+<li><p>During a storm you count the number of seconds between flashes of lightning and subsequent sounds of thunder using a stopwatch with precision in hundredths of a second. It makes sense to treat these measurements of time as continuous random variables taking values in a set of positive real numbers.</p></li>
+</ol>
+</div>
+<div id="probability-assignments-for-continuous-r.v.s" class="section level2">
+<h2><span class="header-section-number">5.5</span> Probability assignments for continuous r.v.'s</h2>
+<p>Let <span class="math inline">\(X\)</span> denote a random variable taking values in a (possibly unbounded) interval of real numbers <span class="math inline">\((a,b)\)</span>. We say <span class="math inline">\(X\)</span> is a continuous r.v. if it has zero probability of being any particular value, i.e., <span class="math inline">\(P(X=x) = 0\)</span> for all <span class="math inline">\(x \in (a,b)\)</span> but has non-negative probability of taking a value in a sub-interval, i.e., <span class="math inline">\(P(x_1 &lt; X &lt;x_2) \geq 0\)</span> for all <span class="math inline">\(a\leq x_1 &lt; x_2\leq b\)</span>.</p>
+<p>Example: Uniform probability assignment. Suppose the probability <span class="math inline">\(X\)</span> belongs to an interval is proportional to the length of the interval. Then, if <span class="math inline">\(X \in (a,b)\)</span> we have <span class="math inline">\(P(a \leq X \leq B) = P(\mathcal{S}) = 1 = \frac{b-a}{b-a}\)</span>. And, for any <span class="math inline">\(a\leq x_1 &lt; x_2\leq b\)</span> we have <span class="math inline">\(P(x_1 &lt; X &lt; x_2) = \frac{x_2 - x_1}{b-a}\)</span>. What is the probability <span class="math inline">\(X = x\)</span> for any <span class="math inline">\(x \in (a,b)\)</span>? Take the limit: <span class="math display">\[P(X = x) = \lim_{h\rightarrow 0} P(x \leq X \leq x+h) = \lim_{h\rightarrow 0}\frac{x+h - x}{b-a} = \lim_{h\rightarrow 0}\frac{h}{b-a} = 0.\]</span></p>
+<p>The <em>probability density function</em> (PDF) denoted <span class="math inline">\(f(x)\)</span> is used to assign probabilities to intervals of values in the codomain of a continuous random variable. For a continuous r.v. <span class="math inline">\(X\)</span>, <span class="math inline">\(f(x)\)</span> satisfies, <span class="math inline">\(f(x)&gt;0\)</span> for all <span class="math inline">\(x\)</span> in the codomain of <span class="math inline">\(X\)</span> and <span class="math display">\[P(a\leq X\leq b) = \int_a^b f(x)dx.\]</span></p>
+<p>The <em>cumulative probability density</em> CDF (also call distribution function or cumulative distribution function) denoted <span class="math inline">\(F(x)\)</span> is defined by the following integration of the PDF <span class="math display">\[F(x) = P(X\leq x) = \int_{-\infty}^x f(t)dt.\]</span></p>
+<p>Warning: the PDF <strong>does not</strong> assign probabilities to singletons <span class="math inline">\(\{x\}\)</span>; <span class="math inline">\(f(x)\)</span> does not equal <span class="math inline">\(P(X=x)\)</span>. Rather, <span class="math inline">\(P(X=x) = \int_x^x f(t)dt = 0\)</span>.<br><br></p>
+<p>Example: Suppose the locations of auto accidents along a 200 mile interval of I-80 in Iowa are distributed uniformly. Then, we can regard the location of the next car accident as a continuous r.v. with CDF <span class="math inline">\(F(x) = x/200\)</span>, and PDF <span class="math inline">\(f(x) = \frac{d}{dx}F(x) = 1/200\)</span>. The chance of the next accident occuring between miles 50 and 55 is <span class="math inline">\(\frac{55-50}{200} = 0.025\)</span>. Find plots of this PDF (red) and CDF (blue) below. The red line is at height 1/200. In particular, not these are smooth functions, in contrast to the PMF and CMF functions above. This smoothness versus discreteness motivated the adjectives &quot;density&quot; versus &quot;mass&quot;, which originated in physics literature.</p>
+<p><img src="04-Random-Variables_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="transformations-of-random-variables" class="section level2">
+<h2><span class="header-section-number">5.6</span> Transformations of random variables</h2>
+<p>Let <span class="math inline">\(X\)</span> denote a continuous random variable with PDF <span class="math inline">\(f(x)\)</span>, and let <span class="math inline">\(Y = g(X)\)</span> for some function <span class="math inline">\(g\)</span>. What is the probability <span class="math inline">\(P(Y \leq y)\)</span> for some value <span class="math inline">\(y = g(x)\)</span>? By definition, <span class="math display">\[F_X(x) = P(X\leq x) = \int_{-\infty}^x f_X(x)dx\]</span> where <span class="math inline">\(f_X(x)\)</span> denotes the PDF of <span class="math inline">\(X\)</span>. If <span class="math inline">\(g\)</span> is invertible, then we can use &quot;u-substitution&quot;: <span class="math inline">\(x = g^{-1}(y)\)</span> and <span class="math inline">\(dx = \frac{1}{g&#39;(x)}dy\)</span> so that <span class="math display">\[F_X(x) = \int_{-\infty}^x f_X(x)dx = \int_{g(-\infty)}^{y=g(x)} \frac{1}{g&#39;(g^{-1}(y))} f_X(g^{-1}(y))dy.\]</span> And, by differentiating w.r.t. y (and considering the cases <span class="math inline">\(g\)</span> is increasing versus <span class="math inline">\(g\)</span> is a decreasing function) we find <span class="math display">\[f_Y(y) = \left|\frac{1}{g&#39;(g^{-1}(y))}\right| f_X(g^{-1}(y)).\]</span></p>
+<p><br><br></p>
+<p>Example: Let <span class="math inline">\(X\)</span> be an angle measured in radians selected at random from the interval <span class="math inline">\([-\pi/2, \pi/2]\)</span> with uniform probability. Then, <span class="math inline">\(f(x) = \frac{1}{\pi}\)</span> for <span class="math inline">\(x \in [-\pi/2, \pi/2]\)</span>. Let <span class="math inline">\(Y = \sin X\)</span>. The PDF of <span class="math inline">\(Y\)</span> is given by <span class="math display">\[f_Y(y) = \left|\frac{1}{\sin&#39;(\arcsin y)}\right|\frac{1}{\pi} = \left|\frac{1}{\pi\cos(\arcsin y)}\right| = \frac{1}{\pi(1-y^2)}.\]</span> The plots below illustrate a random sample of such <span class="math inline">\(x-\)</span>values along with their transformations to <span class="math inline">\(y\)</span>:</p>
+<p><img src="04-Random-Variables_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -158,8 +211,8 @@
           </div>
         </div>
       </div>
-<a href="conditional-probabilities-of-events.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="conditional-probabilities-of-events.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="expectation-of-random-variables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

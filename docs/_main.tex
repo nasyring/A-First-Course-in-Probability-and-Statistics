@@ -63,7 +63,7 @@
 
 \title{A First Course in Probability and Statistics}
 \author{Nick Syring}
-\date{2022-01-28}
+\date{2022-01-31}
 
 \begin{document}
 \maketitle
@@ -946,14 +946,15 @@ codomain.
 
 In many cases we will consider \emph{continuous random variables},
 mappings with codomain equal to the real numbers, denoted
-\(\mathbb{R}\), or some (uncountable) subset thereof, like the inteval
+\(\mathbb{R}\), or some (uncountable) subset thereof, like the interval
 \((0,1)\).
 
 In contrast, when the codomain of a random variable is a countable set
 of numbers, e.g., the positive integers, then we call it a
 \emph{discrete random variable}.
 
-\subsection{Examples}\label{examples}
+\subsection{Examples of Discrete
+r.v.'s}\label{examples-of-discrete-r.v.s}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -998,13 +999,330 @@ example, in the concrete beam example in 2. above we have
 
 We can also represent PMFs using a function. For example, the
 probability \(x\) heads are observed in 20 flips of a fair coins is
-given by \(p(x) = {20 \choose x}(\frac{1}{2})^{20}\).
+given by \(p(x) = {20 \choose x}(\frac{1}{2})^{20}\). Find a plot of
+this PMF below. Notice it is a graph of a discontinuous function, a plot
+of 21 discrete points or ``masses''. This is how we get the name
+``probability mass function''---the probabilities are like discrete
+``masses'' when displayed in a plot, in contrast to a smooth continuous
+function.
+\includegraphics{04-Random-Variables_files/figure-latex/unnamed-chunk-1-1.pdf}
 
 Example: Suppose a contractor needs between 1 and 5 (inclusive) permits
 for a construction job. If \(p(x)\propto x^2\) then find \(p(x)\). The
 key is that \(\sum_{x=1}^5 p(x) = 1\). Therefore, we need to find the
 proportionality constant \(C\) satisfying
 \(C(1^2+2^2+3^2+4^2+5^2) = 1\). Verify \(p(x) = x^2 / 55\).
+
+\section{Cumulative Mass Functions}\label{cumulative-mass-functions}
+
+A \emph{cumulative mass function} or CMF is a function \(F(t)\) that
+assigns probabilities to sets of values \(\{x: x\leq t\}\). The CMF is
+related to the PMF \(p(x)\) in the following way:
+\[F(t) = \sum_{x\leq t} p(x).\]
+
+Example: the probability there are at least \(t\) heads in the next
+\(20\) flips of a fair coin is
+\[F(t) = \sum_{x\leq t} {20 \choose t}\left(\frac{1}{2}\right)^{20}\]
+where \(t\) can be any non-negative real number. The plot of the CMF is
+below. Notice it is a step-function. It's smooth and continuous except
+for the jumps at each integer value. And, notice the heights of the
+jumps are precisely the PMF values a those jumps.
+\includegraphics{04-Random-Variables_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+Example: The CMF in the construciton permits example above may be
+expressed as follows: \[F(t) =\left\{ \begin{matrix} 
+0  & t < 1 \\ 
+1/55 & 1\leq t\leq 2 \\ 
+5/55 & 2\leq t\leq 3 \\
+14/55 & 3\leq t\leq 4 \\
+30/55 & 4\leq t\leq 5 \\
+1 & 5\leq t \\
+\end{matrix}\right\}   \]
+
+\section{Examples of Continuous
+r.v.'s}\label{examples-of-continuous-r.v.s}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Iowa DoT (Department of Transportation) records the locations of car
+  accidents along interstate 80. Suppose these measurements are recorded
+  as the number of feet past the last mile marker. It makes sense to
+  treat these are continuous measurements on an interval \((0,5280)\)
+  feet. 
+\item
+  During a storm you count the number of seconds between flashes of
+  lightning and subsequent sounds of thunder using a stopwatch with
+  precision in hundredths of a second. It makes sense to treat these
+  measurements of time as continuous random variables taking values in a
+  set of positive real numbers.
+\end{enumerate}
+
+\section{Probability assignments for continuous
+r.v.'s}\label{probability-assignments-for-continuous-r.v.s}
+
+Let \(X\) denote a random variable taking values in a (possibly
+unbounded) interval of real numbers \((a,b)\). We say \(X\) is a
+continuous r.v. if it has zero probability of being any particular
+value, i.e., \(P(X=x) = 0\) for all \(x \in (a,b)\) but has non-negative
+probability of taking a value in a sub-interval, i.e.,
+\(P(x_1 < X <x_2) \geq 0\) for all \(a\leq x_1 < x_2\leq b\).
+
+Example: Uniform probability assignment. Suppose the probability \(X\)
+belongs to an interval is proportional to the length of the interval.
+Then, if \(X \in (a,b)\) we have
+\(P(a \leq X \leq B) = P(\mathcal{S}) = 1 = \frac{b-a}{b-a}\). And, for
+any \(a\leq x_1 < x_2\leq b\) we have
+\(P(x_1 < X < x_2) = \frac{x_2 - x_1}{b-a}\). What is the probability
+\(X = x\) for any \(x \in (a,b)\)? Take the limit:
+\[P(X = x) = \lim_{h\rightarrow 0} P(x \leq X \leq x+h) = \lim_{h\rightarrow 0}\frac{x+h - x}{b-a} = \lim_{h\rightarrow 0}\frac{h}{b-a} = 0.\]
+
+The \emph{probability density function} (PDF) denoted \(f(x)\) is used
+to assign probabilities to intervals of values in the codomain of a
+continuous random variable. For a continuous r.v. \(X\), \(f(x)\)
+satisfies, \(f(x)>0\) for all \(x\) in the codomain of \(X\) and
+\[P(a\leq X\leq b) = \int_a^b f(x)dx.\]
+
+The \emph{cumulative probability density} CDF (also call distribution
+function or cumulative distribution function) denoted \(F(x)\) is
+defined by the following integration of the PDF
+\[F(x) = P(X\leq x) = \int_{-\infty}^x f(t)dt.\]
+
+Warning: the PDF \textbf{does not} assign probabilities to singletons
+\(\{x\}\); \(f(x)\) does not equal \(P(X=x)\). Rather,
+\(P(X=x) = \int_x^x f(t)dt = 0\).
+
+Example: Suppose the locations of auto accidents along a 200 mile
+interval of I-80 in Iowa are distributed uniformly. Then, we can regard
+the location of the next car accident as a continuous r.v. with CDF
+\(F(x) = x/200\), and PDF \(f(x) = \frac{d}{dx}F(x) = 1/200\). The
+chance of the next accident occuring between miles 50 and 55 is
+\(\frac{55-50}{200} = 0.025\). Find plots of this PDF (red) and CDF
+(blue) below. The red line is at height 1/200. In particular, not these
+are smooth functions, in contrast to the PMF and CMF functions above.
+This smoothness versus discreteness motivated the adjectives ``density''
+versus ``mass'', which originated in physics literature.
+
+\includegraphics{04-Random-Variables_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\section{Transformations of random
+variables}\label{transformations-of-random-variables}
+
+Let \(X\) denote a continuous random variable with PDF \(f(x)\), and let
+\(Y = g(X)\) for some function \(g\). What is the probability
+\(P(Y \leq y)\) for some value \(y = g(x)\)? By definition,
+\[F_X(x) = P(X\leq x) = \int_{-\infty}^x f_X(x)dx\] where \(f_X(x)\)
+denotes the PDF of \(X\). If \(g\) is invertible, then we can use
+``u-substitution'': \(x = g^{-1}(y)\) and \(dx = \frac{1}{g'(x)}dy\) so
+that
+\[F_X(x) = \int_{-\infty}^x f_X(x)dx = \int_{g(-\infty)}^{y=g(x)} \frac{1}{g'(g^{-1}(y))} f_X(g^{-1}(y))dy.\]
+And, by differentiating w.r.t. y (and considering the cases \(g\) is
+increasing versus \(g\) is a decreasing function) we find
+\[f_Y(y) = \left|\frac{1}{g'(g^{-1}(y))}\right| f_X(g^{-1}(y)).\]
+
+Example: Let \(X\) be an angle measured in radians selected at random
+from the interval \([-\pi/2, \pi/2]\) with uniform probability. Then,
+\(f(x) = \frac{1}{\pi}\) for \(x \in [-\pi/2, \pi/2]\). Let
+\(Y = \sin X\). The PDF of \(Y\) is given by
+\[f_Y(y) = \left|\frac{1}{\sin'(\arcsin y)}\right|\frac{1}{\pi} = \left|\frac{1}{\pi\cos(\arcsin y)}\right| = \frac{1}{\pi(1-y^2)}.\]
+The plots below illustrate a random sample of such \(x-\)values along
+with their transformations to \(y\):
+
+\includegraphics{04-Random-Variables_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\chapter{Expectation of Random
+Variables}\label{expectation-of-random-variables}
+
+\section{Mean of a Random Variable}\label{mean-of-a-random-variable}
+
+Let \(X\) be a random variable. Then the \emph{expectation} of \(X\) is
+denoted \(E(X)\). For discrete \(X\), \[E(X) = \sum_{x} x p(x)\]
+\emph{if it exists\ldots{}} It is possible the sum above diverges,
+i.e.~equals infinity, in which case we say \(E(X)\) does not exist. For
+a continuous random variable on \((a,b)\), \(E(X) = \int_a^b x f(x)dx\).
+Again, it is possible this integral does not exists, in which case
+neither does the expectation exists.
+
+Typical notation for \(E(X)\) is \(\mu'\) ``mu prime'' and the
+expectation \(E(X)\) is also called the ``first raw moment''. This
+notation primarily comes from physics. In statistics, \(E(X)\) is often
+denoted \(\mu\), with out the prime/apostrophe.
+
+\(E(X)\) can be understood as the probability-weighted mean of \(X\).
+This is easiest to see if \(X\) is discrete and takes values in a finite
+set, say \(\{x_1, x_2, \ldots, x_p\}\). Then, the average of these
+values is \((1/p)(x_1 | x_2 + \cdots + x_p)\). If \(X\) takes each of
+these values with probablity \(1/p\) (equally-likely) then this
+arithmetic average can be interpreted as the long-run average observed
+value of \(X\) if we were to repeat the experiment many times or as our
+best guess of the next outcome of the experiment, on average. If the
+outcomes are not equally-likely, rather they have probabilities
+\(p(x)\), then the probability-weighted average, rather than the
+arithmetic average, describes the long-run average outcomes of the
+experiment.
+
+\subsection{Examples}\label{examples}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Let \(X\) be the numer of heads in 20 flips of a fair die. Recall
+  \(p(x) = {20 \choose x}\left(\frac12\right)^20\). Then,
+
+  \begin{align*}
+  \mu' = E(X) &= \sum_{x = 0}^{20} x {20 \choose x}\left(\frac12\right)^{20}\\
+  &=  \sum_{x = 0}^{20} \frac{x20!}{x!(20-x)!}\left(\frac12\right)^{20}\\
+  &=  \sum_{x = 1}^{20} \frac{20!}{(x-1)!(20-x)!}\left(\frac12\right)^{20}\\
+  &=  \sum_{x = 1}^{20} \frac12 20\frac{19!}{(x-1)!(19-(x-1))!}\left(\frac12\right)^{19}\\
+  & = \frac12 20 \sum_{x = 0}^{19} \frac{19!}{x!(19-x)!}\left(\frac12\right)^{19}\\
+  & = \frac12 20\\
+  & = 10.
+  \end{align*}
+
+  Notice the ``average value'' of \(X\) is 10 heads in 20 flips. That
+  matches our intuition: if the coin is fair and we flip it 20 times,
+  then our best guess for the number of heads we would get is 10.
+\end{enumerate}
+
+ 2. Let \(X\) be a random variable taking positive real values
+\((0,\infty)\). Check that \(f(x) = \frac{1}{(1+x)^2}\) is a valid PDF
+of \(X\) and show \(E(X)\) does not exist for this PDF. Solution: First,
+note \(1/(1+x)^2 > 0\) for all \(x>0\). Next, see that
+\[\int_0^\infty f(x)dx = -\frac{1}{1+x}|_0^\infty = \left(-\lim_{t\rightarrow \infty}\frac{1}{1+t}\right) + \frac{1}{1} = 1-0 = 1.\]
+Second,
+
+\begin{align*}
+\mu' = E(X) &= \int_{0}^\infty x\frac{1}{(1+x)^2}dx\\
+&= \int_1^\infty \frac{u-1}{u^2}du\\
+&= \left(\lim_{t\rightarrow \infty} \ln u - \frac{1}{u}\right) + 1 \\
+&= \infty
+\end{align*}
+
+Conclude \(E(X)\) does not exist.
+
+\section{Variance of a random
+variable}\label{variance-of-a-random-variable}
+
+If the expectation of a random variable describes its average value,
+then the variance of a random variable describes the magnitude of its
+range of likely values---i.e., it's variability or spread. The variance
+of a r.v. \(X\) is defined as \[V(X) = E(X^2) - E(X)^2\] or,
+equivalently, as \[V(X) = E[\{X - E(X)\}^2].\] Another name for the
+variance is the ``second central moment'' or ``second moment about the
+mean'' and it may be denoted \(\mu_2\). This notation is more prevalent
+in physics than in statistics. In statistics, \(\sigma^2\) is often used
+to denote the variance---that is ``sigma squared'' where \(\sigma\) is
+the (lower case) Greek letter sigma.
+
+Like the mean, it is possible for the variance not to exist. The
+variance exists so long as \(E(X^2)\) exists (is finite).
+
+\subsection{Examples}\label{examples-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The outcome of a roll of a fair six-sided die can be described as a
+  random variable \(X\) taking values im \(\{1,2,3,4,5,6\}\) with equal
+  probability. The mean of \(X\) is
+  \[\mu' = E(X) = \frac{1}{6}(1+2+3+4+5+6) = \frac{1}{6}\left(\frac{6\times 7}{2}\right) = 3.5.\]
+  The secomd raw moment, \(\mu_2'\) or \(E(X^2)\) is
+  \[\mu_2' = \sum_{x=1}^6 x^2\frac{1}{6} = \frac{1}{6}(1+4+9+16+25+36) = \frac{1}{6}\left(6\times 7\times 13 / 6\right) = 91/6\]
+  Then, the variance is equal to
+  \[\mu_2 = V(X) = E(X^2) - E(X)^2 = 91-3.5^2 = 35/12\] The variance of
+  a roll of the die is about 3---this makes sense as a measure of
+  spread/variability of a die roll.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Take the previous example of measuring the location of an auto
+  accident along 200 miles of interstate I-80 in Iowa. Suppose the PDF
+  is the uniform probability assignment \(f(x) = 1/200\) where the
+  location \(X\) is measured in miles. The mean of \(X\) is
+  \[\mu' = E(X) = \int_0^{200} x \frac{1}{200}dx = \frac{x^2}{400}|_0^{200} = 100\]
+  which is the midpoint. That seems intuitive. The second raw moment of
+  \(X\) is
+  \[\mu_2' = E(X^2) = \int_0^{200} x^2 \frac{1}{200}dx = \frac{x^3}{600}|_0^{200} = 13,333.33.\]
+  Then, the variance of \(X\) is
+  \[\mu_2 = V(X) = E(X^2) - E(X)^2 =  13,333.33 - 100^2 = 3,333.33\] 
+\end{enumerate}
+
+The variance is measured in the squared units of \(X\). For example, in
+the previous example, the variance represents 3,333.33 miles squared.
+The \emph{standard deviation} is the square root of the variance, and is
+often represented by \(\sigma\) in statistics. The standard deviation of
+the location of the auto accident is 57.735 miles---and note the units
+of standard deviaiton are the same as the units of \(X\). For this
+reason, standard deviation can be easier to use to describe variability
+of a random variable.
+
+\section{Special uses of mean and
+variance}\label{special-uses-of-mean-and-variance}
+
+Besides describing the average value and spread of a random variable,
+its mean \(E(X)\) and variance \(V(X)\) have special relationships to
+its probabilities, in particular, its CMF/CDF.
+
+Suppose \(X\) is a non-negative, continuous r.v. and consider computing
+its mean. The following mathematical statement says its mean is no
+smaller than \(a(1-F(a))\) for every \(a >0\):
+\[E(X) = \int_0^\infty xf(x)dx = \int_0^a xf(x)dx+\int_a^\infty xf(x)dx\geq \int_a^\infty xf(x)dx \geq \int_a^\infty af(x)dx = a(1-F(a)).\]
+Put another way, \[P(X \geq a) \leq \frac{E(X)}{a}.\] This result is
+called \emph{Markov's Inequality} and it has important implications for
+probabilities of ``extreme values''---if a r.v. has a finite
+expectation, then the chance it takes a very large values (\(\geq a\))
+is small, i.e., no more than \(E(X)/a\).
+
+There is a refined version of Markov's inequality called
+\emph{Chebyshev's Inequality} that applies to all r.v.'s with a mean and
+variance, not only non-negative r.v.'s; it says:
+\[P(|X - E(X)| \geq a) \leq \frac{V(X)}{a^2}.\] In other words, the
+chance of an extreme value (greater than \(a\) units from \(X\)'s mean)
+is bounded by \(V(X)/a^2\).
+
+\subsection{Examples}\label{examples-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Use Markov's Inequality to bound the chance of 19 or more heads in 20
+  flips of a fair coin.
+\end{enumerate}
+
+\[P(X \geq 19) \leq \frac{10}{19}.\]
+
+Note the true probability is much smaller, about 0.00002
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Use Chebyshev's Inequality to bound the chance there are either 0 or
+  20 heads.
+\end{enumerate}
+
+\[P(|X - 10|\geq 10)\leq \frac{V(X)}{10}.\]
+
+We need to know the second raw moment, \(E(X^2)\). This is tricky, but
+can be obtained by a similar argument as we used to derive \(E(X)\).
+Verify that \(E(X^2) = 20\times 1/2 \times 1/2 + (20\times 1/2)^2\) so
+that \(v(X) = E(X^2) - E(X)^2 = 20\times 1/2 \times 1/2 = 5\). The bound
+using Chebyshev's inequality is 1/2. Note the true probability is
+\(2\times 0.5^{20}\), much smaller.
+
+\section{Expectations of functions of random
+variables}\label{expectations-of-functions-of-random-variables}
+
+Let \(X\) denote a continuous random variable with PDF \(f(x)\), and let
+\(Y = g(X)\) for some function \(g\).
 
 \bibliography{book.bib,packages.bib}
 

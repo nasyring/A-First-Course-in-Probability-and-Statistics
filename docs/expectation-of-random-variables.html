@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>A First Course in Probability and Statistics</title>
+  <title>Chapter 6 Expectation of Random Variables | A First Course in Probability and Statistics</title>
   <meta name="description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="A First Course in Probability and Statistics" />
+  <meta property="og:title" content="Chapter 6 Expectation of Random Variables | A First Course in Probability and Statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A First Course in Probability and Statistics" />
+  <meta name="twitter:title" content="Chapter 6 Expectation of Random Variables | A First Course in Probability and Statistics" />
   
   <meta name="twitter:description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="random-variables.html"/>
 
-<link rel="next" href="experiments-and-the-role-of-probability.html"/>
 <script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -144,25 +144,87 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">A First Course in Probability and Statistics</h1>
-<p class="author"><em>Nick Syring</em></p>
-<p class="date"><em>2022-01-31</em></p>
+<div id="expectation-of-random-variables" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Expectation of Random Variables</h1>
+<div id="mean-of-a-random-variable" class="section level2">
+<h2><span class="header-section-number">6.1</span> Mean of a Random Variable</h2>
+<p>Let <span class="math inline">\(X\)</span> be a random variable. Then the <em>expectation</em> of <span class="math inline">\(X\)</span> is denoted <span class="math inline">\(E(X)\)</span>. For discrete <span class="math inline">\(X\)</span>, <span class="math display">\[E(X) = \sum_{x} x p(x)\]</span> <em>if it exists...</em> It is possible the sum above diverges, i.e. equals infinity, in which case we say <span class="math inline">\(E(X)\)</span> does not exist. For a continuous random variable on <span class="math inline">\((a,b)\)</span>, <span class="math inline">\(E(X) = \int_a^b x f(x)dx\)</span>. Again, it is possible this integral does not exists, in which case neither does the expectation exists.<br><br></p>
+<p>Typical notation for <span class="math inline">\(E(X)\)</span> is <span class="math inline">\(\mu&#39;\)</span> &quot;mu prime&quot; and the expectation <span class="math inline">\(E(X)\)</span> is also called the &quot;first raw moment&quot;. This notation primarily comes from physics. In statistics, <span class="math inline">\(E(X)\)</span> is often denoted <span class="math inline">\(\mu\)</span>, with out the prime/apostrophe.<br><br></p>
+<p><span class="math inline">\(E(X)\)</span> can be understood as the probability-weighted mean of <span class="math inline">\(X\)</span>. This is easiest to see if <span class="math inline">\(X\)</span> is discrete and takes values in a finite set, say <span class="math inline">\(\{x_1, x_2, \ldots, x_p\}\)</span>. Then, the average of these values is <span class="math inline">\((1/p)(x_1 | x_2 + \cdots + x_p)\)</span>. If <span class="math inline">\(X\)</span> takes each of these values with probablity <span class="math inline">\(1/p\)</span> (equally-likely) then this arithmetic average can be interpreted as the long-run average observed value of <span class="math inline">\(X\)</span> if we were to repeat the experiment many times or as our best guess of the next outcome of the experiment, on average. If the outcomes are not equally-likely, rather they have probabilities <span class="math inline">\(p(x)\)</span>, then the probability-weighted average, rather than the arithmetic average, describes the long-run average outcomes of the experiment.</p>
+<div id="examples" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Examples</h3>
+<ol style="list-style-type: decimal">
+<li>Let <span class="math inline">\(X\)</span> be the numer of heads in 20 flips of a fair die. Recall <span class="math inline">\(p(x) = {20 \choose x}\left(\frac12\right)^20\)</span>. Then,
+<span class="math display">\[\begin{align*}
+\mu&#39; = E(X) &amp;= \sum_{x = 0}^{20} x {20 \choose x}\left(\frac12\right)^{20}\\
+&amp;=  \sum_{x = 0}^{20} \frac{x20!}{x!(20-x)!}\left(\frac12\right)^{20}\\
+&amp;=  \sum_{x = 1}^{20} \frac{20!}{(x-1)!(20-x)!}\left(\frac12\right)^{20}\\
+&amp;=  \sum_{x = 1}^{20} \frac12 20\frac{19!}{(x-1)!(19-(x-1))!}\left(\frac12\right)^{19}\\
+&amp; = \frac12 20 \sum_{x = 0}^{19} \frac{19!}{x!(19-x)!}\left(\frac12\right)^{19}\\
+&amp; = \frac12 20\\
+&amp; = 10.
+\end{align*}\]</span>
+Notice the &quot;average value&quot; of <span class="math inline">\(X\)</span> is 10 heads in 20 flips. That matches our intuition: if the coin is fair and we flip it 20 times, then our best guess for the number of heads we would get is 10.</li>
+</ol>
+<br><br> 2. Let <span class="math inline">\(X\)</span> be a random variable taking positive real values <span class="math inline">\((0,\infty)\)</span>. Check that <span class="math inline">\(f(x) = \frac{1}{(1+x)^2}\)</span> is a valid PDF of <span class="math inline">\(X\)</span> and show <span class="math inline">\(E(X)\)</span> does not exist for this PDF. <br><br> Solution:<br> First, note <span class="math inline">\(1/(1+x)^2 &gt; 0\)</span> for all <span class="math inline">\(x&gt;0\)</span>. Next, see that <span class="math display">\[\int_0^\infty f(x)dx = -\frac{1}{1+x}|_0^\infty = \left(-\lim_{t\rightarrow \infty}\frac{1}{1+t}\right) + \frac{1}{1} = 1-0 = 1.\]</span> Second,
+<span class="math display">\[\begin{align*}
+\mu&#39; = E(X) &amp;= \int_{0}^\infty x\frac{1}{(1+x)^2}dx\\
+&amp;= \int_1^\infty \frac{u-1}{u^2}du\\
+&amp;= \left(\lim_{t\rightarrow \infty} \ln u - \frac{1}{u}\right) + 1 \\
+&amp;= \infty
+\end{align*}\]</span>
+<p>Conclude <span class="math inline">\(E(X)\)</span> does not exist.</p>
 </div>
-<div id="about" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> About</h1>
-<p>This is a collection of notes intended for students studying probability and statistics at the advanced undergraduate level at Iowa State University. Specifically, these notes are modeled after course notes for STAT 588, 341, and 342. This site is a work in progress.</p>
+</div>
+<div id="variance-of-a-random-variable" class="section level2">
+<h2><span class="header-section-number">6.2</span> Variance of a random variable</h2>
+<p>If the expectation of a random variable describes its average value, then the variance of a random variable describes the magnitude of its range of likely values---i.e., it's variability or spread. The variance of a r.v. <span class="math inline">\(X\)</span> is defined as <span class="math display">\[V(X) = E(X^2) - E(X)^2\]</span> or, equivalently, as <span class="math display">\[V(X) = E[\{X - E(X)\}^2].\]</span> Another name for the variance is the &quot;second central moment&quot; or &quot;second moment about the mean&quot; and it may be denoted <span class="math inline">\(\mu_2\)</span>. This notation is more prevalent in physics than in statistics. In statistics, <span class="math inline">\(\sigma^2\)</span> is often used to denote the variance---that is &quot;sigma squared&quot; where <span class="math inline">\(\sigma\)</span> is the (lower case) Greek letter sigma. <br><br></p>
+<p>Like the mean, it is possible for the variance not to exist. The variance exists so long as <span class="math inline">\(E(X^2)\)</span> exists (is finite).</p>
+<div id="examples-1" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> Examples</h3>
+<ol style="list-style-type: decimal">
+<li>The outcome of a roll of a fair six-sided die can be described as a random variable <span class="math inline">\(X\)</span> taking values im <span class="math inline">\(\{1,2,3,4,5,6\}\)</span> with equal probability. The mean of <span class="math inline">\(X\)</span> is <span class="math display">\[\mu&#39; = E(X) = \frac{1}{6}(1+2+3+4+5+6) = \frac{1}{6}\left(\frac{6\times 7}{2}\right) = 3.5.\]</span> The secomd raw moment, <span class="math inline">\(\mu_2&#39;\)</span> or <span class="math inline">\(E(X^2)\)</span> is <span class="math display">\[\mu_2&#39; = \sum_{x=1}^6 x^2\frac{1}{6} = \frac{1}{6}(1+4+9+16+25+36) = \frac{1}{6}\left(6\times 7\times 13 / 6\right) = 91/6\]</span> Then, the variance is equal to <span class="math display">\[\mu_2 = V(X) = E(X^2) - E(X)^2 = 91-3.5^2 = 35/12\]</span> The variance of a roll of the die is about 3---this makes sense as a measure of spread/variability of a die roll.</li>
+</ol>
 <p><br><br></p>
-<p>Some relevant textbook references include John E. Freund's Mathematical Statistics with Applications by Miller and Miller, although many books on this material are available.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Take the previous example of measuring the location of an auto accident along 200 miles of interstate I-80 in Iowa. Suppose the PDF is the uniform probability assignment <span class="math inline">\(f(x) = 1/200\)</span> where the location <span class="math inline">\(X\)</span> is measured in miles. The mean of <span class="math inline">\(X\)</span> is <span class="math display">\[\mu&#39; = E(X) = \int_0^{200} x \frac{1}{200}dx = \frac{x^2}{400}|_0^{200} = 100\]</span> which is the midpoint. That seems intuitive. The second raw moment of <span class="math inline">\(X\)</span> is <span class="math display">\[\mu_2&#39; = E(X^2) = \int_0^{200} x^2 \frac{1}{200}dx = \frac{x^3}{600}|_0^{200} = 13,333.33.\]</span> Then, the variance of <span class="math inline">\(X\)</span> is <span class="math display">\[\mu_2 = V(X) = E(X^2) - E(X)^2 =  13,333.33 - 100^2 = 3,333.33\]</span> <br><br></li>
+</ol>
+<p>The variance is measured in the squared units of <span class="math inline">\(X\)</span>. For example, in the previous example, the variance represents 3,333.33 miles squared. The <em>standard deviation</em> is the square root of the variance, and is often represented by <span class="math inline">\(\sigma\)</span> in statistics. The standard deviation of the location of the auto accident is 57.735 miles---and note the units of standard deviaiton are the same as the units of <span class="math inline">\(X\)</span>. For this reason, standard deviation can be easier to use to describe variability of a random variable.</p>
+</div>
+</div>
+<div id="special-uses-of-mean-and-variance" class="section level2">
+<h2><span class="header-section-number">6.3</span> Special uses of mean and variance</h2>
+<p>Besides describing the average value and spread of a random variable, its mean <span class="math inline">\(E(X)\)</span> and variance <span class="math inline">\(V(X)\)</span> have special relationships to its probabilities, in particular, its CMF/CDF. <br><br></p>
+<p>Suppose <span class="math inline">\(X\)</span> is a non-negative, continuous r.v. and consider computing its mean. The following mathematical statement says its mean is no smaller than <span class="math inline">\(a(1-F(a))\)</span> for every <span class="math inline">\(a &gt;0\)</span>: <span class="math display">\[E(X) = \int_0^\infty xf(x)dx = \int_0^a xf(x)dx+\int_a^\infty xf(x)dx\geq \int_a^\infty xf(x)dx \geq \int_a^\infty af(x)dx = a(1-F(a)).\]</span> Put another way, <span class="math display">\[P(X \geq a) \leq \frac{E(X)}{a}.\]</span> This result is called <em>Markov's Inequality</em> and it has important implications for probabilities of &quot;extreme values&quot;---if a r.v. has a finite expectation, then the chance it takes a very large values (<span class="math inline">\(\geq a\)</span>) is small, i.e., no more than <span class="math inline">\(E(X)/a\)</span>. <br><br></p>
+<p>There is a refined version of Markov's inequality called <em>Chebyshev's Inequality</em> that applies to all r.v.'s with a mean and variance, not only non-negative r.v.'s; it says: <span class="math display">\[P(|X - E(X)| \geq a) \leq \frac{V(X)}{a^2}.\]</span> In other words, the chance of an extreme value (greater than <span class="math inline">\(a\)</span> units from <span class="math inline">\(X\)</span>'s mean) is bounded by <span class="math inline">\(V(X)/a^2\)</span>.</p>
+<p><br><br></p>
+<div id="examples-2" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> Examples</h3>
+<ol style="list-style-type: decimal">
+<li>Use Markov's Inequality to bound the chance of 19 or more heads in 20 flips of a fair coin.<br><br></li>
+</ol>
+<p><span class="math display">\[P(X \geq 19) \leq \frac{10}{19}.\]</span></p>
+<p>Note the true probability is much smaller, about 0.00002<br><br></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Use Chebyshev's Inequality to bound the chance there are either 0 or 20 heads.</li>
+</ol>
+<p><span class="math display">\[P(|X - 10|\geq 10)\leq \frac{V(X)}{10}.\]</span></p>
+<p>We need to know the second raw moment, <span class="math inline">\(E(X^2)\)</span>. This is tricky, but can be obtained by a similar argument as we used to derive <span class="math inline">\(E(X)\)</span>. Verify that <span class="math inline">\(E(X^2) = 20\times 1/2 \times 1/2 + (20\times 1/2)^2\)</span> so that <span class="math inline">\(v(X) = E(X^2) - E(X)^2 = 20\times 1/2 \times 1/2 = 5\)</span>. The bound using Chebyshev's inequality is 1/2. Note the true probability is <span class="math inline">\(2\times 0.5^{20}\)</span>, much smaller.</p>
+</div>
+</div>
+<div id="expectations-of-functions-of-random-variables" class="section level2">
+<h2><span class="header-section-number">6.4</span> Expectations of functions of random variables</h2>
+<p>Let <span class="math inline">\(X\)</span> denote a continuous random variable with PDF <span class="math inline">\(f(x)\)</span>, and let <span class="math inline">\(Y = g(X)\)</span> for some function <span class="math inline">\(g\)</span>.</p>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="random-variables.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="experiments-and-the-role-of-probability.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -193,7 +255,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-Expectation-of-Random-Variables.Rmd",
 "text": "Edit"
 },
 "history": {
