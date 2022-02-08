@@ -13,7 +13,7 @@ $E(X)$ can be understood as the probability-weighted mean of $X$.  This is easie
 
 ### Examples
 
-1. Let $X$ be the numer of heads in 20 flips of a fair die.  Recall $p(x) = {20 \choose x}\left(\frac12\right)^20$.  Then, 
+1. Let $X$ be the number of heads in 20 flips of a fair die.  Recall $p(x) = {20 \choose x}\left(\frac12\right)^20$.  Then, 
 \begin{align*}
 \mu' = E(X) &= \sum_{x = 0}^{20} x {20 \choose x}\left(\frac12\right)^{20}\\
 &=  \sum_{x = 0}^{20} \frac{x20!}{x!(20-x)!}\left(\frac12\right)^{20}\\
@@ -106,7 +106,22 @@ We need to know the second raw moment, $E(X^2)$.  This is tricky, but can be obt
 
 ## Expectations of functions of random variables
 
-Let $X$ denote a continuous random variable with PDF $f(x)$, and let $Y = g(X)$ for some function $g$.    
+Let $X$ denote a continuous random variable with PDF $f(x)$, and let $Y = g(X)$ for some function $g$.  Then, the expectation of $Y$ can be computed without needing to find the density of $Y$:
+\[E(Y) = E(g(X)) = \int_{-\infty}^\infty g(x)f_X(x)dx.\]
+In fact, we already used this property to compute $E(X^2)$ and $V(X)$.
+
+Example: Linearity<br>
+It's common to encounter linear functions of random variables, i.e., $g(X) = aX+b$ for constants (non-random quantities) $a$ and $b$.  Expectation is a *linear operator*, meaning that
+\[E(aX+b) = aE(X)+b.\]
+This is easy to show:
+\begin{align*}
+E(aX+b)&= \sum_x \{(ax+b)p(x)\}\\
+& = a\sum_x xp(x) + b\sum_x p(x)\\
+& = aE(X) + b
+\end{align*}
+where the last line follows from the fact $\sum_x p(x)=1$.
+
+
 
 
 

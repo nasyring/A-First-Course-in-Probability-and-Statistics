@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.1.31)  31 JAN 2022 14:19
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.2.8)  8 FEB 2022 11:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **_main.tex
 (./_main.tex
 LaTeX2e <2021-11-15> patch level 1
-L3 programming layer <2022-01-21> (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/book.cls
+L3 programming layer <2022-02-05> (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2021/10/04 v1.4n Standard LaTeX document class
 (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/bk10.clo
 File: bk10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
@@ -122,7 +122,7 @@ LaTeX Info: Redefining \] on input line 2939.
 ) (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifxetex.sty
 Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
 (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2020/03/06 v1.0d TeX engine tests
+Package: iftex 2022/02/03 v1.0f TeX engine tests
 )) (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifluatex.sty
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 ) (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/fixltx2e.sty
@@ -140,9 +140,9 @@ Package: mathspec 2016/12/22 v0.2b LaTeX Package (Mathematics font selection for
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count268
 ) (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.sty (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2022-01-21 L3 programming layer (loader) 
+Package: expl3 2022-02-05 L3 programming layer (loader) 
 (c:/Users/Nicholas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
-File: l3backend-xetex.def 2022-01-12 L3 backend support: XeTeX
+File: l3backend-xetex.def 2022-02-07 L3 backend support: XeTeX
 (|extractbb --version)
 \c__kernel_sys_dvipdfmx_version_int=\count269
 \l__color_backend_stack_int=\count270
@@ -456,23 +456,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 117--152
 
  []
 
-[7] [8]
-File: rsediagram.png Graphic file (type bmp)
-<rsediagram.png>
+[7]
+File: rsediagram.PNG Graphic file (type bmp)
+<rsediagram.PNG>
 
-Overfull \hbox (301.32224pt too wide) in paragraph at lines 185--198
-[][]
+Underfull \hbox (badness 10000) in paragraph at lines 158--196
+[]
  []
 
+[8] [9] [10]
+Underfull \vbox (badness 1565) has occurred while \output is active []
 
-Underfull \vbox (badness 1412) has occurred while \output is active []
-
-[9] [10] [11] [12] [13] [14
+[11] [12] [13] [14
 
 ]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 405--416
+Underfull \hbox (badness 10000) in paragraph at lines 403--414
 
  []
 
@@ -480,21 +480,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 405--416
 Underfull \vbox (badness 3460) has occurred while \output is active []
 
 [15]
-File: system.png Graphic file (type bmp)
-<system.png>
+File: system.PNG Graphic file (type bmp)
+<system.PNG>
 
-Underfull \hbox (badness 2922) in paragraph at lines 440--450
-[][] \TU/lmr/m/n/10 Consider
+Underfull \hbox (badness 2922) in paragraph at lines 436--446
+[] \TU/lmr/m/n/10 Consider
  []
 
 [16] [17] [18]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 547.
+(amsmath)                 on input line 543.
 
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 645--647
+Underfull \hbox (badness 10000) in paragraph at lines 641--643
 
  []
 
@@ -503,17 +503,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 645--647
 ]
 Chapter 4.
 
-Overfull \hbox (96.22687pt too wide) detected at line 728
+Overfull \hbox (96.22687pt too wide) detected at line 724
 \OT1/lmr/m/n/10 = \OML/lmm/m/it/10 P\OT1/lmr/m/n/10 ([])\OML/lmm/m/it/10 P\OT1/lmr/m/n/10 ([])\OML/lmm/m/it/10 P\OT1/lmr/m/n/10 ([])
  []
 
 [23] [24] [25]
-Overfull \hbox (87.35257pt too wide) detected at line 829
+Overfull \hbox (87.35257pt too wide) detected at line 825
 \OML/lmm/m/it/10 P\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 A\OT1/lmr/m/n/10 ) = \OML/lmm/m/it/10 P\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 A \OMS/lmsy/m/n/10 \ \OML/lmm/m/it/10 B\OT1/lmr/m/n/10 ) + \OML/lmm/m/it/10 P\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 A \OMS/lmsy/m/n/10 \ \OML/lmm/m/it/10 B[]\OT1/lmr/m/n/10 ) = \OML/lmm/m/it/10 P\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 A\OMS/lmsy/m/n/10 j\OML/lmm/m/it/10 B\OT1/lmr/m/n/10 )\OML/lmm/m/it/10 P\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 B\OT1/lmr/m/n/10 ) + \OML/lmm/m/it/10 P\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 A\OMS/lmsy/m/n/10 j\OML/lmm/m/it/10 B[]\OT1/lmr/m/n/10 )\OML/lmm/m/it/10 P\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 B[]\OT1/lmr/m/n/10 ) = 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 99 \OMS/lmsy/m/n/10 ^^B \OT1/lmr/m/n/10 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 001 + 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 02 \OMS/lmsy/m/n/10 ^^B \OT1/lmr/m/n/10 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 999 = 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 02097
  []
 
 [26]
-Overfull \hbox (145.3072pt too wide) detected at line 872
+Overfull \hbox (145.3072pt too wide) detected at line 868
 \OML/lmm/m/it/10 P\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 A \OMS/lmsy/m/n/10 \ \OML/lmm/m/it/10 C\OT1/lmr/m/n/10 ) = \OML/lmm/m/it/10 P\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 A \OMS/lmsy/m/n/10 \ ff\OML/lmm/m/it/10 A \OMS/lmsy/m/n/10 \ \OML/lmm/m/it/10 B[]\OMS/lmsy/m/n/10 g [ f\OML/lmm/m/it/10 A[] \OMS/lmsy/m/n/10 \ \OML/lmm/m/it/10 B\OMS/lmsy/m/n/10 gg\OT1/lmr/m/n/10 ) = \OML/lmm/m/it/10 P\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 A \OMS/lmsy/m/n/10 \ f\OML/lmm/m/it/10 A \OMS/lmsy/m/n/10 \ \OML/lmm/m/it/10 B[]\OMS/lmsy/m/n/10 g\OT1/lmr/m/n/10 ) + \OML/lmm/m/it/10 P\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 A \OMS/lmsy/m/n/10 \ f\OML/lmm/m/it/10 A[] \OMS/lmsy/m/n/10 \ \OML/lmm/m/it/10 B\OMS/lmsy/m/n/10 g\OT1/lmr/m/n/10 ) = \OML/lmm/m/it/10 P\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 A \OMS/lmsy/m/n/10 \ \OML/lmm/m/it/10 B[]\OT1/lmr/m/n/10 ) = \OML/lmm/m/it/10 P\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 A\OT1/lmr/m/n/10 )(1 \OMS/lmsy/m/n/10 ^^@ \OML/lmm/m/it/10 P\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 B\OT1/lmr/m/n/10 )) = 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 25
  []
 
@@ -528,7 +528,7 @@ File: 04-Random-Variables_files/figure-latex/unnamed-chunk-1-1.pdf Graphic file 
 File: 04-Random-Variables_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file (type pdf)
 <use 04-Random-Variables_files/figure-latex/unnamed-chunk-2-1.pdf>
 
-Overfull \hbox (65.567pt too wide) in paragraph at lines 1025--1031
+Overfull \hbox (65.567pt too wide) in paragraph at lines 1021--1027
 \TU/lmr/m/n/10 a those jumps. [] 
  []
 
@@ -546,23 +546,45 @@ File: 04-Random-Variables_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file 
 ]
 Chapter 6.
 [37] [38] [39]
-Overfull \hbox (80.88846pt too wide) detected at line 1275
+Overfull \hbox (80.88846pt too wide) detected at line 1271
 \OML/lmm/m/it/10 E\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 X\OT1/lmr/m/n/10 ) = [][] \OML/lmm/m/it/10 xf\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 x\OT1/lmr/m/n/10 )\OML/lmm/m/it/10 dx \OT1/lmr/m/n/10 = [][] \OML/lmm/m/it/10 xf\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 x\OT1/lmr/m/n/10 )\OML/lmm/m/it/10 dx \OT1/lmr/m/n/10 + [][] \OML/lmm/m/it/10 xf\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 x\OT1/lmr/m/n/10 )\OML/lmm/m/it/10 dx \OMS/lmsy/m/n/10 ^^U [][] \OML/lmm/m/it/10 xf\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 x\OT1/lmr/m/n/10 )\OML/lmm/m/it/10 dx \OMS/lmsy/m/n/10 ^^U [][] \OML/lmm/m/it/10 af\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 x\OT1/lmr/m/n/10 )\OML/lmm/m/it/10 dx \OT1/lmr/m/n/10 = \OML/lmm/m/it/10 a\OT1/lmr/m/n/10 (1 \OMS/lmsy/m/n/10 ^^@ \OML/lmm/m/it/10 F\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 a\OT1/lmr/m/n/10 ))\OML/lmm/m/it/10 :
  []
 
-[40]
+[40] [41] [42]
+Chapter 7.
+File: joint_pmf.PNG Graphic file (type bmp)
+<joint_pmf.PNG>
+[43
+
+] [44]
+File: cond_pmf.PNG Graphic file (type bmp)
+<cond_pmf.PNG>
+
+Underfull \hbox (badness 10000) in paragraph at lines 1428--1431
+
+ []
+
+[45]
+File: joint_pmf_ind.PNG Graphic file (type bmp)
+<joint_pmf_ind.PNG>
+
+Overfull \hbox (101.27919pt too wide) detected at line 1496
+\OML/lmm/m/it/10 E\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 X[]X[]\OT1/lmr/m/n/10 ) = 0 \OMS/lmsy/m/n/10 ^^C \OT1/lmr/m/n/10 100 \OMS/lmsy/m/n/10 ^^C \OT1/lmr/m/n/10 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 2 + 100 \OMS/lmsy/m/n/10 ^^C \OT1/lmr/m/n/10 100 \OMS/lmsy/m/n/10 ^^C \OT1/lmr/m/n/10 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 1 + 100 \OMS/lmsy/m/n/10 ^^C \OT1/lmr/m/n/10 200 \OMS/lmsy/m/n/10 ^^C \OT1/lmr/m/n/10 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 2 + 0\OML/lmm/m/it/10 : \OMS/lmsy/m/n/10 ^^C \OT1/lmr/m/n/10 250 \OMS/lmsy/m/n/10 ^^C \OT1/lmr/m/n/10 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 05 + 100 \OMS/lmsy/m/n/10 ^^C \OT1/lmr/m/n/10 250 \OMS/lmsy/m/n/10 ^^C \OT1/lmr/m/n/10 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 15 + 200 \OMS/lmsy/m/n/10 ^^C \OT1/lmr/m/n/10 250 \OMS/lmsy/m/n/10 ^^C \OT1/lmr/m/n/10 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 30 = 23750
+ []
+
+[46]
 No file _main.bbl.
-[41] (./_main.aux)
+[47] (./_main.aux)
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: 436CCC39D916FB775EAF2E7BB083AF29;4985.
+(rerunfilecheck)             Checksum: A60227685DE12E94DBBDA94CF1176EDC;5419.
  ) 
 Here is how much of TeX's memory you used:
- 13214 strings out of 478190
- 259893 string characters out of 5852911
- 607094 words of memory out of 5000000
- 33596 multiletter control sequences out of 15000+600000
+ 13231 strings out of 478181
+ 260299 string characters out of 5852709
+ 612169 words of memory out of 5000000
+ 33621 multiletter control sequences out of 15000+600000
  494030 words of font info for 75 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 87i,9n,91p,335b,418s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 87i,10n,91p,335b,418s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on _main.pdf (41 pages).
+Output written on _main.pdf (47 pages).

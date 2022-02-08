@@ -39,3 +39,9 @@ examples-1
 special-uses-of-mean-and-variance
 examples-2
 expectations-of-functions-of-random-variables
+joint-distributions
+jointly-distributed-discrete-random-variables
+marginal-pmfs
+conditional-pmfs
+independence-of-discrete-random-variables
+expectations-involving-multiple-discrete-random-variables

@@ -28,7 +28,7 @@ Here's an example to illustrate sample spaces.  A gas station has six pumps, A, 
 
 ### Set relations example
 This next example illustrates set relations.  
-<img src="system.PNG" width="792" />
+![](system.PNG)<!-- -->
 Consider this system of series and parallel components.  Each component either functions/succeeds (S) or fails (F).  The experiment simply observes if the system functions/succeeds or fails. <br>
  -What is the sample space in terms of the three components? $\mathcal{S} = \{SSS, SSF, SFS, FSS, SFF, FFS, FSF, FFF\}$.  <br>
  -Find the even two components succeed.  $A = \{SSF, SFS, FSS\}$.<br>
