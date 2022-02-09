@@ -45,3 +45,7 @@ marginal-pmfs
 conditional-pmfs
 independence-of-discrete-random-variables
 expectations-involving-multiple-discrete-random-variables
+jointly-distributed-continuous-random-variables
+marginal-densities
+conditional-densities
+independence-of-jointly-distributed-continuous-r.v.s

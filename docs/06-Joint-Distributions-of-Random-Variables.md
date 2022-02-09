@@ -113,6 +113,110 @@ Their correlation is $1875/(\sqrt{5625*6875}) \approx 0.3015$.
 
 
 
+## Jointly distributed continuous random variables
+
+Analogously to univariate continuous r.v.'s, the joint distribution of two (or more) continuous r.v.'s is characterized by its joint PDF $f(x_1, x_2)$, and corresponding joint CDF $F(x_1, x_2)$ which determine joint probabilities via integration:
+\[P(X_1\leq x_1, X_2\leq x_2) =: F(x_1,x_2) = \int_{-\infty}^{x_1}\int_{-\infty}^{x_2}f(x_1,x_2)\,dx_2\,dx_1.\]
+<br>
+Example: A business takes both online and in-person orders.  Let $X_1$ and $X_2$ be the waiting times for the next two orders to be placed. Suppose 
+\[f(x_1,x_2) = 2e^{-x_1-x_2}, \,\,0<x_1<x_2<\infty.\]
+Find $P(X_1\leq 1, X_2\leq 2)$.  
+\begin{align*}
+P(X_1\leq 1, X_2\leq 2) &= F(1,2) = \int_0^1\int_{x_1}^2 2e^{-x_1-x_2} \,dx_2\, dx_1\\
+& = 2\int_0^1 e^{-x_1}\left[\int_{x_1}^2 e^{-x_2} \,dx_2\right]\, dx_1\\
+& = 2\int_0^1 e^{-x_1} \left[ - e^{-x_2}|_{x_1}^2\right]dx_1\\
+& = 2\int_0^1 e^{-x_1}(e^{-x_1} - e^{-2})dx_1\\
+& = 2\int_0^1 e^{-2x_1} - e^{-x_1-2}dx_1\\
+& = 2[-\tfrac12 e^{-2x_1} + e^{-x_1-2}]|_{0}^1\\
+& = -e^{-2}+2e^{-3}+e^{-0}-2e^{-2}\\
+& \approx 0.693568
+\end{align*}
+
+### Marginal densities
+
+Given a joint PDF of $(X_1, X_2)$ the marginal PDFs determine the probabilities associated with each r.v. individually.  That is, for $X_1$
+\[f_{X_1}(x_1) = \int_{-\infty}^\infty f(x_1, x_2) dx_2\]
+is the marginal density of $X_1$ so that integration of the marginal PDF provides
+\[P(X_1\leq x_1) = F_{X_1}(x_1) = \int_{-\infty}^{x_1} f_{X_1}(t)dt.\]
+<br>
+Example: As part of the joint probability calculation of waiting times above we found the marginal density of $X_1$, and it is
+\[f_{X_1}(x_1) = 2(e^{-2x_1} - e^{-x_1-2}), \quad x>0.\]
+
+<br>
+From the marginal PDF we can compute any kind of marginal expectation we want, like $E(X_1)$, $V(X_1)$, or $M_{X_1}(t)$.
+
+<br>
+Example: The moment generating function of the first arrival time is given by
+\begin{align*}
+M_{X_1}(t) &= \int_{0}^\infty 2e^{tx}[e^{-2x}-e^{-x-2}]dx\\
+& = \int_{0}^\infty 2[e^{-x(2-t)}-e^{-2}e^{-x(1-t)}]dx\\
+& = 2\frac{e^{-x(2-t)}}{-(2-t)} -2e^{-2}\frac{e^{-x(1-t)}}{-(1-t)}|_0^{\infty}\\
+& = \frac{2}{2-t} - \frac{2e^{-2}}{1-t}
+\end{align*}
+And, the first (raw) moment then equals
+\begin{align*}
+E(X_1) &= \frac{d}{dt}[\frac{2}{2-t} - \frac{2e^{-2}}{1-t}]|_{t=0}\\
+&= [\frac{2}{(2-t)^2} - \frac{2e^{-2}}{(1-t)^2}]|_{t=0}\\
+& = 1/2 - 2e^{-2}\\
+& \approx 0.23
+\end{align*}
+
+
+### Conditional densities
+
+Given the joint and marginal densities $f(x_1, x_2)$ and $f_{X_1}(x_1)$ we can define the conditional density of $X_2$ given $X_1=x_1$ by
+\[f(x_2|x_1) = \frac{f(x_1, x_2)}{f_{X_1}(x_1)}\]
+which defines the probabilities
+\[P(X_2\leq x_2|X_1=x_1) = \int_{-\infty}^{x_2} f(t|x_1)dt.\]
+<br>
+
+Example: Given the first order arrives at time 1, what is the probability the second order arrives before time 2?
+\[f(x_2|x_1) = \frac{2e^{-x_1-x_2}}{2e^{-2x_1}-e^{-x_1-2}} = \frac{e^{-x_2}}{e^{-x_1}-\tfrac12 e^{-2}}, \quad x_2>x_1.\]
+
+\begin{align*}
+P(X_2\leq 2|X_1=1) &= \int_{1}^2 \frac{e^{-x_2}}{e^{-1}-\tfrac12 e^{-2}}dx_2\\
+&= [e^{-1}-\tfrac12 e^{-2}]^{-1}[-e^{-x_2}]|_1^2\\
+& = [e^{-1}-\tfrac12 e^{-2}]^{-1}[e^{-1}-e^{-2}]\\
+& \approx 0.7746
+\end{align*}
+
+
+Example: Find the mean of the second arrival time, given the first arrival time is 1.
+
+\begin{align*}
+E(X_2|X_1=1) &= \int_{1}^\infty x_2\frac{e^{-x_2}}{e^{-1}-\tfrac12 e^{-2}}dx_2\\
+& = [e^{-1}-\tfrac12 e^{-2}]^{-1} [-x_2e^{-x_2}|_1^\infty+\int_1^\infty e^{-x_2}dx_2]\\
+& = [e^{-1}-\tfrac12 e^{-2}]^{-1} [e^{-1} - e^{-x_2}|_1^\infty]\\
+& = [e^{-1}-\tfrac12 e^{-2}]^{-1} [e^{-1} + e^{-1}]\\
+&\approx 2.4508
+\end{align*}
+
+
+### Independence of jointly-distributed continuous r.v.'s
+
+Random variables $X_1$ and $X_2$ are independent if $f(x_1|x_2) = f_{X_1}(x_1)$ for every $x_2$; or, equivalently, if $f(x_2|x_1) = f_{X_2}(x_2)$ for every $x_1$.  <br><br>
+
+
+Example: A randomly selected student's verbal score $X_1$ and quantitative score $X_2$ on a college entrance exam have the joint PDF
+\[f(x_1, x_2) = \tfrac25 (2x_1+3x_2), \quad 0\leq x_1\leq 1, \, 0\leq x_2\leq 1.\]
+Are they independent?
+
+<br><br>
+Solution:
+The marginal density of $X_1$ is given by
+\[\int_{0}^1 \tfrac25 (2x_1+3x_2)dx_2 = \tfrac25[2x_1x_2+1.5x_2^2]|_0^1 = \tfrac45 x_1 + 1.5\]
+
+The marginal density of $X_2$ is given by
+\[\int_{0}^1 \tfrac25 (2x_1+3x_2)dx_1 = \tfrac25[\tfrac12x_1^2+3x_2x_1]|_0^1 = \tfrac15  + \tfrac65 x_2.\]
+The conditional density of $X_2|X_1=x_1$ is
+\[\frac{\tfrac25(2x_1+3x_2)}{\tfrac45 x_1+1.5} \ne f_{X_2}(x_2).\]
+They are not independent.
+
+
+
+
+
+
 
 
 
