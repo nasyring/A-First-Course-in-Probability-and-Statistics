@@ -139,8 +139,13 @@ Given a joint PDF of $(X_1, X_2)$ the marginal PDFs determine the probabilities 
 is the marginal density of $X_1$ so that integration of the marginal PDF provides
 \[P(X_1\leq x_1) = F_{X_1}(x_1) = \int_{-\infty}^{x_1} f_{X_1}(t)dt.\]
 <br>
-Example: As part of the joint probability calculation of waiting times above we found the marginal density of $X_1$, and it is
-\[f_{X_1}(x_1) = 2(e^{-2x_1} - e^{-x_1-2}), \quad x>0.\]
+Example: For the above joint probability density of waiting times we get the marginal density of $X_1$:
+\begin{align*}
+f_{X_1}(x_1) &=  2e^{-x_1}\int_{x_1}^{\infty}e^{-x_2}dx_2\\
+& = 2e^{-x_1}[-e^{-x_2}]|_{x_1}^\infty\\
+& = 2e^{-x_1}[0 + e^{-x_1}]\\
+& = 2e^{-2x_1}, \quad x_1>0.
+\end{align*}
 
 <br>
 From the marginal PDF we can compute any kind of marginal expectation we want, like $E(X_1)$, $V(X_1)$, or $M_{X_1}(t)$.
@@ -148,17 +153,16 @@ From the marginal PDF we can compute any kind of marginal expectation we want, l
 <br>
 Example: The moment generating function of the first arrival time is given by
 \begin{align*}
-M_{X_1}(t) &= \int_{0}^\infty 2e^{tx}[e^{-2x}-e^{-x-2}]dx\\
-& = \int_{0}^\infty 2[e^{-x(2-t)}-e^{-2}e^{-x(1-t)}]dx\\
-& = 2\frac{e^{-x(2-t)}}{-(2-t)} -2e^{-2}\frac{e^{-x(1-t)}}{-(1-t)}|_0^{\infty}\\
-& = \frac{2}{2-t} - \frac{2e^{-2}}{1-t}
+M_{X_1}(t) &= \int_{0}^\infty 2e^{tx}e^{-2x}dx\\
+& = \int_{0}^\infty 2e^{-x(2-t)}dx \\
+& = 2\frac{e^{-x(2-t)}}{-(2-t)}|_{0}^\infty\\
+& = \frac{2}{2-t}, \quad t<2.
 \end{align*}
 And, the first (raw) moment then equals
 \begin{align*}
-E(X_1) &= \frac{d}{dt}[\frac{2}{2-t} - \frac{2e^{-2}}{1-t}]|_{t=0}\\
-&= [\frac{2}{(2-t)^2} - \frac{2e^{-2}}{(1-t)^2}]|_{t=0}\\
-& = 1/2 - 2e^{-2}\\
-& \approx 0.23
+E(X_1) &= \frac{d}{dt}[\frac{2}{2-t}]|_{t=0}\\
+&= \frac{2}{(2-t)^2}|_{t=0}\\
+& = 1/2.
 \end{align*}
 
 
@@ -171,24 +175,25 @@ which defines the probabilities
 <br>
 
 Example: Given the first order arrives at time 1, what is the probability the second order arrives before time 2?
-\[f(x_2|x_1) = \frac{2e^{-x_1-x_2}}{2e^{-2x_1}-e^{-x_1-2}} = \frac{e^{-x_2}}{e^{-x_1}-\tfrac12 e^{-2}}, \quad x_2>x_1.\]
+\[f(x_2|x_1) = \frac{2e^{-x_1-x_2}}{2e^{-2x_1}} = \frac{e^{-x_2}}{e^{-x_1}}, \quad x_2>x_1.\]
 
 \begin{align*}
-P(X_2\leq 2|X_1=1) &= \int_{1}^2 \frac{e^{-x_2}}{e^{-1}-\tfrac12 e^{-2}}dx_2\\
-&= [e^{-1}-\tfrac12 e^{-2}]^{-1}[-e^{-x_2}]|_1^2\\
-& = [e^{-1}-\tfrac12 e^{-2}]^{-1}[e^{-1}-e^{-2}]\\
-& \approx 0.7746
+P(X_2\leq 2|X_1=1) &= \int_{1}^2 \frac{e^{-x_2}}{e^{-1}}dx_2\\
+&= e^{1}[-e^{-x_2}]|_1^2\\
+& = e^{1}(e^{-1}-e^{-2})\\
+& = 1-e^{-1}\\
+& \approx 0.63212
 \end{align*}
 
 
 Example: Find the mean of the second arrival time, given the first arrival time is 1.
 
 \begin{align*}
-E(X_2|X_1=1) &= \int_{1}^\infty x_2\frac{e^{-x_2}}{e^{-1}-\tfrac12 e^{-2}}dx_2\\
-& = [e^{-1}-\tfrac12 e^{-2}]^{-1} [-x_2e^{-x_2}|_1^\infty+\int_1^\infty e^{-x_2}dx_2]\\
-& = [e^{-1}-\tfrac12 e^{-2}]^{-1} [e^{-1} - e^{-x_2}|_1^\infty]\\
-& = [e^{-1}-\tfrac12 e^{-2}]^{-1} [e^{-1} + e^{-1}]\\
-&\approx 2.4508
+E(X_2|X_1=1) &= \int_{1}^\infty x_2\frac{e^{-x_2}}{e^{-1}}dx_2\\
+& = e^{1}\int_{1}^\infty x_2e^{-x_2}dx_2\\
+& = e^1[-x_2e^{-x_2}|_1^\infty + \int_1^\infty e^{-x_2}dx_2] \quad \text{use by-parts}\\
+& = e^1[e^{-1} - e^{-x_2|_1^\infty}]\\
+& = 2
 \end{align*}
 
 
@@ -212,8 +217,42 @@ The conditional density of $X_2|X_1=x_1$ is
 \[\frac{\tfrac25(2x_1+3x_2)}{\tfrac45 x_1+1.5} \ne f_{X_2}(x_2).\]
 They are not independent.
 
+Example: For the waiting time distribution above, the marginal density of $X_2$ equals
+\begin{align*}
+f_{X_2}(x_2) &= \int_0^{x_2} 2e^{-x_1-x_2}dx_1\\
+& = 2e^{-x_2} - 2e^{-2x_2}, \quad x_2>0.
+\end{align*}
 
+We previously found the conditional density $f(x_2|x_1) = \frac{e^{-x_2}}{e^{-x_1}}, \,\,x_2>x_1$.  These two densities---the conditional and the $X_2-$marginal--- are not equal, so $X_1$ and $X_2$ are not independent.  Of course, it is clear they are dependent just by looking at their domain---since $x_2\geq x_1$ they must be dependent.
 
+### Expectations involving more than one continuous r.v.
+
+As in the discrete case, we can compute expectations of functions of two or more continuous r.v.'s:
+\[E(g(X_1,X_2)) = \int_{-\infty}^\infty\int_{-\infty}^\infty g(x,y)f(x,y) dxdy.\]
+
+Example: Using the order times example we compute $Cov(X_1, X_2)$, the covariance of the order times of the first and second orders:
+\begin{align*}
+E(X_1X_2) &= \int_0^\infty \int_{x_1}^\infty 2x_1x_2e^{-x_1-x_2} dx_2 dx_1\\
+& = 2\int_0^\infty x_1e^{-x_1} \left [\int_{x_1}^\infty x_2e^{-x_2}dx_2\right ] dx_1 \quad \text{use by-parts}\\
+& \text{set }u=x_2\, du = dx_2\, dv = e^{-x_2}\, v = -e^{-x_2}\, \\
+& = 2\int_0^\infty x_1e^{-x_1} \left [uv|_{x_1}^\infty - \int_{x_1}^\infty vdu \right] dx_1\\
+& = 2\int_0^\infty x_1e^{-x_1}(1+x_1)e^{-x_1}dx_1 \, \text{ have to do by-parts twice...}\\
+& = 1
+\end{align*}
+
+The mean of $X_1$ is
+\begin{align*}
+E(X_1) &= \int_0^{\infty} x_12e^{-2x_1} dx_1\\
+& = 1/2.
+\end{align*}
+
+Then, 
+\begin{align*}
+E(X_2) &= \int_0^\infty 2x_2(e^{-x_2}-e^{-2x_2}) dx_2 \\
+& = 3/2 \quad \text{apply integratioon by parts}
+\end{align*}
+
+The covariance of $X_1$ and $X_2$ is $1 - (3/2)(1/2) =1/4$.
 
 
 

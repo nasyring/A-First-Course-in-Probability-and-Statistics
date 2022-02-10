@@ -49,3 +49,4 @@ jointly-distributed-continuous-random-variables
 marginal-densities
 conditional-densities
 independence-of-jointly-distributed-continuous-r.v.s
+expectations-involving-more-than-one-continuous-r.v.

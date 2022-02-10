@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.2.8)  8 FEB 2022 15:46
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.2.8)  10 FEB 2022 16:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -840,19 +840,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 897--899
 
  []
 
-[47] [48] [49]
+[47] [48] [49] [50]
 No file _main.bbl.
-[50] (./_main.aux)
+[51] (./_main.aux)
 Package rerunfilecheck Info: File `_main.out' has not changed.
 (rerunfilecheck)             Checksum: 8896C1D8F624FFFE989E08D5AFD4DC3F;5721.
  ) 
 Here is how much of TeX's memory you used:
- 17019 strings out of 478181
- 315771 string characters out of 5852790
- 773428 words of memory out of 5000000
- 37396 multiletter control sequences out of 15000+600000
+ 17020 strings out of 478181
+ 315825 string characters out of 5852790
+ 773514 words of memory out of 5000000
+ 37397 multiletter control sequences out of 15000+600000
  475726 words of font info for 83 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  86i,10n,121p,2424b,428s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on _main.pdf (50 pages).
+Output written on _main.pdf (51 pages).

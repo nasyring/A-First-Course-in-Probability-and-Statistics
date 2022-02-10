@@ -24,7 +24,7 @@
 <meta name="author" content="Nick Syring" />
 
 
-<meta name="date" content="2022-02-08" />
+<meta name="date" content="2022-02-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -151,6 +151,7 @@
 <li class="chapter" data-level="7.2.1" data-path="joint-distributions.html"><a href="joint-distributions.html#marginal-densities"><i class="fa fa-check"></i><b>7.2.1</b> Marginal densities</a></li>
 <li class="chapter" data-level="7.2.2" data-path="joint-distributions.html"><a href="joint-distributions.html#conditional-densities"><i class="fa fa-check"></i><b>7.2.2</b> Conditional densities</a></li>
 <li class="chapter" data-level="7.2.3" data-path="joint-distributions.html"><a href="joint-distributions.html#independence-of-jointly-distributed-continuous-r.v.s"><i class="fa fa-check"></i><b>7.2.3</b> Independence of jointly-distributed continuous r.v.’s</a></li>
+<li class="chapter" data-level="7.2.4" data-path="joint-distributions.html"><a href="joint-distributions.html#expectations-involving-more-than-one-continuous-r.v."><i class="fa fa-check"></i><b>7.2.4</b> Expectations involving more than one continuous r.v.</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -283,24 +284,28 @@ P(X_1\leq 1, X_2\leq 2) &amp;= F(1,2) = \int_0^1\int_{x_1}^2 2e^{-x_1-x_2} \,dx_
 is the marginal density of <span class="math inline">\(X_1\)</span> so that integration of the marginal PDF provides
 <span class="math display">\[P(X_1\leq x_1) = F_{X_1}(x_1) = \int_{-\infty}^{x_1} f_{X_1}(t)dt.\]</span>
 <br>
-Example: As part of the joint probability calculation of waiting times above we found the marginal density of <span class="math inline">\(X_1\)</span>, and it is
-<span class="math display">\[f_{X_1}(x_1) = 2(e^{-2x_1} - e^{-x_1-2}), \quad x&gt;0.\]</span></p>
+Example: For the above joint probability density of waiting times we get the marginal density of <span class="math inline">\(X_1\)</span>:
+<span class="math display">\[\begin{align*}
+f_{X_1}(x_1) &amp;=  2e^{-x_1}\int_{x_1}^{\infty}e^{-x_2}dx_2\\
+&amp; = 2e^{-x_1}[-e^{-x_2}]|_{x_1}^\infty\\
+&amp; = 2e^{-x_1}[0 + e^{-x_1}]\\
+&amp; = 2e^{-2x_1}, \quad x_1&gt;0.
+\end{align*}\]</span></p>
 <p><br>
 From the marginal PDF we can compute any kind of marginal expectation we want, like <span class="math inline">\(E(X_1)\)</span>, <span class="math inline">\(V(X_1)\)</span>, or <span class="math inline">\(M_{X_1}(t)\)</span>.</p>
 <p><br>
 Example: The moment generating function of the first arrival time is given by
 <span class="math display">\[\begin{align*}
-M_{X_1}(t) &amp;= \int_{0}^\infty 2e^{tx}[e^{-2x}-e^{-x-2}]dx\\
-&amp; = \int_{0}^\infty 2[e^{-x(2-t)}-e^{-2}e^{-x(1-t)}]dx\\
-&amp; = 2\frac{e^{-x(2-t)}}{-(2-t)} -2e^{-2}\frac{e^{-x(1-t)}}{-(1-t)}|_0^{\infty}\\
-&amp; = \frac{2}{2-t} - \frac{2e^{-2}}{1-t}
+M_{X_1}(t) &amp;= \int_{0}^\infty 2e^{tx}e^{-2x}dx\\
+&amp; = \int_{0}^\infty 2e^{-x(2-t)}dx \\
+&amp; = 2\frac{e^{-x(2-t)}}{-(2-t)}|_{0}^\infty\\
+&amp; = \frac{2}{2-t}, \quad t&lt;2.
 \end{align*}\]</span>
 And, the first (raw) moment then equals
 <span class="math display">\[\begin{align*}
-E(X_1) &amp;= \frac{d}{dt}[\frac{2}{2-t} - \frac{2e^{-2}}{1-t}]|_{t=0}\\
-&amp;= [\frac{2}{(2-t)^2} - \frac{2e^{-2}}{(1-t)^2}]|_{t=0}\\
-&amp; = 1/2 - 2e^{-2}\\
-&amp; \approx 0.23
+E(X_1) &amp;= \frac{d}{dt}[\frac{2}{2-t}]|_{t=0}\\
+&amp;= \frac{2}{(2-t)^2}|_{t=0}\\
+&amp; = 1/2.
 \end{align*}\]</span></p>
 </div>
 <div id="conditional-densities" class="section level3" number="7.2.2">
@@ -311,20 +316,21 @@ which defines the probabilities
 <span class="math display">\[P(X_2\leq x_2|X_1=x_1) = \int_{-\infty}^{x_2} f(t|x_1)dt.\]</span>
 <br></p>
 <p>Example: Given the first order arrives at time 1, what is the probability the second order arrives before time 2?
-<span class="math display">\[f(x_2|x_1) = \frac{2e^{-x_1-x_2}}{2e^{-2x_1}-e^{-x_1-2}} = \frac{e^{-x_2}}{e^{-x_1}-\tfrac12 e^{-2}}, \quad x_2&gt;x_1.\]</span></p>
+<span class="math display">\[f(x_2|x_1) = \frac{2e^{-x_1-x_2}}{2e^{-2x_1}} = \frac{e^{-x_2}}{e^{-x_1}}, \quad x_2&gt;x_1.\]</span></p>
 <p><span class="math display">\[\begin{align*}
-P(X_2\leq 2|X_1=1) &amp;= \int_{1}^2 \frac{e^{-x_2}}{e^{-1}-\tfrac12 e^{-2}}dx_2\\
-&amp;= [e^{-1}-\tfrac12 e^{-2}]^{-1}[-e^{-x_2}]|_1^2\\
-&amp; = [e^{-1}-\tfrac12 e^{-2}]^{-1}[e^{-1}-e^{-2}]\\
-&amp; \approx 0.7746
+P(X_2\leq 2|X_1=1) &amp;= \int_{1}^2 \frac{e^{-x_2}}{e^{-1}}dx_2\\
+&amp;= e^{1}[-e^{-x_2}]|_1^2\\
+&amp; = e^{1}(e^{-1}-e^{-2})\\
+&amp; = 1-e^{-1}\\
+&amp; \approx 0.63212
 \end{align*}\]</span></p>
 <p>Example: Find the mean of the second arrival time, given the first arrival time is 1.</p>
 <p><span class="math display">\[\begin{align*}
-E(X_2|X_1=1) &amp;= \int_{1}^\infty x_2\frac{e^{-x_2}}{e^{-1}-\tfrac12 e^{-2}}dx_2\\
-&amp; = [e^{-1}-\tfrac12 e^{-2}]^{-1} [-x_2e^{-x_2}|_1^\infty+\int_1^\infty e^{-x_2}dx_2]\\
-&amp; = [e^{-1}-\tfrac12 e^{-2}]^{-1} [e^{-1} - e^{-x_2}|_1^\infty]\\
-&amp; = [e^{-1}-\tfrac12 e^{-2}]^{-1} [e^{-1} + e^{-1}]\\
-&amp;\approx 2.4508
+E(X_2|X_1=1) &amp;= \int_{1}^\infty x_2\frac{e^{-x_2}}{e^{-1}}dx_2\\
+&amp; = e^{1}\int_{1}^\infty x_2e^{-x_2}dx_2\\
+&amp; = e^1[-x_2e^{-x_2}|_1^\infty + \int_1^\infty e^{-x_2}dx_2] \quad \text{use by-parts}\\
+&amp; = e^1[e^{-1} - e^{-x_2|_1^\infty}]\\
+&amp; = 2
 \end{align*}\]</span></p>
 </div>
 <div id="independence-of-jointly-distributed-continuous-r.v.s" class="section level3" number="7.2.3">
@@ -342,6 +348,37 @@ The marginal density of <span class="math inline">\(X_1\)</span> is given by
 The conditional density of <span class="math inline">\(X_2|X_1=x_1\)</span> is
 <span class="math display">\[\frac{\tfrac25(2x_1+3x_2)}{\tfrac45 x_1+1.5} \ne f_{X_2}(x_2).\]</span>
 They are not independent.</p>
+<p>Example: For the waiting time distribution above, the marginal density of <span class="math inline">\(X_2\)</span> equals
+<span class="math display">\[\begin{align*}
+f_{X_2}(x_2) &amp;= \int_0^{x_2} 2e^{-x_1-x_2}dx_1\\
+&amp; = 2e^{-x_2} - 2e^{-2x_2}, \quad x_2&gt;0.
+\end{align*}\]</span></p>
+<p>We previously found the conditional density <span class="math inline">\(f(x_2|x_1) = \frac{e^{-x_2}}{e^{-x_1}}, \,\,x_2&gt;x_1\)</span>. These two densities—the conditional and the <span class="math inline">\(X_2-\)</span>marginal— are not equal, so <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are not independent. Of course, it is clear they are dependent just by looking at their domain—since <span class="math inline">\(x_2\geq x_1\)</span> they must be dependent.</p>
+</div>
+<div id="expectations-involving-more-than-one-continuous-r.v." class="section level3" number="7.2.4">
+<h3><span class="header-section-number">7.2.4</span> Expectations involving more than one continuous r.v.</h3>
+<p>As in the discrete case, we can compute expectations of functions of two or more continuous r.v.’s:
+<span class="math display">\[E(g(X_1,X_2)) = \int_{-\infty}^\infty\int_{-\infty}^\infty g(x,y)f(x,y) dxdy.\]</span></p>
+<p>Example: Using the order times example we compute <span class="math inline">\(Cov(X_1, X_2)\)</span>, the covariance of the order times of the first and second orders:
+<span class="math display">\[\begin{align*}
+E(X_1X_2) &amp;= \int_0^\infty \int_{x_1}^\infty 2x_1x_2e^{-x_1-x_2} dx_2 dx_1\\
+&amp; = 2\int_0^\infty x_1e^{-x_1} \left [\int_{x_1}^\infty x_2e^{-x_2}dx_2\right ] dx_1 \quad \text{use by-parts}\\
+&amp; \text{set }u=x_2\, du = dx_2\, dv = e^{-x_2}\, v = -e^{-x_2}\, \\
+&amp; = 2\int_0^\infty x_1e^{-x_1} \left [uv|_{x_1}^\infty - \int_{x_1}^\infty vdu \right] dx_1\\
+&amp; = 2\int_0^\infty x_1e^{-x_1}(1+x_1)e^{-x_1}dx_1 \, \text{ have to do by-parts twice...}\\
+&amp; = 1
+\end{align*}\]</span></p>
+<p>The mean of <span class="math inline">\(X_1\)</span> is
+<span class="math display">\[\begin{align*}
+E(X_1) &amp;= \int_0^{\infty} x_12e^{-2x_1} dx_1\\
+&amp; = 1/2.
+\end{align*}\]</span></p>
+<p>Then,
+<span class="math display">\[\begin{align*}
+E(X_2) &amp;= \int_0^\infty 2x_2(e^{-x_2}-e^{-2x_2}) dx_2 \\
+&amp; = 3/2 \quad \text{apply integratioon by parts}
+\end{align*}\]</span></p>
+<p>The covariance of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> is <span class="math inline">\(1 - (3/2)(1/2) =1/4\)</span>.</p>
 
 </div>
 </div>
