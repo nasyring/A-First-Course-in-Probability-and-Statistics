@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>A First Course in Probability and Statistics</title>
+  <title>Chapter 8 Special Discrete Distributions | A First Course in Probability and Statistics</title>
   <meta name="description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="A First Course in Probability and Statistics" />
+  <meta property="og:title" content="Chapter 8 Special Discrete Distributions | A First Course in Probability and Statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A First Course in Probability and Statistics" />
+  <meta name="twitter:title" content="Chapter 8 Special Discrete Distributions | A First Course in Probability and Statistics" />
   
   <meta name="twitter:description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="joint-distributions.html"/>
 
-<link rel="next" href="experiments-and-the-role-of-probability.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -161,6 +161,7 @@
 <li class="chapter" data-level="8.3" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>8.3</b> Binomial distribution</a></li>
 <li class="chapter" data-level="8.4" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#multinomial-distribution"><i class="fa fa-check"></i><b>8.4</b> Multinomial Distribution</a></li>
 <li class="chapter" data-level="8.5" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#hypergeometric-distribution"><i class="fa fa-check"></i><b>8.5</b> Hypergeometric distribution</a></li>
+<li class="chapter" data-level="8.6" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#negative-binomial-distribution"><i class="fa fa-check"></i><b>8.6</b> Negative Binomial Distribution</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -182,25 +183,101 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">A First Course in Probability and Statistics</h1>
-<p class="author"><em>Nick Syring</em></p>
-<p class="date"><em>2022-02-22</em></p>
+<div id="special-discrete-distributions" class="section level1" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Special Discrete Distributions</h1>
+<div id="bernoulli-distribution" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Bernoulli Distribution</h2>
+<p><span class="math inline">\(X\)</span> is a Bernoulli random variable if it only takes values <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>. Denoting <span class="math inline">\(p:=P(X=1)\)</span> the PMF can be written <span class="math inline">\(p(x) = p^x(1-p)^{1-x}\)</span>. The mean and variance are easily found to be <span class="math inline">\(E(X) = p\)</span> and <span class="math inline">\(V(X) = p(1-p)\)</span>. The MGF is <span class="math inline">\(M_X(t) = 1-p+pe^t\)</span>.<br><br></p>
+<p>The Bernoulli distribution can describe two different experiments:<br>
+1. One random sample is taken from a finite population of size <span class="math inline">\(N\)</span> of <span class="math inline">\(Np\)</span> 1’s and <span class="math inline">\(N(1-p)\)</span> 0’s (or any binary attribute), it’s value is recorded, and it is then replaced. <br>
+2. One random sample is taken, without replacement, from an infinite population of 1’s and 0’s in proportions of <span class="math inline">\(p\)</span> and <span class="math inline">\(1-p\)</span>.</p>
 </div>
-<div id="about" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> About</h1>
-<p>This is a collection of notes intended for students studying probability and statistics at the advanced undergraduate level at Iowa State University. Specifically, these notes are modeled after course notes for STAT 588, 341, and 342. This site is a work in progress.</p>
+<div id="categorical-distribution" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Categorical Distribution</h2>
+<p>The categorical distribution generalizes the Bernoulli distribution to more than two values (more than two categories). <span class="math inline">\(X\)</span> is a categorical random variable if it takes values in a finite set of integers, usually <span class="math inline">\(\{1,2,\ldots,k\}\)</span> for <span class="math inline">\(k\geq 3\)</span>. Let <span class="math inline">\(p_i:=P(X=i)\)</span> so that <span class="math inline">\(0\leq p_i\leq 1\)</span> and <span class="math inline">\(\sum_{i=1}^k p_i = 1\)</span>. Note we only need specify <span class="math inline">\(p_1,\ldots p_{k-1}\)</span> and then <span class="math inline">\(p_k = 1- \sum_{i=1}^{k-1}p_i\)</span>. The categorical PMF is $
+<span class="math display">\[p(x_1,x_2,\ldots,x_{k-1}) = \prod_{i=1}^{k} p_i^{x_i} = \left\{(1-\sum_{i=1}^{k-1} p_i)^{1-\sum_{i=1}^{k-1} x_i}\right\} \prod_{i=1}^{k-1} p_i^{x_i}.\]</span></p>
+<p>The categorical distribution can describe the same two types of experiments as the Bernoulli, except where the number of categories/values is now <span class="math inline">\(k\)</span> rather than <span class="math inline">\(2\)</span>.</p>
+</div>
+<div id="binomial-distribution" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> Binomial distribution</h2>
+<p>If <span class="math inline">\(X_1,X_2,\ldots, X_n\)</span> is a random sample of <span class="math inline">\(n\)</span> Bernoulli random variables with parameter <span class="math inline">\(p\)</span>, then <span class="math inline">\(Y = \sum_{i=1}^n X_i\)</span> is a Binomial random variable with PMF
+<span class="math display">\[p(y) = {n \choose y}p^y(1-p)^{n-y}, \,\, y\in \{0, 1,\ldots, n\}.\]</span></p>
+<p>The easiest way to determine moments of the Binomial distribution is to consider its MGF. Using the fact the Binomial is a sum of independent and identically distributed (same <span class="math inline">\(p\)</span>) Bernoulli r.v.’s we have
+<span class="math display">\[\begin{align*}
+E(e^{tY}) &amp; = E(e^{t\sum X_i}) \\
+&amp; = E\left\{\prod_{i=1}^n e^{t X_i}\right\}\\
+&amp; \stackrel{ind.}{=} \prod_{i=1}^n (1-p + pe^t)\\
+&amp; = (1-p + pe^t)^n.
+\end{align*}\]</span>
+Then, by differentiating once and twice:
+<span class="math display">\[E(Y) = npe^t(1-p + pe^t)^{n-1}|_{t=0} = np\]</span>
+<span class="math display">\[E(Y^2) = npe^t(1-p + pe^t)^{n-1} + npe^t(n-1)pe^t((1-p + pe^t)^{n-2})|_{t=0} = np+(np)^2-np^2\]</span>
+<span class="math display">\[V(Y) = np(1-p).\]</span></p>
+<p>The Binomial distribution describes the outcomes of a repeated random sampling of Bernoulli r.v.’s. For example, in a poll of eligible voters with a binary “yes” or “no” vote a Bernoulli random variable represents one voter’s outcome/vote and a Binomial random variable represents the sum of outcomes in the entire poll of <span class="math inline">\(n\)</span> voters. Often, rather than the sum total we are interested in the sample proportion of yes/no votes, which is the transformation <span class="math inline">\(Z = Y/n\)</span>. Probabilities of <span class="math inline">\(Z\)</span> are easily deduced from <span class="math inline">\(Y\)</span> by <span class="math inline">\(P(Z = z) = P(Y = nz)\)</span>. Likewise, <span class="math inline">\(E(Z^q) = \frac{1}{n^q}E(Y)\)</span> for positive integers <span class="math inline">\(q\)</span>. For example, the mean and variance of the sample proportion is <span class="math inline">\(E(Z) = p\)</span> and <span class="math inline">\(V(Z) = \frac{p(1-p)}{n}\)</span>.</p>
+</div>
+<div id="multinomial-distribution" class="section level2" number="8.4">
+<h2><span class="header-section-number">8.4</span> Multinomial Distribution</h2>
+<p>Let <span class="math inline">\(X_i\)</span> be a categorical random variable encoded as a binary vector in <span class="math inline">\(\mathbb{R}^k\)</span> with <span class="math inline">\(\|X_i\|_1 = 1\)</span>. That is, <span class="math inline">\(X_i\)</span> is a vector of zeroes and one 1 at the <span class="math inline">\(j^{th}\)</span> index if <span class="math inline">\(X_i\)</span> takes value <span class="math inline">\(j \in \{1,\ldots, k\}\)</span>. This is a different representation than simply taking <span class="math inline">\(X_i\)</span> equal to its category, as represented by an integer. Then, if <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> is a random sample (a set of independent and identically distributed) categorical random variables (as represented by binary <span class="math inline">\(k-\)</span>vectors), then <span class="math inline">\(Y = \sum_{i=1}^n X_i\)</span> is a Multinomial random variable. Note <span class="math inline">\(Y\)</span> is a <span class="math inline">\(k0-\)</span>vector with integer entries representing the counts of each category appearing in the random sample. So, the Multinomial is analogous to the Binomial as the categorical is to the Bernoulli. The PMF of <span class="math inline">\(Y\)</span> is</p>
+<p><span class="math display">\[p(y_1, y_2, \ldots, y_{k}) = \frac{n!}{y_1!\times y_2!\times \cdots \times y_k!}p_1^{y_1}\times \cdots \times p_k^{y_k}\]</span>
+where <span class="math inline">\(n = \sum_{i=1}^k y_i\)</span>, <span class="math inline">\(p_k = 1 - \sum_{i=1}^k p_i\)</span>.</p>
+<p>Using the representation of the Multinomial in terms of sums of categorical random variables helps in computing moments. Let’s compute the covariance of <span class="math inline">\(Y_\ell\)</span> and <span class="math inline">\(Y_j\)</span>, which represent the counts of categories <span class="math inline">\(\ell\)</span> and <span class="math inline">\(j\)</span>. For each count, write <span class="math inline">\(Y_j = \sum_{i=1}^nX_{ij}\)</span>, the sum of the <span class="math inline">\(j^{th}\)</span> index of the X categorical random variable vectors. Then,
+<span class="math display">\[\begin{align*}
+E(Y_\ell Y_j) &amp;= E\{(\sum_{i=1}^n X_{i\ell})(\sum_{i=1}^n X_{ij})\}\\
+&amp; = E(\sum_{i=1}^n X_{i\ell}X_{ij}) + E(\sum_{i=1,i\ne i&#39;}^n X_{i\ell}X_{i&#39;j})\\
+&amp; = E(0) + E(\sum_{i=1,i\ne i&#39;}^n X_{i\ell}X_{i&#39;j})\\
+&amp; \stackrel{ind.}{=}  \sum_{i=1,i\ne i&#39;}^n E(X_{i\ell})E(X_{i&#39;j})\\
+&amp; = n(n-1)p_\ell p_j.
+\end{align*}\]</span>
+The marginal expectations are easier to compute:
+<span class="math display">\[E(Y_\ell) = E\left\{\sum_{i=1}^n X_{i\ell}\right\} = np_\ell.\]</span>
+Therefore, the covariance is
+<span class="math display">\[Cov(Y_\ell, Y_j) = -np_\ell p_j,\]</span>
+which makes sense — for <span class="math inline">\(n\)</span> samples if there are more samples in category <span class="math inline">\(\ell\)</span> then there necessarily are fewer in category <span class="math inline">\(j\)</span>, and vice versa. <br><br></p>
+<p>The Multinomial distribution is special for the fact its marginal and conditional distributions are also multi/binomial. Consider the marginal distribution of the first category count <span class="math inline">\(Y_1\)</span>. Using the total probability formula, we can compute its marginal probabilities:
+<span class="math display">\[P(Y_1 = y_1) = \sum_{\mathbb{Y}}P(Y_1 = y_1, Y_2 = y_2, Y_3 = y_3, \ldots,Y_k = y_k),\]</span>
+where <span class="math inline">\(\mathbb{Y} = \{(y_2, \ldots, y_k): n-y_1 =\sum_{2}^k y_j\}\)</span>. In other words,
+<span class="math display">\[P(Y_1 = y_1) = P(Y_1 = y_1, \sum_2^k Y_j = n - y_1).\]</span>
+This reveals that the marginal probability of <span class="math inline">\(Y_1\)</span> is a Binomial probability—the only “categories” that matter to the computation are “1” and “not 1.” Therefore, <span class="math inline">\(Y_j \sim\)</span>Binomial<span class="math inline">\((n,p_j)\)</span> for <span class="math inline">\(j \in \{1,\ldots,k\}\)</span>. <br><br></p>
+<p>Given the one-dimensional marginal distributions are Binomial, we can compute the conditional PMF of <span class="math inline">\(Y_2,\ldots, Y_k|Y_1 = y_1\)</span> as the ratio of joint to marginal PMFs:</p>
+<p><span class="math display">\[\begin{align*}
+p(y_2, \ldots, y_k|y_1) &amp;= \frac{\frac{n!}{y_1!\times \cdots \times y_k!} p_1^{y_1}\times \cdots \times p_k^{y_k}}{ \frac{n!}{y_1! (n-y_1)!} p_1^{y_1}(1-p_1)^{n-y_1}}\\
+&amp; = \frac{(n-y_1)!}{y_2!\times \cdots y_k!}\left(\frac{p_2}{1-p_1}\right)^{y_2}\times \cdots \times \left(\frac{p_k}{1-p_1}\right)^{y_k}.
+\end{align*}\]</span></p>
+</div>
+<div id="hypergeometric-distribution" class="section level2" number="8.5">
+<h2><span class="header-section-number">8.5</span> Hypergeometric distribution</h2>
+<p>The Hypergeometric distribution describes sampling from a finite population without replacement. Traditionally, the distribution describes binary outcomes, but the idea is generalizeable.<br><br></p>
+<p>Suppose there are <span class="math inline">\(n = n_1 + n_2\)</span> individuals, <span class="math inline">\(n_1\)</span> 1s and <span class="math inline">\(n_2\)</span> 0s. If <span class="math inline">\(k\)</span> individuals are randomly selected without replacement, then the probability <span class="math inline">\(j\)</span> of them are 1s is
+<span class="math display">\[P(X = j) = p(j) = \frac{{n_1 \choose j}{n_2 \choose k-j}}{{n \choose k}}, \, \, 0\leq j\leq \min(k,n_1).\]</span></p>
+<p>The calculations of moments of the Hypergeometric distribution requires repeated use of the Binomial Theorem, and does not provide much insight about the distribution, but the formulas for the Hypergeometric mean and variance are insightful, so we include them here.
+<span class="math display">\[E(X) = k\frac{n_1}{n}\quad V(X) = k\frac{n_1}{n}\frac{n_2}{n}\frac{n-n_1}{n-1}.\]</span>
+The mean of <span class="math inline">\(X\)</span> is very similar to the mean of a Binomial r.v. In this case the population proportion of 1s is exactly <span class="math inline">\(n_1/n\)</span>, which is analogous to <span class="math inline">\(p\)</span> in the Binomial case, so the formula is virtually the same. On the other hand, the variance for the Hypergeometric is like <span class="math inline">\(np(1-p)\)</span> times a “correction term” <span class="math inline">\(\frac{n-n_1}{n-1}\)</span>. We can understand the correction term as accounting for the finite-ness of the population/sampling without replacement versus sampling with replacement, as in the case of a Binomial experiment. If <span class="math inline">\(n\)</span> is large relative to <span class="math inline">\(n_1\)</span>, then this term is negligible, and there is little difference between the variances of the two distributions.</p>
 <p><br><br></p>
-<p>Some relevant textbook references include John E. Freund’s Mathematical Statistics with Applications by Miller and Miller, although many books on this material are available.</p>
+<p>Consider extending the hypergeometric to more than two categories. Let <span class="math inline">\(Y_1\)</span>, <span class="math inline">\(Y_2\)</span>, and <span class="math inline">\(Y_3\)</span> denote the counts of observations in each of three possible categories. These are sums of categorical random variable vectors sampled without replacement. Then,</p>
+<p><span class="math display">\[P(Y_1 = y_1, Y_2 = y_2, Y_3 = y_3) = \frac{{n_1\choose y_1}{n_2\choose y_2}{n_3\choose y_3}}{{n \choose y}}\]</span>
+where <span class="math inline">\(n = n_1+n_2+n_3\)</span> represent the population category counts, <span class="math inline">\(y_1 + y_2 + y_3 = y \leq n\)</span>, and <span class="math inline">\(0\leq y_i\leq n_i\)</span> for <span class="math inline">\(i=1,2,3\)</span>.</p>
+</div>
+<div id="negative-binomial-distribution" class="section level2" number="8.6">
+<h2><span class="header-section-number">8.6</span> Negative Binomial Distribution</h2>
+<p>Let <span class="math inline">\(X_1, X_2, \ldots\)</span> represent independent, identically distributed Bernoulli r.v.’s and define <span class="math inline">\(Y\)</span> to be the number of 1’s observed when the <span class="math inline">\(k^{th}\)</span> 0 is observed; <span class="math inline">\(k\)</span> is a fixed parameter. Then, the PMF of <span class="math inline">\(Y\)</span> is
+<span class="math display">\[p(y) = {k + y - 1 \choose k-1}(1-p)^kp^{y}, \, y\geq 0.\]</span>
+We say <span class="math inline">\(Y\)</span> is a Negative Binomial r.v. In the special case that <span class="math inline">\(k=1\)</span> <span class="math inline">\(Y\)</span> is called a Geometric r.v. and the PMF simplifies to
+<span class="math display">\[p(y) = (1-p)p^y\]</span>
+<br><br>
+The Negative Binomial is closely related to the binomial distribution. Both involve sequences of iid Bernoulli r.v.’s, but count different types of outcomes. The Binomial counts “successes” while the Negative Binomial counts “trials” until the <span class="math inline">\(k^{th}\)</span> failure. Notice that there is a built-in conditioning inherent in the negative binomial because we know the last trial is a failure. This accounts for the “counting term” appearing in the PMF—the last trial is fixed as a failure, so there are only the previous <span class="math inline">\(k+y - 1\)</span> trials that can be arranged in any order. <br><br></p>
+<p>The Negative Binomial for <span class="math inline">\(k\)</span> “failures” can be represented as a sum of <span class="math inline">\(k\)</span> independent Geometric r.v.’s, much like the Binomial is a sum of <span class="math inline">\(n\)</span> Bernoulli r.v.’s. This makes computing moments much simpler. If <span class="math inline">\(X\)</span> is a Geometric r.v., then
+<span class="math display">\[E(X) = \sum_{x=0}^\infty x \, p^x (1-p) = \frac{(1-p)p}{(1-p)^2} = \frac{p}{1-p}.\]</span>
+Then, if <span class="math inline">\(Y\)</span> is Negative Binomial with parameter <span class="math inline">\(k\)</span>, <span class="math inline">\(E(Y) = \frac{kp}{1-p}\)</span>.</p>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="joint-distributions.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="experiments-and-the-role-of-probability.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -231,7 +308,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-Special-Discrete-Distributions.Rmd",
 "text": "Edit"
 },
 "history": {

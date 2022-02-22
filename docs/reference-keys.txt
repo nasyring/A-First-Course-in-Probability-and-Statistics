@@ -50,3 +50,10 @@ marginal-densities
 conditional-densities
 independence-of-jointly-distributed-continuous-r.v.s
 expectations-involving-more-than-one-continuous-r.v.
+special-discrete-distributions
+bernoulli-distribution
+categorical-distribution
+binomial-distribution
+multinomial-distribution
+hypergeometric-distribution
+negative-binomial-distribution

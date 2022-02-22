@@ -6,7 +6,7 @@
 ]{book}
 \title{A First Course in Probability and Statistics}
 \author{Nick Syring}
-\date{2022-02-10}
+\date{2022-02-22}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -1023,6 +1023,98 @@ E(X_2) &= \int_0^\infty 2x_2(e^{-x_2}-e^{-2x_2}) dx_2 \\
 \end{align*}
 
 The covariance of \(X_1\) and \(X_2\) is \(1 - (3/2)(1/2) =1/4\).
+
+\hypertarget{special-discrete-distributions}{%
+\chapter{Special Discrete Distributions}\label{special-discrete-distributions}}
+
+\hypertarget{bernoulli-distribution}{%
+\section{Bernoulli Distribution}\label{bernoulli-distribution}}
+
+\(X\) is a Bernoulli random variable if it only takes values \(0\) or \(1\). Denoting \(p:=P(X=1)\) the PMF can be written \(p(x) = p^x(1-p)^{1-x}\). The mean and variance are easily found to be \(E(X) = p\) and \(V(X) = p(1-p)\). The MGF is \(M_X(t) = 1-p+pe^t\).
+
+The Bernoulli distribution can describe two different experiments:
+1. One random sample is taken from a finite population of size \(N\) of \(Np\) 1's and \(N(1-p)\) 0's (or any binary attribute), it's value is recorded, and it is then replaced.
+2. One random sample is taken, without replacement, from an infinite population of 1's and 0's in proportions of \(p\) and \(1-p\).
+
+\hypertarget{categorical-distribution}{%
+\section{Categorical Distribution}\label{categorical-distribution}}
+
+The categorical distribution generalizes the Bernoulli distribution to more than two values (more than two categories). \(X\) is a categorical random variable if it takes values in a finite set of integers, usually \(\{1,2,\ldots,k\}\) for \(k\geq 3\). Let \(p_i:=P(X=i)\) so that \(0\leq p_i\leq 1\) and \(\sum_{i=1}^k p_i = 1\). Note we only need specify \(p_1,\ldots p_{k-1}\) and then \(p_k = 1- \sum_{i=1}^{k-1}p_i\). The categorical PMF is \$
+\[p(x_1,x_2,\ldots,x_{k-1}) = \prod_{i=1}^{k} p_i^{x_i} = \left\{(1-\sum_{i=1}^{k-1} p_i)^{1-\sum_{i=1}^{k-1} x_i}\right\} \prod_{i=1}^{k-1} p_i^{x_i}.\]
+
+The categorical distribution can describe the same two types of experiments as the Bernoulli, except where the number of categories/values is now \(k\) rather than \(2\).
+
+\hypertarget{binomial-distribution}{%
+\section{Binomial distribution}\label{binomial-distribution}}
+
+If \(X_1,X_2,\ldots, X_n\) is a random sample of \(n\) Bernoulli random variables with parameter \(p\), then \(Y = \sum_{i=1}^n X_i\) is a Binomial random variable with PMF
+\[p(y) = {n \choose y}p^y(1-p)^{n-y}, \,\, y\in \{0, 1,\ldots, n\}.\]
+
+The easiest way to determine moments of the Binomial distribution is to consider its MGF. Using the fact the Binomial is a sum of independent and identically distributed (same \(p\)) Bernoulli r.v.'s we have
+\begin{align*}
+E(e^{tY}) & = E(e^{t\sum X_i}) \\
+& = E\left\{\prod_{i=1}^n e^{t X_i}\right\}\\
+& \stackrel{ind.}{=} \prod_{i=1}^n (1-p + pe^t)\\
+& = (1-p + pe^t)^n.
+\end{align*}
+Then, by differentiating once and twice:
+\[E(Y) = npe^t(1-p + pe^t)^{n-1}|_{t=0} = np\]
+\[E(Y^2) = npe^t(1-p + pe^t)^{n-1} + npe^t(n-1)pe^t((1-p + pe^t)^{n-2})|_{t=0} = np+(np)^2-np^2\]
+\[V(Y) = np(1-p).\]
+
+The Binomial distribution describes the outcomes of a repeated random sampling of Bernoulli r.v.'s. For example, in a poll of eligible voters with a binary ``yes'' or ``no'' vote a Bernoulli random variable represents one voter's outcome/vote and a Binomial random variable represents the sum of outcomes in the entire poll of \(n\) voters. Often, rather than the sum total we are interested in the sample proportion of yes/no votes, which is the transformation \(Z = Y/n\). Probabilities of \(Z\) are easily deduced from \(Y\) by \(P(Z = z) = P(Y = nz)\). Likewise, \(E(Z^q) = \frac{1}{n^q}E(Y)\) for positive integers \(q\). For example, the mean and variance of the sample proportion is \(E(Z) = p\) and \(V(Z) = \frac{p(1-p)}{n}\).
+
+\hypertarget{multinomial-distribution}{%
+\section{Multinomial Distribution}\label{multinomial-distribution}}
+
+Let \(X_i\) be a categorical random variable encoded as a binary vector in \(\mathbb{R}^k\) with \(\|X_i\|_1 = 1\). That is, \(X_i\) is a vector of zeroes and one 1 at the \(j^{th}\) index if \(X_i\) takes value \(j \in \{1,\ldots, k\}\). This is a different representation than simply taking \(X_i\) equal to its category, as represented by an integer. Then, if \(X_1, X_2, \ldots, X_n\) is a random sample (a set of independent and identically distributed) categorical random variables (as represented by binary \(k-\)vectors), then \(Y = \sum_{i=1}^n X_i\) is a Multinomial random variable. Note \(Y\) is a \(k0-\)vector with integer entries representing the counts of each category appearing in the random sample. So, the Multinomial is analogous to the Binomial as the categorical is to the Bernoulli. The PMF of \(Y\) is
+
+\[p(y_1, y_2, \ldots, y_{k}) = \frac{n!}{y_1!\times y_2!\times \cdots \times y_k!}p_1^{y_1}\times \cdots \times p_k^{y_k}\]
+where \(n = \sum_{i=1}^k y_i\), \(p_k = 1 - \sum_{i=1}^k p_i\).
+
+Using the representation of the Multinomial in terms of sums of categorical random variables helps in computing moments. Let's compute the covariance of \(Y_\ell\) and \(Y_j\), which represent the counts of categories \(\ell\) and \(j\). For each count, write \(Y_j = \sum_{i=1}^nX_{ij}\), the sum of the \(j^{th}\) index of the X categorical random variable vectors. Then,
+\begin{align*}
+E(Y_\ell Y_j) &= E\{(\sum_{i=1}^n X_{i\ell})(\sum_{i=1}^n X_{ij})\}\\
+& = E(\sum_{i=1}^n X_{i\ell}X_{ij}) + E(\sum_{i=1,i\ne i'}^n X_{i\ell}X_{i'j})\\
+& = E(0) + E(\sum_{i=1,i\ne i'}^n X_{i\ell}X_{i'j})\\
+& \stackrel{ind.}{=}  \sum_{i=1,i\ne i'}^n E(X_{i\ell})E(X_{i'j})\\
+& = n(n-1)p_\ell p_j.
+\end{align*}
+The marginal expectations are easier to compute:
+\[E(Y_\ell) = E\left\{\sum_{i=1}^n X_{i\ell}\right\} = np_\ell.\]
+Therefore, the covariance is
+\[Cov(Y_\ell, Y_j) = -np_\ell p_j,\]
+which makes sense --- for \(n\) samples if there are more samples in category \(\ell\) then there necessarily are fewer in category \(j\), and vice versa.
+
+The Multinomial distribution is special for the fact its marginal and conditional distributions are also multi/binomial. Consider the marginal distribution of the first category count \(Y_1\). Using the total probability formula, we can compute its marginal probabilities:
+\[P(Y_1 = y_1) = \sum_{\mathbb{Y}}P(Y_1 = y_1, Y_2 = y_2, Y_3 = y_3, \ldots,Y_k = y_k),\]
+where \(\mathbb{Y} = \{(y_2, \ldots, y_k): n-y_1 =\sum_{2}^k y_j\}\). In other words,
+\[P(Y_1 = y_1) = P(Y_1 = y_1, \sum_2^k Y_j = n - y_1).\]
+This reveals that the marginal probability of \(Y_1\) is a Binomial probability---the only ``categories'' that matter to the computation are ``1'' and ``not 1''. Therefore, \(Y_j \sim\)Binomial\((n,p_j)\) for \(j \in \{1,\ldots,k\}\).
+
+Given the one-dimensional marginal distributions are Binomial, we can compute the conditional PMF of \(Y_2,\ldots, Y_k|Y_1 = y_1\) as the ratio of joint to marginal PMFs:
+
+\begin{align*}
+p(y_2, \ldots, y_k|y_1) &= \frac{\frac{n!}{y_1!\times \cdots \times y_k!} p_1^{y_1}\times \cdots \times p_k^{y_k}}{ \frac{n!}{y_1! (n-y_1)!} p_1^{y_1}(1-p_1)^{n-y_1}}\\
+& = \frac{(n-y_1)!}{y_2!\times \cdots y_k!}\left(\frac{p_2}{1-p_1}\right)^{y_2}\times \cdots \times \left(\frac{p_k}{1-p_1}\right)^{y_k}.
+\end{align*}
+
+\hypertarget{hypergeometric-distribution}{%
+\section{Hypergeometric distribution}\label{hypergeometric-distribution}}
+
+The Hypergeometric distribution describes sampling from a finite population without replacement. Traditionally, the distribution describes binary outcomes, but the idea is generalizeable.
+
+Suppose there are \(n = n_1 + n_2\) individuals, \(n_1\) 1s and \(n_2\) 0s. If \(k\) individuals are randomly selected without replacement, then the probability \(j\) of them are 1s is
+\[P(X = j) = p(j) = \frac{{n_1 \choose j}{n_2 \choose k-j}}{{n \choose k}}, \, \, 0\leq j\leq \min(k,n_1).\]
+
+The calculations of moments of the Hypergeometric distribution requires repeated use of the Binomial Theorem, and does not provide much insight about the distribution, but the formulas for the Hypergeometric mean and variance are insightful, so we include them here.
+\[E(X) = k\frac{n_1}{n}\quad V(X) = k\frac{n_1}{n}\frac{n_2}{n}\frac{n-n_1}{n-1}.\]
+The mean of \(X\) is very similar to the mean of a Binomial r.v. In this case the population proportion of 1s is exactly \(n_1/n\), which is analogous to \(p\) in the Binomial case, so the formula is virtually the same. On the other hand, the variance for the Hypergeometric is like \(np(1-p)\) times a ``correction term'' \(\frac{n-n_1}{n-1}\). We can understand the correction term as accounting for the finite-ness of the population/sampling without replacement versus sampling with replacement, as in the case of a Binomial experiment. If \(n\) is large relative to \(n_1\), then this term is negligible, and there is little difference between the variances of the two distributions.
+
+Consider extending the hypergeometric to more than two categories. Let \(Y_1\), \(Y_2\), and \(Y_3\) denote the counts of observations in each of three possible categories. These are sums of categorical random variable vectors sampled without replacement. Then,
+
+\[P(Y_1 = y_1, Y_2 = y_2, Y_3 = y_3) = \frac{{n_1\choose y_1}{n_2\choose y_2}{n_3\choose y_3}}{{n \choose y}}\]
+where \(n = n_1+n_2+n_3\) represent the population category counts, \(y_1 + y_2 + y_3 = y \leq n\), and \(0\leq y_i\leq n_i\) for \(i=1,2,3\).
 
   \bibliography{book.bib,packages.bib}
 
