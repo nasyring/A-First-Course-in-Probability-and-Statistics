@@ -104,6 +104,46 @@ Then, if $Y$ is Negative Binomial with parameter $k$, $E(Y) = \frac{kp}{1-p}$.
 
 
 
+## Poisson Distribution
+
+Consider an experiment in which you count the number of "events" that happen since time zero to time $t>0$.  For example, you might count shooting stars from your campsite at Big Creek State Park.  This doesn't sound like other experiments we've discussed.  For one, how would you compute $P(X_t = 5)$, the chance the number of shooting stars observed by time $t$ is 5?  It's not clear how a counting argument would apply to this situation.  As we'll show below, with a few assumptions we can use a counting argument to derive this probability, and, once again, the Bernoulli distribution is key...<br><br>
+
+For a little more structure, let's assume the following:<br>
+1. If we consider a very small time interval, $(0, \delta t)$ for a fixed $t>0$ and a small number $\delta>0$ we assume no more than one event can be observed in the interval.  Essentially, this means events cannot occur *simultaneously*.  <br>
+2. The probability of one event in and interval of time length $\delta t$ is proportional to $\delta t$, that is, the probability equals $\lambda \delta t$ for some constant $\lambda >0$.<br>
+3. For any two disjoint time intervals, the counts of events in those two intervals are independent.
+<br><br>
+
+These assumptions allow us to make the following argument: the time interval $(0,t)$ can be partitioned into the union of disjoint intervals 
+\[(0,t) = \bigcup_{j=1}^{1/\delta} ((j-1)\delta t, \, j\delta t).\]
+And, the probability of $k$ events in $(0,t)$ is now a Binomial r.v.
+\[``P(X = k) = {1/\delta\choose k} (\lambda \delta t)^k (1- \lambda \delta t)^{1/\delta - k}."\]
+I've written the previous probability in quotes for a couple of reasons... First, since $1/\delta$ may not be an integer, it doesn't really make sense.  Second, $\delta$ is not really a constant.  Our assumption truly is that no two events happen simultaneously, which implies our treatment of intervals as Bernoulli random variables is only valid in a limiting sense as the width of the intervals is taken to be arbitrarily small.  We can incorporate this limit by evaluating the limit of the PMF in quotes above as $\delta \rightarrow 0$.  Equivalently, we can evaluate the limit of the corresponding Binomial MGF as $(1/\delta)\rightarrow \infty$, which is slightly easier.  Recall the Binomial MGF in this context is
+\[M_X(u) = (1- \lambda \delta t + \lambda \delta t e^u)^{1/\delta}.\]
+Then, its limit satisfies (defining $v = 1/\delta$)
+\begin{align*}
+\lim_{v \rightarrow \infty} \left(1+ \frac{\lambda t(e^u -1)}{v})^{v}\\
+& = e^{\lambda t(e^u - 1)}
+\end{align*}
+using the fact $\lim_n\rightarrow \infty (1+x/n)^n = e^x.$
+<br><br>
+This function is the MGF of the Poisson distribution, and has corresponding PMF
+\[p(x) = \frac{(\lambda t)^x e^{-\lambda t}}{x!},\, x=0,1,\ldots\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

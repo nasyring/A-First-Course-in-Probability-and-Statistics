@@ -57,3 +57,4 @@ binomial-distribution
 multinomial-distribution
 hypergeometric-distribution
 negative-binomial-distribution
+poisson-distribution

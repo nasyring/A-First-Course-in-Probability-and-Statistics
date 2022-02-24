@@ -162,6 +162,7 @@
 <li class="chapter" data-level="8.4" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#multinomial-distribution"><i class="fa fa-check"></i><b>8.4</b> Multinomial Distribution</a></li>
 <li class="chapter" data-level="8.5" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#hypergeometric-distribution"><i class="fa fa-check"></i><b>8.5</b> Hypergeometric distribution</a></li>
 <li class="chapter" data-level="8.6" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#negative-binomial-distribution"><i class="fa fa-check"></i><b>8.6</b> Negative Binomial Distribution</a></li>
+<li class="chapter" data-level="8.7" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>8.7</b> Poisson Distribution</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -268,6 +269,30 @@ The Negative Binomial is closely related to the binomial distribution. Both invo
 <p>The Negative Binomial for <span class="math inline">\(k\)</span> “failures” can be represented as a sum of <span class="math inline">\(k\)</span> independent Geometric r.v.’s, much like the Binomial is a sum of <span class="math inline">\(n\)</span> Bernoulli r.v.’s. This makes computing moments much simpler. If <span class="math inline">\(X\)</span> is a Geometric r.v., then
 <span class="math display">\[E(X) = \sum_{x=0}^\infty x \, p^x (1-p) = \frac{(1-p)p}{(1-p)^2} = \frac{p}{1-p}.\]</span>
 Then, if <span class="math inline">\(Y\)</span> is Negative Binomial with parameter <span class="math inline">\(k\)</span>, <span class="math inline">\(E(Y) = \frac{kp}{1-p}\)</span>.</p>
+</div>
+<div id="poisson-distribution" class="section level2" number="8.7">
+<h2><span class="header-section-number">8.7</span> Poisson Distribution</h2>
+<p>Consider an experiment in which you count the number of “events” that happen since time zero to time <span class="math inline">\(t&gt;0\)</span>. For example, you might count shooting stars from your campsite at Big Creek State Park. This doesn’t sound like other experiments we’ve discussed. For one, how would you compute <span class="math inline">\(P(X_t = 5)\)</span>, the chance the number of shooting stars observed by time <span class="math inline">\(t\)</span> is 5? It’s not clear how a counting argument would apply to this situation. As we’ll show below, with a few assumptions we can use a counting argument to derive this probability, and, once again, the Bernoulli distribution is key…<br><br></p>
+<p>For a little more structure, let’s assume the following:<br>
+1. If we consider a very small time interval, <span class="math inline">\((0, \delta t)\)</span> for a fixed <span class="math inline">\(t&gt;0\)</span> and a small number <span class="math inline">\(\delta&gt;0\)</span> we assume no more than one event can be observed in the interval. Essentially, this means events cannot occur <em>simultaneously</em>. <br>
+2. The probability of one event in and interval of time length <span class="math inline">\(\delta t\)</span> is proportional to <span class="math inline">\(\delta t\)</span>, that is, the probability equals <span class="math inline">\(\lambda \delta t\)</span> for some constant <span class="math inline">\(\lambda &gt;0\)</span>.<br>
+3. For any two disjoint time intervals, the counts of events in those two intervals are independent.
+<br><br></p>
+<p>These assumptions allow us to make the following argument: the time interval <span class="math inline">\((0,t)\)</span> can be partitioned into the union of disjoint intervals
+<span class="math display">\[(0,t) = \bigcup_{j=1}^{1/\delta} ((j-1)\delta t, \, j\delta t).\]</span>
+And, the probability of <span class="math inline">\(k\)</span> events in <span class="math inline">\((0,t)\)</span> is now a Binomial r.v.
+<span class="math display">\[``P(X = k) = {1/\delta\choose k} (\lambda \delta t)^k (1- \lambda \delta t)^{1/\delta - k}.&quot;\]</span>
+I’ve written the previous probability in quotes for a couple of reasons… First, since <span class="math inline">\(1/\delta\)</span> may not be an integer, it doesn’t really make sense. Second, <span class="math inline">\(\delta\)</span> is not really a constant. Our assumption truly is that no two events happen simultaneously, which implies our treatment of intervals as Bernoulli random variables is only valid in a limiting sense as the width of the intervals is taken to be arbitrarily small. We can incorporate this limit by evaluating the limit of the PMF in quotes above as <span class="math inline">\(\delta \rightarrow 0\)</span>. Equivalently, we can evaluate the limit of the corresponding Binomial MGF as <span class="math inline">\((1/\delta)\rightarrow \infty\)</span>, which is slightly easier. Recall the Binomial MGF in this context is
+<span class="math display">\[M_X(u) = (1- \lambda \delta t + \lambda \delta t e^u)^{1/\delta}.\]</span>
+Then, its limit satisfies (defining <span class="math inline">\(v = 1/\delta\)</span>)
+<span class="math display">\[\begin{align*}
+\lim_{v \rightarrow \infty} \left(1+ \frac{\lambda t(e^u -1)}{v})^{v}\\
+&amp; = e^{\lambda t(e^u - 1)}
+\end{align*}\]</span>
+using the fact <span class="math inline">\(\lim_n\rightarrow \infty (1+x/n)^n = e^x.\)</span>
+<br><br>
+This function is the MGF of the Poisson distribution, and has corresponding PMF
+<span class="math display">\[p(x) = \frac{(\lambda t)^x e^{-\lambda t}}{x!},\, x=0,1,\ldots\]</span></p>
 
 </div>
 </div>
