@@ -58,3 +58,11 @@ multinomial-distribution
 hypergeometric-distribution
 negative-binomial-distribution
 poisson-distribution
+example-1-poisson-process
+example-2-poisson-approximation-to-binomial
+optional-derivation-of-the-poisson-pmf-using-differential-equations
+special-continuous-distributions
+exponential-distribution
+gamma-distribution
+normal-gaussian-distribution
+example-poll-and-binomial-normal-approximation

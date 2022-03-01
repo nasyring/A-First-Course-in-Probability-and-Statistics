@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Conditional probabilities of events | A First Course in Probability and Statistics</title>
+  <title>Chapter 9 Special Continuous Distributions | A First Course in Probability and Statistics</title>
   <meta name="description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Conditional probabilities of events | A First Course in Probability and Statistics" />
+  <meta property="og:title" content="Chapter 9 Special Continuous Distributions | A First Course in Probability and Statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Conditional probabilities of events | A First Course in Probability and Statistics" />
+  <meta name="twitter:title" content="Chapter 9 Special Continuous Distributions | A First Course in Probability and Statistics" />
   
   <meta name="twitter:description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="probability-and-counting.html"/>
-<link rel="next" href="random-variables.html"/>
+<link rel="prev" href="special-discrete-distributions.html"/>
+
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -262,107 +262,80 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="conditional-probabilities-of-events" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Conditional probabilities of events</h1>
-<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> denote events in a sample space <span class="math inline">\(\mathcal{S}\)</span>. Suppose we know <span class="math inline">\(B\)</span> occurs. Then, <span class="math inline">\(P(A|B)\)</span> denotes the <strong>conditional probability</strong> of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span>. This has the mathematical formula
-<span class="math display">\[P(A|B) = \frac{P(A\cap B)}{P(B)}.\]</span>
-In this formula, <span class="math inline">\(B\)</span> acts as the new or conditional sample space. It is always true
-<span class="math display">\[P(A|\mathcal{S}) = \frac{P(A\cap \mathcal{S})}{P(\mathcal{S})} = \frac{P(A)}{1} = P(A).\]</span>
-Knowing <span class="math inline">\(B\)</span> happens is equivalent to changing the sample space to <span class="math inline">\(B\)</span>.</p>
-<div id="example" class="section level3" number="4.0.1">
-<h3><span class="header-section-number">4.0.1</span> Example</h3>
-<p>Four individuals are donating blood to a blood bank. Their blood types are unknown. If exactly 1 of them is O+, then what is the probability at least 3 are typed in order to obtain an O+ sample?<br>
-<br>
-Answer: <br>
-<span class="math display">\[P(\text{at least three must be typed}) = P(3) + P(4).\]</span>
-<span class="math display">\[P(3) = P(\text{first is not O+ and second is not O+ and third is O+}).\]</span>
-<span class="math display">\[ = P(\text{first is not O+})P(\text{second is not O+ given first is not O+})P(\text{third is O+ given first two are not})\]</span>
-<span class="math display">\[ = \frac{3}{4}\times \frac{2}{3}\times \frac{1}{2}.\]</span>
-We used a (perhaps intuitive) extension of the conditional probability formula above:
-<span class="math display">\[P(A\cap B\cap C) = P(C|A\cap B)P(A \cap B) = P(C|A\cap B)P(B|A)P(A)\]</span>
-Here, <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(C\)</span> represent the first, second, and third blood typings.</p>
+<div id="special-continuous-distributions" class="section level1" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Special Continuous Distributions</h1>
+<div id="exponential-distribution" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Exponential Distribution</h2>
+<p>Let <span class="math inline">\(Y~\sim Poisson(\lambda t)\)</span> be a Poisson process with intensity <span class="math inline">\(\lambda t\)</span>. Let <span class="math inline">\(X\)</span> be the time until the next count/event is observed. Then, the probability <span class="math inline">\(X \geq t\)</span> is the probability is takes at least <span class="math inline">\(t\)</span> time for the next event, has probability
+<span class="math display">\[P(X &gt; t) = P(\text{no events in }(0,t)) = P_Y(0;t) = \frac{(\lambda t)^0 e^{-\lambda t}}{0!} = e^{-\lambda t}.\]</span>
+The CDF of <span class="math inline">\(X\)</span> then must be
+<span class="math display">\[F_X(x) = 1-P(X &gt; x) = P(X\leq x) = 1-e^{-\lambda x},\]</span>
+and the PDF of <span class="math inline">\(X\)</span> is
+<span class="math display">\[f_X(x) = \frac{d}{dx}F_X(x) = \lambda e^{-\lambda x}, \, x\geq 0.\]</span></p>
+<p>We recognize this as the PDF of an <em>Exponential random variable</em>. This derivation provides an important connection between the Exponential and Poisson (and, ultimately, Bernoulli) distributions: the waiting times of an Poisson process (with intensity <span class="math inline">\(\lambda t\)</span>) are Exponentially distributed (with mean <span class="math inline">\(1/\lambda\)</span>).<br><br></p>
+<p>The MGF of the Exponential distribution is</p>
+<p><span class="math display">\[M_X(t) = E(e^{tX})  = \int_{0}^\infty \lambda e^{-\lambda x(1-t/\lambda)}dx\]</span>
+<span class="math display">\[ = \frac{\lambda e^{-\lambda x(1-t/\lambda)}}{-\lambda (1-t/\lambda)}|_0^\infty\]</span>
+<span class="math display">\[ = \frac{1}{1-t/\lambda}, \text{ provided }t &lt; \lambda.\]</span></p>
+<p>Taking derivatives:
+<span class="math display">\[\frac{d}{dt}M_X(t) = \frac{1}{\lambda(1-t/\lambda)^2}, \]</span>
+and taking <span class="math inline">\(t = 0\)</span> implies <span class="math inline">\(E(X) = 1/\lambda\)</span>.
+And, again,
+<span class="math display">\[\frac{d^2}{dt^2}M_X(t) = \frac{2}{\lambda^2(1-t/\lambda)^3}\]</span>
+which implies <span class="math inline">\(E(X^2) = 2/\lambda^2\)</span> and <span class="math inline">\(V(X) = 1/\lambda^2\)</span>.</p>
 </div>
-<div id="example-1" class="section level3" number="4.0.2">
-<h3><span class="header-section-number">4.0.2</span> Example</h3>
-<p>Let <span class="math inline">\(A\)</span> be the event a randomly selected adult male US citizen is at least 6’3” tall. Let <span class="math inline">\(B\)</span> be the event a randomly selected adult male US citizen is an NBA player. Which is larger, <span class="math inline">\(P(A|B)\)</span> or <span class="math inline">\(P(B|A)\)</span>?<br><br></p>
-<p>Answer:<br>
-Be careful; these can be tricky. <span class="math inline">\(P(A)\)</span> is much larger than <span class="math inline">\(P(B)\)</span> because there are many more male US citizens 6’3” or taller than there are NBA players (some also may not be US citizens). And, <span class="math inline">\(P(A|B)\)</span> is much larger than <span class="math inline">\(P(B|A)\)</span>. The reason is that if we condition on US citizen NBA players, almost all of them are 6’3” or taller. However, if we condition on US males 6’3” or taller, NBA players are still a tiny proportion.</p>
+<div id="gamma-distribution" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Gamma Distribution</h2>
+<p>Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> be a sequence of iid Exponential<span class="math inline">\((\lambda)\)</span> r.v.’s. For example, these could be the successive waiting times of the next <span class="math inline">\(n\)</span> events in a Poisson process with intensity <span class="math inline">\(\lambda t\)</span>. Then, the total waiting time for the next <span class="math inline">\(n\)</span> events is <span class="math inline">\(Y = \sum_{i=1}^n X_i\)</span>. Using the MGF method, we see
+<span class="math display">\[M_Y(t) = E(e^{tY}) = E(e^{t \sum_{i=1}^n X_i}) \stackrel{ind.}{=}\prod_{i=1}^n M_{X_i}(t)\stackrel{iid}{=}M_X(t)^n = \left(\frac{1}{1-t/\lambda}\right)^n,\]</span>
+which is the MGF of a <em>Gamma</em> random variable with two parameters: the shape (here <span class="math inline">\(n\)</span>), and the rate (here <span class="math inline">\(\lambda\)</span>). The Gamma distribution has PDF
+<span class="math display">\[f_Y(y) = \frac{\lambda^n}{\Gamma(n)}y^{n-1}e^{-\lambda y},\, y&gt;0\]</span>
+where <span class="math inline">\(\Gamma(\cdot)\)</span> denotes the “Gamma” function. If <span class="math inline">\(n\)</span> is a positive integer <span class="math inline">\(\Gamma(n) = (n-1)!\)</span>. Note: the PDF can be derived from the MGF using the <strong>inverse Laplace transform</strong> but we’ll not venture into these mathematical details here. <br><br></p>
+<p>Using the fact the Gamma r.v. is a sum of iid Exponential r.v.’s we have
+<span class="math display">\[E(Y) = n/\lambda \quad\text{and}\quad V(Y) = n/\lambda^2.\]</span>
+In general, the shape parameter <span class="math inline">\(n\)</span> need not be an integer, but if it is a fraction, then we lose the interpretation of the Gamma r.v. in terms of total waiting time.</p>
 </div>
-<div id="example-2" class="section level3" number="4.0.3">
-<h3><span class="header-section-number">4.0.3</span> Example</h3>
-<p>Bertrand’s Boxes — There are three boxes: the first has two gold coins, the second one gold and one silver, and the third two silver coins. You choose a box at random and a coin from the box at random. Given you choose a gold coin, what is the probability the other coin in that box is gold?<br><br></p>
-<p>Answer:<br></p>
-<p>Let <span class="math inline">\(G_1\)</span> be the event the first coin chosen is gold and let <span class="math inline">\(G_2\)</span> be the event the second coin chosen (same box) is gold. Let <span class="math inline">\(B_1\)</span>, <span class="math inline">\(B_2\)</span>, and <span class="math inline">\(B_3\)</span> denote events corresponding to choosing boxes 1, 2, and 3. Then, we seek
-<span class="math display">\[P(G_2|G_1) = \frac{P(G_1\cap G_2)}{P(G_1)}.\]</span>
-<span class="math display">\[P(G_1) = P(G_1 \cap B_1) + P(G_1 \cap B_2) + P(G_1 \cap B_3)\]</span>
-<span class="math display">\[ = P(G_1 | B_1)P(B_1) + P(G_1 | B_2)P(B_2)+ P(G_1 | B_3)P(B_3)\]</span>
-<span class="math display">\[ = 1 \times 1/3 + 1/2 \times 1/3 + 0 \times 1 /3 = 1/2.\]</span>
-<span class="math display">\[P(G_1\cap G_2) = P(\text{chose box 1}) = P(B_1) = 1/3.\]</span>
-Therefore,
-<span class="math display">\[P(G_2|G_1) = \frac{1/3}{1/2} = 2/3.\]</span></p>
-<p>Note: This question, which is often called “Bertrand’s Paradox,” has caused an awful lot of consternation and controversy. When pondering this question for the first time, many people will (incorrectly) suppose the answer is 1/2. Their logic is that since the first coin was gold, then either the first or second box was chosen. Then, those boxes being equally likely, there is a 1/2 chance box 1 was chosen, and, therefore, the chance of the second coin being gold is 1/2. The first part of that logic is well-founded: the third box could not have been chosen. However, the fact the first coin is gold also implies we were more likely to have chosen the first box than the second—those two boxes are not equally likely in light of the information that the first coin was gold. Indeed, we could have simply asked “what is the chance we selected box 1 given the coin is gold?”—that question is equivalent to asking the chance the second coin is gold. When rephrased this way, most people find it easier to see that the chosen box is more likely box 1 than box 2 (twice as likely, in particular), given the first coin selected is gold.</p>
-</div>
-<div id="bayes-rule" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Bayes’ rule</h2>
-<p>In the example of Bertrand’s Paradox you might have noticed we used a slick trick to compute <span class="math inline">\(P(G_1)\)</span>—we <strong>partitioned</strong> the event <span class="math inline">\(G_1\)</span> into three pieces <span class="math inline">\(G_1 = \{G_1 \cap B_1\}\cup \{G_1 \cap B_2\}\cup \{G_1 \cap B_3\}\)</span> where <span class="math inline">\(\{B_1 \cup B_2 \cup B_3\} = \mathcal{S}\)</span>. Partitioning is the act of subdividing a set into non-overlapping, or <strong>disjoint</strong>, subsets. This way, we can represent a set as a union of subsets, much like a pizza is equivalent to the collection of pizza slices. This partitioning trick is useful enough to be given a name, <em>the Law of Total Probability</em>: If <span class="math inline">\(A_1, \ldots, A_n\)</span> is a collection of disjoint subsets of <span class="math inline">\(\mathcal{S}\)</span> such that <span class="math inline">\(\mathcal{S} = \bigcup_{i=1}^n A_i\)</span> (i.e., the collection is exhaustive), then for any <span class="math inline">\(B\subset \mathcal{S}\)</span>
-<span class="math display">\[P(B) = \sum_{i=1}^n P(B \cap A_i) = \sum_{i=1}^n P(B | A_i)P(A_i).\]</span>
-Recall the axiom of countable additivity; it’s basically equivalent to the law of total probability.</p>
-<p><br><br></p>
-<p>Often times information is known about certain conditional probabilities—<span class="math inline">\(P(A|B)\)</span>—but we want to know the reverse conditional probability <span class="math inline">\(P(B|A)\)</span>. Bayes’ rule provides a formula for computing these reverse conditional probabilities. There’s not really anything special about the formula; after all, it follows immediately from the definition of conditional probability:
-<span class="math display">\[P(A|B) = \frac{P(A\cap B)}{P(B)} = \frac{P(A\cap B)P(A)}{P(B)P(A)} = \frac{P(B|A)P(A)}{P(B)}.\]</span>
-Or, in other words,
-<span class="math display">\[P(A|B)P(B) = P(B|A)P(A).\]</span></p>
-<div id="example-3" class="section level3" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Example</h3>
-<p>Perhaps the most famous example of Bayes’ rule illustrates the difficulty in detecting rare events. Suppose 1 in 1000 adults suffers from a (fairly rare) disease. A diagnostic test is 99% effective in detecting disease among individuals who have the disease. Among people who do not have the disease, the diagnostic test is nevertheless positive 2% of the time. Given the test is positive, what is the chance the individual tested has the disease?<br><br></p>
-<p>Answer:<br>
-Let <span class="math inline">\(A\)</span> be the event the test is positive and let <span class="math inline">\(B\)</span> be the event the individual tested has the disease. Then, we are given <span class="math inline">\(P(B) = 0.001\)</span>. By the law of total probablity
-<span class="math display">\[P(A) = P(A\cap B)+P(A\cap B^c) = P(A| B)P(B)+P(A| B^c)P(B^c) = 0.99\times 0.001 + 0.02\times 0.999 = 0.02097\]</span>
-We want to find <span class="math inline">\(P(B|A)\)</span>, which is equal to <span class="math inline">\(P(A|B)P(B)/P(A)\)</span> by Bayes’ rule. So,
-<span class="math display">\[P(B|A) = P(A|B)P(B)/P(A) = 0.99\times 0.001 / 0.02097 = 0.0472103.\]</span>
-This is a terrible diagnostic test. Less than 5% of people who test positive actually have the disease.</p>
-</div>
-</div>
-<div id="independence" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Independence</h2>
-<p>Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if
-<span class="math display">\[P(A|B) = P(A).\]</span>
-In other words, knowing <span class="math inline">\(B\)</span> happens does not affect the chance of <span class="math inline">\(A\)</span> happening. By using the definition of conditional probablity, it follows that
-<span class="math display">\[P(A|B) = \frac{P(A\cap B)}{P(B)} \stackrel{ind.}{=}P(A)\Rightarrow P(A\cap B) = P(A)P(B).\]</span>
-Further, if <span class="math inline">\(P(A\cap B) = P(A)P(B)\)</span> then, again using the definition of conditional probability
-<span class="math display">\[P(A|B) = \frac{P(A\cap B)}{P(B)} = \frac{P(A)P(B)}{P(B)} = P(A).\]</span>
-Therefore, independence of two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is equivalent to the <em>product rule</em> being satisfied:
-<span class="math display">\[A\text{ and }B\text{ independent } \iff P(A\cap B) = P(A)P(B).\]</span></p>
-<p>Independence extends to collections of events. For example, intuitively we know two rolls of a die are independent. But, ther’e nothing special about rolling a die twice; three or more rolls are also, intuitively, mutually independent. To be precise, we say a collection of events <span class="math inline">\(A_1, A_2, \ldots\)</span> is <em>pairwise independent</em> if for every pair <span class="math inline">\(A_i, A_j\)</span>, <span class="math inline">\(i\ne j\)</span> the product rule holds: <span class="math inline">\(P(A_i \cap A_j) = P(A_i)P(A_j)\)</span>. Furthermore, a collection of events <span class="math inline">\(A_1, A_2, \ldots\)</span> with index set equal to the natural numbers <span class="math inline">\(\mathbb{N}\)</span> (or a finite subset) is <em>mutually independent</em> if every subset <span class="math inline">\(\{A_i, i\in I, I\subset \mathbb{N}\}\)</span> of events obeys the product rule: <span class="math inline">\(P( \bigcap_{i \in I} A_i) = \prod_{i \in I} P(A_i)\)</span>. <br><br></p>
-<p>Example: Consider rolling a fair die <span class="math inline">\(n\)</span> times and recording the outcomes. Let <span class="math inline">\(A_i,\)</span> <span class="math inline">\(i = 1,\ldots,n\)</span> be the event the <span class="math inline">\(i^{th}\)</span> roll is odd. The set <span class="math inline">\(\{A_i, i=1, \ldots, n\}\)</span> is mutually independent. <br><br></p>
-<p>Example: Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> denote the events that the first and second tosses of a fair coin are heads. These are independent events. Define <span class="math inline">\(C = \{\{A\cup B\}-\{A\cap B\}\}\)</span>. Then, <span class="math inline">\(A\)</span> and <span class="math inline">\(C\)</span> are pairwise independent. To see this, compute:
-<span class="math display">\[P(A \cap C) = P(A \cap \{\{A \cap B^c\} \cup \{A^c \cap  B\}\}) = P(A \cap \{A \cap B^c\}) + P(A \cap \{A^c \cap  B\}) = P(A \cap B^c) = P(A)(1-P(B)) = 0.25\]</span>
-<span class="math display">\[P(C) = P(A \cap B^c) + P(A^c \cap B) = P(A) - P(A)P(B) + P(B)- P(A)P(B) = 0.5\]</span>
-<span class="math display">\[P(A)P(C) = 0.25\]</span>
-But, A, B, and C are not mutually independent because
-<span class="math display">\[\{A\cap B\cap C\} = \{\{A\cap B\}\cap \{A \cap B^c\}\} \cup \{\{A\cap B\}\cap \{A^c \cap B\}\} = \emptyset\]</span>
-So, <span class="math inline">\(P(A\cap B\cap C) = 0\)</span>, while <span class="math inline">\(P(A)P(B)P(C) = 0.125\)</span>.</p>
-</div>
-<div id="exercises-2" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Exercises</h2>
-<ol style="list-style-type: decimal">
-<li>Seventy percent of small, private-use aircraft that disappear in flight are eventually discovered. Of the aircraft that are discovered, <span class="math inline">\(60\%\)</span> have a black box, whereas <span class="math inline">\(90\%\)</span> of the missing aircraft that are not discovered do not have a black box. Suppose an aircraft has disappeared.<br></li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>If it has a black box what is the probability it will not be discovered?<br></li>
-<li>If it does not have a black box what is the probability it will be discovered?</li>
-</ol>
-<p><br><br></p>
-<ol start="2" style="list-style-type: decimal">
-<li>Consider rolling two different fair, six-sided dice, one red and one green. Let <span class="math inline">\(A\)</span> be the event the red die is 3, <span class="math inline">\(B\)</span> be the event the green die is <span class="math inline">\(4\)</span>, and <span class="math inline">\(C\)</span> be the event the sum of the two die is <span class="math inline">\(7\)</span>.<br></li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>Are <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> independent?<br></li>
-<li>Are <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span> independent?<br></li>
-<li>Are <span class="math inline">\(A\)</span> and <span class="math inline">\(C\)</span> independent?<br></li>
-<li>Are the three events mutually independent?</li>
-</ol>
+<div id="normal-gaussian-distribution" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Normal (Gaussian) Distribution</h2>
+<p>We have already seen how a limiting case of the Binomial distribution can give rise to the Poisson distribution and describe a different type of experiment. Now, we’ll explore a different kind of Binomial limiting case.<br><br></p>
+<p>Let <span class="math inline">\(Y\sim N(\mu, \sigma^2)\)</span> be a Normal random variable with mean and variance parameters <span class="math inline">\((\mu,\sigma^2)\)</span> and PDF
+<span class="math display">\[f(y) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2\sigma^2}(y - \mu)^2}.\]</span>
+It’s easy to check the normal PDF satisfies the ODE
+<span class="math display">\[\frac{d}{dy}f(y) = -\left(\frac{y - \mu}{\sigma^2}\right)f(y).\]</span></p>
+<p>The claim, that links Binomial to Normal, is that the PMF <span class="math inline">\(p(x)\)</span> of <span class="math inline">\(X\sim Binomial(n,p)\)</span> is approximately equal to the normal PDF <span class="math inline">\(f(y)\)</span> with <span class="math inline">\((\mu,\sigma^2) = (np, np(1-p))\)</span> for large <span class="math inline">\(n\)</span>. More precisely,
+<span class="math display">\[\lim_{n\rightarrow \infty} P\left(\frac{X - np}{\sqrt{np(1-p)}}\leq x\right) = \int_{-\infty}^x f_Y(y)dy\]</span>
+or, in other words, normal approximations to Binomial probabilities converge as <span class="math inline">\(n\rightarrow \infty\)</span>. <br><br></p>
+<p>We can roughly verify this claim by showing the Binomial PMF obeys the same ODE as the normal PDF, in the limit as <span class="math inline">\(n\rightarrow \infty\)</span>. Now, the Binomial r.v. is discrete so the derivative must be replaced by a difference, but these differences converge to derivatives as <span class="math inline">\(n\rightarrow\infty\)</span> (this is how the derivative is defined, after all). The Normal ODE says
+<span class="math display">\[\frac{f&#39;(y)}{f(y)}\left(-\frac{\sigma^2}{y - \mu}\right) = 1.\]</span>
+For the Binomial PMF, we have
+<span class="math display">\[\frac{p(x+1;n) - p(x;n)}{p(x;n)}\left(-\frac{np(1-p)}{x-np}\right) = \frac{np-x - (1-p)}{x(1-p)+1-p}\left(-\frac{np(1-p)}{x-np}\right).\]</span>
+Make the transformation <span class="math inline">\(z = \frac{x-np}{\sqrt{np(1-p)}}\)</span>, and substitute into the above to find
+<span class="math display">\[\frac{p(x+1;n) - p(x;n)}{p(x;n)}\left(-\frac{np(1-p)}{x-np}\right) = \frac{z\sqrt{np(1-p)}-(1-p)}{z(1-p)\sqrt{np(1-p)}+np(1-p)+(1-p)}\frac{\sqrt{np(1-p)}}{z}.\]</span>
+Factoring out <span class="math inline">\(znp(1-p)\)</span> from the numerator and denominator, we obtain
+<span class="math display">\[\frac{-1-\frac{1-p}{z\sqrt{np(1-p)}}}{-\frac{(1-p)z}{\sqrt{np(1-p)}}-1-\frac{1-p}{z\sqrt{np(1-p)}}}\]</span>
+The term <span class="math inline">\(\sqrt{np(1-p)}\)</span> dominates, and, as a result, the ratio has limit <span class="math inline">\(1\)</span>. Some details are missing from this argument that would make the result formal, such as an explanation about the possible values of <span class="math inline">\(z\)</span>, but we’ll not dwell on the details. An alternative argument, one that is more complicated but also more rigorous, uses Stirling’s approximation and a Taylor series expansion, and can be found in many textbooks.<br><br></p>
+<p>For our purposes, the interpretation of the Binomial-Normal distribution connection is more important than its precise mathematical details. Take the example of a poll once more. Suppose a large number, say <span class="math inline">\(5000\)</span>, eligible voters are polled. It’s of little importance to compute very precise probabilities like <span class="math inline">\(p(2739) = P(\text{2739 voters prefer candidate 1})\)</span> and much more natural to quantify ranges of the sample proportion, e.g., <span class="math inline">\(P(\text{between 40 and 45\% of voters prefer candidate 1})\)</span>, which is a probability statement about a continuous quantity. The point is, when a discrete variable takes values in a very large set, its often more natural to treat it as a continuous random variable. And, it turns out, at least in the case of the Binomial/poll, the continuous approximation is very good.</p>
+<div id="example-poll-and-binomial-normal-approximation" class="section level3" number="9.3.1">
+<h3><span class="header-section-number">9.3.1</span> Example: Poll and Binomial-Normal approximation</h3>
+<p>In a poll of <span class="math inline">\(5000\)</span> eligible voters from a population of voters that is split 50/50 in their preferences between two candidates, what is the probability the sample proportion of voters favoring candidate 1 is between <span class="math inline">\(47\%\)</span> and <span class="math inline">\(50\%\)</span>?<br><br></p>
+<p>Solution:
+Applying the binomial distribution we have
+<span class="math display">\[P(2350\leq X \leq 2500) = \sum_{x=2350}^{2500} {5000 \choose x}(0.5)^x(0.5)^{2500-x}.\]</span></p>
+<p>Applying the normal approximation, we have <span class="math inline">\(Y=\frac{X - np}{\sqrt{np(1-p)}} = \frac{X - 2500}{35.35534} \stackrel{\cdot}{\sim}N(0,1)\)</span>, and
+<span class="math display">\[P(2350\leq X \leq 2500)\approx P(-4.24261 \leq Y \leq 0).\]</span></p>
+<p>Since <span class="math inline">\(X\)</span> is discrete and <span class="math inline">\(Y\)</span> is continuous, it is often suggested that a small adjustment is made to compensate for the fact <span class="math inline">\(X\)</span> takes only integer values. This is the <strong>continuity correction</strong> and it has the form
+<span class="math display">\[P_X(x)\approx F_Z\left(\frac{x-np+0.5}{\sqrt{np(1-p)}}\right).\]</span>
+That is, the Binomial CDF at <span class="math inline">\(x\)</span> is approximated by the normal CDF at <span class="math inline">\(z + 0.5/\sqrt{np(1-p)}\)</span> where <span class="math inline">\(z = \frac{x-np}{\sqrt{np(1-p)}}\)</span></p>
+<p>We can compute these probabilities using the functions <span class="math inline">\(pbinom\)</span> and <span class="math inline">\(pnorm\)</span> in R:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="special-continuous-distributions.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">2500</span>,<span class="dv">5000</span>,<span class="fl">0.5</span>)<span class="sc">-</span><span class="fu">pbinom</span>(<span class="dv">2349</span>,<span class="dv">5000</span>,<span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## [1] 0.5056313</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="special-continuous-distributions.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">0</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">4.24261</span>)</span></code></pre></div>
+<pre><code>## [1] 0.499989</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="special-continuous-distributions.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># with cty corr</span></span>
+<span id="cb5-2"><a href="special-continuous-distributions.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">0</span><span class="fl">+0.5</span><span class="sc">/</span><span class="fl">35.35534</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">4.24261+0.5</span><span class="sc">/</span><span class="fl">35.35534</span>)</span></code></pre></div>
+<pre><code>## [1] 0.5056299</code></pre>
 
+</div>
 </div>
 </div>
             </section>
@@ -370,8 +343,8 @@ So, <span class="math inline">\(P(A\cap B\cap C) = 0\)</span>, while <span class
           </div>
         </div>
       </div>
-<a href="probability-and-counting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="random-variables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="special-discrete-distributions.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -402,7 +375,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-conditional-probabilities-of-events.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-Special-Continuous-Distributions.Rmd",
 "text": "Edit"
 },
 "history": {

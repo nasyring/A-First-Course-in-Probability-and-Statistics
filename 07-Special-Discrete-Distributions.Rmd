@@ -10,7 +10,7 @@ The Bernoulli distribution can describe two different experiments:<br>
 
 ## Categorical Distribution
 
-The categorical distribution generalizes the Bernoulli distribution to more than two values (more than two categories).  $X$ is a categorical random variable if it takes values in a finite set of integers, usually $\{1,2,\ldots,k\}$ for $k\geq 3$. Let $p_i:=P(X=i)$ so that $0\leq p_i\leq 1$ and $\sum_{i=1}^k p_i = 1$.  Note we only need specify $p_1,\ldots p_{k-1}$ and then $p_k = 1- \sum_{i=1}^{k-1}p_i$.  The categorical PMF is $
+The categorical distribution generalizes the Bernoulli distribution to more than two values (more than two categories).  $X$ is a categorical random variable if it takes values in a finite set of integers, usually $\{1,2,\ldots,k\}$ for $k\geq 3$. Let $p_i:=P(X=i)$ so that $0\leq p_i\leq 1$ and $\sum_{i=1}^k p_i = 1$.  Note we only need specify $p_1,\ldots p_{k-1}$ and then $p_k = 1- \sum_{i=1}^{k-1}p_i$.  The categorical PMF is 
 \[p(x_1,x_2,\ldots,x_{k-1}) = \prod_{i=1}^{k} p_i^{x_i} = \left\{(1-\sum_{i=1}^{k-1} p_i)^{1-\sum_{i=1}^{k-1} x_i}\right\} \prod_{i=1}^{k-1} p_i^{x_i}.\]
 
 The categorical distribution can describe the same two types of experiments as the Bernoulli, except where the number of categories/values is now $k$ rather than $2$.
@@ -117,18 +117,85 @@ For a little more structure, let's assume the following:<br>
 These assumptions allow us to make the following argument: the time interval $(0,t)$ can be partitioned into the union of disjoint intervals 
 \[(0,t) = \bigcup_{j=1}^{1/\delta} ((j-1)\delta t, \, j\delta t).\]
 And, the probability of $k$ events in $(0,t)$ is now a Binomial r.v.
-\[``P(X = k) = {1/\delta\choose k} (\lambda \delta t)^k (1- \lambda \delta t)^{1/\delta - k}."\]
+\[\text{``}P(X = k) = {1/\delta\choose k} (\lambda \delta t)^k (1- \lambda \delta t)^{1/\delta - k}.\text{"}\]
 I've written the previous probability in quotes for a couple of reasons... First, since $1/\delta$ may not be an integer, it doesn't really make sense.  Second, $\delta$ is not really a constant.  Our assumption truly is that no two events happen simultaneously, which implies our treatment of intervals as Bernoulli random variables is only valid in a limiting sense as the width of the intervals is taken to be arbitrarily small.  We can incorporate this limit by evaluating the limit of the PMF in quotes above as $\delta \rightarrow 0$.  Equivalently, we can evaluate the limit of the corresponding Binomial MGF as $(1/\delta)\rightarrow \infty$, which is slightly easier.  Recall the Binomial MGF in this context is
 \[M_X(u) = (1- \lambda \delta t + \lambda \delta t e^u)^{1/\delta}.\]
 Then, its limit satisfies (defining $v = 1/\delta$)
 \begin{align*}
-\lim_{v \rightarrow \infty} \left(1+ \frac{\lambda t(e^u -1)}{v})^{v}\\
+\lim_{v \rightarrow \infty} \left(1+ \frac{\lambda t(e^u -1)}{v}\right)^{v}\\
 & = e^{\lambda t(e^u - 1)}
 \end{align*}
 using the fact $\lim_n\rightarrow \infty (1+x/n)^n = e^x.$
 <br><br>
 This function is the MGF of the Poisson distribution, and has corresponding PMF
 \[p(x) = \frac{(\lambda t)^x e^{-\lambda t}}{x!},\, x=0,1,\ldots\]
+
+### Example 1: Poisson process
+
+Shoppers enter Hyvee according to a Poisson process with intensity $\lambda = 6$ per minute.  What is the chance that in the next 15 seconds either 0, 1, or 2 customers enter?<br><br>
+
+Solution:  First, find the intensity for a 15 second period, $6$ per minute means $1.5$ per 15 seconds.  Then, compute
+
+\[p(0)+p(1)+p(2) = \frac{\lambda^0e^{-\lambda}}{0!}+\frac{\lambda^1e^{-\lambda}}{1!}+\frac{\lambda^2e^{-\lambda}}{2!}\]
+\[e^{-1.5}\left\{1+a.5 + \frac{1.5^2}{2}\right\}\]
+\[ \approx 0.809\] 
+
+
+
+### Example 2: Poisson approximation to Binomial
+
+Let $X\sim Binomial(n,p)$. When the number of trials is ``large" and the Bernoulli success probability $p$ is small, $p(x)$ can be approximated by the Poisson PMF $p(y)$ where $Y\sim Poisson(\lambda = np)$.  A rule of thumb provided by the Freund textbook says the approximation is good when $n\geq 20$ and $p\leq 0.05$.  <br><br>
+
+Suppose in a population of drivers about $5\%$ will have an accident in the coming year.  Let $X$ be the number of accidents among a random sample of 150 of these drivers.  Find $p(5)$, the probability there will be 5 accidents among the sampled drivers.  Use the Binomial and its Poisson approximation and compare the answers.<br><br>
+
+Solution:
+\[p_X(5) = {150 \choose 5}(0.05)^5(0.95)^{145} = dbinom(5,150,0.05) \approx 0.109. \]
+Let $Y \sim Poisson(7.5)$.
+\[p_Y(5) = \frac{7.5^5 e^{-7.5}}{5!} = dpois(5,7.5) \approx 0.109. \]
+
+## Optional: Derivation of the Poisson PMF using differential equations
+
+We begin with the same three assumptions as before: in a very small time intervals (of length $\delta t$) the number of events is Bernoulli with $p=\lambda\delta t$, and counts in disjoint time intervals are independent.<br><br>
+
+Next, consider the probability of zero events in the time interval $(0, t+\delta t)$.  This is equal the probability of no events in $(0,t)$ and no events in $(t, t+\delta t)$, two disjoint time intervals.  We can write this probability as
+\[P(0; t+\delta t) = P(0;t)(1-\lambda \delta t)\]
+using the fact the probability in the second, small interval is Bernoulli.  Rewrite this as
+\[\frac{P(0;t+\delta t)-P(0;t)}{\delta t} = -\lambda P(0;t),\]
+and, taking limits as $\delta t \rightarrow 0$ we obtain the separable ODE
+\[\frac{dP(0;t)}{dt} - \lambda P(0;t).\]
+Integrating both sides we find
+\[P(0;t) = Ce^{-\lambda t}\]
+for a constant $C>0$.  The ``initial condition" says $P(0;0) = 1$ because no events can happen in a time interval of length zero, which implies $C=1$.  <br><br>
+
+So far we have found the probability of zero events in time interval $(0,t)$.  What about generalizing this to $n$ events?  Use the same technique and represent the interval $(0, t+\delta t)$ as the union of $(0,t)$ and  $(t, t+\delta t)$.  For the probability there are $n$ events in time $(0,t+\delta t)$ there are two possibilities: $n-1$ events in $(0,1)$ and $1$ in $(t, t+\delta t)$ or $n$ events in $(0,t)$ and none in $(t, t+\delta t)$ and this happens with probability
+\[P(n;t+\delta t)  = P(n;t)(1-\lambda \delta t) + P(n-1;t)\lambda\delta t.\]
+Again, taking the limit as $\delta t \rightarrow 0$ we obtain the ODE
+\[\frac{d P(n;t)}{dt} + \lambda P(n;t) = \lambda P(n-1;t).\]
+The ``integrating factor" approach can be used to solve this ODE.  The goal is to find a function $g(t)$ such that
+\[g(t)\left\{\frac{d P(n;t)}{dt} + \lambda P(n;t)\right\} = \frac{d}{dt}\{g(t)P(n;t)\}.\]
+A little intuition suggests $e^{\lambda t}$, which works.  We have
+\[\frac{d}{dt}\{e^{\lambda t}P(n;t)\} = \lambda e^{\lambda t}P(n-1;t).\]
+Plugging in $n=1$ we see that 
+\[\frac{d}{dt}\{e^{\lambda t}P(1;t)\} = \lambda e^{\lambda t}P(0;t) = \lambda e^{\lambda t}e^{-\lambda t} = \lambda.\]
+And, integrating both sides above we get
+\[e^{\lambda t}P(1;t) = \lambda t + C,\]
+where $C = 0$ is implied by the fact $P(1;0) = 0$, the chance of 1 count in no time is zero.  <br><br>
+So far, we have found $P(0;t) = e^{-\lambda t}$ and $P(1;t) = \lambda t e^{-\lambda t}$.  For general $n$, the idea is to repeat this argument inductively, assuming $P(n;t) = \frac{(\lambda t)^n e^{-\lambda t}}{n!}$.  For the inductive step, we need only show that assuming the above will show $P(n+1;t) = \frac{(\lambda t)^{n+1} e^{-\lambda t}}{(n+1)!}$ and we're done.  This follows from the differential equation:
+\[\frac{d}{dt}\left\{e^{\lambda t}P(n+1;t)\right\} = \lambda e^{\lambda t}P(n;t) = \lambda e^{\lambda t} \frac{(\lambda t)^n e^{-\lambda t}}{n!} = \lambda \frac{(\lambda t)^n}{n!}.\]
+Integrating both sides we obtain
+\[e^{\lambda t}P(n+1;t) = \frac{(\lambda t)^{n+1}}{(n+1)!}+C\]
+where, again, $C=0$ follows from $P(n+1;0) = 0$.  Therefore, solving for $P(n+1;t)$ we obtain
+\[P(n+1;t) = \frac{(\lambda t)^{n+1}e^{-\lambda t}}{(n+1)!}\]
+as claimed.
+
+
+
+
+
+
+
+
+
 
 
 

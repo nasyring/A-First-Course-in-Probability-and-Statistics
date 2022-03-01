@@ -6,7 +6,7 @@
 ]{book}
 \title{A First Course in Probability and Statistics}
 \author{Nick Syring}
-\date{2022-02-22}
+\date{2022-03-01}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -45,6 +45,46 @@
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
@@ -1039,7 +1079,7 @@ The Bernoulli distribution can describe two different experiments:
 \hypertarget{categorical-distribution}{%
 \section{Categorical Distribution}\label{categorical-distribution}}
 
-The categorical distribution generalizes the Bernoulli distribution to more than two values (more than two categories). \(X\) is a categorical random variable if it takes values in a finite set of integers, usually \(\{1,2,\ldots,k\}\) for \(k\geq 3\). Let \(p_i:=P(X=i)\) so that \(0\leq p_i\leq 1\) and \(\sum_{i=1}^k p_i = 1\). Note we only need specify \(p_1,\ldots p_{k-1}\) and then \(p_k = 1- \sum_{i=1}^{k-1}p_i\). The categorical PMF is \$
+The categorical distribution generalizes the Bernoulli distribution to more than two values (more than two categories). \(X\) is a categorical random variable if it takes values in a finite set of integers, usually \(\{1,2,\ldots,k\}\) for \(k\geq 3\). Let \(p_i:=P(X=i)\) so that \(0\leq p_i\leq 1\) and \(\sum_{i=1}^k p_i = 1\). Note we only need specify \(p_1,\ldots p_{k-1}\) and then \(p_k = 1- \sum_{i=1}^{k-1}p_i\). The categorical PMF is
 \[p(x_1,x_2,\ldots,x_{k-1}) = \prod_{i=1}^{k} p_i^{x_i} = \left\{(1-\sum_{i=1}^{k-1} p_i)^{1-\sum_{i=1}^{k-1} x_i}\right\} \prod_{i=1}^{k-1} p_i^{x_i}.\]
 
 The categorical distribution can describe the same two types of experiments as the Bernoulli, except where the number of categories/values is now \(k\) rather than \(2\).
@@ -1115,6 +1155,219 @@ Consider extending the hypergeometric to more than two categories. Let \(Y_1\), 
 
 \[P(Y_1 = y_1, Y_2 = y_2, Y_3 = y_3) = \frac{{n_1\choose y_1}{n_2\choose y_2}{n_3\choose y_3}}{{n \choose y}}\]
 where \(n = n_1+n_2+n_3\) represent the population category counts, \(y_1 + y_2 + y_3 = y \leq n\), and \(0\leq y_i\leq n_i\) for \(i=1,2,3\).
+
+\hypertarget{negative-binomial-distribution}{%
+\section{Negative Binomial Distribution}\label{negative-binomial-distribution}}
+
+Let \(X_1, X_2, \ldots\) represent independent, identically distributed Bernoulli r.v.'s and define \(Y\) to be the number of 1's observed when the \(k^{th}\) 0 is observed; \(k\) is a fixed parameter. Then, the PMF of \(Y\) is
+\[p(y) = {k + y - 1 \choose k-1}(1-p)^kp^{y}, \, y\geq 0.\]
+We say \(Y\) is a Negative Binomial r.v. In the special case that \(k=1\) \(Y\) is called a Geometric r.v. and the PMF simplifies to
+\[p(y) = (1-p)p^y\]
+The Negative Binomial is closely related to the binomial distribution. Both involve sequences of iid Bernoulli r.v.'s, but count different types of outcomes. The Binomial counts ``successes'' while the Negative Binomial counts ``trials'' until the \(k^{th}\) failure. Notice that there is a built-in conditioning inherent in the negative binomial because we know the last trial is a failure. This accounts for the ``counting term'' appearing in the PMF---the last trial is fixed as a failure, so there are only the previous \(k+y - 1\) trials that can be arranged in any order.
+
+The Negative Binomial for \(k\) ``failures'' can be represented as a sum of \(k\) independent Geometric r.v.'s, much like the Binomial is a sum of \(n\) Bernoulli r.v.'s. This makes computing moments much simpler. If \(X\) is a Geometric r.v., then
+\[E(X) = \sum_{x=0}^\infty x \, p^x (1-p) = \frac{(1-p)p}{(1-p)^2} = \frac{p}{1-p}.\]
+Then, if \(Y\) is Negative Binomial with parameter \(k\), \(E(Y) = \frac{kp}{1-p}\).
+
+\hypertarget{poisson-distribution}{%
+\section{Poisson Distribution}\label{poisson-distribution}}
+
+Consider an experiment in which you count the number of ``events'' that happen since time zero to time \(t>0\). For example, you might count shooting stars from your campsite at Big Creek State Park. This doesn't sound like other experiments we've discussed. For one, how would you compute \(P(X_t = 5)\), the chance the number of shooting stars observed by time \(t\) is 5? It's not clear how a counting argument would apply to this situation. As we'll show below, with a few assumptions we can use a counting argument to derive this probability, and, once again, the Bernoulli distribution is key\ldots{}
+
+For a little more structure, let's assume the following:
+1. If we consider a very small time interval, \((0, \delta t)\) for a fixed \(t>0\) and a small number \(\delta>0\) we assume no more than one event can be observed in the interval. Essentially, this means events cannot occur \emph{simultaneously}.
+2. The probability of one event in and interval of time length \(\delta t\) is proportional to \(\delta t\), that is, the probability equals \(\lambda \delta t\) for some constant \(\lambda >0\).
+3. For any two disjoint time intervals, the counts of events in those two intervals are independent.
+
+These assumptions allow us to make the following argument: the time interval \((0,t)\) can be partitioned into the union of disjoint intervals
+\[(0,t) = \bigcup_{j=1}^{1/\delta} ((j-1)\delta t, \, j\delta t).\]
+And, the probability of \(k\) events in \((0,t)\) is now a Binomial r.v.
+\[\text{``}P(X = k) = {1/\delta\choose k} (\lambda \delta t)^k (1- \lambda \delta t)^{1/\delta - k}.\text{"}\]
+I've written the previous probability in quotes for a couple of reasons\ldots{} First, since \(1/\delta\) may not be an integer, it doesn't really make sense. Second, \(\delta\) is not really a constant. Our assumption truly is that no two events happen simultaneously, which implies our treatment of intervals as Bernoulli random variables is only valid in a limiting sense as the width of the intervals is taken to be arbitrarily small. We can incorporate this limit by evaluating the limit of the PMF in quotes above as \(\delta \rightarrow 0\). Equivalently, we can evaluate the limit of the corresponding Binomial MGF as \((1/\delta)\rightarrow \infty\), which is slightly easier. Recall the Binomial MGF in this context is
+\[M_X(u) = (1- \lambda \delta t + \lambda \delta t e^u)^{1/\delta}.\]
+Then, its limit satisfies (defining \(v = 1/\delta\))
+\begin{align*}
+\lim_{v \rightarrow \infty} \left(1+ \frac{\lambda t(e^u -1)}{v}\right)^{v}\\
+& = e^{\lambda t(e^u - 1)}
+\end{align*}
+using the fact \(\lim_n\rightarrow \infty (1+x/n)^n = e^x.\)
+This function is the MGF of the Poisson distribution, and has corresponding PMF
+\[p(x) = \frac{(\lambda t)^x e^{-\lambda t}}{x!},\, x=0,1,\ldots\]
+
+\hypertarget{example-1-poisson-process}{%
+\subsection{Example 1: Poisson process}\label{example-1-poisson-process}}
+
+Shoppers enter Hyvee according to a Poisson process with intensity \(\lambda = 6\) per minute. What is the chance that in the next 15 seconds either 0, 1, or 2 customers enter?
+
+Solution: First, find the intensity for a 15 second period, \(6\) per minute means \(1.5\) per 15 seconds. Then, compute
+
+\[p(0)+p(1)+p(2) = \frac{\lambda^0e^{-\lambda}}{0!}+\frac{\lambda^1e^{-\lambda}}{1!}+\frac{\lambda^2e^{-\lambda}}{2!}\]
+\[e^{-1.5}\left\{1+a.5 + \frac{1.5^2}{2}\right\}\]
+\[ \approx 0.809\]
+
+\hypertarget{example-2-poisson-approximation-to-binomial}{%
+\subsection{Example 2: Poisson approximation to Binomial}\label{example-2-poisson-approximation-to-binomial}}
+
+Let \(X\sim Binomial(n,p)\). When the number of trials is ``large'' and the Bernoulli success probability \(p\) is small, \(p(x)\) can be approximated by the Poisson PMF \(p(y)\) where \(Y\sim Poisson(\lambda = np)\). A rule of thumb provided by the Freund textbook says the approximation is good when \(n\geq 20\) and \(p\leq 0.05\).
+
+Suppose in a population of drivers about \(5\%\) will have an accident in the coming year. Let \(X\) be the number of accidents among a random sample of 150 of these drivers. Find \(p(5)\), the probability there will be 5 accidents among the sampled drivers. Use the Binomial and its Poisson approximation and compare the answers.
+
+Solution:
+\[p_X(5) = {150 \choose 5}(0.05)^5(0.95)^{145} = dbinom(5,150,0.05) \approx 0.109. \]
+Let \(Y \sim Poisson(7.5)\).
+\[p_Y(5) = \frac{7.5^5 e^{-7.5}}{5!} = dpois(5,7.5) \approx 0.109. \]
+
+\hypertarget{optional-derivation-of-the-poisson-pmf-using-differential-equations}{%
+\section{Optional: Derivation of the Poisson PMF using differential equations}\label{optional-derivation-of-the-poisson-pmf-using-differential-equations}}
+
+We begin with the same three assumptions as before: in a very small time intervals (of length \(\delta t\)) the number of events is Bernoulli with \(p=\lambda\delta t\), and counts in disjoint time intervals are independent.
+
+Next, consider the probability of zero events in the time interval \((0, t+\delta t)\). This is equal the probability of no events in \((0,t)\) and no events in \((t, t+\delta t)\), two disjoint time intervals. We can write this probability as
+\[P(0; t+\delta t) = P(0;t)(1-\lambda \delta t)\]
+using the fact the probability in the second, small interval is Bernoulli. Rewrite this as
+\[\frac{P(0;t+\delta t)-P(0;t)}{\delta t} = -\lambda P(0;t),\]
+and, taking limits as \(\delta t \rightarrow 0\) we obtain the separable ODE
+\[\frac{dP(0;t)}{dt} - \lambda P(0;t).\]
+Integrating both sides we find
+\[P(0;t) = Ce^{-\lambda t}\]
+for a constant \(C>0\). The ``initial condition'' says \(P(0;0) = 1\) because no events can happen in a time interval of length zero, which implies \(C=1\).
+
+So far we have found the probability of zero events in time interval \((0,t)\). What about generalizing this to \(n\) events? Use the same technique and represent the interval \((0, t+\delta t)\) as the union of \((0,t)\) and \((t, t+\delta t)\). For the probability there are \(n\) events in time \((0,t+\delta t)\) there are two possibilities: \(n-1\) events in \((0,1)\) and \(1\) in \((t, t+\delta t)\) or \(n\) events in \((0,t)\) and none in \((t, t+\delta t)\) and this happens with probability
+\[P(n;t+\delta t)  = P(n;t)(1-\lambda \delta t) + P(n-1;t)\lambda\delta t.\]
+Again, taking the limit as \(\delta t \rightarrow 0\) we obtain the ODE
+\[\frac{d P(n;t)}{dt} + \lambda P(n;t) = \lambda P(n-1;t).\]
+The ``integrating factor'' approach can be used to solve this ODE. The goal is to find a function \(g(t)\) such that
+\[g(t)\left\{\frac{d P(n;t)}{dt} + \lambda P(n;t)\right\} = \frac{d}{dt}\{g(t)P(n;t)\}.\]
+A little intuition suggests \(e^{\lambda t}\), which works. We have
+\[\frac{d}{dt}\{e^{\lambda t}P(n;t)\} = \lambda e^{\lambda t}P(n-1;t).\]
+Plugging in \(n=1\) we see that
+\[\frac{d}{dt}\{e^{\lambda t}P(1;t)\} = \lambda e^{\lambda t}P(0;t) = \lambda e^{\lambda t}e^{-\lambda t} = \lambda.\]
+And, integrating both sides above we get
+\[e^{\lambda t}P(1;t) = \lambda t + C,\]
+where \(C = 0\) is implied by the fact \(P(1;0) = 0\), the chance of 1 count in no time is zero.
+So far, we have found \(P(0;t) = e^{-\lambda t}\) and \(P(1;t) = \lambda t e^{-\lambda t}\). For general \(n\), the idea is to repeat this argument inductively, assuming \(P(n;t) = \frac{(\lambda t)^n e^{-\lambda t}}{n!}\). For the inductive step, we need only show that assuming the above will show \(P(n+1;t) = \frac{(\lambda t)^{n+1} e^{-\lambda t}}{(n+1)!}\) and we're done. This follows from the differential equation:
+\[\frac{d}{dt}\left\{e^{\lambda t}P(n+1;t)\right\} = \lambda e^{\lambda t}P(n;t) = \lambda e^{\lambda t} \frac{(\lambda t)^n e^{-\lambda t}}{n!} = \lambda \frac{(\lambda t)^n}{n!}.\]
+Integrating both sides we obtain
+\[e^{\lambda t}P(n+1;t) = \frac{(\lambda t)^{n+1}}{(n+1)!}+C\]
+where, again, \(C=0\) follows from \(P(n+1;0) = 0\). Therefore, solving for \(P(n+1;t)\) we obtain
+\[P(n+1;t) = \frac{(\lambda t)^{n+1}e^{-\lambda t}}{(n+1)!}\]
+as claimed.
+
+\hypertarget{special-continuous-distributions}{%
+\chapter{Special Continuous Distributions}\label{special-continuous-distributions}}
+
+\hypertarget{exponential-distribution}{%
+\section{Exponential Distribution}\label{exponential-distribution}}
+
+Let \(Y~\sim Poisson(\lambda t)\) be a Poisson process with intensity \(\lambda t\). Let \(X\) be the time until the next count/event is observed. Then, the probability \(X \geq t\) is the probability is takes at least \(t\) time for the next event, has probability
+\[P(X > t) = P(\text{no events in }(0,t)) = P_Y(0;t) = \frac{(\lambda t)^0 e^{-\lambda t}}{0!} = e^{-\lambda t}.\]
+The CDF of \(X\) then must be
+\[F_X(x) = 1-P(X > x) = P(X\leq x) = 1-e^{-\lambda x},\]
+and the PDF of \(X\) is
+\[f_X(x) = \frac{d}{dx}F_X(x) = \lambda e^{-\lambda x}, \, x\geq 0.\]
+
+We recognize this as the PDF of an \emph{Exponential random variable}. This derivation provides an important connection between the Exponential and Poisson (and, ultimately, Bernoulli) distributions: the waiting times of an Poisson process (with intensity \(\lambda t\)) are Exponentially distributed (with mean \(1/\lambda\)).
+
+The MGF of the Exponential distribution is
+
+\[M_X(t) = E(e^{tX})  = \int_{0}^\infty \lambda e^{-\lambda x(1-t/\lambda)}dx\]
+\[ = \frac{\lambda e^{-\lambda x(1-t/\lambda)}}{-\lambda (1-t/\lambda)}|_0^\infty\]
+\[ = \frac{1}{1-t/\lambda}, \text{ provided }t < \lambda.\]
+
+Taking derivatives:
+\[\frac{d}{dt}M_X(t) = \frac{1}{\lambda(1-t/\lambda)^2}, \]
+and taking \(t = 0\) implies \(E(X) = 1/\lambda\).
+And, again,
+\[\frac{d^2}{dt^2}M_X(t) = \frac{2}{\lambda^2(1-t/\lambda)^3}\]
+which implies \(E(X^2) = 2/\lambda^2\) and \(V(X) = 1/\lambda^2\).
+
+\hypertarget{gamma-distribution}{%
+\section{Gamma Distribution}\label{gamma-distribution}}
+
+Let \(X_1, X_2, \ldots, X_n\) be a sequence of iid Exponential\((\lambda)\) r.v.'s. For example, these could be the successive waiting times of the next \(n\) events in a Poisson process with intensity \(\lambda t\). Then, the total waiting time for the next \(n\) events is \(Y = \sum_{i=1}^n X_i\). Using the MGF method, we see
+\[M_Y(t) = E(e^{tY}) = E(e^{t \sum_{i=1}^n X_i}) \stackrel{ind.}{=}\prod_{i=1}^n M_{X_i}(t)\stackrel{iid}{=}M_X(t)^n = \left(\frac{1}{1-t/\lambda}\right)^n,\]
+which is the MGF of a \emph{Gamma} random variable with two parameters: the shape (here \(n\)), and the rate (here \(\lambda\)). The Gamma distribution has PDF
+\[f_Y(y) = \frac{\lambda^n}{\Gamma(n)}y^{n-1}e^{-\lambda y},\, y>0\]
+where \(\Gamma(\cdot)\) denotes the ``Gamma'' function. If \(n\) is a positive integer \(\Gamma(n) = (n-1)!\). Note: the PDF can be derived from the MGF using the \textbf{inverse Laplace transform} but we'll not venture into these mathematical details here.
+
+Using the fact the Gamma r.v. is a sum of iid Exponential r.v.'s we have
+\[E(Y) = n/\lambda \quad\text{and}\quad V(Y) = n/\lambda^2.\]
+In general, the shape parameter \(n\) need not be an integer, but if it is a fraction, then we lose the interpretation of the Gamma r.v. in terms of total waiting time.
+
+\hypertarget{normal-gaussian-distribution}{%
+\section{Normal (Gaussian) Distribution}\label{normal-gaussian-distribution}}
+
+We have already seen how a limiting case of the Binomial distribution can give rise to the Poisson distribution and describe a different type of experiment. Now, we'll explore a different kind of Binomial limiting case.
+
+Let \(Y\sim N(\mu, \sigma^2)\) be a Normal random variable with mean and variance parameters \((\mu,\sigma^2)\) and PDF
+\[f(y) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2\sigma^2}(y - \mu)^2}.\]
+It's easy to check the normal PDF satisfies the ODE
+\[\frac{d}{dy}f(y) = -\left(\frac{y - \mu}{\sigma^2}\right)f(y).\]
+
+The claim, that links Binomial to Normal, is that the PMF \(p(x)\) of \(X\sim Binomial(n,p)\) is approximately equal to the normal PDF \(f(y)\) with \((\mu,\sigma^2) = (np, np(1-p))\) for large \(n\). More precisely,
+\[\lim_{n\rightarrow \infty} P\left(\frac{X - np}{\sqrt{np(1-p)}}\leq x\right) = \int_{-\infty}^x f_Y(y)dy\]
+or, in other words, normal approximations to Binomial probabilities converge as \(n\rightarrow \infty\).
+
+We can roughly verify this claim by showing the Binomial PMF obeys the same ODE as the normal PDF, in the limit as \(n\rightarrow \infty\). Now, the Binomial r.v. is discrete so the derivative must be replaced by a difference, but these differences converge to derivatives as \(n\rightarrow\infty\) (this is how the derivative is defined, after all). The Normal ODE says
+\[\frac{f'(y)}{f(y)}\left(-\frac{\sigma^2}{y - \mu}\right) = 1.\]
+For the Binomial PMF, we have
+\[\frac{p(x+1;n) - p(x;n)}{p(x;n)}\left(-\frac{np(1-p)}{x-np}\right) = \frac{np-x - (1-p)}{x(1-p)+1-p}\left(-\frac{np(1-p)}{x-np}\right).\]
+Make the transformation \(z = \frac{x-np}{\sqrt{np(1-p)}}\), and substitute into the above to find
+\[\frac{p(x+1;n) - p(x;n)}{p(x;n)}\left(-\frac{np(1-p)}{x-np}\right) = \frac{z\sqrt{np(1-p)}-(1-p)}{z(1-p)\sqrt{np(1-p)}+np(1-p)+(1-p)}\frac{\sqrt{np(1-p)}}{z}.\]
+Factoring out \(znp(1-p)\) from the numerator and denominator, we obtain
+\[\frac{-1-\frac{1-p}{z\sqrt{np(1-p)}}}{-\frac{(1-p)z}{\sqrt{np(1-p)}}-1-\frac{1-p}{z\sqrt{np(1-p)}}}\]
+The term \(\sqrt{np(1-p)}\) dominates, and, as a result, the ratio has limit \(1\). Some details are missing from this argument that would make the result formal, such as an explanation about the possible values of \(z\), but we'll not dwell on the details. An alternative argument, one that is more complicated but also more rigorous, uses Stirling's approximation and a Taylor series expansion, and can be found in many textbooks.
+
+For our purposes, the interpretation of the Binomial-Normal distribution connection is more important than its precise mathematical details. Take the example of a poll once more. Suppose a large number, say \(5000\), eligible voters are polled. It's of little importance to compute very precise probabilities like \(p(2739) = P(\text{2739 voters prefer candidate 1})\) and much more natural to quantify ranges of the sample proportion, e.g., \(P(\text{between 40 and 45\% of voters prefer candidate 1})\), which is a probability statement about a continuous quantity. The point is, when a discrete variable takes values in a very large set, its often more natural to treat it as a continuous random variable. And, it turns out, at least in the case of the Binomial/poll, the continuous approximation is very good.
+
+\hypertarget{example-poll-and-binomial-normal-approximation}{%
+\subsection{Example: Poll and Binomial-Normal approximation}\label{example-poll-and-binomial-normal-approximation}}
+
+In a poll of \(5000\) eligible voters from a population of voters that is split 50/50 in their preferences between two candidates, what is the probability the sample proportion of voters favoring candidate 1 is between \(47\%\) and \(50\%\)?
+
+Solution:
+Applying the binomial distribution we have
+\[P(2350\leq X \leq 2500) = \sum_{x=2350}^{2500} {5000 \choose x}(0.5)^x(0.5)^{2500-x}.\]
+
+Applying the normal approximation, we have \(Y=\frac{X - np}{\sqrt{np(1-p)}} = \frac{X - 2500}{35.35534} \stackrel{\cdot}{\sim}N(0,1)\), and
+\[P(2350\leq X \leq 2500)\approx P(-4.24261 \leq Y \leq 0).\]
+
+Since \(X\) is discrete and \(Y\) is continuous, it is often suggested that a small adjustment is made to compensate for the fact \(X\) takes only integer values. This is the \textbf{continuity correction} and it has the form
+\[P_X(x)\approx F_Z\left(\frac{x-np+0.5}{\sqrt{np(1-p)}}\right).\]
+That is, the Binomial CDF at \(x\) is approximated by the normal CDF at \(z + 0.5/\sqrt{np(1-p)}\) where \(z = \frac{x-np}{\sqrt{np(1-p)}}\)
+
+We can compute these probabilities using the functions \(pbinom\) and \(pnorm\) in R:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{pbinom}\NormalTok{(}\DecValTok{2500}\NormalTok{,}\DecValTok{5000}\NormalTok{,}\FloatTok{0.5}\NormalTok{)}\SpecialCharTok{{-}}\FunctionTok{pbinom}\NormalTok{(}\DecValTok{2349}\NormalTok{,}\DecValTok{5000}\NormalTok{,}\FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5056313
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{pnorm}\NormalTok{(}\DecValTok{0}\NormalTok{) }\SpecialCharTok{{-}} \FunctionTok{pnorm}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{4.24261}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.499989
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# with cty corr}
+\FunctionTok{pnorm}\NormalTok{(}\DecValTok{0}\FloatTok{+0.5}\SpecialCharTok{/}\FloatTok{35.35534}\NormalTok{) }\SpecialCharTok{{-}} \FunctionTok{pnorm}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{4.24261+0.5}\SpecialCharTok{/}\FloatTok{35.35534}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5056299
+\end{verbatim}
 
   \bibliography{book.bib,packages.bib}
 

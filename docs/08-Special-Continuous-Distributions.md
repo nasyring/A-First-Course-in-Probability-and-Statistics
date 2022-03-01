@@ -1,0 +1,139 @@
+# Special Continuous Distributions
+
+## Exponential Distribution
+
+Let $Y~\sim Poisson(\lambda t)$ be a Poisson process with intensity $\lambda t$.  Let $X$ be the time until the next count/event is observed.  Then, the probability $X \geq t$ is the probability is takes at least $t$ time for the next event, has probability
+\[P(X > t) = P(\text{no events in }(0,t)) = P_Y(0;t) = \frac{(\lambda t)^0 e^{-\lambda t}}{0!} = e^{-\lambda t}.\]
+The CDF of $X$ then must be
+\[F_X(x) = 1-P(X > x) = P(X\leq x) = 1-e^{-\lambda x},\]
+and the PDF of $X$ is
+\[f_X(x) = \frac{d}{dx}F_X(x) = \lambda e^{-\lambda x}, \, x\geq 0.\]
+
+We recognize this as the PDF of an *Exponential random variable*.  This derivation provides an important connection between the Exponential and Poisson (and, ultimately, Bernoulli) distributions: the waiting times of an Poisson process (with intensity $\lambda t$) are Exponentially distributed (with mean $1/\lambda$).<br><br>
+
+The MGF of the Exponential distribution is 
+
+\[M_X(t) = E(e^{tX})  = \int_{0}^\infty \lambda e^{-\lambda x(1-t/\lambda)}dx\]
+\[ = \frac{\lambda e^{-\lambda x(1-t/\lambda)}}{-\lambda (1-t/\lambda)}|_0^\infty\]
+\[ = \frac{1}{1-t/\lambda}, \text{ provided }t < \lambda.\]
+
+
+Taking derivatives:
+\[\frac{d}{dt}M_X(t) = \frac{1}{\lambda(1-t/\lambda)^2}, \]
+and taking $t = 0$ implies $E(X) = 1/\lambda$.
+And, again,
+\[\frac{d^2}{dt^2}M_X(t) = \frac{2}{\lambda^2(1-t/\lambda)^3}\]
+which implies $E(X^2) = 2/\lambda^2$ and $V(X) = 1/\lambda^2$.
+
+
+
+## Gamma Distribution
+Let $X_1, X_2, \ldots, X_n$ be a sequence of iid Exponential$(\lambda)$ r.v.'s.  For example, these could be the successive waiting times of the next $n$ events in a Poisson process with intensity $\lambda t$.  Then, the total waiting time for the next $n$ events is $Y = \sum_{i=1}^n X_i$.  Using the MGF method, we see
+\[M_Y(t) = E(e^{tY}) = E(e^{t \sum_{i=1}^n X_i}) \stackrel{ind.}{=}\prod_{i=1}^n M_{X_i}(t)\stackrel{iid}{=}M_X(t)^n = \left(\frac{1}{1-t/\lambda}\right)^n,\]
+which is the MGF of a *Gamma* random variable with two parameters: the shape (here $n$), and the rate (here $\lambda$).  The Gamma distribution has PDF
+\[f_Y(y) = \frac{\lambda^n}{\Gamma(n)}y^{n-1}e^{-\lambda y},\, y>0\]
+where $\Gamma(\cdot)$ denotes the "Gamma" function.  If $n$ is a positive integer $\Gamma(n) = (n-1)!$.  Note: the PDF can be derived from the MGF using the **inverse Laplace transform** but we'll not venture into these mathematical details here. <br><br>
+
+
+Using the fact the Gamma r.v. is a sum of iid Exponential r.v.'s we have
+\[E(Y) = n/\lambda \quad\text{and}\quad V(Y) = n/\lambda^2.\]
+In general, the shape parameter $n$ need not be an integer, but if it is a fraction, then we lose the interpretation of the Gamma r.v. in terms of total waiting time.
+
+
+## Normal (Gaussian) Distribution
+
+We have already seen how a limiting case of the Binomial distribution can give rise to the Poisson distribution and describe a different type of experiment. Now, we'll explore a different kind of Binomial limiting case.<br><br>
+
+Let $Y\sim N(\mu, \sigma^2)$ be a Normal random variable with mean and variance parameters $(\mu,\sigma^2)$ and PDF
+\[f(y) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2\sigma^2}(y - \mu)^2}.\]
+It's easy to check the normal PDF satisfies the ODE
+\[\frac{d}{dy}f(y) = -\left(\frac{y - \mu}{\sigma^2}\right)f(y).\]
+
+The claim, that links Binomial to Normal, is that the PMF $p(x)$ of $X\sim Binomial(n,p)$ is approximately equal to the normal PDF $f(y)$ with $(\mu,\sigma^2) = (np, np(1-p))$ for large $n$.  More precisely,
+\[\lim_{n\rightarrow \infty} P\left(\frac{X - np}{\sqrt{np(1-p)}}\leq x\right) = \int_{-\infty}^x f_Y(y)dy\]
+or, in other words, normal approximations to Binomial probabilities converge as $n\rightarrow \infty$.  <br><br>
+
+We can roughly verify this claim by showing the Binomial PMF obeys the same ODE as the normal PDF, in the limit as $n\rightarrow \infty$.  Now, the Binomial r.v. is discrete so the derivative must be replaced by a difference, but these differences converge to derivatives as $n\rightarrow\infty$ (this is how the derivative is defined, after all).  The Normal ODE says
+\[\frac{f'(y)}{f(y)}\left(-\frac{\sigma^2}{y - \mu}\right) = 1.\]
+For the Binomial PMF, we have
+\[\frac{p(x+1;n) - p(x;n)}{p(x;n)}\left(-\frac{np(1-p)}{x-np}\right) = \frac{np-x - (1-p)}{x(1-p)+1-p}\left(-\frac{np(1-p)}{x-np}\right).\]
+Make the transformation $z = \frac{x-np}{\sqrt{np(1-p)}}$, and substitute into the above to find
+\[\frac{p(x+1;n) - p(x;n)}{p(x;n)}\left(-\frac{np(1-p)}{x-np}\right) = \frac{z\sqrt{np(1-p)}-(1-p)}{z(1-p)\sqrt{np(1-p)}+np(1-p)+(1-p)}\frac{\sqrt{np(1-p)}}{z}.\]
+Factoring out $znp(1-p)$ from the numerator and denominator, we obtain
+\[\frac{-1-\frac{1-p}{z\sqrt{np(1-p)}}}{-\frac{(1-p)z}{\sqrt{np(1-p)}}-1-\frac{1-p}{z\sqrt{np(1-p)}}}\]
+The term $\sqrt{np(1-p)}$ dominates, and, as a result, the ratio has limit $1$.  Some details are missing from this argument that would make the result formal, such as an explanation about the possible values of $z$, but we'll not dwell on the details.  An alternative argument, one that is more complicated but also more rigorous, uses Stirling's approximation and a Taylor series expansion, and can be found in many textbooks.<br><br>
+
+For our purposes, the interpretation of the Binomial-Normal distribution connection is more important than its precise mathematical details.  Take the example of a poll once more.  Suppose a large number, say $5000$, eligible voters are polled.  It's of little importance to compute very precise probabilities like $p(2739) = P(\text{2739 voters prefer candidate 1})$ and much more natural to quantify ranges of the sample proportion, e.g., $P(\text{between 40 and 45\% of voters prefer candidate 1})$, which is a probability statement about a continuous quantity.  The point is, when a discrete variable takes values in a very large set, its often more natural to treat it as a continuous random variable.  And, it turns out, at least in the case of the Binomial/poll, the continuous approximation is very good.
+
+### Example: Poll and Binomial-Normal approximation
+
+In a poll of $5000$ eligible voters from a population of voters that is split 50/50 in their preferences between two candidates, what is the probability the sample proportion of voters favoring candidate 1 is between $47\%$ and $50\%$?<br><br>
+
+Solution:
+Applying the binomial distribution we have
+\[P(2350\leq X \leq 2500) = \sum_{x=2350}^{2500} {5000 \choose x}(0.5)^x(0.5)^{2500-x}.\]
+
+Applying the normal approximation, we have $Y=\frac{X - np}{\sqrt{np(1-p)}} = \frac{X - 2500}{35.35534} \stackrel{\cdot}{\sim}N(0,1)$, and
+\[P(2350\leq X \leq 2500)\approx P(-4.24261 \leq Y \leq 0).\]
+
+Since $X$ is discrete and $Y$ is continuous, it is often suggested that a small adjustment is made to compensate for the fact $X$ takes only integer values.  This is the **continuity correction** and it has the form
+\[P_X(x)\approx F_Z\left(\frac{x-np+0.5}{\sqrt{np(1-p)}}\right).\]
+That is, the Binomial CDF at $x$ is approximated by the normal CDF at $z + 0.5/\sqrt{np(1-p)}$ where $z = \frac{x-np}{\sqrt{np(1-p)}}$
+
+
+
+
+
+We can compute these probabilities using the functions $pbinom$ and $pnorm$ in R:
+
+```r
+pbinom(2500,5000,0.5)-pbinom(2349,5000,0.5)
+```
+
+```
+## [1] 0.5056313
+```
+
+```r
+pnorm(0) - pnorm(-4.24261)
+```
+
+```
+## [1] 0.499989
+```
+
+```r
+# with cty corr
+pnorm(0+0.5/35.35534) - pnorm(-4.24261+0.5/35.35534)
+```
+
+```
+## [1] 0.5056299
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

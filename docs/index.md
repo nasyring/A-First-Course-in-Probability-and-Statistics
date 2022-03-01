@@ -1,7 +1,7 @@
 --- 
 title: "A First Course in Probability and Statistics"
 author: "Nick Syring"
-date: "2022-02-22"
+date: "2022-03-01"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
