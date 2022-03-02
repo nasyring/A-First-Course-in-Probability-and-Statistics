@@ -25,6 +25,43 @@ And, again,
 \[\frac{d^2}{dt^2}M_X(t) = \frac{2}{\lambda^2(1-t/\lambda)^3}\]
 which implies $E(X^2) = 2/\lambda^2$ and $V(X) = 1/\lambda^2$.
 
+## Poisson Interarrival times are iid Exponential($\lambda$)
+
+In this section we show that the subsequent times to events in a Poisson process are iid Exponential($\lambda$)-distributed.  We prove this for only the first $2$ such times, and hope the intuition is clear as to why the general case holds also.<br><br>
+
+Let $X_1$ be the time to the first event.  We have already shown this is $Exp(\lambda)$.  Let $X_2$ be the additional (not total) time to the second event.  Our strategy is to compute the joint probability funciton $P(X_1 >x_1, X_2 >x_2)$ and note this is a product of the marginal probabilities $P(X_1 >x_1)$ and $P(X_2 >x_2)$, then we will have shown the claim.  The easiest way to do this is to first consider the total times $S_1 = X_1$ and $S_2 = X_1 + X_2$.  <br><br>
+
+Start by writing
+\begin{align*}
+F_{S_1, S_2}(s_1, s_2) &= P(S_1 \leq s_1, S_2 \leq s_2)\\
+& = 1 - P(S_1 > s_1, S_2 > s_2) \\
+&- P(S_1 \leq s_1, S_2 > s_2)\\
+&P(S_1 > s_1, S_2 \leq s_2).
+\end{align*}
+
+Now, $P(S_1 > s_1, S_2 > s_2)$ is the probability there are no events in $(0,s_1)$ and no more than 1 event in $(s_1, s_2)$.  By the definition of the Poisson process, the counts in disjoint intervals are independent, so we have
+\begin{align*}
+P(S_1 > s_1, S_2 > s_2) & = P(Y((0, s_1)) = 0, \, Y((s_1, s_2))\leq 1)\\
+& = P(Y((0, s_1)) = 0)P(Y((s_1, s_2))\leq 1)\\
+& = \frac{(\lambda s_1)^0e^{-\lambda s_1}}{0!}\times\left\{ \frac{(\lambda (s_2-s_1))^0e^{-\lambda (s_2-s_1)}}{0!}+ \frac{(\lambda (s_2-s_1))^1e^{-\lambda (s_2-s_1)}}{1!}\right\}
+\end{align*}
+
+Similar arguments show:
+\[P(S_1 \leq s_1, S_2 > s_2) = \lambda s_1 e^{-\lambda s_2}.\]
+\[P(S_1 > s_1, S_2 \leq s_2) = e^{-\lambda s_1} - e^{-\lambda s_2}(1+\lambda(s_2 - s_1)).\]
+
+Then,
+\[F_{S_1, S_2}(s_1, s_2) = 1-e^{-\lambda s_1} - \lambda s_1 e^{-\lambda s_2}.\]
+And, by differentiating once w.r.t. $s_1$ and once w.r.t. $s_2$ we obtain
+\[f_{S_1, S_2}(s_1, s_2) = \lambda^2e^{-\lambda s_2}, \, 0<s_1<s_2.\]
+Next, 
+\begin{align*}
+P(X_1 > x_1, X_2 > x_2) &= P(S_1 > x_1, S_2-S_1 > x_2)\\
+& = \int_{x_1}^\infty \int_{s_1 + x_2}^\infty \lambda^2 e^{-\lambda s_2}\,ds_2\,ds_1\\
+& = e^{-\lambda x_1}e^{-\lambda x_2}.
+\end{align*}
+Notice this is a product of the marginal $Exp(\lambda)$ probabilities $P(X_1 > x_1) = e^{-\lambda x_1}$ and $P(X_2 > x_2) = e^{-\lambda x_2}$.  
+
 
 
 ## Gamma Distribution
@@ -42,28 +79,16 @@ In general, the shape parameter $n$ need not be an integer, but if it is a fract
 
 ## Normal (Gaussian) Distribution
 
-We have already seen how a limiting case of the Binomial distribution can give rise to the Poisson distribution and describe a different type of experiment. Now, we'll explore a different kind of Binomial limiting case.<br><br>
+We have already seen how a limiting case of the Binomial distribution can give rise to the Poisson distribution and describe a different type of experiment. Now, we'll explore a different kind of Binomial limiting case; specifically, consider the Bernoulli success probability $p$ to be fixed while the number of Bernoulli trials $n\rightarrow \infty$.<br><br>
 
-Let $Y\sim N(\mu, \sigma^2)$ be a Normal random variable with mean and variance parameters $(\mu,\sigma^2)$ and PDF
-\[f(y) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2\sigma^2}(y - \mu)^2}.\]
-It's easy to check the normal PDF satisfies the ODE
-\[\frac{d}{dy}f(y) = -\left(\frac{y - \mu}{\sigma^2}\right)f(y).\]
+The specific mathematical connection between the Binomial and Normal takes a bit of setting up.  Let $F_X(x)$ denote the cumulative mass function of a Binomial$(n,p)$ r.v.  Recall, this equals $F_X(x) = \sum_{k=0}^x {n\choose k}p^k(1-p)^{n-k}$.  Let $Y$ be the "centered and scaled" (or called "standardized") version of $X$: $Y = \frac{X - np}{\sqrt{np(1-p)}}$; this is $X$ minus its mean and divided by its standard deviation.  Let $F_Y(y)$ denote the corresponding CDF of $Y$, which equals $F_X(y\sqrt{np(1-p)}+np)$.  Let $Z$ be a *standard normal* r.v., which is a continuous r.v. with PDF \[f_Z(z) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}z^2}, \, -\infty < z < \infty.\]
+Denote $F_Z(z) = \int_{-\infty}^z \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}s^2}ds$, the standard normal CDF.  Then, the Binomial distribution converges to the normal distribution in the following way:
+\[\lim_{n\rightarrow\infty} F_Y(y) = F_Z(z).\]
 
-The claim, that links Binomial to Normal, is that the PMF $p(x)$ of $X\sim Binomial(n,p)$ is approximately equal to the normal PDF $f(y)$ with $(\mu,\sigma^2) = (np, np(1-p))$ for large $n$.  More precisely,
-\[\lim_{n\rightarrow \infty} P\left(\frac{X - np}{\sqrt{np(1-p)}}\leq x\right) = \int_{-\infty}^x f_Y(y)dy\]
-or, in other words, normal approximations to Binomial probabilities converge as $n\rightarrow \infty$.  <br><br>
+This "convergence in distribution" from Binomial to normal is generally known as the DeMoivre-Laplace Theorem, and is a special case of the **Central Limit Theorem** proved in the next chapter---so, we'll save the proof of this result until we take up a more general version then.
+<br><br>
 
-We can roughly verify this claim by showing the Binomial PMF obeys the same ODE as the normal PDF, in the limit as $n\rightarrow \infty$.  Now, the Binomial r.v. is discrete so the derivative must be replaced by a difference, but these differences converge to derivatives as $n\rightarrow\infty$ (this is how the derivative is defined, after all).  The Normal ODE says
-\[\frac{f'(y)}{f(y)}\left(-\frac{\sigma^2}{y - \mu}\right) = 1.\]
-For the Binomial PMF, we have
-\[\frac{p(x+1;n) - p(x;n)}{p(x;n)}\left(-\frac{np(1-p)}{x-np}\right) = \frac{np-x - (1-p)}{x(1-p)+1-p}\left(-\frac{np(1-p)}{x-np}\right).\]
-Make the transformation $z = \frac{x-np}{\sqrt{np(1-p)}}$, and substitute into the above to find
-\[\frac{p(x+1;n) - p(x;n)}{p(x;n)}\left(-\frac{np(1-p)}{x-np}\right) = \frac{z\sqrt{np(1-p)}-(1-p)}{z(1-p)\sqrt{np(1-p)}+np(1-p)+(1-p)}\frac{\sqrt{np(1-p)}}{z}.\]
-Factoring out $znp(1-p)$ from the numerator and denominator, we obtain
-\[\frac{-1-\frac{1-p}{z\sqrt{np(1-p)}}}{-\frac{(1-p)z}{\sqrt{np(1-p)}}-1-\frac{1-p}{z\sqrt{np(1-p)}}}\]
-The term $\sqrt{np(1-p)}$ dominates, and, as a result, the ratio has limit $1$.  Some details are missing from this argument that would make the result formal, such as an explanation about the possible values of $z$, but we'll not dwell on the details.  An alternative argument, one that is more complicated but also more rigorous, uses Stirling's approximation and a Taylor series expansion, and can be found in many textbooks.<br><br>
-
-For our purposes, the interpretation of the Binomial-Normal distribution connection is more important than its precise mathematical details.  Take the example of a poll once more.  Suppose a large number, say $5000$, eligible voters are polled.  It's of little importance to compute very precise probabilities like $p(2739) = P(\text{2739 voters prefer candidate 1})$ and much more natural to quantify ranges of the sample proportion, e.g., $P(\text{between 40 and 45\% of voters prefer candidate 1})$, which is a probability statement about a continuous quantity.  The point is, when a discrete variable takes values in a very large set, its often more natural to treat it as a continuous random variable.  And, it turns out, at least in the case of the Binomial/poll, the continuous approximation is very good.
+For now, focus on the interpretation of the Binomial-Normal distribution connection rather than the precise mathematical details.  Take the example of a poll once more.  Suppose a large number, say $5000$, eligible voters are polled.  It's of little importance to compute very precise probabilities like $p(2739) = P(\text{2739 voters prefer candidate 1})$ and much more natural to quantify ranges of the sample proportion, e.g., $P(\text{between 40 and 45\% of voters prefer candidate 1})$, which is a probability statement about a continuous quantity.  The point is, when a discrete variable takes values in a very large set, its often more natural to treat it as a continuous random variable.  And, it turns out, at least in the case of the Binomial/poll, the continuous approximation is very good.
 
 ### Example: Poll and Binomial-Normal approximation
 

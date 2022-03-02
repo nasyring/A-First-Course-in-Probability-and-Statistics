@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Conditional probabilities of events | A First Course in Probability and Statistics</title>
+  <title>Chapter 10 Central Limit Theorem | A First Course in Probability and Statistics</title>
   <meta name="description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Conditional probabilities of events | A First Course in Probability and Statistics" />
+  <meta property="og:title" content="Chapter 10 Central Limit Theorem | A First Course in Probability and Statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Conditional probabilities of events | A First Course in Probability and Statistics" />
+  <meta name="twitter:title" content="Chapter 10 Central Limit Theorem | A First Course in Probability and Statistics" />
   
   <meta name="twitter:description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="probability-and-counting.html"/>
-<link rel="next" href="random-variables.html"/>
+<link rel="prev" href="special-continuous-distributions.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -217,72 +217,32 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="conditional-probabilities-of-events" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> Conditional probabilities of events</h1>
-<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> denote events in a sample space <span class="math inline">\(\mathcal{S}\)</span>. Suppose we know <span class="math inline">\(B\)</span> occurs. Then, <span class="math inline">\(P(A|B)\)</span> denotes the <strong>conditional probability</strong> of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span>. This has the mathematical formula <span class="math display">\[P(A|B) = \frac{P(A\cap B)}{P(B)}.\]</span> In this formula, <span class="math inline">\(B\)</span> acts as the new or conditional sample space. It is always true <span class="math display">\[P(A|\mathcal{S}) = \frac{P(A\cap \mathcal{S})}{P(\mathcal{S})} = \frac{P(A)}{1} = P(A).\]</span> Knowing <span class="math inline">\(B\)</span> happens is equivalent to changing the sample space to <span class="math inline">\(B\)</span>.</p>
-<div id="example" class="section level3">
-<h3><span class="header-section-number">4.0.1</span> Example</h3>
-<p>Four individuals are donating blood to a blood bank. Their blood types are unknown. If exactly 1 of them is O+, then what is the probability at least 3 are typed in order to obtain an O+ sample?<br> <br> Answer: <br> <span class="math display">\[P(\text{at least three must be typed}) = P(3) + P(4).\]</span> <span class="math display">\[P(3) = P(\text{first is not O+ and second is not O+ and third is O+}).\]</span> <span class="math display">\[ = P(\text{first is not O+})P(\text{second is not O+ given first is not O+})P(\text{third is O+ given first two are not})\]</span> <span class="math display">\[ = \frac{3}{4}\times \frac{2}{3}\times \frac{1}{2}.\]</span> We used a (perhaps intuitive) extension of the conditional probability formula above: <span class="math display">\[P(A\cap B\cap C) = P(C|A\cap B)P(A \cap B) = P(C|A\cap B)P(B|A)P(A)\]</span> Here, <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(C\)</span> represent the first, second, and third blood typings.</p>
-</div>
-<div id="example-1" class="section level3">
-<h3><span class="header-section-number">4.0.2</span> Example</h3>
-<p>Let <span class="math inline">\(A\)</span> be the event a randomly selected adult male US citizen is at least 6'3&quot; tall. Let <span class="math inline">\(B\)</span> be the event a randomly selected adult male US citizen is an NBA player. Which is larger, <span class="math inline">\(P(A|B)\)</span> or <span class="math inline">\(P(B|A)\)</span>?<br><br></p>
-<p>Answer:<br> Be careful; these can be tricky. <span class="math inline">\(P(A)\)</span> is much larger than <span class="math inline">\(P(B)\)</span> because there are many more male US citizens 6'3&quot; or taller than there are NBA players (some also may not be US citizens). And, <span class="math inline">\(P(A|B)\)</span> is much larger than <span class="math inline">\(P(B|A)\)</span>. The reason is that if we condition on US citizen NBA players, almost all of them are 6'3&quot; or taller. However, if we condition on US males 6'3&quot; or taller, NBA players are still a tiny proportion.</p>
-</div>
-<div id="example-2" class="section level3">
-<h3><span class="header-section-number">4.0.3</span> Example</h3>
-<p>Bertrand's Boxes --- There are three boxes: the first has two gold coins, the second one gold and one silver, and the third two silver coins. You choose a box at random and a coin from the box at random. Given you choose a gold coin, what is the probability the other coin in that box is gold?<br><br></p>
-<p>Answer:<br></p>
-<p>Let <span class="math inline">\(G_1\)</span> be the event the first coin chosen is gold and let <span class="math inline">\(G_2\)</span> be the event the second coin chosen (same box) is gold. Let <span class="math inline">\(B_1\)</span>, <span class="math inline">\(B_2\)</span>, and <span class="math inline">\(B_3\)</span> denote events corresponding to choosing boxes 1, 2, and 3. Then, we seek <span class="math display">\[P(G_2|G_1) = \frac{P(G_1\cap G_2)}{P(G_1)}.\]</span> <span class="math display">\[P(G_1) = P(G_1 \cap B_1) + P(G_1 \cap B_2) + P(G_1 \cap B_3)\]</span> <span class="math display">\[ = P(G_1 | B_1)P(B_1) + P(G_1 | B_2)P(B_2)+ P(G_1 | B_3)P(B_3)\]</span> <span class="math display">\[ = 1 \times 1/3 + 1/2 \times 1/3 + 0 \times 1 /3 = 1/2.\]</span> <span class="math display">\[P(G_1\cap G_2) = P(\text{chose box 1}) = P(B_1) = 1/3.\]</span> Therefore, <span class="math display">\[P(G_2|G_1) = \frac{1/3}{1/2} = 2/3.\]</span></p>
-<p>Note: This question, which is often called &quot;Bertrand's Paradox&quot;, has caused an awful lot of consternation and controversy. When pondering this question for the first time, many people will (incorrectly) suppose the answer is 1/2. Their logic is that since the first coin was gold, then either the first or second box was chosen. Then, those boxes being equally likely, there is a 1/2 chance box 1 was chosen, and, therefore, the chance of the second coin being gold is 1/2. The first part of that logic is well-founded: the third box could not have been chosen. However, the fact the first coin is gold also implies we were more likely to have chosen the first box than the second---those two boxes are not equally likely in light of the information that the first coin was gold. Indeed, we could have simply asked &quot;what is the chance we selected box 1 given the coin is gold?&quot;---that question is equivalent to asking the chance the second coin is gold. When rephrased this way, most people find it easier to see that the chosen box is more likely box 1 than box 2 (twice as likely, in particular), given the first coin selected is gold.</p>
-</div>
-<div id="bayes-rule" class="section level2">
-<h2><span class="header-section-number">4.1</span> Bayes' rule</h2>
-<p>In the example of Bertrand's Paradox you might have noticed we used a slick trick to compute <span class="math inline">\(P(G_1)\)</span>---we <strong>partitioned</strong> the event <span class="math inline">\(G_1\)</span> into three pieces <span class="math inline">\(G_1 = \{G_1 \cap B_1\}\cup \{G_1 \cap B_2\}\cup \{G_1 \cap B_3\}\)</span> where <span class="math inline">\(\{B_1 \cup B_2 \cup B_3\} = \mathcal{S}\)</span>. Partitioning is the act of subdividing a set into non-overlapping, or <strong>disjoint</strong>, subsets. This way, we can represent a set as a union of subsets, much like a pizza is equivalent to the collection of pizza slices. This partitioning trick is useful enough to be given a name, <em>the Law of Total Probability</em>: If <span class="math inline">\(A_1, \ldots, A_n\)</span> is a collection of disjoint subsets of <span class="math inline">\(\mathcal{S}\)</span> such that <span class="math inline">\(\mathcal{S} = \bigcup_{i=1}^n A_i\)</span> (i.e., the collection is exhaustive), then for any <span class="math inline">\(B\subset \mathcal{S}\)</span> <span class="math display">\[P(B) = \sum_{i=1}^n P(B \cap A_i) = \sum_{i=1}^n P(B | A_i)P(A_i).\]</span> Recall the axiom of countable additivity; it's basically equivalent to the law of total probability.</p>
-<p><br><br></p>
-<p>Often times information is known about certain conditional probabilities---<span class="math inline">\(P(A|B)\)</span>---but we want to know the reverse conditional probability <span class="math inline">\(P(B|A)\)</span>. Bayes' rule provides a formula for computing these reverse conditional probabilities. There's not really anything special about the formula; after all, it follows immediately from the definition of conditional probability: <span class="math display">\[P(A|B) = \frac{P(A\cap B)}{P(B)} = \frac{P(A\cap B)P(A)}{P(B)P(A)} = \frac{P(B|A)P(A)}{P(B)}.\]</span> Or, in other words, <span class="math display">\[P(A|B)P(B) = P(B|A)P(A).\]</span></p>
-<div id="example-3" class="section level3">
-<h3><span class="header-section-number">4.1.1</span> Example</h3>
-<p>Perhaps the most famous example of Bayes' rule illustrates the difficulty in detecting rare events. Suppose 1 in 1000 adults suffers from a (fairly rare) disease. A diagnostic test is 99% effective in detecting disease among individuals who have the disease. Among people who do not have the disease, the diagnostic test is nevertheless positive 2% of the time. Given the test is positive, what is the chance the individual tested has the disease?<br><br></p>
-<p>Answer:<br> Let <span class="math inline">\(A\)</span> be the event the test is positive and let <span class="math inline">\(B\)</span> be the event the individual tested has the disease. Then, we are given <span class="math inline">\(P(B) = 0.001\)</span>. By the law of total probablity <span class="math display">\[P(A) = P(A\cap B)+P(A\cap B^c) = P(A| B)P(B)+P(A| B^c)P(B^c) = 0.99\times 0.001 + 0.02\times 0.999 = 0.02097\]</span> We want to find <span class="math inline">\(P(B|A)\)</span>, which is equal to <span class="math inline">\(P(A|B)P(B)/P(A)\)</span> by Bayes' rule. So, <span class="math display">\[P(B|A) = P(A|B)P(B)/P(A) = 0.99\times 0.001 / 0.02097 = 0.0472103.\]</span> This is a terrible diagnostic test. Less than 5% of people who test positive actually have the disease.</p>
-</div>
-</div>
-<div id="independence" class="section level2">
-<h2><span class="header-section-number">4.2</span> Independence</h2>
-<p>Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if <span class="math display">\[P(A|B) = P(A).\]</span> In other words, knowing <span class="math inline">\(B\)</span> happens does not affect the chance of <span class="math inline">\(A\)</span> happening. By using the definition of conditional probablity, it follows that <span class="math display">\[P(A|B) = \frac{P(A\cap B)}{P(B)} \stackrel{ind.}{=}P(A)\Rightarrow P(A\cap B) = P(A)P(B).\]</span> Further, if <span class="math inline">\(P(A\cap B) = P(A)P(B)\)</span> then, again using the definition of conditional probability <span class="math display">\[P(A|B) = \frac{P(A\cap B)}{P(B)} = \frac{P(A)P(B)}{P(B)} = P(A).\]</span> Therefore, independence of two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is equivalent to the <em>product rule</em> being satisfied: <span class="math display">\[A\text{ and }B\text{ independent } \iff P(A\cap B) = P(A)P(B).\]</span></p>
-<p>Independence extends to collections of events. For example, intuitively we know two rolls of a die are independent. But, ther'e nothing special about rolling a die twice; three or more rolls are also, intuitively, mutually independent. To be precise, we say a collection of events <span class="math inline">\(A_1, A_2, \ldots\)</span> is <em>pairwise independent</em> if for every pair <span class="math inline">\(A_i, A_j\)</span>, <span class="math inline">\(i\ne j\)</span> the product rule holds: <span class="math inline">\(P(A_i \cap A_j) = P(A_i)P(A_j)\)</span>. Furthermore, a collection of events <span class="math inline">\(A_1, A_2, \ldots\)</span> with index set equal to the natural numbers <span class="math inline">\(\mathbb{N}\)</span> (or a finite subset) is <em>mutually independent</em> if every subset <span class="math inline">\(\{A_i, i\in I, I\subset \mathbb{N}\}\)</span> of events obeys the product rule: <span class="math inline">\(P( \bigcap_{i \in I} A_i) = \prod_{i \in I} P(A_i)\)</span>. <br><br></p>
-<p>Example: Consider rolling a fair die <span class="math inline">\(n\)</span> times and recording the outcomes. Let <span class="math inline">\(A_i,\)</span> <span class="math inline">\(i = 1,\ldots,n\)</span> be the event the <span class="math inline">\(i^{th}\)</span> roll is odd. The set <span class="math inline">\(\{A_i, i=1, \ldots, n\}\)</span> is mutually independent. <br><br></p>
-<p>Example: Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> denote the events that the first and second tosses of a fair coin are heads. These are independent events. Define <span class="math inline">\(C = \{\{A\cup B\}-\{A\cap B\}\}\)</span>. Then, <span class="math inline">\(A\)</span> and <span class="math inline">\(C\)</span> are pairwise independent. To see this, compute: <span class="math display">\[P(A \cap C) = P(A \cap \{\{A \cap B^c\} \cup \{A^c \cap  B\}\}) = P(A \cap \{A \cap B^c\}) + P(A \cap \{A^c \cap  B\}) = P(A \cap B^c) = P(A)(1-P(B)) = 0.25\]</span> <span class="math display">\[P(C) = P(A \cap B^c) + P(A^c \cap B) = P(A) - P(A)P(B) + P(B)- P(A)P(B) = 0.5\]</span> <span class="math display">\[P(A)P(C) = 0.25\]</span> But, A, B, and C are not mutually independent because <span class="math display">\[\{A\cap B\cap C\} = \{\{A\cap B\}\cap \{A \cap B^c\}\} \cup \{\{A\cap B\}\cap \{A^c \cap B\}\} = \emptyset\]</span> So, <span class="math inline">\(P(A\cap B\cap C) = 0\)</span>, while <span class="math inline">\(P(A)P(B)P(C) = 0.125\)</span>.</p>
-</div>
-<div id="exercises-2" class="section level2">
-<h2><span class="header-section-number">4.3</span> Exercises</h2>
-<ol style="list-style-type: decimal">
-<li>Seventy percent of small, private-use aircraft that disappear in flight are eventually discovered. Of the aircraft that are discovered, <span class="math inline">\(60\%\)</span> have a black box, whereas <span class="math inline">\(90\%\)</span> of the missing aircraft that are not discovered do not have a black box. Suppose an aircraft has disappeared.<br></li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>If it has a black box what is the probability it will not be discovered?<br></li>
-<li>If it does not have a black box what is the probability it will be discovered?</li>
-</ol>
-<p><br><br></p>
-<ol start="2" style="list-style-type: decimal">
-<li>Consider rolling two different fair, six-sided dice, one red and one green. Let <span class="math inline">\(A\)</span> be the event the red die is 3, <span class="math inline">\(B\)</span> be the event the green die is <span class="math inline">\(4\)</span>, and <span class="math inline">\(C\)</span> be the event the sum of the two die is <span class="math inline">\(7\)</span>.<br></li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>Are <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> independent?<br></li>
-<li>Are <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span> independent?<br></li>
-<li>Are <span class="math inline">\(A\)</span> and <span class="math inline">\(C\)</span> independent?<br></li>
-<li>Are the three events mutually independent?</li>
-</ol>
+<div id="central-limit-theorem" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Central Limit Theorem</h1>
+<p>Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> denote a random smple from a distribution with finite mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Then, the standardized random variable <span class="math display">\[Y_n := \frac{\sum_{i=1}^n X_i - n\mu}{\sqrt{n}\sigma}\]</span> <strong>converges in distribution</strong> to a standard normal random variable, which means <span class="math display">\[\lim_{n\rightarrow \infty}F_{Y_n}(z) \rightarrow F_Z(z)\]</span> where <span class="math inline">\(F_{Y_n}\)</span> and <span class="math inline">\(F_Z\)</span> denote the CDFs of <span class="math inline">\(Y_n\)</span> and the standard normal distribution, respectively.<br></p>
+<p>Note: IF <span class="math inline">\(Y_n\)</span> has a MGF, then it is equivalent to say <span class="math display">\[\lim_{n\rightarrow \infty}M_{Y_n}(t) \rightarrow M_Z(t),\]</span> i.e., that the MGFs converge, because the MGF and CDF are 1-1, being linked by the inverse Laplace transform. <br><br></p>
+<p>We'll give the proof for the case <span class="math inline">\(Y_n\)</span> has an MGF, and this case applies to, e.g., the Binomial convergence to Normal (DeMoivre-Laplace Theorem).<br><br></p>
+Proof:<br> Let <span class="math inline">\(X_i\)</span> have MGF <span class="math inline">\(M_X(t)\)</span> and consifer the MGF of the de-meaned r.v. <span class="math inline">\((X - \mu)\)</span>---this is just <span class="math inline">\(X\)</span> minus its mean. This r.v. has MGF <span class="math inline">\(m(t):=E(e^{t(X-\mu)}) = E(e^{-\mu t}e^{tX}) = e^{-\mu t}M_X(t)\)</span>. Since <span class="math inline">\(m(t)\)</span> is a MGF, it must be that <span class="math display">\[m(0) = \int e^{-\mu \cdot 0}e^{0 x}f_X(x-\mu)dx = \int f_X(x-\mu)dx = 1,\]</span> <span class="math display">\[\frac{d}{dt}m(t)|_{t=0} = E(X-\mu) = 0\]</span> <span class="math display">\[\frac{d^2}{dt^2}m(t)|_{t=0} = E[(X-\mu)^2] = \sigma^2.\]</span> Recall Taylor's Theorem, which says there exists a number <span class="math inline">\(\xi\)</span> between <span class="math inline">\(0\)</span> and <span class="math inline">\(t\)</span> such that <span class="math display">\[m(t) = m(0) + t \frac{d}{dt}m(t)|_{t=0} + \frac{t^2}{2}\frac{d^2}{dt^2}m(t)|_{t=\xi}.\]</span> Simplifying the right hand side we have <span class="math display">\[m(t) = 1 + \frac{\sigma^2 t^2}{2} + \frac{1}{2}\left[\frac{d^2}{dt^2}m(t)|_{t=\xi} - \sigma^2\right]t^2.\]</span> Next, let <span class="math inline">\(M_{Y_n}(t)\)</span> denote the MGF of the standardized r.v. <span class="math inline">\(Y_n\)</span> and find it can be written in terms of <span class="math inline">\(m(t)\)</span> as follows:
+<span class="math display">\[\begin{align*}
+M_{Y_n}(t) &amp; = E\left[\exp\left(t\frac{\sum X_i - n\mu}{\sigma \sqrt{n}}\right)\right]\\
+&amp; \stackrel{ind.}{=}\prod_{i=1}^n E\left[\exp\left(t\frac{X_i - n\mu}{\sigma \sqrt{n}}\right)\right]\\
+&amp; \stackrel{iid.}{=}\left(m\frac{t}{\sigma/\sqrt{n}}\right)^n.
+\end{align*}\]</span>
+Then, replacing <span class="math inline">\(t\)</span> by <span class="math inline">\(t/\sigma\sqrt n\)</span> in the Taylor expansion, we have <span class="math display">\[M_{Y_n}(t) = \left\{1 + \frac{t^2}{2n} + \frac{1}{2n\sigma^2}\left[\frac{d^2}{dt^2}m(t)|_{t=\xi} - \sigma^2\right]t^2\right\}^n.\]</span> Note <span class="math inline">\(\frac{d^2}{dt^2}m(t)\)</span> is continuous, <span class="math inline">\(\frac{d^2}{dt^2}m(t)|_{t=0} = \sigma^2\)</span>, and <span class="math inline">\(\xi \rightarrow 0\)</span> as <span class="math inline">\(n\rightarrow \infty\)</span>, which together implies <span class="math display">\[\lim_{n\rightarrow \infty}\left[\frac{d^2}{dt^2}m(t)|_{t=\xi} - \sigma^2\right] = 0.\]</span> Therefore,
+<span class="math display">\[\begin{align*}
+\lim_{n\rightarrow \infty} M_{Y_n}(t) &amp; = \lim_{n\rightarrow \infty}\left\{1 + \frac{t^2}{2n} + \frac{1}{2n\sigma^2}\left[\frac{d^2}{dt^2}m(t)|_{t=\xi} - \sigma^2\right]t^2\right\}^n \\
+&amp; = e^{t^2/2}
+\end{align*}\]</span>
+<p>which is the MGF of the standard normal distribution.</p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="probability-and-counting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="random-variables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="special-continuous-distributions.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -313,7 +273,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-conditional-probabilities-of-events.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/09-Central-Limit-Theorem.Rmd",
 "text": "Edit"
 },
 "history": {

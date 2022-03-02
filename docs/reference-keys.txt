@@ -63,6 +63,8 @@ example-2-poisson-approximation-to-binomial
 optional-derivation-of-the-poisson-pmf-using-differential-equations
 special-continuous-distributions
 exponential-distribution
+poisson-interarrival-times-are-iid-exponentiallambda
 gamma-distribution
 normal-gaussian-distribution
 example-poll-and-binomial-normal-approximation
+central-limit-theorem
