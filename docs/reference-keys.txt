@@ -68,3 +68,14 @@ gamma-distribution
 normal-gaussian-distribution
 example-poll-and-binomial-normal-approximation
 central-limit-theorem
+sampling-distributions
+sample-mean
+sample-variance
+large-sample-sampling-distribution-of-sample-variance
+sampling-distribution-of-studentized-sample-mean
+part-of-students-theorem---indepndence-of-overline-x_n-and-s_n2
+differences-of-sample-means
+standarized-difference
+studentized-difference-equal-variances
+studentized-difference-unequal-variances
+ratios-of-sample-variances

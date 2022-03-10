@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Special Continuous Distributions | A First Course in Probability and Statistics</title>
+  <title>Chapter 11 Sampling Distributions | A First Course in Probability and Statistics</title>
   <meta name="description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 Special Continuous Distributions | A First Course in Probability and Statistics" />
+  <meta property="og:title" content="Chapter 11 Sampling Distributions | A First Course in Probability and Statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Special Continuous Distributions | A First Course in Probability and Statistics" />
+  <meta name="twitter:title" content="Chapter 11 Sampling Distributions | A First Course in Probability and Statistics" />
   
   <meta name="twitter:description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="special-discrete-distributions.html"/>
-<link rel="next" href="central-limit-theorem.html"/>
+<link rel="prev" href="central-limit-theorem.html"/>
+
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -283,101 +283,120 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="special-continuous-distributions" class="section level1" number="9">
-<h1><span class="header-section-number">Chapter 9</span> Special Continuous Distributions</h1>
-<div id="exponential-distribution" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Exponential Distribution</h2>
-<p>Let <span class="math inline">\(Y~\sim Poisson(\lambda t)\)</span> be a Poisson process with intensity <span class="math inline">\(\lambda t\)</span>. Let <span class="math inline">\(X\)</span> be the time until the next count/event is observed. Then, the probability <span class="math inline">\(X \geq t\)</span> is the probability is takes at least <span class="math inline">\(t\)</span> time for the next event, has probability
-<span class="math display">\[P(X &gt; t) = P(\text{no events in }(0,t)) = P_Y(0;t) = \frac{(\lambda t)^0 e^{-\lambda t}}{0!} = e^{-\lambda t}.\]</span>
-The CDF of <span class="math inline">\(X\)</span> then must be
-<span class="math display">\[F_X(x) = 1-P(X &gt; x) = P(X\leq x) = 1-e^{-\lambda x},\]</span>
-and the PDF of <span class="math inline">\(X\)</span> is
-<span class="math display">\[f_X(x) = \frac{d}{dx}F_X(x) = \lambda e^{-\lambda x}, \, x\geq 0.\]</span></p>
-<p>We recognize this as the PDF of an <em>Exponential random variable</em>. This derivation provides an important connection between the Exponential and Poisson (and, ultimately, Bernoulli) distributions: the waiting times of an Poisson process (with intensity <span class="math inline">\(\lambda t\)</span>) are Exponentially distributed (with mean <span class="math inline">\(1/\lambda\)</span>).<br><br></p>
-<p>The MGF of the Exponential distribution is</p>
-<p><span class="math display">\[M_X(t) = E(e^{tX})  = \int_{0}^\infty \lambda e^{-\lambda x(1-t/\lambda)}dx\]</span>
-<span class="math display">\[ = \frac{\lambda e^{-\lambda x(1-t/\lambda)}}{-\lambda (1-t/\lambda)}|_0^\infty\]</span>
-<span class="math display">\[ = \frac{1}{1-t/\lambda}, \text{ provided }t &lt; \lambda.\]</span></p>
-<p>Taking derivatives:
-<span class="math display">\[\frac{d}{dt}M_X(t) = \frac{1}{\lambda(1-t/\lambda)^2}, \]</span>
-and taking <span class="math inline">\(t = 0\)</span> implies <span class="math inline">\(E(X) = 1/\lambda\)</span>.
-And, again,
-<span class="math display">\[\frac{d^2}{dt^2}M_X(t) = \frac{2}{\lambda^2(1-t/\lambda)^3}\]</span>
-which implies <span class="math inline">\(E(X^2) = 2/\lambda^2\)</span> and <span class="math inline">\(V(X) = 1/\lambda^2\)</span>.</p>
+<div id="sampling-distributions" class="section level1" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Sampling Distributions</h1>
+<div id="sample-mean" class="section level2" number="11.1">
+<h2><span class="header-section-number">11.1</span> Sample Mean</h2>
+<p>Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> denote a random sample from a distribution/population with a finite mean <span class="math inline">\(\mu\)</span> and a finite variance <span class="math inline">\(\sigma^2\)</span>. Denote the sample mean by <span class="math inline">\(\overline X_n = n^{-1}\sum_{i=1}^n X_i\)</span>. According to the Central Limit Theorem,
+<span class="math display">\[\frac{\overline X_n - \mu}{\sigma / \sqrt{n}} \stackrel{i.d.}{\rightarrow} N(0,1)\]</span>
+for large sample size, meaning the distribution of the centered and scaled (standardized) sample mean converges to standard normal. Therefore, for large sample sizes,
+<span class="math display">\[\overline X_n \stackrel{\cdot}{\sim} N(\mu, \sigma^2/n)\]</span>
+We say the <em>approximate/large-sample sampling distribution</em> of the sample mean is Normal.<br><br></p>
+<p>If <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> constitutes a random sample from a Normal population, then the sampling distribution of the sample mean is <em>exactly</em> normal:
+<span class="math display">\[\overline X_n \sim N(\mu, \sigma^2/n)\quad \text{for all }n,\]</span>
+which can be verified using MGFs.<br><br></p>
+<p>How large is large? For many disributions the CLT will “kick in” for modest sample size, even, say, <span class="math inline">\(n=50\)</span> is often sufficient. But, ultimately, the number of samples needed in order for the sample mean to be nearly normally distributed depends on the underlying distribution. Very skewed or multimodal distributions may “resist” the CLT much longer than distributions that already are close to normal. Below is a quick Monte Carlo experiment illustrating the CLT, and sample mean sampling distribution, for two distributions: exponential and log-normal.</p>
+<p><img src="10-Sampling-Distributions_files/figure-html/unnamed-chunk-1-1.png" width="672" /><img src="10-Sampling-Distributions_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+<p>As a final reminder, note the CLT does not apply to “heavy-tailed” distributions that lack a mean. For example, the Cauchy distribution is very likely to produce extreme values, and, as a result, it has no finite mean. Therefore, the CLT does not apply and it’s unclear what will be the sampling distribution of it’s sample mean. It turns out the sample mean is still Cauchy-distributed—taking the average of Cauchy samples does not reduce uncertainty at all. For an illustration, see the Monte-Carlo-approximated distribution of the sample mean of 50 samples from a Cauchy population:</p>
+<p><img src="10-Sampling-Distributions_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
-<div id="poisson-interarrival-times-are-iid-exponentiallambda" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Poisson Interarrival times are iid Exponential(<span class="math inline">\(\lambda\)</span>)</h2>
-<p>In this section we show that the subsequent times to events in a Poisson process are iid Exponential(<span class="math inline">\(\lambda\)</span>)-distributed. We prove this for only the first <span class="math inline">\(2\)</span> such times, and hope the intuition is clear as to why the general case holds also.<br><br></p>
-<p>Let <span class="math inline">\(X_1\)</span> be the time to the first event. We have already shown this is <span class="math inline">\(Exp(\lambda)\)</span>. Let <span class="math inline">\(X_2\)</span> be the additional (not total) time to the second event. Our strategy is to compute the joint probability funciton <span class="math inline">\(P(X_1 &gt;x_1, X_2 &gt;x_2)\)</span> and note this is a product of the marginal probabilities <span class="math inline">\(P(X_1 &gt;x_1)\)</span> and <span class="math inline">\(P(X_2 &gt;x_2)\)</span>, then we will have shown the claim. The easiest way to do this is to first consider the total times <span class="math inline">\(S_1 = X_1\)</span> and <span class="math inline">\(S_2 = X_1 + X_2\)</span>. <br><br></p>
-<p>Start by writing
-<span class="math display">\[\begin{align*}
-F_{S_1, S_2}(s_1, s_2) &amp;= P(S_1 \leq s_1, S_2 \leq s_2)\\
-&amp; = 1 - P(S_1 &gt; s_1, S_2 &gt; s_2) \\
-&amp;- P(S_1 \leq s_1, S_2 &gt; s_2)\\
-&amp;P(S_1 &gt; s_1, S_2 \leq s_2).
-\end{align*}\]</span></p>
-<p>Now, <span class="math inline">\(P(S_1 &gt; s_1, S_2 &gt; s_2)\)</span> is the probability there are no events in <span class="math inline">\((0,s_1)\)</span> and no more than 1 event in <span class="math inline">\((s_1, s_2)\)</span>. By the definition of the Poisson process, the counts in disjoint intervals are independent, so we have
-<span class="math display">\[\begin{align*}
-P(S_1 &gt; s_1, S_2 &gt; s_2) &amp; = P(Y((0, s_1)) = 0, \, Y((s_1, s_2))\leq 1)\\
-&amp; = P(Y((0, s_1)) = 0)P(Y((s_1, s_2))\leq 1)\\
-&amp; = \frac{(\lambda s_1)^0e^{-\lambda s_1}}{0!}\times\left\{ \frac{(\lambda (s_2-s_1))^0e^{-\lambda (s_2-s_1)}}{0!}+ \frac{(\lambda (s_2-s_1))^1e^{-\lambda (s_2-s_1)}}{1!}\right\}
-\end{align*}\]</span></p>
-<p>Similar arguments show:
-<span class="math display">\[P(S_1 \leq s_1, S_2 &gt; s_2) = \lambda s_1 e^{-\lambda s_2}.\]</span>
-<span class="math display">\[P(S_1 &gt; s_1, S_2 \leq s_2) = e^{-\lambda s_1} - e^{-\lambda s_2}(1+\lambda(s_2 - s_1)).\]</span></p>
-<p>Then,
-<span class="math display">\[F_{S_1, S_2}(s_1, s_2) = 1-e^{-\lambda s_1} - \lambda s_1 e^{-\lambda s_2}.\]</span>
-And, by differentiating once w.r.t. <span class="math inline">\(s_1\)</span> and once w.r.t. <span class="math inline">\(s_2\)</span> we obtain
-<span class="math display">\[f_{S_1, S_2}(s_1, s_2) = \lambda^2e^{-\lambda s_2}, \, 0&lt;s_1&lt;s_2.\]</span>
-Next,
-<span class="math display">\[\begin{align*}
-P(X_1 &gt; x_1, X_2 &gt; x_2) &amp;= P(S_1 &gt; x_1, S_2-S_1 &gt; x_2)\\
-&amp; = \int_{x_1}^\infty \int_{s_1 + x_2}^\infty \lambda^2 e^{-\lambda s_2}\,ds_2\,ds_1\\
-&amp; = e^{-\lambda x_1}e^{-\lambda x_2}.
+<div id="sample-variance" class="section level2" number="11.2">
+<h2><span class="header-section-number">11.2</span> Sample Variance</h2>
+<p>Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> denote a random sample from a Normal population with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Denote the sample variance by <span class="math inline">\(S^2_n = \frac{1}{n-1}\sum_{i=1}^n (X_i - \overline X_n)^2\)</span>. Next, we will discover the sampling distribution of the (normal) sample variance.<br><br></p>
+<p>First, we need to establish the fact that if <span class="math inline">\(Z\sim N(0,1)\)</span>, then <span class="math inline">\(Z^2\)</span> has what is called a Chi-squared distribution, with one “degree of freedom”—this is the parameter of this distribution. This Chi-squared distribution has MGF <span class="math inline">\(\left(1-2t\right)^{-k/2}\)</span> where <span class="math inline">\(k\)</span> is the degrees of freedom parameter. It’s corresponding density function is
+<span class="math display">\[f(x) = 2^{-k/2}\left[\Gamma(k/2)\right]^{-1}x^{k/2-1}e^{-x/2},\quad x&gt;0\]</span>
+and you might recognize this as a Gamma distribution with shape <span class="math inline">\(k/2\)</span> and rate <span class="math inline">\(1/2\)</span>, so it’s mean is <span class="math inline">\((k/2)/(1/2) = k\)</span>. Ww can establish this fact by the MGF technique. Evaluate the MGF of <span class="math inline">\(Z^2\)</span> as follows:</p>
+<p><span class="math display">\[\begin{align*}
+M_{Z^2}(t) &amp;= E(e^{tZ^2}) = \int_{-\infty}^{\infty} e^{tz^2}\frac{1}{\sqrt{2\pi}}e^{-\tfrac12 z^2}dz\\
+&amp; = \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2\frac{1}{1-2t}}z^2}dz\\
+&amp; = \sqrt{\frac{1}{1-2t}}\int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi\frac{1}{1-2t}}} e^{-\frac{1}{2\frac{1}{1-2t}}z^2}dz\\
+&amp; = \sqrt{\frac{1}{1-2t}}
 \end{align*}\]</span>
-Notice this is a product of the marginal <span class="math inline">\(Exp(\lambda)\)</span> probabilities <span class="math inline">\(P(X_1 &gt; x_1) = e^{-\lambda x_1}\)</span> and <span class="math inline">\(P(X_2 &gt; x_2) = e^{-\lambda x_2}\)</span>.</p>
+where the last inequality follows from the fact the integrand is a normal density function with mean zero and variance <span class="math inline">\(\frac{1}{1-2t}\)</span> (provided <span class="math inline">\(t&lt;2\)</span>) so that the integral equals one. This shows <span class="math inline">\(Z^2\)</span> is Chi-squared distributed with <span class="math inline">\(1\)</span> degree of freedom. <br><br></p>
+<p>As we’ve many times, the MGF argument works particularly well with sums of independent random variables. If <span class="math inline">\(Z_1, Z_2, \ldots, Z_n\)</span> are iid standard normal, then <span class="math inline">\(\sum_{i=1}^n Z_i^2\)</span> is Chi-squared distributed with <span class="math inline">\(n\)</span> degrees of freedom. To show this, simply show the MGF of <span class="math inline">\(\sum_{i=1}^n Z_i^2\)</span> equals <span class="math inline">\(\left(1-2t\right)^{-n/2}\)</span> using the previous result for <span class="math inline">\(n=1\)</span>, the definition of the MGF, and independence.<br><br></p>
+<p>Next, we’ll show a linear transformation of the the sample variance has a Chi-squared distribution with <span class="math inline">\(n-1\)</span> degrees of freedom.<br><br></p>
+<p>Start by making the linear transformation
+<span class="math display">\[\frac{(n-1)S_n^2}{\sigma^2} = \sum_{i=1}^n \left(\frac{X_i - \overline X_n}{\sigma}\right)^2.\]</span>
+Here’s the main trick: add and subtract <span class="math inline">\(\mu\)</span> inside the square in the sum, then expand the square and simplify:
+<span class="math display">\[\begin{align*}
+\frac{(n-1)S_n^2}{\sigma^2} &amp;= \sum_{i=1}^n \left(\frac{X_i - \mu + \mu - \overline X_n}{\sigma}\right)^2\\
+&amp; = \sum_{i=1}^n \left(\frac{X_i - \mu}{\sigma}\right)^2 + 2\sum_{i=1}^n \left(\frac{X_i - \mu}{\sigma}\right)\left(\frac{\mu - \overline X_n}{\sigma}\right) + \sum_{i=1}^n \left(\frac{\mu - \overline X_n}{\sigma}\right)^2\\
+&amp; = \sum_{i=1}^n \left(\frac{X_i - \mu}{\sigma}\right)^2 - 2n\left(\frac{\overline X_n - \mu}{\sigma}\right)^2 + n\left(\frac{\overline X_n - \mu}{\sigma}\right)^2\\
+&amp; = \sum_{i=1}^n \left(\frac{X_i - \mu}{\sigma}\right)^2 - n\left(\frac{\overline X_n - \mu}{\sigma}\right)^2\\
+&amp; = \sum_{i=1}^n \left(\frac{X_i - \mu}{\sigma}\right)^2 - \left(\frac{\overline X_n - \mu}{\sigma/\sqrt{n}}\right)^2
+\end{align*}\]</span></p>
+<p>So far, we have shown
+<span class="math display">\[\sum_{i=1}^n \left(\frac{X_i - \overline X_n}{\sigma}\right)^2 = \sum_{i=1}^n \left(\frac{X_i - \mu}{\sigma}\right)^2 - \left(\frac{\overline X_n - \mu}{\sigma/\sqrt{n}}\right)^2.\]</span></p>
+<p>The first term on the right hand side is a summation of <span class="math inline">\(n\)</span> squares of independent, standard normal r.v.’s <span class="math inline">\(Z_i = \frac{X_i - \overline X_n}{\sigma}\)</span>. Baed on our previous result, this sum must be distributed as Chi-squared with <span class="math inline">\(n\)</span> degrees of freedom. The second term on the right is also the square of a standard normal random variable, so it must be distributed as Chi-squared with one degree of freedom. Consequently, the sum on the left hand side must be a Chi-squared random variable with <span class="math inline">\(n-1\)</span> degrees of freedom.</p>
+<div id="large-sample-sampling-distribution-of-sample-variance" class="section level3" number="11.2.1">
+<h3><span class="header-section-number">11.2.1</span> Large-sample sampling distribution of sample variance</h3>
+<p>If <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> is a random sample from a distribution with at least 4 finite moments, then the sample variance <span class="math inline">\(S_n^2\)</span> is approximately normally distributed for large <span class="math inline">\(n\)</span>. To see this, note
+<span class="math display">\[S_n^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \overline X_n)^2 \approx \frac{1}{n}\sum_{i=1}^n Z_i\]</span>
+where <span class="math inline">\(Z_i = (X_i - \mu)^2\)</span>. The latter expression is a sample average of iid random variables, and, as such, the CLT implies (the centered and scaled transformation of) it has a limiting normal distribution. This reasoning can be made rigorous.</p>
 </div>
-<div id="gamma-distribution" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> Gamma Distribution</h2>
-<p>Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> be a sequence of iid Exponential<span class="math inline">\((\lambda)\)</span> r.v.’s. For example, these could be the successive waiting times of the next <span class="math inline">\(n\)</span> events in a Poisson process with intensity <span class="math inline">\(\lambda t\)</span>. Then, the total waiting time for the next <span class="math inline">\(n\)</span> events is <span class="math inline">\(Y = \sum_{i=1}^n X_i\)</span>. Using the MGF method, we see
-<span class="math display">\[M_Y(t) = E(e^{tY}) = E(e^{t \sum_{i=1}^n X_i}) \stackrel{ind.}{=}\prod_{i=1}^n M_{X_i}(t)\stackrel{iid}{=}M_X(t)^n = \left(\frac{1}{1-t/\lambda}\right)^n,\]</span>
-which is the MGF of a <em>Gamma</em> random variable with two parameters: the shape (here <span class="math inline">\(n\)</span>), and the rate (here <span class="math inline">\(\lambda\)</span>). The Gamma distribution has PDF
-<span class="math display">\[f_Y(y) = \frac{\lambda^n}{\Gamma(n)}y^{n-1}e^{-\lambda y},\, y&gt;0\]</span>
-where <span class="math inline">\(\Gamma(\cdot)\)</span> denotes the “Gamma” function. If <span class="math inline">\(n\)</span> is a positive integer <span class="math inline">\(\Gamma(n) = (n-1)!\)</span>. Note: the PDF can be derived from the MGF using the <strong>inverse Laplace transform</strong> but we’ll not venture into these mathematical details here. <br><br></p>
-<p>Using the fact the Gamma r.v. is a sum of iid Exponential r.v.’s we have
-<span class="math display">\[E(Y) = n/\lambda \quad\text{and}\quad V(Y) = n/\lambda^2.\]</span>
-In general, the shape parameter <span class="math inline">\(n\)</span> need not be an integer, but if it is a fraction, then we lose the interpretation of the Gamma r.v. in terms of total waiting time.</p>
 </div>
-<div id="normal-gaussian-distribution" class="section level2" number="9.4">
-<h2><span class="header-section-number">9.4</span> Normal (Gaussian) Distribution</h2>
-<p>We have already seen how a limiting case of the Binomial distribution can give rise to the Poisson distribution and describe a different type of experiment. Now, we’ll explore a different kind of Binomial limiting case; specifically, consider the Bernoulli success probability <span class="math inline">\(p\)</span> to be fixed while the number of Bernoulli trials <span class="math inline">\(n\rightarrow \infty\)</span>.<br><br></p>
-<p>The specific mathematical connection between the Binomial and Normal takes a bit of setting up. Let <span class="math inline">\(F_X(x)\)</span> denote the cumulative mass function of a Binomial<span class="math inline">\((n,p)\)</span> r.v. Recall, this equals <span class="math inline">\(F_X(x) = \sum_{k=0}^x {n\choose k}p^k(1-p)^{n-k}\)</span>. Let <span class="math inline">\(Y\)</span> be the “centered and scaled” (or called “standardized”) version of <span class="math inline">\(X\)</span>: <span class="math inline">\(Y = \frac{X - np}{\sqrt{np(1-p)}}\)</span>; this is <span class="math inline">\(X\)</span> minus its mean and divided by its standard deviation. Let <span class="math inline">\(F_Y(y)\)</span> denote the corresponding CDF of <span class="math inline">\(Y\)</span>, which equals <span class="math inline">\(F_X(y\sqrt{np(1-p)}+np)\)</span>. Let <span class="math inline">\(Z\)</span> be a <em>standard normal</em> r.v., which is a continuous r.v. with PDF <span class="math display">\[f_Z(z) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}z^2}, \, -\infty &lt; z &lt; \infty.\]</span>
-Denote <span class="math inline">\(F_Z(z) = \int_{-\infty}^z \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}s^2}ds\)</span>, the standard normal CDF. Then, the Binomial distribution converges to the normal distribution in the following way:
-<span class="math display">\[\lim_{n\rightarrow\infty} F_Y(y) = F_Z(z).\]</span></p>
-<p>This “convergence in distribution” from Binomial to normal is generally known as the DeMoivre-Laplace Theorem, and is a special case of the <strong>Central Limit Theorem</strong> proved in the next chapter—so, we’ll save the proof of this result until we take up a more general version then.
-<br><br></p>
-<p>For now, focus on the interpretation of the Binomial-Normal distribution connection rather than the precise mathematical details. Take the example of a poll once more. Suppose a large number, say <span class="math inline">\(5000\)</span>, eligible voters are polled. It’s of little importance to compute very precise probabilities like <span class="math inline">\(p(2739) = P(\text{2739 voters prefer candidate 1})\)</span> and much more natural to quantify ranges of the sample proportion, e.g., <span class="math inline">\(P(\text{between 40 and 45\% of voters prefer candidate 1})\)</span>, which is a probability statement about a continuous quantity. The point is, when a discrete variable takes values in a very large set, its often more natural to treat it as a continuous random variable. And, it turns out, at least in the case of the Binomial/poll, the continuous approximation is very good.</p>
-<div id="example-poll-and-binomial-normal-approximation" class="section level3" number="9.4.1">
-<h3><span class="header-section-number">9.4.1</span> Example: Poll and Binomial-Normal approximation</h3>
-<p>In a poll of <span class="math inline">\(5000\)</span> eligible voters from a population of voters that is split 50/50 in their preferences between two candidates, what is the probability the sample proportion of voters favoring candidate 1 is between <span class="math inline">\(47\%\)</span> and <span class="math inline">\(50\%\)</span>?<br><br></p>
-<p>Solution:
-Applying the binomial distribution we have
-<span class="math display">\[P(2350\leq X \leq 2500) = \sum_{x=2350}^{2500} {5000 \choose x}(0.5)^x(0.5)^{2500-x}.\]</span></p>
-<p>Applying the normal approximation, we have <span class="math inline">\(Y=\frac{X - np}{\sqrt{np(1-p)}} = \frac{X - 2500}{35.35534} \stackrel{\cdot}{\sim}N(0,1)\)</span>, and
-<span class="math display">\[P(2350\leq X \leq 2500)\approx P(-4.24261 \leq Y \leq 0).\]</span></p>
-<p>Since <span class="math inline">\(X\)</span> is discrete and <span class="math inline">\(Y\)</span> is continuous, it is often suggested that a small adjustment is made to compensate for the fact <span class="math inline">\(X\)</span> takes only integer values. This is the <strong>continuity correction</strong> and it has the form
-<span class="math display">\[P_X(x)\approx F_Z\left(\frac{x-np+0.5}{\sqrt{np(1-p)}}\right).\]</span>
-That is, the Binomial CDF at <span class="math inline">\(x\)</span> is approximated by the normal CDF at <span class="math inline">\(z + 0.5/\sqrt{np(1-p)}\)</span> where <span class="math inline">\(z = \frac{x-np}{\sqrt{np(1-p)}}\)</span></p>
-<p>We can compute these probabilities using the functions <span class="math inline">\(pbinom\)</span> and <span class="math inline">\(pnorm\)</span> in R:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="special-continuous-distributions.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">2500</span>,<span class="dv">5000</span>,<span class="fl">0.5</span>)<span class="sc">-</span><span class="fu">pbinom</span>(<span class="dv">2349</span>,<span class="dv">5000</span>,<span class="fl">0.5</span>)</span></code></pre></div>
-<pre><code>## [1] 0.5056313</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="special-continuous-distributions.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">0</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">4.24261</span>)</span></code></pre></div>
-<pre><code>## [1] 0.499989</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="special-continuous-distributions.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># with cty corr</span></span>
-<span id="cb5-2"><a href="special-continuous-distributions.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">0</span><span class="fl">+0.5</span><span class="sc">/</span><span class="fl">35.35534</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">4.24261+0.5</span><span class="sc">/</span><span class="fl">35.35534</span>)</span></code></pre></div>
-<pre><code>## [1] 0.5056299</code></pre>
+<div id="sampling-distribution-of-studentized-sample-mean" class="section level2" number="11.3">
+<h2><span class="header-section-number">11.3</span> Sampling distribution of studentized sample mean</h2>
+<p>Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> be a random sample from a normal population with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>; and, let <span class="math inline">\(\overline X_n\)</span> and <span class="math inline">\(S_n^2\)</span> denote the sample mean and sample variance, respectively.<br><br></p>
+<p>Let
+<span class="math display">\[T_n:=\frac{\overline X_n - \mu}{\sqrt{S_n^2 / n}}\]</span>
+denote the “studentized sample mean.” <span class="math inline">\(T_n\)</span> is the standardized sample mean—<span class="math inline">\(\overline X_n\)</span> minus <span class="math inline">\(\mu\)</span> and divided by <span class="math inline">\(\sqrt{\sigma^2/n}\)</span>—with the true variance replaced by its estimate, the sample variance.<br><br></p>
+<p>The standardized sample mean has a standard normal distribution (even approximately so for non-normal random samples by the CLT), but the studentized sample mean is <em>not</em> normally-distributed. Rather, the studentized sample mean has a Student’s <span class="math inline">\(t\)</span> distribution with <span class="math inline">\((n-1)\)</span> degrees of freedom.<br><br></p>
+<p>A Student’s <span class="math inline">\(t\)</span> random variable is defined in the following way: If <span class="math inline">\(Z\)</span> is standard normal and independent of $V <span class="math inline">\(Chi-Squared\)</span>(n-1)$, then
+<span class="math display">\[T:=\frac{Z}{\sqrt{V/(n-1)}}\]</span>
+is a Student’s <span class="math inline">\(t\)</span> random variable with <span class="math inline">\(n-1\)</span> degrees of freedom. <br><br></p>
+<p>Rewriting the studentized sample mean, we have
+<span class="math display">\[T_n = \frac{\overline X_n - \mu}{\sqrt{S_n^2 / n}} = \frac{\frac{\overline X_n - \mu}{\sqrt{\sigma^2 / n}}}{\sqrt{(n-1)S_n^2/\{(n-1)\sigma^2\}}} = \frac{Z}{\sqrt{V/(n-1)}}.\]</span>
+It remains to verify <span class="math inline">\(\overline X_n\)</span> and <span class="math inline">\(S_n^2\)</span> are independent, and a sketch of this result is given next.</p>
+<div id="part-of-students-theorem---indepndence-of-overline-x_n-and-s_n2" class="section level3" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> Part of Student’s Theorem - Indepndence of <span class="math inline">\(\overline X_n\)</span> and <span class="math inline">\(S_n^2\)</span></h3>
+<p>Let <span class="math inline">\(Z_1, \ldots, Z_n\)</span> be a random sample of standard normal random variables. Without loss of generality let’s sketch a proof that <span class="math inline">\(\overline Z_n\)</span> and <span class="math inline">\(W = \sum_{i=1}^n (Z_i - \overline Z_n)^2\)</span> are independent. Define the matrix <span class="math inline">\(O_n\)</span> to be the <span class="math inline">\(n\times n\)</span> matrix with entries defined by:
+<span class="math display">\[For 1 \leq i \leq n-1, \quad o_{ij} = \Bigg\{ \begin{matrix} \frac{1}{\sqrt{i(i+1)}}, &amp;j\leq i \\
+-\frac{1}{\sqrt{i(i+1)}}, &amp;j= i+1 
+\end{matrix}\]</span>
+and zero otherwise; except that <span class="math inline">\(o_{nj} = n^{-1/2}\)</span>. Then, it can be checked that <span class="math inline">\(O_n\)</span> is <em>orthogonal</em>, i.e., <span class="math inline">\(O_n^\top O_n = I_n\)</span>, the identity. Next, define the vectors <span class="math inline">\(Z = (Z_1, \ldots, Z_n)^\top\)</span> and <span class="math inline">\(Y = O_n Z\)</span>. By construction of <span class="math inline">\(O_n\)</span> we have
+<span class="math display">\[Y^\top Y = Z^\top O_n^\top O_n Z = Z^\top Z = \sum_{i=1}^n Z_i^2.\]</span>
+And, we also have
+<span class="math display">\[Y_n = \sum_{i=1}^n \frac{Z_i}{\sqrt{n}} = \sqrt{n} \overline Z_n.\]</span>
+Therefore,
+<span class="math display">\[\sum_{i=1}^{n-1}Y_i^2 = \sum_{i=1}^{n}Y_i^2 - Y_n^2 = Z^\top Z - n\overline Z_n^2 = W.\]</span>
+So far, we have shown <span class="math inline">\(\overline Z_n\)</span> is a function of <span class="math inline">\(Y_n\)</span> and <span class="math inline">\(W\)</span> is a function of <span class="math inline">\(Y_1, \ldots, Y_{n-1}\)</span>. But, <span class="math inline">\(Y = O_n Z\)</span> is normally distributed with covariance <span class="math inline">\(O_n^\top O_n = I_n\)</span>. Therefore, <span class="math inline">\(Y_i\)</span>, <span class="math inline">\(i=1, \ldots, n\)</span>, are independent, which implies <span class="math inline">\(\overline Z_n\)</span> and <span class="math inline">\(W\)</span> are independent.</p>
+</div>
+</div>
+<div id="differences-of-sample-means" class="section level2" number="11.4">
+<h2><span class="header-section-number">11.4</span> Differences of Sample Means</h2>
+<p>So far we have considered statistics baed on a single random sample. Now, we’ll consider statistics based on separate random samples from two populations. First, consider a random sample <span class="math inline">\(X_1, X_2, \ldots, X_{n}\)</span> from a normal distribution with mean and variance <span class="math inline">\(\mu_X\)</span> and <span class="math inline">\(\sigma_X^2\)</span> and another random sample <span class="math inline">\(Y_1, Y_2, \ldots, Y_m\)</span> from a different normal distribution with mean and variance <span class="math inline">\(\mu_Y\)</span> and <span class="math inline">\(\sigma_Y^2\)</span>.</p>
+<div id="standarized-difference" class="section level3" number="11.4.1">
+<h3><span class="header-section-number">11.4.1</span> Standarized difference</h3>
+<p>The standardized difference of means is given by
+<span class="math display">\[Z = \frac{\overline X_n - \overline Y_m - (\mu_X - \mu_Y)}{\sqrt{\frac{\sigma_X^2}{n} + \frac{\sigma_Y^2}{m}}}\]</span>
+and follows a standard normal distribution.</p>
+</div>
+<div id="studentized-difference-equal-variances" class="section level3" number="11.4.2">
+<h3><span class="header-section-number">11.4.2</span> Studentized difference, equal variances</h3>
+<p>Suppose <span class="math inline">\(\sigma_X^2 = \sigma_Y^2\)</span>, and define the <em>pooled sample variance</em> <span class="math inline">\(S_P^2 = \frac{(n-1)S_X^2 + (m-1)S_Y^2}{n+m-2}\)</span>. The studentized difference of sample means is defined by
+<span class="math display">\[T = \frac{\overline X_n - \overline Y_m - (\mu_X - \mu_Y)}{\sqrt{S_p^2(\frac{1}{n}+\frac{1}{m})}}\]</span>
+follows a Student’s <span class="math inline">\(t\)</span> distribution with <span class="math inline">\(n+m - 2\)</span> degrees of freedom.</p>
+</div>
+<div id="studentized-difference-unequal-variances" class="section level3" number="11.4.3">
+<h3><span class="header-section-number">11.4.3</span> Studentized difference, unequal variances</h3>
+<p>When the population variances are unequal a different version of the studentized difference of means is sometimes used:
+<span class="math display">\[T = \frac{\overline X_n - \overline Y_m - (\mu_X - \mu_Y)}{\sqrt{\frac{S_X^2}{n}+\frac{S_Y^2}{m}}}.\]</span>
+This difference does not have an exact <span class="math inline">\(t\)</span> distribution, but can be approximated well by a <span class="math inline">\(t\)</span> distribution with degrees of freedom given by Satterthwaite’s formula:
+<span class="math display">\[df = \frac{\left(\frac{S_X^2}{n}+\frac{S_Y^2}{m}\right)^2}{\frac{1}{n-1}\left(\frac{S_X^2}{n}\right)^2 + \frac{1}{m-1}\left(\frac{S_Y^2}{m}\right)^2}.\]</span>
+Since the degrees of freedom is an integer-valued parameter the result of this formula is <em>rounded down</em> to the nearest integer.</p>
+</div>
+</div>
+<div id="ratios-of-sample-variances" class="section level2" number="11.5">
+<h2><span class="header-section-number">11.5</span> Ratios of Sample Variances</h2>
+<p>As above, consider a random sample <span class="math inline">\(X_1, X_2, \ldots, X_{n}\)</span> from a normal distribution with mean and variance <span class="math inline">\(\mu_X\)</span> and <span class="math inline">\(\sigma_X^2\)</span> and another random sample <span class="math inline">\(Y_1, Y_2, \ldots, Y_m\)</span> from a different normal distribution with mean and variance <span class="math inline">\(\mu_Y\)</span> and <span class="math inline">\(\sigma_Y^2\)</span>.<br><br></p>
+<p>If $U$Chi-Squared with df <span class="math inline">\(n-1\)</span> and $V$Chi-Squared with df <span class="math inline">\(m-1\)</span> and <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> are independent, then
+<span class="math display">\[F := \frac{U/(n-1)}{V/(m-1)}\]</span>
+has an F distribution with two degrees of freedom parameters <span class="math inline">\(df1 = n-1\)</span> and <span class="math inline">\(df2 = m-1\)</span>, often called the numerator and denominator degrees of freedom.<br><br></p>
+<p>If <span class="math inline">\(S_X^2\)</span> and <span class="math inline">\(S_Y^2\)</span> are sample variances, then
+<span class="math display">\[\frac{\frac{(n-1)S_X^2}{\sigma_X^2(n-1)}}{\frac{(m-1)S_Y^2}{\sigma_Y^2(m-1)}} = \frac{S_X^2/\sigma_X^2}{S_Y^2/\sigma_Y^2}\]</span>
+has an <span class="math inline">\(F(n-1, m-1)\)</span> distribution.</p>
 
-</div>
 </div>
 </div>
             </section>
@@ -385,8 +404,8 @@ That is, the Binomial CDF at <span class="math inline">\(x\)</span> is approxima
           </div>
         </div>
       </div>
-<a href="special-discrete-distributions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="central-limit-theorem.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="central-limit-theorem.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -417,7 +436,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-Special-Continuous-Distributions.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-Sampling-Distributions.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -24,7 +24,7 @@
 <meta name="author" content="Nick Syring" />
 
 
-<meta name="date" content="2022-03-02" />
+<meta name="date" content="2022-03-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="random-variables.html"/>
 <link rel="next" href="joint-distributions.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -55,41 +56,68 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -110,18 +138,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a></li>
-<li class="chapter" data-level="2" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html"><i class="fa fa-check"></i><b>2</b> Experiments and the role of probability</a><ul>
+<li class="chapter" data-level="2" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html"><i class="fa fa-check"></i><b>2</b> Experiments and the role of probability</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html#experiments"><i class="fa fa-check"></i><b>2.1</b> Experiments</a></li>
 <li class="chapter" data-level="2.2" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html#the-role-of-probability"><i class="fa fa-check"></i><b>2.2</b> The role of probability</a></li>
 <li class="chapter" data-level="2.3" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html#exercises"><i class="fa fa-check"></i><b>2.3</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="probability-and-counting.html"><a href="probability-and-counting.html"><i class="fa fa-check"></i><b>3</b> Probability and Counting</a><ul>
+<li class="chapter" data-level="3" data-path="probability-and-counting.html"><a href="probability-and-counting.html"><i class="fa fa-check"></i><b>3</b> Probability and Counting</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="probability-and-counting.html"><a href="probability-and-counting.html#terminology"><i class="fa fa-check"></i><b>3.1</b> Terminology</a></li>
-<li class="chapter" data-level="3.2" data-path="probability-and-counting.html"><a href="probability-and-counting.html#set-relations"><i class="fa fa-check"></i><b>3.2</b> Set relations</a><ul>
+<li class="chapter" data-level="3.2" data-path="probability-and-counting.html"><a href="probability-and-counting.html#set-relations"><i class="fa fa-check"></i><b>3.2</b> Set relations</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="probability-and-counting.html"><a href="probability-and-counting.html#sample-space-example"><i class="fa fa-check"></i><b>3.2.1</b> Sample space example</a></li>
 <li class="chapter" data-level="3.2.2" data-path="probability-and-counting.html"><a href="probability-and-counting.html#set-relations-example"><i class="fa fa-check"></i><b>3.2.2</b> Set relations example</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="probability-and-counting.html"><a href="probability-and-counting.html#probability-axioms"><i class="fa fa-check"></i><b>3.3</b> Probability Axioms</a><ul>
+<li class="chapter" data-level="3.3" data-path="probability-and-counting.html"><a href="probability-and-counting.html#probability-axioms"><i class="fa fa-check"></i><b>3.3</b> Probability Axioms</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="probability-and-counting.html"><a href="probability-and-counting.html#example-of-using-the-probability-axioms"><i class="fa fa-check"></i><b>3.3.1</b> Example of using the probability axioms</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="probability-and-counting.html"><a href="probability-and-counting.html#equally-likely-outcomes"><i class="fa fa-check"></i><b>3.4</b> Equally likely outcomes</a></li>
@@ -129,74 +161,108 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.6" data-path="probability-and-counting.html"><a href="probability-and-counting.html#applications-to-random-sampling"><i class="fa fa-check"></i><b>3.6</b> Applications to random sampling</a></li>
 <li class="chapter" data-level="3.7" data-path="probability-and-counting.html"><a href="probability-and-counting.html#exercises-1"><i class="fa fa-check"></i><b>3.7</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html"><i class="fa fa-check"></i><b>4</b> Conditional probabilities of events</a><ul>
+<li class="chapter" data-level="4" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html"><i class="fa fa-check"></i><b>4</b> Conditional probabilities of events</a>
+<ul>
 <li class="chapter" data-level="4.0.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example"><i class="fa fa-check"></i><b>4.0.1</b> Example</a></li>
 <li class="chapter" data-level="4.0.2" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example-1"><i class="fa fa-check"></i><b>4.0.2</b> Example</a></li>
 <li class="chapter" data-level="4.0.3" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example-2"><i class="fa fa-check"></i><b>4.0.3</b> Example</a></li>
-<li class="chapter" data-level="4.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#bayes-rule"><i class="fa fa-check"></i><b>4.1</b> Bayes' rule</a><ul>
+<li class="chapter" data-level="4.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#bayes-rule"><i class="fa fa-check"></i><b>4.1</b> Bayes’ rule</a>
+<ul>
 <li class="chapter" data-level="4.1.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example-3"><i class="fa fa-check"></i><b>4.1.1</b> Example</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#independence"><i class="fa fa-check"></i><b>4.2</b> Independence</a></li>
 <li class="chapter" data-level="4.3" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#exercises-2"><i class="fa fa-check"></i><b>4.3</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>5</b> Random Variables</a><ul>
-<li class="chapter" data-level="5.1" data-path="random-variables.html"><a href="random-variables.html#random-variables-1"><i class="fa fa-check"></i><b>5.1</b> Random variables</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="random-variables.html"><a href="random-variables.html#examples-of-discrete-r.v.s"><i class="fa fa-check"></i><b>5.1.1</b> Examples of Discrete r.v.'s</a></li>
+<li class="chapter" data-level="5" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>5</b> Random Variables</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="random-variables.html"><a href="random-variables.html#random-variables-1"><i class="fa fa-check"></i><b>5.1</b> Random variables</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="random-variables.html"><a href="random-variables.html#examples-of-discrete-r.v.s"><i class="fa fa-check"></i><b>5.1.1</b> Examples of Discrete r.v.’s</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="random-variables.html"><a href="random-variables.html#probability-mass-functions"><i class="fa fa-check"></i><b>5.2</b> Probability Mass Functions</a></li>
 <li class="chapter" data-level="5.3" data-path="random-variables.html"><a href="random-variables.html#cumulative-mass-functions"><i class="fa fa-check"></i><b>5.3</b> Cumulative Mass Functions</a></li>
-<li class="chapter" data-level="5.4" data-path="random-variables.html"><a href="random-variables.html#examples-of-continuous-r.v.s"><i class="fa fa-check"></i><b>5.4</b> Examples of Continuous r.v.'s</a></li>
-<li class="chapter" data-level="5.5" data-path="random-variables.html"><a href="random-variables.html#probability-assignments-for-continuous-r.v.s"><i class="fa fa-check"></i><b>5.5</b> Probability assignments for continuous r.v.'s</a></li>
+<li class="chapter" data-level="5.4" data-path="random-variables.html"><a href="random-variables.html#examples-of-continuous-r.v.s"><i class="fa fa-check"></i><b>5.4</b> Examples of Continuous r.v.’s</a></li>
+<li class="chapter" data-level="5.5" data-path="random-variables.html"><a href="random-variables.html#probability-assignments-for-continuous-r.v.s"><i class="fa fa-check"></i><b>5.5</b> Probability assignments for continuous r.v.’s</a></li>
 <li class="chapter" data-level="5.6" data-path="random-variables.html"><a href="random-variables.html#transformations-of-random-variables"><i class="fa fa-check"></i><b>5.6</b> Transformations of random variables</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html"><i class="fa fa-check"></i><b>6</b> Expectation of Random Variables</a><ul>
-<li class="chapter" data-level="6.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#mean-of-a-random-variable"><i class="fa fa-check"></i><b>6.1</b> Mean of a Random Variable</a><ul>
+<li class="chapter" data-level="6" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html"><i class="fa fa-check"></i><b>6</b> Expectation of Random Variables</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#mean-of-a-random-variable"><i class="fa fa-check"></i><b>6.1</b> Mean of a Random Variable</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#examples"><i class="fa fa-check"></i><b>6.1.1</b> Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#variance-of-a-random-variable"><i class="fa fa-check"></i><b>6.2</b> Variance of a random variable</a><ul>
+<li class="chapter" data-level="6.2" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#variance-of-a-random-variable"><i class="fa fa-check"></i><b>6.2</b> Variance of a random variable</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#examples-1"><i class="fa fa-check"></i><b>6.2.1</b> Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#special-uses-of-mean-and-variance"><i class="fa fa-check"></i><b>6.3</b> Special uses of mean and variance</a><ul>
+<li class="chapter" data-level="6.3" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#special-uses-of-mean-and-variance"><i class="fa fa-check"></i><b>6.3</b> Special uses of mean and variance</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#examples-2"><i class="fa fa-check"></i><b>6.3.1</b> Examples</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#expectations-of-functions-of-random-variables"><i class="fa fa-check"></i><b>6.4</b> Expectations of functions of random variables</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="joint-distributions.html"><a href="joint-distributions.html"><i class="fa fa-check"></i><b>7</b> Joint Distributions</a><ul>
-<li class="chapter" data-level="7.1" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-discrete-random-variables"><i class="fa fa-check"></i><b>7.1</b> Jointly distributed discrete random variables</a><ul>
+<li class="chapter" data-level="7" data-path="joint-distributions.html"><a href="joint-distributions.html"><i class="fa fa-check"></i><b>7</b> Joint Distributions</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-discrete-random-variables"><i class="fa fa-check"></i><b>7.1</b> Jointly distributed discrete random variables</a>
+<ul>
 <li class="chapter" data-level="7.1.1" data-path="joint-distributions.html"><a href="joint-distributions.html#marginal-pmfs"><i class="fa fa-check"></i><b>7.1.1</b> Marginal PMFs</a></li>
 <li class="chapter" data-level="7.1.2" data-path="joint-distributions.html"><a href="joint-distributions.html#conditional-pmfs"><i class="fa fa-check"></i><b>7.1.2</b> Conditional PMFs</a></li>
 <li class="chapter" data-level="7.1.3" data-path="joint-distributions.html"><a href="joint-distributions.html#independence-of-discrete-random-variables"><i class="fa fa-check"></i><b>7.1.3</b> Independence of discrete random variables</a></li>
 <li class="chapter" data-level="7.1.4" data-path="joint-distributions.html"><a href="joint-distributions.html#expectations-involving-multiple-discrete-random-variables"><i class="fa fa-check"></i><b>7.1.4</b> Expectations involving multiple discrete random variables</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-continuous-random-variables"><i class="fa fa-check"></i><b>7.2</b> Jointly distributed continuous random variables</a><ul>
+<li class="chapter" data-level="7.2" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-continuous-random-variables"><i class="fa fa-check"></i><b>7.2</b> Jointly distributed continuous random variables</a>
+<ul>
 <li class="chapter" data-level="7.2.1" data-path="joint-distributions.html"><a href="joint-distributions.html#marginal-densities"><i class="fa fa-check"></i><b>7.2.1</b> Marginal densities</a></li>
 <li class="chapter" data-level="7.2.2" data-path="joint-distributions.html"><a href="joint-distributions.html#conditional-densities"><i class="fa fa-check"></i><b>7.2.2</b> Conditional densities</a></li>
-<li class="chapter" data-level="7.2.3" data-path="joint-distributions.html"><a href="joint-distributions.html#independence-of-jointly-distributed-continuous-r.v.s"><i class="fa fa-check"></i><b>7.2.3</b> Independence of jointly-distributed continuous r.v.'s</a></li>
+<li class="chapter" data-level="7.2.3" data-path="joint-distributions.html"><a href="joint-distributions.html#independence-of-jointly-distributed-continuous-r.v.s"><i class="fa fa-check"></i><b>7.2.3</b> Independence of jointly-distributed continuous r.v.’s</a></li>
 <li class="chapter" data-level="7.2.4" data-path="joint-distributions.html"><a href="joint-distributions.html#expectations-involving-more-than-one-continuous-r.v."><i class="fa fa-check"></i><b>7.2.4</b> Expectations involving more than one continuous r.v.</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html"><i class="fa fa-check"></i><b>8</b> Special Discrete Distributions</a><ul>
+<li class="chapter" data-level="8" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html"><i class="fa fa-check"></i><b>8</b> Special Discrete Distributions</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>8.1</b> Bernoulli Distribution</a></li>
 <li class="chapter" data-level="8.2" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#categorical-distribution"><i class="fa fa-check"></i><b>8.2</b> Categorical Distribution</a></li>
 <li class="chapter" data-level="8.3" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>8.3</b> Binomial distribution</a></li>
 <li class="chapter" data-level="8.4" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#multinomial-distribution"><i class="fa fa-check"></i><b>8.4</b> Multinomial Distribution</a></li>
 <li class="chapter" data-level="8.5" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#hypergeometric-distribution"><i class="fa fa-check"></i><b>8.5</b> Hypergeometric distribution</a></li>
 <li class="chapter" data-level="8.6" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#negative-binomial-distribution"><i class="fa fa-check"></i><b>8.6</b> Negative Binomial Distribution</a></li>
-<li class="chapter" data-level="8.7" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>8.7</b> Poisson Distribution</a><ul>
+<li class="chapter" data-level="8.7" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>8.7</b> Poisson Distribution</a>
+<ul>
 <li class="chapter" data-level="8.7.1" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#example-1-poisson-process"><i class="fa fa-check"></i><b>8.7.1</b> Example 1: Poisson process</a></li>
 <li class="chapter" data-level="8.7.2" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#example-2-poisson-approximation-to-binomial"><i class="fa fa-check"></i><b>8.7.2</b> Example 2: Poisson approximation to Binomial</a></li>
 </ul></li>
 <li class="chapter" data-level="8.8" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#optional-derivation-of-the-poisson-pmf-using-differential-equations"><i class="fa fa-check"></i><b>8.8</b> Optional: Derivation of the Poisson PMF using differential equations</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html"><i class="fa fa-check"></i><b>9</b> Special Continuous Distributions</a><ul>
+<li class="chapter" data-level="9" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html"><i class="fa fa-check"></i><b>9</b> Special Continuous Distributions</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>9.1</b> Exponential Distribution</a></li>
 <li class="chapter" data-level="9.2" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#poisson-interarrival-times-are-iid-exponentiallambda"><i class="fa fa-check"></i><b>9.2</b> Poisson Interarrival times are iid Exponential(<span class="math inline">\(\lambda\)</span>)</a></li>
 <li class="chapter" data-level="9.3" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#gamma-distribution"><i class="fa fa-check"></i><b>9.3</b> Gamma Distribution</a></li>
-<li class="chapter" data-level="9.4" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#normal-gaussian-distribution"><i class="fa fa-check"></i><b>9.4</b> Normal (Gaussian) Distribution</a><ul>
+<li class="chapter" data-level="9.4" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#normal-gaussian-distribution"><i class="fa fa-check"></i><b>9.4</b> Normal (Gaussian) Distribution</a>
+<ul>
 <li class="chapter" data-level="9.4.1" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#example-poll-and-binomial-normal-approximation"><i class="fa fa-check"></i><b>9.4.1</b> Example: Poll and Binomial-Normal approximation</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="central-limit-theorem.html"><a href="central-limit-theorem.html"><i class="fa fa-check"></i><b>10</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="11" data-path="sampling-distributions.html"><a href="sampling-distributions.html"><i class="fa fa-check"></i><b>11</b> Sampling Distributions</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sample-mean"><i class="fa fa-check"></i><b>11.1</b> Sample Mean</a></li>
+<li class="chapter" data-level="11.2" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sample-variance"><i class="fa fa-check"></i><b>11.2</b> Sample Variance</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#large-sample-sampling-distribution-of-sample-variance"><i class="fa fa-check"></i><b>11.2.1</b> Large-sample sampling distribution of sample variance</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sampling-distribution-of-studentized-sample-mean"><i class="fa fa-check"></i><b>11.3</b> Sampling distribution of studentized sample mean</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#part-of-students-theorem---indepndence-of-overline-x_n-and-s_n2"><i class="fa fa-check"></i><b>11.3.1</b> Part of Student’s Theorem - Indepndence of <span class="math inline">\(\overline X_n\)</span> and <span class="math inline">\(S_n^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="sampling-distributions.html"><a href="sampling-distributions.html#differences-of-sample-means"><i class="fa fa-check"></i><b>11.4</b> Differences of Sample Means</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#standarized-difference"><i class="fa fa-check"></i><b>11.4.1</b> Standarized difference</a></li>
+<li class="chapter" data-level="11.4.2" data-path="sampling-distributions.html"><a href="sampling-distributions.html#studentized-difference-equal-variances"><i class="fa fa-check"></i><b>11.4.2</b> Studentized difference, equal variances</a></li>
+<li class="chapter" data-level="11.4.3" data-path="sampling-distributions.html"><a href="sampling-distributions.html#studentized-difference-unequal-variances"><i class="fa fa-check"></i><b>11.4.3</b> Studentized difference, unequal variances</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="sampling-distributions.html"><a href="sampling-distributions.html#ratios-of-sample-variances"><i class="fa fa-check"></i><b>11.5</b> Ratios of Sample Variances</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -217,14 +283,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="expectation-of-random-variables" class="section level1">
+<div id="expectation-of-random-variables" class="section level1" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Expectation of Random Variables</h1>
-<div id="mean-of-a-random-variable" class="section level2">
+<div id="mean-of-a-random-variable" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Mean of a Random Variable</h2>
-<p>Let <span class="math inline">\(X\)</span> be a random variable. Then the <em>expectation</em> of <span class="math inline">\(X\)</span> is denoted <span class="math inline">\(E(X)\)</span>. For discrete <span class="math inline">\(X\)</span>, <span class="math display">\[E(X) = \sum_{x} x p(x)\]</span> <em>if it exists...</em> It is possible the sum above diverges, i.e. equals infinity, in which case we say <span class="math inline">\(E(X)\)</span> does not exist. For a continuous random variable on <span class="math inline">\((a,b)\)</span>, <span class="math inline">\(E(X) = \int_a^b x f(x)dx\)</span>. Again, it is possible this integral does not exists, in which case neither does the expectation exists.<br><br></p>
-<p>Typical notation for <span class="math inline">\(E(X)\)</span> is <span class="math inline">\(\mu&#39;\)</span> &quot;mu prime&quot; and the expectation <span class="math inline">\(E(X)\)</span> is also called the &quot;first raw moment&quot;. This notation primarily comes from physics. In statistics, <span class="math inline">\(E(X)\)</span> is often denoted <span class="math inline">\(\mu\)</span>, with out the prime/apostrophe.<br><br></p>
+<p>Let <span class="math inline">\(X\)</span> be a random variable. Then the <em>expectation</em> of <span class="math inline">\(X\)</span> is denoted <span class="math inline">\(E(X)\)</span>. For discrete <span class="math inline">\(X\)</span>,
+<span class="math display">\[E(X) = \sum_{x} x p(x)\]</span>
+<em>if it exists…</em> It is possible the sum above diverges, i.e. equals infinity, in which case we say <span class="math inline">\(E(X)\)</span> does not exist. For a continuous random variable on <span class="math inline">\((a,b)\)</span>,
+<span class="math inline">\(E(X) = \int_a^b x f(x)dx\)</span>. Again, it is possible this integral does not exists, in which case neither does the expectation exists.<br><br></p>
+<p>Typical notation for <span class="math inline">\(E(X)\)</span> is <span class="math inline">\(\mu&#39;\)</span> “mu prime” and the expectation <span class="math inline">\(E(X)\)</span> is also called the “first raw moment.” This notation primarily comes from physics. In statistics, <span class="math inline">\(E(X)\)</span> is often denoted <span class="math inline">\(\mu\)</span>, with out the prime/apostrophe.<br><br></p>
 <p><span class="math inline">\(E(X)\)</span> can be understood as the probability-weighted mean of <span class="math inline">\(X\)</span>. This is easiest to see if <span class="math inline">\(X\)</span> is discrete and takes values in a finite set, say <span class="math inline">\(\{x_1, x_2, \ldots, x_p\}\)</span>. Then, the average of these values is <span class="math inline">\((1/p)(x_1 | x_2 + \cdots + x_p)\)</span>. If <span class="math inline">\(X\)</span> takes each of these values with probablity <span class="math inline">\(1/p\)</span> (equally-likely) then this arithmetic average can be interpreted as the long-run average observed value of <span class="math inline">\(X\)</span> if we were to repeat the experiment many times or as our best guess of the next outcome of the experiment, on average. If the outcomes are not equally-likely, rather they have probabilities <span class="math inline">\(p(x)\)</span>, then the probability-weighted average, rather than the arithmetic average, describes the long-run average outcomes of the experiment.</p>
-<div id="examples" class="section level3">
+<div id="examples" class="section level3" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Examples</h3>
 <ol style="list-style-type: decimal">
 <li>Let <span class="math inline">\(X\)</span> be the number of heads in 20 flips of a fair die. Recall <span class="math inline">\(p(x) = {20 \choose x}\left(\frac12\right)^20\)</span>. Then,
@@ -237,64 +306,96 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 &amp; = \frac12 20\\
 &amp; = 10.
 \end{align*}\]</span>
-Notice the &quot;average value&quot; of <span class="math inline">\(X\)</span> is 10 heads in 20 flips. That matches our intuition: if the coin is fair and we flip it 20 times, then our best guess for the number of heads we would get is 10.</li>
+Notice the “average value” of <span class="math inline">\(X\)</span> is 10 heads in 20 flips. That matches our intuition: if the coin is fair and we flip it 20 times, then our best guess for the number of heads we would get is 10.</li>
 </ol>
-<br><br> 2. Let <span class="math inline">\(X\)</span> be a random variable taking positive real values <span class="math inline">\((0,\infty)\)</span>. Check that <span class="math inline">\(f(x) = \frac{1}{(1+x)^2}\)</span> is a valid PDF of <span class="math inline">\(X\)</span> and show <span class="math inline">\(E(X)\)</span> does not exist for this PDF. <br><br> Solution:<br> First, note <span class="math inline">\(1/(1+x)^2 &gt; 0\)</span> for all <span class="math inline">\(x&gt;0\)</span>. Next, see that <span class="math display">\[\int_0^\infty f(x)dx = -\frac{1}{1+x}|_0^\infty = \left(-\lim_{t\rightarrow \infty}\frac{1}{1+t}\right) + \frac{1}{1} = 1-0 = 1.\]</span> Second,
+<p><br><br>
+2. Let <span class="math inline">\(X\)</span> be a random variable taking positive real values <span class="math inline">\((0,\infty)\)</span>. Check that <span class="math inline">\(f(x) = \frac{1}{(1+x)^2}\)</span> is a valid PDF of <span class="math inline">\(X\)</span> and show <span class="math inline">\(E(X)\)</span> does not exist for this PDF. <br><br>
+Solution:<br>
+First, note <span class="math inline">\(1/(1+x)^2 &gt; 0\)</span> for all <span class="math inline">\(x&gt;0\)</span>. Next, see that
+<span class="math display">\[\int_0^\infty f(x)dx = -\frac{1}{1+x}|_0^\infty = \left(-\lim_{t\rightarrow \infty}\frac{1}{1+t}\right) + \frac{1}{1} = 1-0 = 1.\]</span>
+Second,
 <span class="math display">\[\begin{align*}
 \mu&#39; = E(X) &amp;= \int_{0}^\infty x\frac{1}{(1+x)^2}dx\\
 &amp;= \int_1^\infty \frac{u-1}{u^2}du\\
 &amp;= \left(\lim_{t\rightarrow \infty} \ln u - \frac{1}{u}\right) + 1 \\
 &amp;= \infty
 \end{align*}\]</span>
-<p>Conclude <span class="math inline">\(E(X)\)</span> does not exist.</p>
+Conclude <span class="math inline">\(E(X)\)</span> does not exist.</p>
 </div>
 </div>
-<div id="variance-of-a-random-variable" class="section level2">
+<div id="variance-of-a-random-variable" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Variance of a random variable</h2>
-<p>If the expectation of a random variable describes its average value, then the variance of a random variable describes the magnitude of its range of likely values---i.e., it's variability or spread. The variance of a r.v. <span class="math inline">\(X\)</span> is defined as <span class="math display">\[V(X) = E(X^2) - E(X)^2\]</span> or, equivalently, as <span class="math display">\[V(X) = E[\{X - E(X)\}^2].\]</span> Another name for the variance is the &quot;second central moment&quot; or &quot;second moment about the mean&quot; and it may be denoted <span class="math inline">\(\mu_2\)</span>. This notation is more prevalent in physics than in statistics. In statistics, <span class="math inline">\(\sigma^2\)</span> is often used to denote the variance---that is &quot;sigma squared&quot; where <span class="math inline">\(\sigma\)</span> is the (lower case) Greek letter sigma. <br><br></p>
+<p>If the expectation of a random variable describes its average value, then the variance of a random variable describes the magnitude of its range of likely values—i.e., it’s variability or spread. The variance of a r.v. <span class="math inline">\(X\)</span> is defined as
+<span class="math display">\[V(X) = E(X^2) - E(X)^2\]</span>
+or, equivalently, as
+<span class="math display">\[V(X) = E[\{X - E(X)\}^2].\]</span>
+Another name for the variance is the “second central moment” or “second moment about the mean” and it may be denoted <span class="math inline">\(\mu_2\)</span>. This notation is more prevalent in physics than in statistics. In statistics, <span class="math inline">\(\sigma^2\)</span> is often used to denote the variance—that is “sigma squared” where <span class="math inline">\(\sigma\)</span> is the (lower case) Greek letter sigma. <br><br></p>
 <p>Like the mean, it is possible for the variance not to exist. The variance exists so long as <span class="math inline">\(E(X^2)\)</span> exists (is finite).</p>
-<div id="examples-1" class="section level3">
+<div id="examples-1" class="section level3" number="6.2.1">
 <h3><span class="header-section-number">6.2.1</span> Examples</h3>
 <ol style="list-style-type: decimal">
-<li>The outcome of a roll of a fair six-sided die can be described as a random variable <span class="math inline">\(X\)</span> taking values im <span class="math inline">\(\{1,2,3,4,5,6\}\)</span> with equal probability. The mean of <span class="math inline">\(X\)</span> is <span class="math display">\[\mu&#39; = E(X) = \frac{1}{6}(1+2+3+4+5+6) = \frac{1}{6}\left(\frac{6\times 7}{2}\right) = 3.5.\]</span> The secomd raw moment, <span class="math inline">\(\mu_2&#39;\)</span> or <span class="math inline">\(E(X^2)\)</span> is <span class="math display">\[\mu_2&#39; = \sum_{x=1}^6 x^2\frac{1}{6} = \frac{1}{6}(1+4+9+16+25+36) = \frac{1}{6}\left(6\times 7\times 13 / 6\right) = 91/6\]</span> Then, the variance is equal to <span class="math display">\[\mu_2 = V(X) = E(X^2) - E(X)^2 = 91-3.5^2 = 35/12\]</span> The variance of a roll of the die is about 3---this makes sense as a measure of spread/variability of a die roll.</li>
+<li>The outcome of a roll of a fair six-sided die can be described as a random variable <span class="math inline">\(X\)</span> taking values im <span class="math inline">\(\{1,2,3,4,5,6\}\)</span> with equal probability. The mean of <span class="math inline">\(X\)</span> is
+<span class="math display">\[\mu&#39; = E(X) = \frac{1}{6}(1+2+3+4+5+6) = \frac{1}{6}\left(\frac{6\times 7}{2}\right) = 3.5.\]</span>
+The secomd raw moment, <span class="math inline">\(\mu_2&#39;\)</span> or <span class="math inline">\(E(X^2)\)</span> is
+<span class="math display">\[\mu_2&#39; = \sum_{x=1}^6 x^2\frac{1}{6} = \frac{1}{6}(1+4+9+16+25+36) = \frac{1}{6}\left(6\times 7\times 13 / 6\right) = 91/6\]</span>
+Then, the variance is equal to
+<span class="math display">\[\mu_2 = V(X) = E(X^2) - E(X)^2 = 91-3.5^2 = 35/12\]</span>
+The variance of a roll of the die is about 3—this makes sense as a measure of spread/variability of a die roll.</li>
 </ol>
 <p><br><br></p>
 <ol start="2" style="list-style-type: decimal">
-<li>Take the previous example of measuring the location of an auto accident along 200 miles of interstate I-80 in Iowa. Suppose the PDF is the uniform probability assignment <span class="math inline">\(f(x) = 1/200\)</span> where the location <span class="math inline">\(X\)</span> is measured in miles. The mean of <span class="math inline">\(X\)</span> is <span class="math display">\[\mu&#39; = E(X) = \int_0^{200} x \frac{1}{200}dx = \frac{x^2}{400}|_0^{200} = 100\]</span> which is the midpoint. That seems intuitive. The second raw moment of <span class="math inline">\(X\)</span> is <span class="math display">\[\mu_2&#39; = E(X^2) = \int_0^{200} x^2 \frac{1}{200}dx = \frac{x^3}{600}|_0^{200} = 13,333.33.\]</span> Then, the variance of <span class="math inline">\(X\)</span> is <span class="math display">\[\mu_2 = V(X) = E(X^2) - E(X)^2 =  13,333.33 - 100^2 = 3,333.33\]</span> <br><br></li>
+<li>Take the previous example of measuring the location of an auto accident along 200 miles of interstate I-80 in Iowa. Suppose the PDF is the uniform probability assignment <span class="math inline">\(f(x) = 1/200\)</span> where the location <span class="math inline">\(X\)</span> is measured in miles. The mean of <span class="math inline">\(X\)</span> is
+<span class="math display">\[\mu&#39; = E(X) = \int_0^{200} x \frac{1}{200}dx = \frac{x^2}{400}|_0^{200} = 100\]</span>
+which is the midpoint. That seems intuitive. The second raw moment of <span class="math inline">\(X\)</span> is
+<span class="math display">\[\mu_2&#39; = E(X^2) = \int_0^{200} x^2 \frac{1}{200}dx = \frac{x^3}{600}|_0^{200} = 13,333.33.\]</span>
+Then, the variance of <span class="math inline">\(X\)</span> is
+<span class="math display">\[\mu_2 = V(X) = E(X^2) - E(X)^2 =  13,333.33 - 100^2 = 3,333.33\]</span>
+<br><br></li>
 </ol>
-<p>The variance is measured in the squared units of <span class="math inline">\(X\)</span>. For example, in the previous example, the variance represents 3,333.33 miles squared. The <em>standard deviation</em> is the square root of the variance, and is often represented by <span class="math inline">\(\sigma\)</span> in statistics. The standard deviation of the location of the auto accident is 57.735 miles---and note the units of standard deviaiton are the same as the units of <span class="math inline">\(X\)</span>. For this reason, standard deviation can be easier to use to describe variability of a random variable.</p>
+<p>The variance is measured in the squared units of <span class="math inline">\(X\)</span>. For example, in the previous example, the variance represents 3,333.33 miles squared. The <em>standard deviation</em> is the square root of the variance, and is often represented by <span class="math inline">\(\sigma\)</span> in statistics. The standard deviation of the location of the auto accident is 57.735 miles—and note the units of standard deviaiton are the same as the units of <span class="math inline">\(X\)</span>. For this reason, standard deviation can be easier to use to describe variability of a random variable.</p>
 </div>
 </div>
-<div id="special-uses-of-mean-and-variance" class="section level2">
+<div id="special-uses-of-mean-and-variance" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> Special uses of mean and variance</h2>
 <p>Besides describing the average value and spread of a random variable, its mean <span class="math inline">\(E(X)\)</span> and variance <span class="math inline">\(V(X)\)</span> have special relationships to its probabilities, in particular, its CMF/CDF. <br><br></p>
-<p>Suppose <span class="math inline">\(X\)</span> is a non-negative, continuous r.v. and consider computing its mean. The following mathematical statement says its mean is no smaller than <span class="math inline">\(a(1-F(a))\)</span> for every <span class="math inline">\(a &gt;0\)</span>: <span class="math display">\[E(X) = \int_0^\infty xf(x)dx = \int_0^a xf(x)dx+\int_a^\infty xf(x)dx\geq \int_a^\infty xf(x)dx \geq \int_a^\infty af(x)dx = a(1-F(a)).\]</span> Put another way, <span class="math display">\[P(X \geq a) \leq \frac{E(X)}{a}.\]</span> This result is called <em>Markov's Inequality</em> and it has important implications for probabilities of &quot;extreme values&quot;---if a r.v. has a finite expectation, then the chance it takes a very large values (<span class="math inline">\(\geq a\)</span>) is small, i.e., no more than <span class="math inline">\(E(X)/a\)</span>. <br><br></p>
-<p>There is a refined version of Markov's inequality called <em>Chebyshev's Inequality</em> that applies to all r.v.'s with a mean and variance, not only non-negative r.v.'s; it says: <span class="math display">\[P(|X - E(X)| \geq a) \leq \frac{V(X)}{a^2}.\]</span> In other words, the chance of an extreme value (greater than <span class="math inline">\(a\)</span> units from <span class="math inline">\(X\)</span>'s mean) is bounded by <span class="math inline">\(V(X)/a^2\)</span>.</p>
+<p>Suppose <span class="math inline">\(X\)</span> is a non-negative, continuous r.v. and consider computing its mean. The following mathematical statement says its mean is no smaller than <span class="math inline">\(a(1-F(a))\)</span> for every <span class="math inline">\(a &gt;0\)</span>:
+<span class="math display">\[E(X) = \int_0^\infty xf(x)dx = \int_0^a xf(x)dx+\int_a^\infty xf(x)dx\geq \int_a^\infty xf(x)dx \geq \int_a^\infty af(x)dx = a(1-F(a)).\]</span>
+Put another way,
+<span class="math display">\[P(X \geq a) \leq \frac{E(X)}{a}.\]</span>
+This result is called <em>Markov’s Inequality</em> and it has important implications for probabilities of “extreme values”—if a r.v. has a finite expectation, then the chance it takes a very large values (<span class="math inline">\(\geq a\)</span>) is small, i.e., no more than <span class="math inline">\(E(X)/a\)</span>. <br><br></p>
+<p>There is a refined version of Markov’s inequality called <em>Chebyshev’s Inequality</em> that applies to all r.v.’s with a mean and variance, not only non-negative r.v.’s; it says:
+<span class="math display">\[P(|X - E(X)| \geq a) \leq \frac{V(X)}{a^2}.\]</span>
+In other words, the chance of an extreme value (greater than <span class="math inline">\(a\)</span> units from <span class="math inline">\(X\)</span>’s mean) is bounded by <span class="math inline">\(V(X)/a^2\)</span>.</p>
 <p><br><br></p>
-<div id="examples-2" class="section level3">
+<div id="examples-2" class="section level3" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> Examples</h3>
 <ol style="list-style-type: decimal">
-<li>Use Markov's Inequality to bound the chance of 19 or more heads in 20 flips of a fair coin.<br><br></li>
+<li>Use Markov’s Inequality to bound the chance of 19 or more heads in 20 flips of a fair coin.<br><br></li>
 </ol>
 <p><span class="math display">\[P(X \geq 19) \leq \frac{10}{19}.\]</span></p>
 <p>Note the true probability is much smaller, about 0.00002<br><br></p>
 <ol start="2" style="list-style-type: decimal">
-<li>Use Chebyshev's Inequality to bound the chance there are either 0 or 20 heads.</li>
+<li>Use Chebyshev’s Inequality to bound the chance there are either 0 or 20 heads.</li>
 </ol>
 <p><span class="math display">\[P(|X - 10|\geq 10)\leq \frac{V(X)}{10}.\]</span></p>
-<p>We need to know the second raw moment, <span class="math inline">\(E(X^2)\)</span>. This is tricky, but can be obtained by a similar argument as we used to derive <span class="math inline">\(E(X)\)</span>. Verify that <span class="math inline">\(E(X^2) = 20\times 1/2 \times 1/2 + (20\times 1/2)^2\)</span> so that <span class="math inline">\(v(X) = E(X^2) - E(X)^2 = 20\times 1/2 \times 1/2 = 5\)</span>. The bound using Chebyshev's inequality is 1/2. Note the true probability is <span class="math inline">\(2\times 0.5^{20}\)</span>, much smaller.</p>
+<p>We need to know the second raw moment, <span class="math inline">\(E(X^2)\)</span>. This is tricky, but can be obtained by a similar argument as we used to derive <span class="math inline">\(E(X)\)</span>. Verify that <span class="math inline">\(E(X^2) = 20\times 1/2 \times 1/2 + (20\times 1/2)^2\)</span> so that <span class="math inline">\(v(X) = E(X^2) - E(X)^2 = 20\times 1/2 \times 1/2 = 5\)</span>. The bound using Chebyshev’s inequality is 1/2. Note the true probability is <span class="math inline">\(2\times 0.5^{20}\)</span>, much smaller.</p>
 </div>
 </div>
-<div id="expectations-of-functions-of-random-variables" class="section level2">
+<div id="expectations-of-functions-of-random-variables" class="section level2" number="6.4">
 <h2><span class="header-section-number">6.4</span> Expectations of functions of random variables</h2>
-<p>Let <span class="math inline">\(X\)</span> denote a continuous random variable with PDF <span class="math inline">\(f(x)\)</span>, and let <span class="math inline">\(Y = g(X)\)</span> for some function <span class="math inline">\(g\)</span>. Then, the expectation of <span class="math inline">\(Y\)</span> can be computed without needing to find the density of <span class="math inline">\(Y\)</span>: <span class="math display">\[E(Y) = E(g(X)) = \int_{-\infty}^\infty g(x)f_X(x)dx.\]</span> In fact, we already used this property to compute <span class="math inline">\(E(X^2)\)</span> and <span class="math inline">\(V(X)\)</span>.</p>
-Example: Linearity<br> It's common to encounter linear functions of random variables, i.e., <span class="math inline">\(g(X) = aX+b\)</span> for constants (non-random quantities) <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. Expectation is a <em>linear operator</em>, meaning that <span class="math display">\[E(aX+b) = aE(X)+b.\]</span> This is easy to show:
+<p>Let <span class="math inline">\(X\)</span> denote a continuous random variable with PDF <span class="math inline">\(f(x)\)</span>, and let <span class="math inline">\(Y = g(X)\)</span> for some function <span class="math inline">\(g\)</span>. Then, the expectation of <span class="math inline">\(Y\)</span> can be computed without needing to find the density of <span class="math inline">\(Y\)</span>:
+<span class="math display">\[E(Y) = E(g(X)) = \int_{-\infty}^\infty g(x)f_X(x)dx.\]</span>
+In fact, we already used this property to compute <span class="math inline">\(E(X^2)\)</span> and <span class="math inline">\(V(X)\)</span>.</p>
+<p>Example: Linearity<br>
+It’s common to encounter linear functions of random variables, i.e., <span class="math inline">\(g(X) = aX+b\)</span> for constants (non-random quantities) <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. Expectation is a <em>linear operator</em>, meaning that
+<span class="math display">\[E(aX+b) = aE(X)+b.\]</span>
+This is easy to show:
 <span class="math display">\[\begin{align*}
 E(aX+b)&amp;= \sum_x \{(ax+b)p(x)\}\\
 &amp; = a\sum_x xp(x) + b\sum_x p(x)\\
 &amp; = aE(X) + b
 \end{align*}\]</span>
-<p>where the last line follows from the fact <span class="math inline">\(\sum_x p(x)=1\)</span>.</p>
+where the last line follows from the fact <span class="math inline">\(\sum_x p(x)=1\)</span>.</p>
 
 </div>
 </div>
@@ -363,7 +464,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
