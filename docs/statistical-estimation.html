@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | A First Course in Probability and Statistics</title>
+  <title>Chapter 12 Statistical Estimation | A First Course in Probability and Statistics</title>
   <meta name="description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | A First Course in Probability and Statistics" />
+  <meta property="og:title" content="Chapter 12 Statistical Estimation | A First Course in Probability and Statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | A First Course in Probability and Statistics" />
+  <meta name="twitter:title" content="Chapter 12 Statistical Estimation | A First Course in Probability and Statistics" />
   
   <meta name="twitter:description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
+<link rel="prev" href="sampling-distributions.html"/>
 
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -297,18 +297,158 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="statistical-estimation" class="section level1" number="12">
+<h1><span class="header-section-number">Chapter 12</span> Statistical Estimation</h1>
+<div id="vocabulary" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> Vocabulary</h2>
+<p>We consider experiments in which a random sample of observations is taken from a population. The sampling distribution of observations is known up to the value(s) of some <em>population parameter(s)</em>. The goal of this chapter is to study <em>estimation</em>—approximation of these unknown parameters by <em>statistics</em>, functions of the sample data. An <em>estimator</em> is the random variable version of a statistic and has a corresponding sampling distribution. By virtue of being called an estimator we assume this statistic is “close” to the true parameter value in some sense. An <em>estimate</em> is a value of an estimator after the data is collected and the estimator computed; it is a fixed, non-random value.</p>
+<p><br><br></p>
+<p>For example, consider an experiment sampling <span class="math inline">\(n\)</span> iid random samples from a Normal population with unknown mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(1\)</span>. Here <span class="math inline">\(\mu\)</span> is the parameter we wish to estimate. An intuitive estimator is the sample mean statistic <span class="math inline">\(\overline X_n = n^{-1}\sum_{i=1}^n X_i\)</span>. When the data is collected we refer to the calculated sample mean—the estimate of <span class="math inline">\(\mu\)</span>—as lowercase <span class="math inline">\(\overline x_n\)</span>.</p>
+</div>
+<div id="properties-of-estimators" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> Properties of Estimators</h2>
+<p>It will become apparent that estimators are not unique—there are very often several seemingly reasonable estimators for a single parameter. Therefore we ought to be concerned with choosing the “best” estimator according to some criteria. Different criteria will lead to different “best” estimators.</p>
+<div id="bias-and-unbiasedness" class="section level3" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> Bias and Unbiasedness</h3>
+<p>Consider a generic parameter denoted <span class="math inline">\(\theta\)</span> and imagine an estimator for <span class="math inline">\(\theta\)</span> called <span class="math inline">\(\hat\theta_n\)</span>, which is a statistic and, hence, a random variable. We say <span class="math inline">\(\hat\theta_n\)</span> is <em>unbiased</em> if <span class="math inline">\(E(\hat\theta_n)=\theta\)</span> where the expectation is taken with respect to the sampling distribution of <span class="math inline">\(\hat\theta_n\)</span>. For example, the sample mean <span class="math inline">\(\overline X_n\)</span> is unbiased for the population mean <span class="math inline">\(\mu\)</span> (so long as the population mean exists):
+<span class="math display">\[\begin{align*}
+E(\overline X_n) &amp;= E\left(n^{-1}\sum_{i=1}^n X_i\right)\\
+&amp; = n^{-1}\sum_{i=1}^n E(X_i)\\
+&amp; = n^{-1}\sum_{i=1}^n \mu\\
+&amp; = \mu.
+\end{align*}\]</span>
+An unbiased estimator commits no systematic errors in estimating the parameter. In contrast, a biased estimator of a univariate real-valued parameter systematically underestimates or overestimates the parameter. Consider biased <span class="math inline">\(\hat\theta_n\)</span> such that <span class="math inline">\(E(\hat\theta_n) = \theta + 1\)</span>. We <strong>expect</strong> <span class="math inline">\(\hat\theta_n\)</span> to be 1 more than <span class="math inline">\(\theta\)</span>—hence we expect it to overestimate.</p>
+</div>
+<div id="minimum-variance-unbiased-estimators" class="section level3" number="12.2.2">
+<h3><span class="header-section-number">12.2.2</span> Minimum Variance Unbiased Estimators</h3>
+<p>Besides a finite mean, estimators often have a finite variance. And, intuitively, we would tend to prefer an estimator with low variance to one with high variance, particularly if both are unbiased. If we insist on an unbiased estimator, then the “best” unbiased estimator is the unbiased estimator with smallest variance among all unbiased estimators. <br><br></p>
+<p>It is not obvious how one would find the lowest variance estimator among all unbiased estimators. One result, due to CR Rao and Harald Cramer, provides a lower bound on the variance of an unbiased estimator. This lower bound can be checked by computing the variance of a given unbiased estimator, and, if they match, this implies the given estimator is the MVUE. We describe this procedure below.<br><br></p>
+<p>Let <span class="math inline">\(f(x;\theta)\)</span> denote the density of the data and let <span class="math inline">\(\theta\)</span> denote a univariate parameter. Let <span class="math inline">\(\ell(x;\theta) := \log(f(x;\theta))\)</span>, the natural logarithm of the density. Define the <em>Fisher Information</em> for one data point by
+<span class="math display">\[I(\theta) = E\left[\left(\frac{\partial \ell(x;\theta)}{\partial\theta}\right)^2\right].\]</span>
+The Fisher information for a random sample of size <span class="math inline">\(n\)</span> is <span class="math inline">\(n\)</span> times <span class="math inline">\(I(\theta)\)</span>. Then, Cramer and Rao showed that if <span class="math inline">\(\hat\theta_n\)</span> is unbiased, its variance cannot be smaller than
+<span class="math display">\[V(\hat\theta_n)\geq \left[nI(\theta)\right]^{-1}\]</span>
+where <span class="math inline">\(\theta\)</span> is the true parameter value.</p>
+<p><br><br></p>
+<p>Example: Let <span class="math inline">\(X_1, \ldots, X_n\)</span> be a random sample from a normal population with variance 1 and mean <span class="math inline">\(\mu\)</span> and consider the estimator <span class="math inline">\(\overline X_n\)</span>. The logarithm of the density function is
+<span class="math display">\[\ell(f(x;\mu)) = -\log(\sqrt{2\pi}) - \tfrac12(x - \mu)^2\]</span>
+with <span class="math inline">\(\mu-\)</span>derivative <span class="math inline">\(x - \mu\)</span>. Therefore, the Fisher Information is
+<span class="math display">\[I(\mu) = E[(X - \mu)^2] = 1\]</span>
+since it is, by definition, equal to the variance. The Cramer-Rao lower bound is
+<span class="math display">\[V(\hat\theta_n)\geq \frac{1}{n},\]</span>
+and we know <span class="math inline">\(V(\overline X_n) = 1/n\)</span> so the sample mean <span class="math inline">\(\overline X_n\)</span> is, indeed, the MVUE for this experiment.</p>
+</div>
+<div id="mean-squared-error-and-bias-variance-tradeoff" class="section level3" number="12.2.3">
+<h3><span class="header-section-number">12.2.3</span> Mean Squared Error and Bias-Variance tradeoff</h3>
+<p>As described above a common strategy is to select an unbiased estimator, preferably one with low (or the lowest) variance. On the other hand, one may prefer a biased estimator over an unbiased one if the bias is low and there is substantial reduction in variance. One way to choose estimators that balance bias and variance is to consider their mean squared error (MSE), defined by
+<span class="math display">\[MSE(\hat\theta_n) = E[(\hat\theta_n - \theta)^2] = Bias(\theta_n)^2 + V(\hat\theta_n).\]</span>
+It is left as an exercise to the reader to show the MSE equals the sum of estimator variance and squared bias. For the above reasons the estimator minimizing the MSE may be preferable even to the MVUE.</p>
+<p><br><br></p>
+<p>Example: Estimation of a normal population variance<br>
+The usual variance estimator is the sample variance <span class="math inline">\(S^2_n = \frac{1}{n-1}\sum_{i=1}^n (X_i - \overline X_n)^2\)</span>. It can be checked this estimator is unbiased. And, it is a bit of a pain, but it can be shown that <span class="math inline">\(V(S_n^2) = \frac{2\sigma^4}{n-1}\)</span>. Now, consider an alternative estimator that is a constant multiple of <span class="math inline">\(S^2_n\)</span>, say <span class="math inline">\(c S_n^2\)</span> for some <span class="math inline">\(c&gt;0\)</span>. The MSE of this estimator is
+<span class="math display">\[\begin{align*}
+MSE(cS_n^2) &amp;= V(cS_n^2) + Bias(cS_n^2)^2\\
+&amp; = c^2\frac{2\sigma^4}{n-1} + [E(cS_n^2) - \sigma^2]^2\\
+&amp; = c^2\frac{2\sigma^4}{n-1} + (c\sigma^2 - \sigma^2)^2\\
+&amp; = c^2\frac{2\sigma^4}{n-1} + \sigma^4(c-1)^2.
+\end{align*}\]</span>
+Differentiate w.r.t. <span class="math inline">\(c\)</span> to find
+<span class="math display">\[\frac{\partial MSE}{\partial c} = 2c \frac{2\sigma^4}{n-1} + 2(c-1)\sigma^4.\]</span>
+Set this equal to zero and solve for <span class="math inline">\(c\)</span>. We get
+<span class="math display">\[c = \frac{2\sigma^4}{\frac{4\sigma^4}{n-1} + 2\sigma^4} = \frac{n-1}{2+n-1} = \frac{n-1}{n+1}.\]</span>
+This means the minimim MSE estimator (at least among those that are multiples of <span class="math inline">\(S_n^2\)</span>) is actually <span class="math inline">\(\frac{1}{n+1}\sum_{i=1}^n (X_i - \overline X_n)^2\)</span>.</p>
+</div>
+<div id="consistency" class="section level3" number="12.2.4">
+<h3><span class="header-section-number">12.2.4</span> Consistency</h3>
+<p>Besides avoiding systematic estimation errors and having low variance, we would expect that as more and more data is collected an estimator should get better and better—and get “closer” to the true parameter, in some sense. This intuition is captured mathematically by <em>consistency</em>. An estimator is consistent if for any <span class="math inline">\(c&gt;0\)</span>, however small,
+<span class="math display">\[\lim_{n\rightarrow \infty} P(|\hat\theta_n-\theta|&gt;c) = 0.\]</span>
+Dissecting this definition from the inside out we first note <span class="math inline">\(|\hat\theta_n - \theta|\)</span> is the random estimation error. Then, <span class="math inline">\(|\hat\theta_n-\theta|&gt;c\)</span> says the error is at least <span class="math inline">\(c\)</span>. Since the error is a random variable we attach a probability to the chance the error is at least <span class="math inline">\(c\)</span>, which is <span class="math inline">\(P(|\hat\theta_n-\theta|&gt;c)\)</span>. And, consistency says this probability must vanish as we accumulate data. So, the chance of an error of any size <span class="math inline">\(c\)</span> or bigger vanishes. Taking complements, this is equivalent to saying
+<span class="math display">\[\lim_{n\rightarrow \infty} P(|\hat\theta_n-\theta|&lt;c) = 1,\]</span>
+which means <span class="math inline">\(\hat\theta_n\)</span> is within <span class="math inline">\(c\)</span> of <span class="math inline">\(\theta\)</span> with probability going to 1. <br><br></p>
+<p>One way to show an estimator is consistent is to show it is unbiased and has variance that vanishes as <span class="math inline">\(n\rightarrow 0\)</span>. One example is the sample mean, which is unbiased and has variance <span class="math inline">\(\sigma^2/n\)</span>. Then, consistency follows by Chebyshev’s inequality, which says: for any r.v. <span class="math inline">\(X\)</span> with finite mean and variance <span class="math inline">\((\mu, \sigma^2)\)</span>,
+<span class="math display">\[P(|X - \mu|&gt;c)\leq \frac{\sigma^2}{c^2}\]</span>
+for any <span class="math inline">\(c&gt;0\)</span>. In the context of estimation, we have
+<span class="math display">\[P(|\hat\theta_n - E(\hat\theta_n)|&gt;c) \leq \frac{Var(\hat\theta_n)}{c^2}.\]</span>
+Now, suppose <span class="math inline">\(\hat\theta_n\)</span> is unbiased and its variance vanishes in <span class="math inline">\(n\)</span>. Then, the above statement says
+<span class="math display">\[P(|\hat\theta_n - \theta|&gt;c) \leq s_n.\]</span>
+for a sequence <span class="math inline">\(s_n\)</span> satisfying <span class="math inline">\(\lim_{n\rightarrow \infty} s_n = 0\)</span>. Checking the definition we see this means <span class="math inline">\(\hat\theta_n\)</span> is consistent. A similar argument can work for biased estimators as well, provided the bias also vanishes as <span class="math inline">\(n\rightarrow\infty\)</span>. Such estimators are called <em>asymptotically unbiased</em>. One such example is the minimum MSE estimator of <span class="math inline">\(\sigma^2\)</span> from the previous section. It has bias <span class="math inline">\(\sigma^2(\frac{n-1}{n+1}-1)\)</span> which has limit zero.</p>
+</div>
+</div>
+<div id="finding-estimators---method-of-moments" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> Finding estimators - Method of Moments</h2>
+<p>So far we’ve discussed desirable properties of estimators but not where these estimators come from. How do we find estimators in the first place? One strategy is based on the fact population parameters often are related to population moments. Then, we can find estimators by replacing population moments by sample moments and referring back to the relationship between the moments and parameters. The simplest example of the method of moments is estimation of the population mean by the sample mean.<br><br></p>
+<p>Example: Suppose a population is modeled as a Gamma distribution with shape and rate parameters <span class="math inline">\((\alpha, \beta)\)</span>. The population mean is <span class="math inline">\(\alpha / \beta\)</span> and the population variance is <span class="math inline">\(\alpha / \beta^2\)</span>. This means the population second raw moment is <span class="math inline">\(\alpha / \beta^2 + (\alpha / \beta)^2\)</span>. We can estimate <span class="math inline">\((\alpha, \beta)\)</span> by matching the sample and population raw moments as follows:
+<span class="math display">\[\begin{align*}
+n^{-1}\sum_{i=1}^n X_i &amp;= \alpha/\beta^2\\
+n^{-1}\sum_{i=1}^n X_i^2 &amp;= \alpha/\beta^2 + (\alpha / \beta)^2.
+\end{align*}\]</span>
+Solving the system by substitution we have
+<span class="math display">\[\begin{align*}
+\hat\alpha = \frac{\hat\mu_2&#39; - \hat\mu_1&#39;}{\hat\mu_1&#39;}\\
+\hat \beta = \sqrt{\frac{\hat\mu_2&#39; - \hat\mu_1&#39;}{(\hat\mu_1&#39;)^2}},
+\end{align*}\]</span>
+where <span class="math inline">\(\hat\mu_1&#39;\)</span> and <span class="math inline">\(\hat\mu_2&#39;\)</span> indicate the 1st and second raw sample moments <span class="math inline">\(n^{-1}\sum_{i=1}^n X_i\)</span> and <span class="math inline">\(n^{-1}\sum_{i=1}^n X_i^2\)</span>.</p>
+<p><br><br></p>
+<p>Example: Suppose we will take a random sample of size <span class="math inline">\(n\)</span> from a continuous uniform distribution supported on the interval <span class="math inline">\((a,b)\)</span> where the endpoints are unknown. We know that <span class="math inline">\(E(X) = \frac{a+b}{2}\)</span> and <span class="math inline">\(V(X) = \frac{(b-a)^2}{12}\)</span> so that <span class="math inline">\(E(X^2) = \frac{(b-a)^2}{12} + \frac{(a+b)^2}{4}\)</span>. Then, we find estimators for <span class="math inline">\((a,b)\)</span> by solving
+<span class="math display">\[\begin{align*}
+n^{-1}\sum_{i=1}^n X_i &amp;= \frac{a+b}{2}\\
+n^{-1}\sum_{i=1}^n X_i^2 &amp;= \frac{(b-a)^2}{12} + \frac{(a+b)^2}{4}.
+\end{align*}\]</span>
+With some work, you should find <span class="math inline">\((\hat a, \hat b) = (\hat\mu_1&#39; - \sqrt{3\hat\mu_2&#39;}, \, \hat\mu_1&#39;+\sqrt{3\hat\mu_2&#39;})\)</span>. That’s not so intuitive… What about using the sample minimum and maximum…</p>
+</div>
+<div id="method-of-maximum-likelihood" class="section level2" number="12.4">
+<h2><span class="header-section-number">12.4</span> Method of Maximum Likelihood</h2>
+<p>Again consider a random sample <span class="math inline">\(X_1, \ldots, X_n\)</span> from a population synonymous with a density function <span class="math inline">\(f(x;\theta)\)</span> for an unknown parameter <span class="math inline">\(\theta\)</span>. For the time being consider only scalar <span class="math inline">\(\theta\)</span>. The <em>likelihood function</em> is the joint PDF of the data viewed as a function of the parameter, and may be treated either as a random function or as a deterministic function depending on whether the data are treates as random variables or as observed values, so pay close attention to the context. For iid data the likelihood can be written
+<span class="math display">\[L(\theta;X_1, \ldots, X_n) = \prod_{i=1}^n f(X_i;\theta).\]</span></p>
+<p>For the purpose of estimating <span class="math inline">\(\theta\)</span> we view the likelihood as a deterministic function given observations. Then, it acts as a sort of “ranking function” that provides a quantitative comparison of how well different parameter values agree with the observed data. The idea is to select as an estimate the parameter value that maximizes the likelihood/agreement with the data. To explain this concept of agreement with the data a bit more suppose the data come from a discrete population so that <span class="math inline">\(f(x;\theta)\)</span> is a PMF rather than a density—this makes the interpretation easier. Then <span class="math inline">\(\prod_{i=1}^n f(X_i;\theta)\)</span> is a the probability of observing the data for a given parameter value <span class="math inline">\(\theta\)</span>. Choosing <span class="math inline">\(\theta\)</span> to maximize this probability means selecting the distribution that gives the highest probability assignment to the data that was actually observed.
+<br><br></p>
+<p>Example: Suppose our random sample comes from an Exponential distribution with rate <span class="math inline">\(\lambda\)</span>. The likelihood function equals
+<span class="math display">\[\begin{align*}
+L(\lambda, x_1, \ldots, x_n) &amp;= \prod_{i=1}^n \lambda^{-1}e^{-x_i/\lambda}\\
+&amp; = \lambda ^{-n}e^{-\tfrac1\lambda\sum_{i=1}^n x_i}.
+\end{align*}\]</span></p>
+<p>Take the first derivative of the likleihood with respect to <span class="math inline">\(\lambda\)</span>:
+<span class="math display">\[\frac{\partial L}{\partial \lambda} = -n\lambda^{-(n+1)}e^{-\tfrac1\lambda \sum_{i=1}^n x_i} + \lambda^{-n}e^{-\tfrac1\lambda\sum_{i=1}^n x_i}\left(\lambda^{-2}\sum_{i=1}^n x_i\right)\]</span>
+Set <span class="math inline">\(\tfrac{\partial L}{\partial \lambda}\)</span> equal to zero and solve for <span class="math inline">\(\lambda\)</span> to obtain the MLE:
+<span class="math display">\[\begin{align*}
+\frac{\partial L}{\partial \lambda} = 0 &amp; \Rightarrow -n\lambda^{-1} + \tfrac{1}{\lambda^2}\sum_{i=1}^n x_i = 0\\
+&amp; \Rightarrow n\lambda = \sum_{i=1}^n x_i\\
+&amp; \Rightarrow \hat{\theta}_{MLE} = \overline x_n.
+\end{align*}\]</span></p>
+<p><br></p>
+<p>Example: Suppose our random sample comes from a Uniform distribution on the interval <span class="math inline">\((0,\theta)\)</span>. The likelihood function equals
+<span class="math display">\[\begin{align*}
+L(\lambda, x_1, \ldots, x_n) &amp;= \prod_{i=1}^n \frac{1}{\theta}1(0\leq x_i\leq \theta) \\
+&amp; = \theta^{-n}\prod_{i=1}^n 1(0\leq x_i\leq \theta).
+\end{align*}\]</span></p>
+<p>We cannot simply maximize this likelihood function by taking the first derivative because the indicator functions are not everywhere differentiable w.r.t. <span class="math inline">\(\theta\)</span>. Instead, note that the function <span class="math inline">\(\theta^{-n}\)</span> is monotonically decreasing in <span class="math inline">\(\theta\)</span>; so, this function prefers small <span class="math inline">\(\theta\)</span>. On the other hand, the function <span class="math inline">\(\prod_{i=1}^n 1(0\leq x_i\leq \theta)\)</span> is constant and equal to 1 so long as <span class="math inline">\(\theta \geq \max_{i=1, \ldots, n} x_i\)</span>; otherwise, this function is zero and so is the likelihood (and the likelihood cannot be less than zero!). This means we should choose <span class="math inline">\(\theta = \max_{i=1, \ldots, n} x_i\)</span> to maximize the likelihood. Therefore, the MLE of <span class="math inline">\(\theta\)</span> is <span class="math inline">\(\hat\theta_{MLE} = max_{i=1, \ldots, n} x_i\)</span>.</p>
+</div>
+<div id="properties-of-mles" class="section level2" number="12.5">
+<h2><span class="header-section-number">12.5</span> Properties of MLEs</h2>
+<p>Maximum likelihood estimation is a powerful technique because it produces estimators with good properties in a wide range of settings. These properties include consistency, asymptotic unbiasedness, asymptotic efficiency (attainment of the Cramer-Rao lower variance bound), and asymptotic normality; subject to the fulfilment of “regularity conditions.” These conditions include<br>
+1. Indentifiability - the CDF <span class="math inline">\(F(x; \theta)\)</span> satisfies <span class="math inline">\(\theta\ne\theta\Rightarrow F(x;\theta)\ne F(x;\theta&#39;)\)</span> for all <span class="math inline">\(x\)</span><br>
+2. The sample sapce of the PDF does not depend on <span class="math inline">\(\theta\)</span>.<br>
+3. The true <span class="math inline">\(\theta^\star\)</span> is not on the boundary of the domain of <span class="math inline">\(\theta\)</span>.<br>
+4. The PDF <span class="math inline">\(f(x;\theta)\)</span> is three-times differentiable in <span class="math inline">\(\theta\)</span>, and for all <span class="math inline">\(\theta\)</span> in a neighborhood of <span class="math inline">\(\theta^\star\)</span> the function <span class="math inline">\(|\frac{\partial^3}{\partial\theta^3}\log f(X;\theta)|\)</span> is bounded by a function <span class="math inline">\(M(X)\)</span> with finite mean.<br>
+5. We can differentiate <span class="math inline">\(\int f(x;\theta)dx\)</span> twice wr.t. <span class="math inline">\(\theta\)</span> by exchanging the order of integration and differentiation (limits).<br>
+<br></p>
+<p>Some of these conditions can be weakened, depending on the property one is trying to prove, and in some cases by making more advanced arguments, but these are the conditions we will use to establish asymptotic normality below.<br><br></p>
+<p>Proof sketch of asymptotic normality:<br></p>
+<p>Define the loglikelihood function <span class="math inline">\(\ell(\theta):=\log L(\theta;X_1, \ldots, X_n)\)</span> and expand its first derivative in Taylor series about the MLE <span class="math inline">\(\hat\theta_n\)</span> as follows:
+<span class="math display">\[\ell&#39;(\hat\theta_n) = \ell&#39;(\theta^\star) + (\hat\theta_n - \theta^\star)\ell&#39;&#39;(\theta^\star) + \tfrac12(\hat\theta_n - \theta^\star)^2\ell&#39;&#39;&#39;(\tilde\theta),\]</span>
+where <span class="math inline">\(\tilde\theta\)</span> is some value between <span class="math inline">\(\hat\theta_n\)</span> and <span class="math inline">\(\theta^\star\)</span> by Taylor’s theorem. Rearranging terms we have
+<span class="math display">\[\sqrt{n}(\hat\theta_n - \theta^\star) = \frac{n^{-1/2}\ell&#39;(\theta^\star)}{-n^{-1}\ell&#39;&#39;(\theta^\star) - (2n)^{-1}(\hat\theta_n-\theta^\star)\ell&#39;&#39;&#39;(\tilde\theta)}.\]</span>
+The CLT implies the numerator on the RHS above converges in distribution to <span class="math inline">\(N(0, I(\theta^\star))\)</span>. The weak LLN implies the first term in the denominator converges to <span class="math inline">\(I(\theta^\star)\)</span> in probability. By the fourth regularity condition and the weak LLN the term <span class="math inline">\(\tfrac1n \ell&#39;&#39;&#39;(\tilde\theta)\)</span> in the denominator converges to <span class="math inline">\(E(M(X))\)</span> and hence, is <em>bounded in probability</em>. This term is multiplied by <span class="math inline">\((\hat\theta_n - \theta^\star)\)</span> which converges to zero by consistency, and hence this last product term in the denominator converges to zero in probability. Together, these bounds imply
+<span class="math display">\[\sqrt{n}(\hat\theta_n - \theta^\star)\rightarrow N(0,I(\theta^\star)^{-1}).\]</span>
+We used consistency in this proof sketch, but the proof provides the additional propoerties of asymptotic unbiasedness, efficiency, and normality.</p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
+<a href="sampling-distributions.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
@@ -340,7 +480,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/%s",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/11-Statistical-Estimation.Rmd",
 "text": "Edit"
 },
 "history": {

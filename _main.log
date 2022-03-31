@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.3.1)  10 MAR 2022 12:13
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.3.1)  31 MAR 2022 12:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -933,18 +933,26 @@ Missing character: There is no ∼ (U+223C) in font [lmroman10-regular]:mapping=
 [77] [78] [79]
 Missing character: There is no ∼ (U+223C) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ∼ (U+223C) in font [lmroman10-regular]:mapping=tex-text;!
+[80]
+Chapter 12.
+
+Underfull \vbox (badness 1215) has occurred while \output is active []
+
+[81
+
+] [82] [83] [84] [85] [86] [87]
 No file _main.bbl.
-[80] (./_main.aux)
+[88] (./_main.aux)
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: FDF136FD4F5C24B84A9137654A609702;9969.
+(rerunfilecheck)             Checksum: 1CF7031C35A7CF2B2EE3E498FFACBBFD;11038.
  ) 
 Here is how much of TeX's memory you used:
- 17546 strings out of 478179
- 326368 string characters out of 5852733
- 799019 words of memory out of 5000000
- 37907 multiletter control sequences out of 15000+600000
+ 17557 strings out of 478179
+ 326653 string characters out of 5852733
+ 800739 words of memory out of 5000000
+ 37918 multiletter control sequences out of 15000+600000
  476719 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  86i,11n,121p,2424b,427s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on _main.pdf (80 pages).
+Output written on _main.pdf (88 pages).

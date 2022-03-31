@@ -79,3 +79,13 @@ standarized-difference
 studentized-difference-equal-variances
 studentized-difference-unequal-variances
 ratios-of-sample-variances
+statistical-estimation
+vocabulary
+properties-of-estimators
+bias-and-unbiasedness
+minimum-variance-unbiased-estimators
+mean-squared-error-and-bias-variance-tradeoff
+consistency
+finding-estimators---method-of-moments
+method-of-maximum-likelihood
+properties-of-mles
