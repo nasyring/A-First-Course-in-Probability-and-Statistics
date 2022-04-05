@@ -24,7 +24,7 @@
 <meta name="author" content="Nick Syring" />
 
 
-<meta name="date" content="2022-03-31" />
+<meta name="date" content="2022-04-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -420,7 +420,43 @@ Set <span class="math inline">\(\tfrac{\partial L}{\partial \lambda}\)</span> eq
 L(\lambda, x_1, \ldots, x_n) &amp;= \prod_{i=1}^n \frac{1}{\theta}1(0\leq x_i\leq \theta) \\
 &amp; = \theta^{-n}\prod_{i=1}^n 1(0\leq x_i\leq \theta).
 \end{align*}\]</span></p>
-<p>We cannot simply maximize this likelihood function by taking the first derivative because the indicator functions are not everywhere differentiable w.r.t. <span class="math inline">\(\theta\)</span>. Instead, note that the function <span class="math inline">\(\theta^{-n}\)</span> is monotonically decreasing in <span class="math inline">\(\theta\)</span>; so, this function prefers small <span class="math inline">\(\theta\)</span>. On the other hand, the function <span class="math inline">\(\prod_{i=1}^n 1(0\leq x_i\leq \theta)\)</span> is constant and equal to 1 so long as <span class="math inline">\(\theta \geq \max_{i=1, \ldots, n} x_i\)</span>; otherwise, this function is zero and so is the likelihood (and the likelihood cannot be less than zero!). This means we should choose <span class="math inline">\(\theta = \max_{i=1, \ldots, n} x_i\)</span> to maximize the likelihood. Therefore, the MLE of <span class="math inline">\(\theta\)</span> is <span class="math inline">\(\hat\theta_{MLE} = max_{i=1, \ldots, n} x_i\)</span>.</p>
+<p>We cannot simply maximize this likelihood function by taking the first derivative because the indicator functions are not everywhere differentiable w.r.t. <span class="math inline">\(\theta\)</span>. Instead, note that the function <span class="math inline">\(\theta^{-n}\)</span> is monotonically decreasing in <span class="math inline">\(\theta\)</span>; so, this function prefers small <span class="math inline">\(\theta\)</span>. On the other hand, the function <span class="math inline">\(\prod_{i=1}^n 1(0\leq x_i\leq \theta)\)</span> is constant and equal to 1 so long as <span class="math inline">\(\theta \geq \max_{i=1, \ldots, n} x_i\)</span>; otherwise, this function is zero and so is the likelihood (and the likelihood cannot be less than zero!). This means we should choose <span class="math inline">\(\theta = \max_{i=1, \ldots, n} x_i\)</span> to maximize the likelihood. Therefore, the MLE of <span class="math inline">\(\theta\)</span> is <span class="math inline">\(\hat\theta_{MLE} = max_{i=1, \ldots, n} x_i\)</span>. <br><br></p>
+<p>Multivariate Example: Consider estimation of both the mean and variance parameters of a normal population based on a random sample of size <span class="math inline">\(n\)</span> denoted <span class="math inline">\(X^n = (X_1, \ldots, X_n)^\top\)</span>. The likelihood is a function of two parameters <span class="math inline">\((\mu, \sigma^2)\)</span>:
+<span class="math display">\[L(\mu, \sigma^2;X^n) = (2\pi\sigma^2)^{-n/2}\exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^n (X_i-\mu)^2\right).\]</span>
+The loglikelihood is easier to maximize so take the log and find
+<span class="math display">\[\ell(\mu, \sigma^2;X^n) = -\frac{n}{2}\log (2\pi\sigma^2) -\frac{1}{2\sigma^2}\sum_{i=1}^n (X_i-\mu)^2. \]</span>
+To find the MLEs we need to compute the gradient vector:
+<span class="math display">\[\begin{align*}
+\frac{\partial\ell}{\partial \mu} &amp;= \frac{1}{\sigma^2}\sum_{i=1}^n (X_i-\mu)\\
+\frac{\partial\ell}{\partial \sigma^2} &amp;= -\frac{n}{2\sigma^2} + \frac{1}{2\sigma^4}\sum_{i=1}^n (X_i-\mu)^2.
+\end{align*}\]</span>
+Setting <span class="math inline">\(\frac{\partial\ell}{\partial \mu}=0\)</span> we immediately find <span class="math inline">\(\hat\mu_{MLE} = \overline X_n\)</span>. Substituting this estimate for <span class="math inline">\(\mu\)</span> in the second equation we find <span class="math inline">\(\hat\sigma^2_{MLE} = \frac{1}{n}\sum_{i=1}^n (X_i-\overline X_n)^2\)</span>, the version of the sample variance with denominator <span class="math inline">\(n\)</span> instead of <span class="math inline">\(n-1\)</span>. The following result says the MLE has variance approximately equal to the reciprocal of the Fisher information when the parameter is a scalar. In the multivariate setting the analogous quantity is the inverse Fisher information matrix, which is the inverse of the expectation of <span class="math inline">\(-1\)</span> times the matrix of second partial derivatives of the loglikelihood. Let’s calculate this variance-covariance matrix next. First, we need to compute the matrix of second partial derivatives of the loglikelihood:<br />
+<span class="math display">\[\begin{align*}
+\frac{\partial^2\ell}{\partial \mu^2} &amp;= -\frac{n}{\sigma^2}\\
+\frac{\partial^2\ell}{\partial \mu\partial\sigma^2} &amp;= -\frac{1}{\sigma^4}\sum_{i=1}^n (X_i-\mu)\\
+\frac{\partial^2\ell}{\partial (\sigma^2)^2} &amp;= \frac{n}{2\sigma^4} - \frac{1}{\sigma^6}\sum_{i=1}^n (X_i-\mu)^2
+\end{align*}\]</span>
+Next, take the expectation of these partial derivatives and multiply by <span class="math inline">\(-1\)</span>:
+<span class="math display">\[\begin{align*}
+-E(\frac{\partial^2\ell}{\partial \mu^2}) &amp;= \frac{n}{\sigma^2}\\
+-E(\frac{\partial^2\ell}{\partial \mu\partial\sigma^2}) &amp;= 0\\
+-E(\frac{\partial^2\ell}{\partial (\sigma^2)^2}) &amp;= -\frac{n}{2\sigma^4} + \frac{n}{\sigma^4} = \frac{n}{2\sigma^4}.
+\end{align*}\]</span>
+Finally, find the inverse of the matrix:
+<span class="math display">\[\begin{bmatrix}
+\frac{n}{\sigma^2} &amp;0 \\
+0 &amp;\frac{n}{2\sigma^4}.
+\end{bmatrix}\]</span>
+Since this is a diagonal matrix, the inverse is simply the matrix of reciprocal values on the diagonal:
+<span class="math display">\[Cov(\hat\mu_{MLE}, \hat\sigma^2_{MLE}) \approx \begin{bmatrix}
+\frac{\sigma^2}{n} &amp;0 \\
+0 &amp;\frac{2\sigma^4}{n}.
+\end{bmatrix}\]</span>
+according to the asymptotic results on MLEs given below. Since the unknown parameter <span class="math inline">\(\sigma^2\)</span> shows up in this covariance matrix, in practice we replace it with its estimate, yielding the estimated covariance matrix
+<span class="math display">\[\widehat {Cov}(\hat\mu_{MLE}, \hat\sigma^2_{MLE}) \approx \begin{bmatrix}
+\frac{\hat\sigma_{MLE}^2}{n} &amp;0 \\
+0 &amp;\frac{2\hat\sigma_{MLE}^4}{n}.
+\end{bmatrix}\]</span></p>
 </div>
 <div id="properties-of-mles" class="section level2" number="12.5">
 <h2><span class="header-section-number">12.5</span> Properties of MLEs</h2>
@@ -439,7 +475,7 @@ where <span class="math inline">\(\tilde\theta\)</span> is some value between <s
 <span class="math display">\[\sqrt{n}(\hat\theta_n - \theta^\star) = \frac{n^{-1/2}\ell&#39;(\theta^\star)}{-n^{-1}\ell&#39;&#39;(\theta^\star) - (2n)^{-1}(\hat\theta_n-\theta^\star)\ell&#39;&#39;&#39;(\tilde\theta)}.\]</span>
 The CLT implies the numerator on the RHS above converges in distribution to <span class="math inline">\(N(0, I(\theta^\star))\)</span>. The weak LLN implies the first term in the denominator converges to <span class="math inline">\(I(\theta^\star)\)</span> in probability. By the fourth regularity condition and the weak LLN the term <span class="math inline">\(\tfrac1n \ell&#39;&#39;&#39;(\tilde\theta)\)</span> in the denominator converges to <span class="math inline">\(E(M(X))\)</span> and hence, is <em>bounded in probability</em>. This term is multiplied by <span class="math inline">\((\hat\theta_n - \theta^\star)\)</span> which converges to zero by consistency, and hence this last product term in the denominator converges to zero in probability. Together, these bounds imply
 <span class="math display">\[\sqrt{n}(\hat\theta_n - \theta^\star)\rightarrow N(0,I(\theta^\star)^{-1}).\]</span>
-We used consistency in this proof sketch, but the proof provides the additional propoerties of asymptotic unbiasedness, efficiency, and normality.</p>
+The formal support for this last claim is provided by Slutsky’s Theorem which we’ll not cover here. We also used consistency in this proof sketch which we haven’t shown. This latter result provides the additional and stronger properties of asymptotic unbiasedness, efficiency, and normality.</p>
 
 </div>
 </div>
