@@ -97,4 +97,14 @@ population-mean-unknown-variance
 population-variance-unknown-mean
 two-normal-samples-comparing-means
 two-normal-samples-comparing-variances
+cis-for-proportions
+a-single-bernoulli-proportion
+difference-of-two-bernoulli-proportions
 approximate-cis-based-on-mles
+multivariate-case
+the-delta-method
+hypothesis-testing
+notation
+hypothesis-testing-outcomes
+tests-based-on-a-normal-population
+tests-for-a-normal-mean-when-the-variance-is-known

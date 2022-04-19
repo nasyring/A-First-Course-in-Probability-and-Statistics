@@ -6,7 +6,7 @@
 ]{book}
 \title{A First Course in Probability and Statistics}
 \author{Nick Syring}
-\date{2022-04-12}
+\date{2022-04-19}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -1886,15 +1886,15 @@ Computing the sample statistics we find \(\overline x = 16.83\), \(\overline y =
 \[(-4.18, \, -1.29)\]
 We conclude the mean infant walking times in the group with parental intervention were between about 1.3 and 4.2 months shorter than in the non-intervention group. (Note this is made-up ``data'' only for illustration purposes.)
 
-The careful reader may be concerned that our CI method used above relies on the two normal populations having identical variances but our sample variances are substantially different. This equal-variance CI procedure is often referred to as Welch's two-sample CI, in contrast to an alternative method that can be used when variances are unequal called Student's two-sample CI. Recall the studentized difference of sample means when variances are unequal approximately (not exactly) follows a Student's \(t\) distribution with Satterthwaite's choice of degrees of freedom:
+The careful reader may be concerned that our CI method used above relies on the two normal populations having identical variances but our sample variances are substantially different. This equal-variance CI procedure is often referred to as Students's two-sample CI, in contrast to an alternative method that can be used when variances are unequal called Welch's two-sample CI. Recall the studentized difference of sample means when variances are unequal approximately (not exactly) follows a Student's \(t\) distribution with Satterthwaite's choice of degrees of freedom:
 \[\frac{\overline X_n - \overline Y_m - (\mu_X - \mu_Y)}{\sqrt{\frac{S_X^2}{n}+\frac{S_Y^2}{m}}}\stackrel{\cdot}{\sim}t(\nu)\]
 where
 \[\nu = \frac{\left(\frac{S_X^2}{n}+\frac{S_Y^2}{m}\right)^2}{\frac{1}{n-1}\left(\frac{S_X^2}{n}\right)^2 + \frac{1}{m-1}\left(\frac{S_Y^2}{m}\right)^2}.\]
 Following the same argument as above, this implies an \emph{approximate} \(100(1-\alpha)\%\) CI for the difference of means is given by
 \[\left((\overline X - \overline Y)-t_{1-\alpha/2, \nu}\sqrt{\left(\frac{S_x^2}{n} + \frac{S_y^2}{m}\right)}, \, (\overline X - \overline Y)+t_{1-\alpha/2, \nu}\sqrt{S_p^2\left(\frac{S_x^2}{n} + \frac{S_y^2}{m}\right)}\right).\]
-Plugging in the relevant sample statistics, we get \(\nu = 20\) so that we use the quantile \(t_{0.975}(20) = 2.086\). Student's two-sample approximate \(95\%\) interval is
+Plugging in the relevant sample statistics, we get \(\nu = 20\) so that we use the quantile \(t_{0.975}(20) = 2.086\). Welch's two-sample approximate \(95\%\) interval is
 \[(-4.14, \,-1.33)\]
-which is hardly different than Welch's interval. We'll investigate the comparative perfomrances of these two intervals further in lab.
+which is hardly different than Student's interval. We'll investigate the comparative performances of these two intervals further in lab.
 
 \hypertarget{two-normal-samples-comparing-variances}{%
 \subsection{Two normal samples, comparing variances}\label{two-normal-samples-comparing-variances}}
@@ -1923,8 +1923,155 @@ The \(95\%\) CI for the difference in population mean thicknesses is
 The \(95\%\) CI for the ratio of population variances \(\sigma_y^2/\sigma_x^2\) is
 \[(0.1058, \, 2.6394).\]
 
+\hypertarget{cis-for-proportions}{%
+\section{CIs for proportions}\label{cis-for-proportions}}
+
+\hypertarget{a-single-bernoulli-proportion}{%
+\subsection{A single Bernoulli proportion}\label{a-single-bernoulli-proportion}}
+
+Using the DeMoivre-Laplace CLT we know the standardized sample proportion is approximately normally distributed:
+
+\[\frac{\hat p - p}{\sqrt{\frac{p(1-p)}{n}}}\stackrel{\cdot}{\sim}N(0,1)\]
+
+Then, again denoting lower standard normal quantiles by \(z_\alpha\), we have
+\[1-\alpha \approx P\left(z_{\alpha/2} \leq \frac{\hat p - p}{\sqrt{\frac{p(1-p)}{n}}}\leq z_{1-\alpha/2}\right).\]
+
+As in other cases covered above, we can derive an approximate CI for \(p\) by algebraic manipulations within the probability statement. A complicating factor is that the true proportion \(p\) shows up in both the numerator and denominator of the standardized sample proportion. A common technique to get around this is to replace the standard deviation of \(\hat p\) by the estimated standard deviation \(\sqrt{\hat p(1-\hat p)/n}\). Using the estimated standard deviation, an approximate \(100(1-\alpha)\%\) CI for \(p\) is given by
+\[\left(\hat p + z_{\alpha/2}\sqrt{\frac{\hat p(1-\hat p)}{n}}, \, \hat p + z_{1-\alpha/2}\sqrt{\frac{\hat p(1-\hat p)}{n}}\right).\]
+
+It is possible to derive a CI for \(p\) without resorting to using the estimated standard deviation. In that case, we have to solve for \(p\) in the quadratic equation
+\[\frac{\hat p - p}{\sqrt{\frac{p(1-p)}{n}}}= z_{1-\alpha/2}.\]
+The endpoints of the CI based on the true standard deviation of \(\hat p\) are given by
+\[\frac{n\hat p + 0.5z_{\alpha/2}^2\pm z_{1-\alpha/2}\sqrt{n\hat p(1-\hat p)+0.25z_{\alpha/2}^2}}{n+z_{\alpha/2}^2}.\]
+
+Example: A survey is conducted to determine the level of support for the construction of a new nuclear power plant in a community. 140 of 400 randomly sampled voters favor the construction project. Find a \(99\%\) approximate CI for the true proportion of voters favoring the project.
+The sample proportion is \(\hat p = 0.35\) and the estimated standard deviation of \(\hat p\) is \(\sqrt{0.35\cdot 0.65 / 400} = 0.02384848\). Given \(z_{0.995} = 2.575\) an approximate \(99\%\) CI for p is given by
+\[(28.86\%, \, 41.14\%).\]
+
+Alternatively, using the formula for the CI based on the true standard deviation of \(\hat p\) we find the interval
+\[(29.15\%, \, 41.34\%).\]
+
+\hypertarget{difference-of-two-bernoulli-proportions}{%
+\subsection{Difference of two Bernoulli proportions}\label{difference-of-two-bernoulli-proportions}}
+
+The most common experiments compare two or more populations. For two Bernoulli populations an approximate CI for the difference of population proportions can be computed based on the DeMoivre-Laplace CLT similarly to the single population interval above based on the estimated standard deviation of the sample proportion. Our CI for the difference of proportions is given by
+\[\left(\hat p_1 - \hat p_2 + z_{\alpha/2}\sqrt{\frac{\hat p_1(1-\hat p_1)}{n_1} + \frac{\hat p_2(1-\hat p_2)}{n_2}}, \,\,\,\,\, \hat p_1 - \hat p_2 + z_{1-\alpha/2}\sqrt{\frac{\hat p_1(1-\hat p_1)}{n_1} + \frac{\hat p_2(1-\hat p_2)}{n_2}}\right).\]
+Example: Suppose a poll of Illinois voters finds 132 of 200 male voters and 90 of 150 female voters favor a certain candidate. A \(99\%\) CI for the difference of population favorability proportions between the sexes is
+\[(-7.4\%, \, 19.4\%)\]
+indicating there is, plausibly, no difference in the candidate's favorability between the sexes.
+
 \hypertarget{approximate-cis-based-on-mles}{%
 \section{Approximate CIs based on MLEs}\label{approximate-cis-based-on-mles}}
+
+So far we have derived CIs for parameters based on sampling distributions of statistics used to estimate those parameters. We can use the same strategy to derive CIs for parameters estimated using maximum likelihood whenever asymptotic normality of the corresponding MLE is justified. Recall there are a few cases where asymptotic normality may not hold, such as estimating the lower or upper bounds of a uniform distribution---that case violates the condition that the sample space does not depend on the parameter. However, in many situations asymptotic normality of the MLE does hold, and we can use it to derive approximate CIs.
+
+Recall that, under some regularity conditions, the MLE \(\hat\theta\) for the scalar parameter \(\theta\) is approximately normally distributed with mean \(\theta\) and variance \([nI(\theta)]^{-1}\) where \(I(\theta)\) is the Fisher information for one sample. If we replace the variance by the estimated variance by plugging in \(\hat\theta\) then we obtain the CI
+\[\left(\hat\theta \pm z_{1-\alpha/2}[nI(\hat\theta)]^{-1/2}\right),\]
+where you'll recall that \(I(\theta) = E\left[\left(\frac{\partial \ell}{\partial \theta}\right)^2\right]\) or, equivalently (most of the time), \(I(\theta) = -E\left(\frac{\partial^2 \ell}{\partial \theta^2}\right)\) where \(\ell\) denotes the loglikelihood function.
+
+Example: The MLE of the exponential rate parameter is \(\hat\theta = \overline X\). We have previously found \([nI(\theta)]^{-1/2} = \sqrt{(\overline X)^2/n}\) so that an MLE-based approximate CI for the exponential rate \(\theta\) is given by
+\[\left(\overline X \pm z_{1-\alpha/2}\frac{\overline X}{\sqrt{n}}\right).\]
+
+\hypertarget{multivariate-case}{%
+\subsection{Multivariate case}\label{multivariate-case}}
+
+When \(\theta\) is a vector parameter the MLE \(\hat\theta\) is approximately distributed as a multivariate normal random vector with mean vector \(\theta\) and (estimated) covariance matrix \([nI(\hat\theta)]^{-1}\). We can compute approximate CIs for each element of \(\theta\) using the marginal approximate normal distributions of the elements of \(\hat\theta\) as in the scalar case. However, we can also compute a joint confidence region for two or more elements of \(\theta\). The elliptical region
+\[\{\theta: (\hat \theta - \theta)[nI(\hat\theta)]^{-1}(\hat \theta - \theta)^\top \leq z_{1-\alpha/2}^2\}\]
+is an approximate \(100(1-\alpha)\%\) confidence region for \(\theta\). It is also smaller than the set product of marginal confidence intervals, which is a hyper-rectangle containing this ellipse.
+
+Example: The MLEs for a normal population mean and variance have approximate normal distribution
+\[(\overline X, \hat\sigma^2) \stackrel{\cdot}{\sim}N\left((\mu, \sigma^2), \begin{bmatrix} \sigma^2/n & 0 \\ 0 & 2\sigma^4/n \end{bmatrix}\right).\]
+An approximate \(100(1-\alpha)\%\) elliptical confidence region for \((\mu, \sigma^2)\) is given by
+\[\{(\mu, \sigma^2): (\overline X - \mu, \hat\sigma^2 - \sigma^2)\begin{bmatrix} \hat\sigma^2/n & 0 \\ 0 & 2\hat\sigma^4/n \end{bmatrix}^{-1} (\overline X - \mu, \hat\sigma^2 - \sigma^2)^\top \leq z_{1-\alpha/2}^2\}.\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{56482}\NormalTok{)}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{xbar }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(data)}
+\NormalTok{s2 }\OtherTok{\textless{}{-}} \FunctionTok{var}\NormalTok{(data)}\SpecialCharTok{*}\NormalTok{(}\DecValTok{19}\NormalTok{)}\SpecialCharTok{/}\DecValTok{20}
+
+\NormalTok{xc }\OtherTok{\textless{}{-}}\NormalTok{ xbar }\CommentTok{\# center x\_c or h}
+\NormalTok{yc }\OtherTok{\textless{}{-}}\NormalTok{ s2 }\CommentTok{\# y\_c or k}
+\NormalTok{a }\OtherTok{\textless{}{-}} \FloatTok{1.96}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{(s2}\SpecialCharTok{/}\DecValTok{20}\NormalTok{) }\CommentTok{\# major axis length}
+\NormalTok{b }\OtherTok{\textless{}{-}}  \FloatTok{1.96}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{(}\DecValTok{2}\SpecialCharTok{*}\NormalTok{(s2}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}\SpecialCharTok{/}\DecValTok{20}\NormalTok{) }\CommentTok{\# minor axis length}
+\NormalTok{phi }\OtherTok{\textless{}{-}} \DecValTok{0} \CommentTok{\# angle of major axis with x axis phi or tau}
+
+\NormalTok{t }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{2}\SpecialCharTok{*}\NormalTok{pi, }\FloatTok{0.01}\NormalTok{) }
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ xc }\SpecialCharTok{+}\NormalTok{ a}\SpecialCharTok{*}\FunctionTok{cos}\NormalTok{(t)}\SpecialCharTok{*}\FunctionTok{cos}\NormalTok{(phi) }\SpecialCharTok{{-}}\NormalTok{ b}\SpecialCharTok{*}\FunctionTok{sin}\NormalTok{(t)}\SpecialCharTok{*}\FunctionTok{sin}\NormalTok{(phi)}
+\NormalTok{y }\OtherTok{\textless{}{-}}\NormalTok{ yc }\SpecialCharTok{+}\NormalTok{ a}\SpecialCharTok{*}\FunctionTok{cos}\NormalTok{(t)}\SpecialCharTok{*}\FunctionTok{sin}\NormalTok{(phi) }\SpecialCharTok{+}\NormalTok{ b}\SpecialCharTok{*}\FunctionTok{sin}\NormalTok{(t)}\SpecialCharTok{*}\FunctionTok{cos}\NormalTok{(phi)}
+\FunctionTok{plot}\NormalTok{(x,y, }\AttributeTok{col=}\StringTok{\textquotesingle{}blue\textquotesingle{}}\NormalTok{,  }\AttributeTok{type =} \StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{, }\AttributeTok{xlim =} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{7}\NormalTok{), }\AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{15}\NormalTok{))}
+
+\NormalTok{CI.mu }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(xbar }\SpecialCharTok{{-}} \FloatTok{1.96}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{(s2}\SpecialCharTok{/}\DecValTok{20}\NormalTok{), xbar }\SpecialCharTok{+} \FloatTok{1.96}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{(s2}\SpecialCharTok{/}\DecValTok{20}\NormalTok{))}
+\NormalTok{CI.sig2 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(s2 }\SpecialCharTok{{-}} \FloatTok{1.96}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{(}\DecValTok{2}\SpecialCharTok{*}\NormalTok{(s2}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}\SpecialCharTok{/}\DecValTok{20}\NormalTok{), s2 }\SpecialCharTok{+} \FloatTok{1.96}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{(}\DecValTok{2}\SpecialCharTok{*}\NormalTok{(s2}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}\SpecialCharTok{/}\DecValTok{20}\NormalTok{))}
+
+\FunctionTok{lines}\NormalTok{(}\FunctionTok{c}\NormalTok{(CI.mu[}\DecValTok{1}\NormalTok{], CI.mu[}\DecValTok{2}\NormalTok{]),}\FunctionTok{c}\NormalTok{(CI.sig2[}\DecValTok{1}\NormalTok{], CI.sig2[}\DecValTok{1}\NormalTok{]), }\AttributeTok{col =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{) }
+\FunctionTok{lines}\NormalTok{(}\FunctionTok{c}\NormalTok{(CI.mu[}\DecValTok{1}\NormalTok{], CI.mu[}\DecValTok{2}\NormalTok{]),}\FunctionTok{c}\NormalTok{(CI.sig2[}\DecValTok{2}\NormalTok{], CI.sig2[}\DecValTok{2}\NormalTok{]), }\AttributeTok{col =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{) }
+\FunctionTok{lines}\NormalTok{(}\FunctionTok{c}\NormalTok{(CI.mu[}\DecValTok{1}\NormalTok{], CI.mu[}\DecValTok{1}\NormalTok{]),}\FunctionTok{c}\NormalTok{(CI.sig2[}\DecValTok{1}\NormalTok{], CI.sig2[}\DecValTok{2}\NormalTok{]), }\AttributeTok{col =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{) }
+\FunctionTok{lines}\NormalTok{(}\FunctionTok{c}\NormalTok{(CI.mu[}\DecValTok{2}\NormalTok{], CI.mu[}\DecValTok{2}\NormalTok{]),}\FunctionTok{c}\NormalTok{(CI.sig2[}\DecValTok{1}\NormalTok{], CI.sig2[}\DecValTok{2}\NormalTok{]), }\AttributeTok{col =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{12-Confidence-Intervals_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\hypertarget{the-delta-method}{%
+\subsection{The Delta method}\label{the-delta-method}}
+
+The delta theorem says that asymptotic normality of the MLE is preserved under smooth (differentiable) transformations. Let \(g(\cdot)\) be a differentiable function. Then,
+\[\sqrt{n}(g(\hat\theta) - g(\theta))\stackrel{\cdot}{\sim} N\left(0, [g'(\theta)]^\top I(\theta)^{-1}g'(\theta)\right).\]
+
+The power of the delta theorem is its implied method for constructing CIs for any ``nice'' function of population parameters.
+
+Example: For a normal population experiment a common function of parameters that is of interest to researchers is the so-called ``signal-to-noise ratio'' given by \(\mu/\sigma\). In this case, \(g(\theta) = g(\mu, \sigma^2) = \mu/\sqrt{\sigma^2}\). And, \(g'(\theta) = (1/\sqrt{\sigma^2},\, -0.5\mu/({(\sigma^2)}^{1.5}))\). Using the delta theorem result, the MLE of \(\mu/\sigma\) is given by \(\overline X / \sqrt{\hat\sigma^2}\) and has approximate variance
+\[(1/\sqrt{\hat\sigma^2},\, -0.5\overline X/({(\hat\sigma^2)}^{1.5})) \begin{bmatrix} \hat\sigma^2/n & 0 \\ 0 & 2\hat\sigma^4/n \end{bmatrix} (1/\sqrt{\hat\sigma^2},\, -0.5\overline X/({(\hat\sigma^2)}^{1.5}))^\top = \frac{1}{n}+\frac{\overline X^2}{2n\hat\sigma^2}.\]
+Then, an approximate CI for \(\mu/\sigma\) is given by
+\[\left(\overline X / \sqrt{\hat\sigma^2} \pm z_{1-\alpha/2}\sqrt{\frac{1}{n}+\frac{\overline X^2}{2n\hat\sigma^2}}\right).\]
+
+\hypertarget{hypothesis-testing}{%
+\chapter{Hypothesis Testing}\label{hypothesis-testing}}
+
+So far our discussion of statistical inference has been limited to ``estimation'', which is essentially any method that determines which parameter values match/agree with observed data. We have discussed both parametric and non-parametric estimation, although we have not used those terms. Non-parametric estimation refers to estimation of population parameters without specifying any probability model for the data. For example, the sample mean is a reasonable estimator of the population mean (should it exist) regardless of the sampling distribution of the data (the population distribution). Parametric estimators are tied to assumed sampling distributions. For example, maximum likelihood estimators totally rely on an assumed sampling distribution of the data (population distribution). Parametric estimation can be viewed as selecting which particular probability model within a given set (the assumed distribution) best fits the data.
+
+We'll next expand our discussion of statistical inference to ask a different, but related question. Instead of asking which parameters/model distributions agree with a given data set, we ask ``how much evidence does a given data set provide for a particular parameter value or set of parameter values?'' The particular parameter values are referred to as the hypothesis or ``null hypothesis''. And, a procedure that determines whether the data provides sufficient evidence against the null hypothesis so as to make it implausible is called a ``hypothesis test''.
+
+\hypertarget{notation}{%
+\section{Notation}\label{notation}}
+
+Consider a generic parameter \(\theta\) taking values in some set \(\Theta\). The null hypothesis \(\theta\) takes exactly the value \(\theta_0\) is written \(H_0: \theta = \theta_0\). Its complement is the alternative hypothesis \(H_a: \theta\ne\theta_0\), which is always the set complement of the null hypothesis. In particular, \(H_0: \theta = \theta_0\) is called a ``point-null hypothesis'' because the set in the null hypothesis consists of only a single point. In other cases, the null hypothesis is ``composite'', e.g., \(H_0:\theta \leq \theta_0\) versus \(H_a: \theta > \theta_0\).
+
+Example: Suppose an experiment consist of collecting a random sample from a normal population with unknown mean \(\mu\) and unknown variance \(\sigma^2\). A point null hypothesis that \(\mu = 0\) is phrased \(H_0: \mu = 0\) versus the alternative hypothesis \(\mu \ne 0\). A point null hypothesis that \(\sigma^2 = 1\) is phrased \(H_0:\sigma^2=1\) versus \(H_a:\sigma^2 \ne 1\), where the alternative hypothesis tacitly assumes \(\sigma^2>0\).
+
+\hypertarget{hypothesis-testing-outcomes}{%
+\section{Hypothesis testing outcomes}\label{hypothesis-testing-outcomes}}
+
+A hypothesis testing procedure begins with a pair of null and alternative hypotheses. Next, data relevant to the hypotheses is collected, and a decision is made as to whether the data provides sufficient evidence against the null hypothesis such that it may be rejected as implausible. Otherwise, the data are viewed as sufficiently consistent with the null hypothesis as to retain it.
+
+As such, there are four possible outcomes of this procedure. In two cases, the correct decision is made: either the null hypothesis is true and it is retained, or the null hypothesis is false and it is reject. There are two corresponding errors:
+1) A Type 1 error is committed when the null hypothesis is true but it is rejected; and,
+2) A Type 2 error is committed when the null hypothesis is false and it is retained.
+
+Since the decision to reject or retain the null hypothesis is based on a random sample of data, the decision is itself random; so, each of these outcomes has a certain probability of occuring. Given the null hypothesis is true, the chance of a Type 1 error occurring is denoted \(\alpha\) and is also called the Type 1 error rate. Given the null hypothesis is false the chance of a Type 2 error occurring is denoted \(\beta\), and its complement, the chance of rejecting \(H_0\) is denoted \(1-\beta\) and referred to as the ``power of the test''.
+
+Of course, it would be nice if one could eliminate any chance of an error occurring, but that is not possible. To see this, consider the extreme case of a non-random hypothesis test that always rejects the null hypothesis, no matter the data. Such a rule minimizes the chance of a Type 2 error (in fact there is such chance) but maximizes the chance of a Type 1 error. And, the opposite extreme, in which the null hypothesis is always retained similarly minimizes Type 1 error at the cost of maximizing Type 2 errors. Any testing procedure in between necessarily has some positive chance of each type of error.
+
+As we will see, it is possible to construct hypothesis tests with an explicit cap (upper bound) on the Type 1 error rate \(\alpha\). This means that, whenever possible, it makes sense to design experiments and hypotheses such that Type 1 errors are more serious than Type 2 errors, so that they may be expressly controlled. A hypothesis test that limits \(\alpha\) to a prespecified level is called a ``level-\(\alpha\) test''.
+
+\hypertarget{tests-based-on-a-normal-population}{%
+\section{Tests based on a normal population}\label{tests-based-on-a-normal-population}}
+
+\hypertarget{tests-for-a-normal-mean-when-the-variance-is-known}{%
+\subsection{Tests for a normal mean when the variance is known}\label{tests-for-a-normal-mean-when-the-variance-is-known}}
+
+Suppose a given population is known to follow a normal distribution with an unknown mean and a known variance \(\sigma^2\). We wish to test the point null hypothesis \(H_0:\mu = \mu_0\) for some given number \(\mu_0\) versus the alternative \(H_a:\mu \ne \mu_0\). And, we wish our test to limit the Type 1 error rate to a given level \(\alpha\), say, \(5\%\).
+
+We obtain a random sample of size \(n\) from the population. How should we proceed? If \(H_0\) is true, then our data should look like it came from \(N(\mu_0, \sigma^2)\); specifically, the sample mean should be ``close'' to \(\mu_0\). If \(\overline X\) is close to \(\mu_0\), then \(H_0\) seems plausible, otherwise not. Our intuition says our test should look like: ``reject \(H_0\) if \(|\overline X-\mu_0|>c\)'' for some cutoff \(c>0\). The constraint on Type 1 error rate to be no more than \(\alpha\) is enough to determine \(c\):
+\begin{align*}
+1-\alpha &= P(-c\leq \overline X - \mu_0 \leq c)
+& = P(-c/\sqrt{\sigma^2/n} \leq Z \leq c/\sqrt{\sigma^2/n})
+\end{align*}
+This implies we should reject \(H_0\) if \(|Z|>z_{1-\alpha/2}\) where
+\[Z = \frac{\overline X - \mu_0}{\sqrt{\sigma^2/n}}\]
+is the standardized sample mean assuming \(H_0\) is true (often it is said, ``under \(H_0\)'').
 
   \bibliography{book.bib,packages.bib}
 

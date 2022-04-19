@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.3.1)  12 APR 2022 11:19
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.3.1)  19 APR 2022 12:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -988,19 +988,46 @@ Missing character: There is no 𝜎 (U+1D70E) in font [lmroman10-regular]:mappin
 Missing character: There is no ∼ (U+223C) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 𝜎 (U+1D70E) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ∼ (U+223C) in font [lmroman10-regular]:mapping=tex-text;!
-[98]
+[98] [99]
+Overfull \hbox (51.94887pt too wide) detected at line 1958
+[] []
+ []
+
+[100] [101] [102]
+File: 12-Confidence-Intervals_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type pdf)
+<use 12-Confidence-Intervals_files/figure-latex/unnamed-chunk-3-1.pdf>
+
+Underfull \hbox (badness 1552) in paragraph at lines 2025--2026
+[]\TU/lmr/m/n/10 Example: For a normal population experiment a common function of
+ []
+
+
+Underfull \hbox (badness 1163) in paragraph at lines 2025--2026
+\TU/lmr/m/n/10 parameters that is of interest to researchers is the so-called “signal-to-
+ []
+
+
+Overfull \hbox (16.51198pt too wide) detected at line 2026
+[][][][][]  [][][][][][][][][][][] [] [][][][][]  [][][][][][][][][][][][] [] [] [] [][]
+ []
+
+[103] [104]
+Chapter 14.
+[105
+
+] [106]
 No file _main.bbl.
-[99] (./_main.aux)
+[107] (./_main.aux)
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: E03A8AD5A98589A3B96683A6B7F6DE56;12291.
+(rerunfilecheck)             Checksum: 67BE59A2C092CB776C46D262E90FC573;13124.
  ) 
 Here is how much of TeX's memory you used:
- 17582 strings out of 478179
- 328047 string characters out of 5852733
- 812673 words of memory out of 5000000
- 37942 multiletter control sequences out of 15000+600000
+ 17600 strings out of 478179
+ 328839 string characters out of 5852733
+ 814168 words of memory out of 5000000
+ 37960 multiletter control sequences out of 15000+600000
  476719 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  86i,12n,121p,2424b,427s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on _main.pdf (99 pages).
+Output written on _main.pdf (107 pages).
