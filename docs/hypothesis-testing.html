@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Experiments and the role of probability | A First Course in Probability and Statistics</title>
+  <title>Chapter 14 Hypothesis Testing | A First Course in Probability and Statistics</title>
   <meta name="description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Experiments and the role of probability | A First Course in Probability and Statistics" />
+  <meta property="og:title" content="Chapter 14 Hypothesis Testing | A First Course in Probability and Statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Experiments and the role of probability | A First Course in Probability and Statistics" />
+  <meta name="twitter:title" content="Chapter 14 Hypothesis Testing | A First Course in Probability and Statistics" />
   
   <meta name="twitter:description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Nick Syring" />
 
 
-<meta name="date" content="2022-04-12" />
+<meta name="date" content="2022-04-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="probability-and-counting.html"/>
+<link rel="prev" href="confidence-intervals.html"/>
+
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -288,7 +288,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#two-normal-samples-comparing-means"><i class="fa fa-check"></i><b>13.3.3</b> Two normal samples, comparing means</a></li>
 <li class="chapter" data-level="13.3.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#two-normal-samples-comparing-variances"><i class="fa fa-check"></i><b>13.3.4</b> Two normal samples, comparing variances</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#approximate-cis-based-on-mles"><i class="fa fa-check"></i><b>13.4</b> Approximate CIs based on MLEs</a></li>
+<li class="chapter" data-level="13.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#cis-for-proportions"><i class="fa fa-check"></i><b>13.4</b> CIs for proportions</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#a-single-bernoulli-proportion"><i class="fa fa-check"></i><b>13.4.1</b> A single Bernoulli proportion</a></li>
+<li class="chapter" data-level="13.4.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#difference-of-two-bernoulli-proportions"><i class="fa fa-check"></i><b>13.4.2</b> Difference of two Bernoulli proportions</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="confidence-intervals.html"><a href="confidence-intervals.html#approximate-cis-based-on-mles"><i class="fa fa-check"></i><b>13.5</b> Approximate CIs based on MLEs</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#multivariate-case"><i class="fa fa-check"></i><b>13.5.1</b> Multivariate case</a></li>
+<li class="chapter" data-level="13.5.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#the-delta-method"><i class="fa fa-check"></i><b>13.5.2</b> The Delta method</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>14</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#notation"><i class="fa fa-check"></i><b>14.1</b> Notation</a></li>
+<li class="chapter" data-level="14.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-testing-outcomes"><i class="fa fa-check"></i><b>14.2</b> Hypothesis testing outcomes</a></li>
+<li class="chapter" data-level="14.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#tests-based-on-a-normal-population"><i class="fa fa-check"></i><b>14.3</b> Tests based on a normal population</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#tests-for-a-normal-mean-when-the-variance-is-known"><i class="fa fa-check"></i><b>14.3.1</b> Tests for a normal mean when the variance is known</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -310,169 +328,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="experiments-and-the-role-of-probability" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Experiments and the role of probability</h1>
-<p>In this chapter we introduce concepts related to scientific studies, data collection, and random sampling.</p>
-<div id="experiments" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Experiments</h2>
-<p>There are many settings in which data is collected and studied. In this course we will limit our focus to <em>random sampling experiments</em> and <em>random sampling, randomized intervention experiments</em> defined below.<br><br></p>
-<p>Both of these settings start with a <em>research question</em> of interest in the the context of a <em>population</em> or set of individuals. For example, in a political poll the population is the set of eligible voters and the research question is “which of two candidates has majority support?” <br><br></p>
-<p>Experiments like polls necessarily only measure an outcome or <em>response</em> (like voter preference) for a limited number of individuals from the population. The collection of observed individuals is the <em>sample</em>. For many reasons relating to, e.g., cost, time, and access, the size of the sample is small compared to the size of the population. On the other hand, there are rare instances in which a whole population is observed, and we call this a <em>census</em>. In a census, all possible information is gathered, whereas in an experiment only a limited subset of information is obtained. We will be concerned only with experiments and how best to use the limited information gathered in order to answer research questions.<br><br></p>
-<p>When only a sample of a population is available a natural question is “how is the sample determined?” If there is freedom in the choice of sample then “how should the sample be chosen?” Intuitively, if we can only observe some of the individuals belonging to the population then we prefer to observe a <em>representative</em> sample of them. Representative means that the heterogeneities/differences between individuals that exist in the population ought to be more or less accurately reflected in the sample. For example, a poll of eligible voters in Iowa is not representative if it includes only registered Democrats, and we would not expect such a poll to accurately reflect the population preference between two candidates. If we have a representative sample from the population then we assume the results of our experiment are <em>generalizable</em> to the population. In other words, the observations we make are characteristic of the population and we would not expect vastly different observations had we obtained a different, similarly representative sample, or if we had observed the whole population. There are different ways to obtain representative samples. One way is via <em>stratified sampling</em>. For example, suppose we knew or could measure the relative population proportions of all factors relevant to voting preference, say, party affiliation, sex, age, income level, education level, and religious affiliation. Then, we could construct a sample of individuals with values of these demographic variables matching the levels present in the population—a representative sample—by randomly selecting the right number of individuals from each of these subgroupings or <em>strata</em>. However, this takes a lot of information to pull off. Instead, researchers typically attempt to construct a <em>simple random sample</em> of individuals from the population. A simple random sample (SRS) of size <span class="math inline">\(n\)</span> from a finite population means every subset of <span class="math inline">\(n\)</span> individuals is equally likely to be chosen. You can imagine a SRS as pulling numbers out of a hat, so to speak. An SRS of eligible voters could be constructed, for instance, by randomly choosing 100 social security numbers from the list of SSNs of all eligible voters. SRSs are not always trivial to construct—as in the polling example they require a list of population individuals, which may be difficult to obtain.<br />
+<div id="hypothesis-testing" class="section level1" number="14">
+<h1><span class="header-section-number">Chapter 14</span> Hypothesis Testing</h1>
+<p>So far our discussion of statistical inference has been limited to “estimation,” which is essentially any method that determines which parameter values match/agree with observed data. We have discussed both parametric and non-parametric estimation, although we have not used those terms. Non-parametric estimation refers to estimation of population parameters without specifying any probability model for the data. For example, the sample mean is a reasonable estimator of the population mean (should it exist) regardless of the sampling distribution of the data (the population distribution). Parametric estimators are tied to assumed sampling distributions. For example, maximum likelihood estimators totally rely on an assumed sampling distribution of the data (population distribution). Parametric estimation can be viewed as selecting which particular probability model within a given set (the assumed distribution) best fits the data.
 <br><br></p>
-<p>We are at the point where we can define a <em>random sampling experiment</em> as the process by which we select a SRS from a population and record a response from sampled individuals for the purpose of answering a research question. As noted, an important example is a poll. <br><br></p>
-<p>Random sampling experiments are valuable, but limited to addressing questions about one variable at a time. In many cases researchers are interested in how one variable affects the value of another, and these questions can often be answered using interventional experiments. An <em>intervention</em> is an act by a researcher intended to affect the value of the response variable in sampled individuals. When an intervention is applied to samples the samples are often referred to as <em>experimental units</em>. An important example of an interventional experiment is a clinical trial. In a basic clinical trial a random sample of patients is recruited from a population of patients with a certain medical condition. Then, a subset of the patients is given a treatment of interest — the intervention — while the other patients are given a different treatment or perhaps no treatment at all (maybe a placebo). The response, probably related to the health of patients post-treatment, is then compared between the intervention and non-intervention groups. This experiment is like a random sampling experiment with an added intervention step. The key question is “how do we determine which experimental units receive the intervention?” Recall that when we obtain a sample of individuals from a population we wish to do so in such a way as to obtain a representative sample. The same idea applies to interventions. The group of samples receiving the intervention should be similar to the group not receiving the intervention; that is, both groups should be representative of the total set of sampled individuals. Therefore, it makes sense to <em>randomize</em> the application of the intervention over sampled individuals. <br><br>
-<img src="rsediagram.PNG" /><!-- -->
-A <em>random sampling, randomized intervention experiment</em> consists of obtaining a SRS from a population, randomizing an intervention over those samples, and recording a response variable relating to a research question. This type of experiment is often explained by conceptualizing two (or more) different populations. Suppose the experiment is a clinical trial and the intervention consists of receiving a treatment versus no treatment. Then, we can interpret the randomization step as defining two SRSs from two (abstract or hypothetical) populations: a sample from the set of treated patients and a sample from the set of untreated patients. The research question typically concerns the relationship between these two populations, such as, “are treated patients, on average, healthier than untreated patients, with respect to the response variable?”</p>
-<p><br><br></p>
-<p>We will only consider randomized interventional experiments. Briefly, consider what can go wrong if we do not randomize intervention. Suppose the patients in our clinical trial consist of both old and young people and that old people are generally more in need of treatment. If we give the treatment to only young(old) people, then we will underestimate(overestimate) the effect of the treatment compared to what its effect would be, on average, over the whole population. In effect, we have <em>confounded</em> the treatment/intervention effect with the effect of age on the response. This may seem like a silly example because we could easily avoid assigning the intervention to only young or only old people. But, not all potential confounding variables are obvious/visible. Unknown confounders, also called <em>lurking variables</em>, can only be systematically accounted for via randomizing the intervention. Of course it is possible for randomized groups not to be representative in a particular occurrence, but, systematically, randomized groups will tend to be representative, so it’s a good practice.</p>
-<p>When the intervention is randomized we cautiously assume substantial differences in the observed responses between intervention groups can be attributed to the intervention. In other words, we believe in <em>causation</em>—that the intervention caused the observed differences. When confounding variables are present we never know which variable is responsible for observed differences in responses and we cannot support claims about cause and effect relationships using the data alone.</p>
-<p>In some studies researchers analyze the relationships between variables without performing randomized interventions; these are usually <em>observational studies</em>. For instance, in the Framingham Heart Study, researchers recorded the health and lifestyle choices of Massachusetts residents over several years. By collecting a large amount of data they were able to establish a strong relationship or <em>association</em> between cigarette smoking and cancer. Their data alone is not enough to imply causation, but their study inspired many follow-up experiments like lab experiments on animals, and the development of biochemical theories about tumor development. The combination of these various works leaves little doubt today that tobacco use dramatically increases the likelihood of developing cancer.</p>
+<p>We’ll next expand our discussion of statistical inference to ask a different, but related question. Instead of asking which parameters/model distributions agree with a given data set, we ask “how much evidence does a given data set provide for a particular parameter value or set of parameter values?” The particular parameter values are referred to as the hypothesis or “null hypothesis.” And, a procedure that determines whether the data provides sufficient evidence against the null hypothesis so as to make it implausible is called a “hypothesis test.”</p>
+<div id="notation" class="section level2" number="14.1">
+<h2><span class="header-section-number">14.1</span> Notation</h2>
+<p>Consider a generic parameter <span class="math inline">\(\theta\)</span> taking values in some set <span class="math inline">\(\Theta\)</span>. The null hypothesis <span class="math inline">\(\theta\)</span> takes exactly the value <span class="math inline">\(\theta_0\)</span> is written <span class="math inline">\(H_0: \theta = \theta_0\)</span>. Its complement is the alternative hypothesis <span class="math inline">\(H_a: \theta\ne\theta_0\)</span>, which is always the set complement of the null hypothesis. In particular, <span class="math inline">\(H_0: \theta = \theta_0\)</span> is called a “point-null hypothesis” because the set in the null hypothesis consists of only a single point. In other cases, the null hypothesis is “composite,” e.g., <span class="math inline">\(H_0:\theta \leq \theta_0\)</span> versus <span class="math inline">\(H_a: \theta &gt; \theta_0\)</span>.</p>
+<p>Example: Suppose an experiment consist of collecting a random sample from a normal population with unknown mean <span class="math inline">\(\mu\)</span> and unknown variance <span class="math inline">\(\sigma^2\)</span>. A point null hypothesis that <span class="math inline">\(\mu = 0\)</span> is phrased <span class="math inline">\(H_0: \mu = 0\)</span> versus the alternative hypothesis <span class="math inline">\(\mu \ne 0\)</span>. A point null hypothesis that <span class="math inline">\(\sigma^2 = 1\)</span> is phrased <span class="math inline">\(H_0:\sigma^2=1\)</span> versus <span class="math inline">\(H_a:\sigma^2 \ne 1\)</span>, where the alternative hypothesis tacitly assumes <span class="math inline">\(\sigma^2&gt;0\)</span>.</p>
 </div>
-<div id="the-role-of-probability" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> The role of probability</h2>
-<p>Consider the example of a political poll on the preferences of voters between two candidates—this is a random sampling experiment. The population consists of all eligible voters in the upcoming election. Each voter can be associated, say, with a 1 or a 0, indicating their preference between the two candidates. Let these 0-1 preferences be denoted <span class="math inline">\(x_1, \ldots, x_N\)</span> where <span class="math inline">\(N\)</span> is the population size. There exists a population level value <span class="math inline">\(\theta\)</span> equal to
-<span class="math display">\[\theta:=N^{-1}\sum_{j=1}^N x_j\]</span>
-denoting the population voter preference; this is the <em>population proportion</em>. Most research questions of interest concern the unknown value of <span class="math inline">\(\theta\)</span>. In the polling experiment we observe a random subset of <span class="math inline">\(x_1, \ldots, x_N\)</span> values, say, <span class="math inline">\(X_1, \ldots, X_n\)</span> for <span class="math inline">\(n&lt;N\)</span>—keep in mind these are not the first <span class="math inline">\(n\)</span> x’s, but a random subset of <span class="math inline">\(n\)</span> x’s. Correspondingly, we can compute the sample voter preference
-<span class="math display">\[\hat\theta_n := n^{-1}\sum_{i=1}^n X_i.\]</span>
-For every possible sample of <span class="math inline">\(n\)</span> voters, there is a corresponding value of <span class="math inline">\(\hat\theta_n\)</span>. We can think of the polling experiment as randomly choosing one of these <span class="math inline">\(\hat\theta_n\)</span> values out of a hat containing all of them. Randomly sampling voters causes randomness in the observed <span class="math inline">\(\hat\theta_n\)</span> preference value. The mathematics of <em>probability</em> is used to quantify this randomness, e.g., to be able to compute the chance of <span class="math inline">\(\hat\theta_n\)</span> taking on any particular value, given knowledge of the population.
-<br><br></p>
-<p>That last phrase “given knowledge of the population” is very important, and illustrates the difference between probability and statistics (inference) quite succinctly. Probability characterizes the chance of observing a particular random sample given the population, whereas statistics seeks to explain some characteristic of the unknown/unobserved population given only one sample (subset of population individuals).</p>
-<p><br><br></p>
-<p>Probability plays a key role in statistics problems, and the first part of our course is devoted to developing methods for computing probabilities of samples in a variety of useful special cases.</p>
-<p><br><br></p>
-<p>Let’s illustrate this interplay of probability and statistics by continuing the example of a poll. The population, again, can be represented by <span class="math inline">\(N\)</span> values, each either a <span class="math inline">\(0\)</span> or a <span class="math inline">\(1\)</span> indicating each voter’s preferences, and we can label these <span class="math inline">\(x_1, \ldots, x_N\)</span>. A poll is a random sample of <span class="math inline">\(n\)</span> of these values, labeled <span class="math inline">\(X_1, \ldots,X_n\)</span>, without replacement, i.e., once a value <span class="math inline">\(x_j\)</span> is selected and recorded it cannot be selected again (no double voting!). The population preference <span class="math inline">\(\theta\)</span> is the average of <span class="math inline">\(x_j\)</span>’s for <span class="math inline">\(j=1, \ldots, N\)</span>. If we knew the size of the population <span class="math inline">\(N\)</span> and the population proportion <span class="math inline">\(\theta\)</span>, then we could compute the chance of observing any <span class="math inline">\(\hat\theta_n := n^{-1}\sum_{i=1}^n X_i\)</span> value according to the rules of probability (which we will soon study). For example, if <span class="math inline">\(N\)</span> is much larger than <span class="math inline">\(n = 10\)</span> and <span class="math inline">\(\theta = 1/2\)</span>, then the chance of observing exactly <span class="math inline">\(\hat\theta = 1/2\)</span> is about <span class="math inline">\(25\%\)</span> (it’s about equal to <span class="math inline">\(252\theta^5(1-\theta)^5\)</span>). Of course, the whole point of the poll is to learn something about the unknown value of <span class="math inline">\(\theta\)</span>, so we cannot actually perform this probability calculation in practice. But, consider connecting the probability calculation to our goal. We would like to distinguish between values of <span class="math inline">\(\theta\)</span> that are more or less plausible. Suppose we conduct the poll of <span class="math inline">\(10\)</span> individuals and observe <span class="math inline">\(\hat\theta = 1/2\)</span>. Then, our probability calculation says the probability we observe <span class="math inline">\(\hat\theta = 1/2\)</span> is highest if <span class="math inline">\(\theta = 1/2\)</span>. In other words, <span class="math inline">\(1/2\)</span> is the most plausible value of the population proportion given our observations. Intuitively, we expect values near <span class="math inline">\(1/2\)</span> are more plausible than values far from <span class="math inline">\(1/2\)</span>. This correspondence between the probability calculation and plausible values of the <em>population parameter</em> is called the <em>maximum likelihood principle</em> which we will study in a later chapter.</p>
+<div id="hypothesis-testing-outcomes" class="section level2" number="14.2">
+<h2><span class="header-section-number">14.2</span> Hypothesis testing outcomes</h2>
+<p>A hypothesis testing procedure begins with a pair of null and alternative hypotheses. Next, data relevant to the hypotheses is collected, and a decision is made as to whether the data provides sufficient evidence against the null hypothesis such that it may be rejected as implausible. Otherwise, the data are viewed as sufficiently consistent with the null hypothesis as to retain it.<br><br></p>
+<p>As such, there are four possible outcomes of this procedure. In two cases, the correct decision is made: either the null hypothesis is true and it is retained, or the null hypothesis is false and it is reject. There are two corresponding errors:
+1) A Type 1 error is committed when the null hypothesis is true but it is rejected; and,
+2) A Type 2 error is committed when the null hypothesis is false and it is retained.<br><br></p>
+<p>Since the decision to reject or retain the null hypothesis is based on a random sample of data, the decision is itself random; so, each of these outcomes has a certain probability of occuring. Given the null hypothesis is true, the chance of a Type 1 error occurring is denoted <span class="math inline">\(\alpha\)</span> and is also called the Type 1 error rate. Given the null hypothesis is false the chance of a Type 2 error occurring is denoted <span class="math inline">\(\beta\)</span>, and its complement, the chance of rejecting <span class="math inline">\(H_0\)</span> is denoted <span class="math inline">\(1-\beta\)</span> and referred to as the “power of the test.” <br><br></p>
+<p>Of course, it would be nice if one could eliminate any chance of an error occurring, but that is not possible. To see this, consider the extreme case of a non-random hypothesis test that always rejects the null hypothesis, no matter the data. Such a rule minimizes the chance of a Type 2 error (in fact there is such chance) but maximizes the chance of a Type 1 error. And, the opposite extreme, in which the null hypothesis is always retained similarly minimizes Type 1 error at the cost of maximizing Type 2 errors. Any testing procedure in between necessarily has some positive chance of each type of error. <br><br></p>
+<p>As we will see, it is possible to construct hypothesis tests with an explicit cap (upper bound) on the Type 1 error rate <span class="math inline">\(\alpha\)</span>. This means that, whenever possible, it makes sense to design experiments and hypotheses such that Type 1 errors are more serious than Type 2 errors, so that they may be expressly controlled. A hypothesis test that limits <span class="math inline">\(\alpha\)</span> to a prespecified level is called a “level-<span class="math inline">\(\alpha\)</span> test.”</p>
 </div>
-<div id="exercises" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Exercises</h2>
-<ol style="list-style-type: decimal">
-<li><p>Google James Lind’s Scurvy experiments. What was James’ research question? What was the population? Did he obtain a random sample from the population? If not, does that make you suspicious of his findings? Why or why not? Did James use any interventions? If so did he randomize them? Do you think his randomization scheme is reliable? What were his conclusions?<br><br></p></li>
-<li><p>Find a recent example of an experiment in the news or a scientific publication. Describe the research question, population, intervention (if there is one), and response. Is it a random sampling experiment, a random sample randomized intervention experiment, or something else, like an observational study?<br><br></p></li>
-<li><p>The Challenger space shuttle exploded when it experienced o-ring failures thought to be caused by low launch temperature. The launch temperature was 31 degrees Fahrenheit. The following data can be interpreted as a random sample of counts of o-ring failures from a population of launches. Given this data do you think we can make reliable conclusions about launch safety at 31 degrees launch temperature? What concepts discussed in this section are relevant here?</p></li>
-</ol>
-<table>
-<caption><span id="tab:unnamed-chunk-2">Table 2.1: </span>A table of o rings at risk, o ring failires, and launch temperatures of space shuttle flights.</caption>
-<thead>
-<tr class="header">
-<th align="right">at risk</th>
-<th align="right">failed</th>
-<th align="right">launch temp.</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">1</td>
-<td align="right">70</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">69</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">68</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">67</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">72</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">73</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">70</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">1</td>
-<td align="right">57</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">1</td>
-<td align="right">63</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">1</td>
-<td align="right">70</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">78</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">67</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">2</td>
-<td align="right">53</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">67</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">75</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">70</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">81</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">76</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">79</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">75</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">76</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">1</td>
-<td align="right">58</td>
-</tr>
-</tbody>
-</table>
+<div id="tests-based-on-a-normal-population" class="section level2" number="14.3">
+<h2><span class="header-section-number">14.3</span> Tests based on a normal population</h2>
+<div id="tests-for-a-normal-mean-when-the-variance-is-known" class="section level3" number="14.3.1">
+<h3><span class="header-section-number">14.3.1</span> Tests for a normal mean when the variance is known</h3>
+<p>Suppose a given population is known to follow a normal distribution with an unknown mean and a known variance <span class="math inline">\(\sigma^2\)</span>. We wish to test the point null hypothesis <span class="math inline">\(H_0:\mu = \mu_0\)</span> for some given number <span class="math inline">\(\mu_0\)</span> versus the alternative <span class="math inline">\(H_a:\mu \ne \mu_0\)</span>. And, we wish our test to limit the Type 1 error rate to a given level <span class="math inline">\(\alpha\)</span>, say, <span class="math inline">\(5\%\)</span>. <br><br></p>
+<p>We obtain a random sample of size <span class="math inline">\(n\)</span> from the population. How should we proceed? If <span class="math inline">\(H_0\)</span> is true, then our data should look like it came from <span class="math inline">\(N(\mu_0, \sigma^2)\)</span>; specifically, the sample mean should be “close” to <span class="math inline">\(\mu_0\)</span>. If <span class="math inline">\(\overline X\)</span> is close to <span class="math inline">\(\mu_0\)</span>, then <span class="math inline">\(H_0\)</span> seems plausible, otherwise not. Our intuition says our test should look like: “reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|\overline X-\mu_0|&gt;c\)</span>” for some cutoff <span class="math inline">\(c&gt;0\)</span>. The constraint on Type 1 error rate to be no more than <span class="math inline">\(\alpha\)</span> is enough to determine <span class="math inline">\(c\)</span>:
+<span class="math display">\[\begin{align*}
+1-\alpha &amp;= P(-c\leq \overline X - \mu_0 \leq c)
+&amp; = P(-c/\sqrt{\sigma^2/n} \leq Z \leq c/\sqrt{\sigma^2/n})
+\end{align*}\]</span>
+This implies we should reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|Z|&gt;z_{1-\alpha/2}\)</span> where
+<span class="math display">\[Z = \frac{\overline X - \mu_0}{\sqrt{\sigma^2/n}}\]</span>
+is the standardized sample mean assuming <span class="math inline">\(H_0\)</span> is true (often it is said, “under <span class="math inline">\(H_0\)</span>”).</p>
 
+</div>
 </div>
 </div>
             </section>
@@ -480,8 +370,8 @@ For every possible sample of <span class="math inline">\(n\)</span> voters, ther
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="probability-and-counting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="confidence-intervals.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -512,7 +402,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-intro.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/13-Hypothesis-Testing.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Experiments and the role of probability | A First Course in Probability and Statistics</title>
+  <title>Chapter 13 Confidence Intervals | A First Course in Probability and Statistics</title>
   <meta name="description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Experiments and the role of probability | A First Course in Probability and Statistics" />
+  <meta property="og:title" content="Chapter 13 Confidence Intervals | A First Course in Probability and Statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Experiments and the role of probability | A First Course in Probability and Statistics" />
+  <meta name="twitter:title" content="Chapter 13 Confidence Intervals | A First Course in Probability and Statistics" />
   
   <meta name="twitter:description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="probability-and-counting.html"/>
+<link rel="prev" href="statistical-estimation.html"/>
+
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -310,168 +310,126 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="experiments-and-the-role-of-probability" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Experiments and the role of probability</h1>
-<p>In this chapter we introduce concepts related to scientific studies, data collection, and random sampling.</p>
-<div id="experiments" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Experiments</h2>
-<p>There are many settings in which data is collected and studied. In this course we will limit our focus to <em>random sampling experiments</em> and <em>random sampling, randomized intervention experiments</em> defined below.<br><br></p>
-<p>Both of these settings start with a <em>research question</em> of interest in the the context of a <em>population</em> or set of individuals. For example, in a political poll the population is the set of eligible voters and the research question is “which of two candidates has majority support?” <br><br></p>
-<p>Experiments like polls necessarily only measure an outcome or <em>response</em> (like voter preference) for a limited number of individuals from the population. The collection of observed individuals is the <em>sample</em>. For many reasons relating to, e.g., cost, time, and access, the size of the sample is small compared to the size of the population. On the other hand, there are rare instances in which a whole population is observed, and we call this a <em>census</em>. In a census, all possible information is gathered, whereas in an experiment only a limited subset of information is obtained. We will be concerned only with experiments and how best to use the limited information gathered in order to answer research questions.<br><br></p>
-<p>When only a sample of a population is available a natural question is “how is the sample determined?” If there is freedom in the choice of sample then “how should the sample be chosen?” Intuitively, if we can only observe some of the individuals belonging to the population then we prefer to observe a <em>representative</em> sample of them. Representative means that the heterogeneities/differences between individuals that exist in the population ought to be more or less accurately reflected in the sample. For example, a poll of eligible voters in Iowa is not representative if it includes only registered Democrats, and we would not expect such a poll to accurately reflect the population preference between two candidates. If we have a representative sample from the population then we assume the results of our experiment are <em>generalizable</em> to the population. In other words, the observations we make are characteristic of the population and we would not expect vastly different observations had we obtained a different, similarly representative sample, or if we had observed the whole population. There are different ways to obtain representative samples. One way is via <em>stratified sampling</em>. For example, suppose we knew or could measure the relative population proportions of all factors relevant to voting preference, say, party affiliation, sex, age, income level, education level, and religious affiliation. Then, we could construct a sample of individuals with values of these demographic variables matching the levels present in the population—a representative sample—by randomly selecting the right number of individuals from each of these subgroupings or <em>strata</em>. However, this takes a lot of information to pull off. Instead, researchers typically attempt to construct a <em>simple random sample</em> of individuals from the population. A simple random sample (SRS) of size <span class="math inline">\(n\)</span> from a finite population means every subset of <span class="math inline">\(n\)</span> individuals is equally likely to be chosen. You can imagine a SRS as pulling numbers out of a hat, so to speak. An SRS of eligible voters could be constructed, for instance, by randomly choosing 100 social security numbers from the list of SSNs of all eligible voters. SRSs are not always trivial to construct—as in the polling example they require a list of population individuals, which may be difficult to obtain.<br />
-<br><br></p>
-<p>We are at the point where we can define a <em>random sampling experiment</em> as the process by which we select a SRS from a population and record a response from sampled individuals for the purpose of answering a research question. As noted, an important example is a poll. <br><br></p>
-<p>Random sampling experiments are valuable, but limited to addressing questions about one variable at a time. In many cases researchers are interested in how one variable affects the value of another, and these questions can often be answered using interventional experiments. An <em>intervention</em> is an act by a researcher intended to affect the value of the response variable in sampled individuals. When an intervention is applied to samples the samples are often referred to as <em>experimental units</em>. An important example of an interventional experiment is a clinical trial. In a basic clinical trial a random sample of patients is recruited from a population of patients with a certain medical condition. Then, a subset of the patients is given a treatment of interest — the intervention — while the other patients are given a different treatment or perhaps no treatment at all (maybe a placebo). The response, probably related to the health of patients post-treatment, is then compared between the intervention and non-intervention groups. This experiment is like a random sampling experiment with an added intervention step. The key question is “how do we determine which experimental units receive the intervention?” Recall that when we obtain a sample of individuals from a population we wish to do so in such a way as to obtain a representative sample. The same idea applies to interventions. The group of samples receiving the intervention should be similar to the group not receiving the intervention; that is, both groups should be representative of the total set of sampled individuals. Therefore, it makes sense to <em>randomize</em> the application of the intervention over sampled individuals. <br><br>
-<img src="rsediagram.PNG" /><!-- -->
-A <em>random sampling, randomized intervention experiment</em> consists of obtaining a SRS from a population, randomizing an intervention over those samples, and recording a response variable relating to a research question. This type of experiment is often explained by conceptualizing two (or more) different populations. Suppose the experiment is a clinical trial and the intervention consists of receiving a treatment versus no treatment. Then, we can interpret the randomization step as defining two SRSs from two (abstract or hypothetical) populations: a sample from the set of treated patients and a sample from the set of untreated patients. The research question typically concerns the relationship between these two populations, such as, “are treated patients, on average, healthier than untreated patients, with respect to the response variable?”</p>
-<p><br><br></p>
-<p>We will only consider randomized interventional experiments. Briefly, consider what can go wrong if we do not randomize intervention. Suppose the patients in our clinical trial consist of both old and young people and that old people are generally more in need of treatment. If we give the treatment to only young(old) people, then we will underestimate(overestimate) the effect of the treatment compared to what its effect would be, on average, over the whole population. In effect, we have <em>confounded</em> the treatment/intervention effect with the effect of age on the response. This may seem like a silly example because we could easily avoid assigning the intervention to only young or only old people. But, not all potential confounding variables are obvious/visible. Unknown confounders, also called <em>lurking variables</em>, can only be systematically accounted for via randomizing the intervention. Of course it is possible for randomized groups not to be representative in a particular occurrence, but, systematically, randomized groups will tend to be representative, so it’s a good practice.</p>
-<p>When the intervention is randomized we cautiously assume substantial differences in the observed responses between intervention groups can be attributed to the intervention. In other words, we believe in <em>causation</em>—that the intervention caused the observed differences. When confounding variables are present we never know which variable is responsible for observed differences in responses and we cannot support claims about cause and effect relationships using the data alone.</p>
-<p>In some studies researchers analyze the relationships between variables without performing randomized interventions; these are usually <em>observational studies</em>. For instance, in the Framingham Heart Study, researchers recorded the health and lifestyle choices of Massachusetts residents over several years. By collecting a large amount of data they were able to establish a strong relationship or <em>association</em> between cigarette smoking and cancer. Their data alone is not enough to imply causation, but their study inspired many follow-up experiments like lab experiments on animals, and the development of biochemical theories about tumor development. The combination of these various works leaves little doubt today that tobacco use dramatically increases the likelihood of developing cancer.</p>
+<div id="confidence-intervals" class="section level1" number="13">
+<h1><span class="header-section-number">Chapter 13</span> Confidence Intervals</h1>
+<div id="why-want-interval-valued-estimates" class="section level2" number="13.1">
+<h2><span class="header-section-number">13.1</span> Why want interval-valued estimates?</h2>
+<p>Point estimators, like the sample mean, certainly help to describe features of the population. But, the trouble with point estimators is that, on their own, they provide no sense of uncertainty. On one hand, a point estimator is just one number, and one number seems very precise. So, in a sort of psychological sense (and I’m being very loose with that term) people may feel a false sense of certainty about a point estimate. For example, if I say ``the sample mean is 5” someone could very reasonably expect the population mean is quite close to 5, but, given a little intuition, that person’s opinion may change quite a bit depending on whether the sample size is, say, 10 or 100. On the other hand, in a mathematical statistical sense, we know an estimator is a random variable with a distribution that, usually, has a finite variance. And, if known, we could use knowledge of that distribution to quantify the variability (read uncertainty) inherent in the estimator. So, besides the point estimate itself, it would be helpful to report some measure of variability of the estimate to give the user a more informed view of the estimate of the population mean (or other feature being estimated). <br><br></p>
+<p>One way to include information of the uncertainty of a point estimate is to include an estimate of the estimator’s standard deviation—this is usually called a “standard error.” For example, the sample mean <span class="math inline">\(\overline X_n\)</span> estimates the population mean <span class="math inline">\(\mu\)</span> and if the population has a finite variance <span class="math inline">\(\sigma^2\)</span> then the standard deviation of <span class="math inline">\(\overline X_n\)</span> is <span class="math inline">\(\sigma/\sqrt{n}\)</span>. Usually, <span class="math inline">\(\sigma^2\)</span> is unknown, so it is replaced by a point estimate, say, the usual sample variance <span class="math inline">\(S_n^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \overline X_n)^2\)</span> to get the standard error <span class="math inline">\(\sqrt{S_n^2/n}\)</span>. A common practice is to report the estimate <span class="math inline">\(\overline x_n\)</span> along with the standard error <span class="math inline">\(s_n/\sqrt{n}\)</span>. <br><br></p>
+<p>One drawback of reporting an estimate and its standard deviation is that it’s not clear how much variability one standard deviation really represents; it depends on the sampling distribution of the estimator. For example, if an estimator is normally distributed then an interval of one standard deviation about its mean contains about <span class="math inline">\(68\%\)</span> of the distribution, and see the figure below. One the other hand, suppose an estimator has a Chi-squared distribution with <span class="math inline">\(5\)</span> degrees of freedom. Then an interval of radius one standard deviation about its mean contains about <span class="math inline">\(72\%\)</span> of the distribution. The point is that one standard deviation does not provide an objective summary of uncertainty across different distributions. <br><br></p>
+<p><img src="12-Confidence-Intervals_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>To remedy this issue of the vagueness of standard deviation/standard error we introduce the concept of a confidence interval. An interval-valued estimate is an interval or range of values representing a set that may plausibly contain the true parameter value. Let’s denote this interval by <span class="math inline">\((\ell, u)\)</span>, its lower and upper bounds. Then, a reasonable way to define the endpoints is to select them so that the interval has the <em>confidence property</em>
+<span class="math display">\[P(\ell \leq \theta \leq u) = 1-\alpha\]</span>
+where <span class="math inline">\(\theta\)</span> is the true parameter value and <span class="math inline">\(\alpha \in (0,1)\)</span> is up to the user to decide—usually <span class="math inline">\(\alpha\)</span> is near zero. The probability statement is with respect to <span class="math inline">\(\ell\)</span> and <span class="math inline">\(u\)</span>, meaning these endpoints are random variables—in particular, they should be statistics, i.e., depended on the data. Then, a <em>confidence interval</em> is a random interval with a prescribed chance of “catching” the true parameter.<br><br></p>
 </div>
-<div id="the-role-of-probability" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> The role of probability</h2>
-<p>Consider the example of a political poll on the preferences of voters between two candidates—this is a random sampling experiment. The population consists of all eligible voters in the upcoming election. Each voter can be associated, say, with a 1 or a 0, indicating their preference between the two candidates. Let these 0-1 preferences be denoted <span class="math inline">\(x_1, \ldots, x_N\)</span> where <span class="math inline">\(N\)</span> is the population size. There exists a population level value <span class="math inline">\(\theta\)</span> equal to
-<span class="math display">\[\theta:=N^{-1}\sum_{j=1}^N x_j\]</span>
-denoting the population voter preference; this is the <em>population proportion</em>. Most research questions of interest concern the unknown value of <span class="math inline">\(\theta\)</span>. In the polling experiment we observe a random subset of <span class="math inline">\(x_1, \ldots, x_N\)</span> values, say, <span class="math inline">\(X_1, \ldots, X_n\)</span> for <span class="math inline">\(n&lt;N\)</span>—keep in mind these are not the first <span class="math inline">\(n\)</span> x’s, but a random subset of <span class="math inline">\(n\)</span> x’s. Correspondingly, we can compute the sample voter preference
-<span class="math display">\[\hat\theta_n := n^{-1}\sum_{i=1}^n X_i.\]</span>
-For every possible sample of <span class="math inline">\(n\)</span> voters, there is a corresponding value of <span class="math inline">\(\hat\theta_n\)</span>. We can think of the polling experiment as randomly choosing one of these <span class="math inline">\(\hat\theta_n\)</span> values out of a hat containing all of them. Randomly sampling voters causes randomness in the observed <span class="math inline">\(\hat\theta_n\)</span> preference value. The mathematics of <em>probability</em> is used to quantify this randomness, e.g., to be able to compute the chance of <span class="math inline">\(\hat\theta_n\)</span> taking on any particular value, given knowledge of the population.
-<br><br></p>
-<p>That last phrase “given knowledge of the population” is very important, and illustrates the difference between probability and statistics (inference) quite succinctly. Probability characterizes the chance of observing a particular random sample given the population, whereas statistics seeks to explain some characteristic of the unknown/unobserved population given only one sample (subset of population individuals).</p>
-<p><br><br></p>
-<p>Probability plays a key role in statistics problems, and the first part of our course is devoted to developing methods for computing probabilities of samples in a variety of useful special cases.</p>
-<p><br><br></p>
-<p>Let’s illustrate this interplay of probability and statistics by continuing the example of a poll. The population, again, can be represented by <span class="math inline">\(N\)</span> values, each either a <span class="math inline">\(0\)</span> or a <span class="math inline">\(1\)</span> indicating each voter’s preferences, and we can label these <span class="math inline">\(x_1, \ldots, x_N\)</span>. A poll is a random sample of <span class="math inline">\(n\)</span> of these values, labeled <span class="math inline">\(X_1, \ldots,X_n\)</span>, without replacement, i.e., once a value <span class="math inline">\(x_j\)</span> is selected and recorded it cannot be selected again (no double voting!). The population preference <span class="math inline">\(\theta\)</span> is the average of <span class="math inline">\(x_j\)</span>’s for <span class="math inline">\(j=1, \ldots, N\)</span>. If we knew the size of the population <span class="math inline">\(N\)</span> and the population proportion <span class="math inline">\(\theta\)</span>, then we could compute the chance of observing any <span class="math inline">\(\hat\theta_n := n^{-1}\sum_{i=1}^n X_i\)</span> value according to the rules of probability (which we will soon study). For example, if <span class="math inline">\(N\)</span> is much larger than <span class="math inline">\(n = 10\)</span> and <span class="math inline">\(\theta = 1/2\)</span>, then the chance of observing exactly <span class="math inline">\(\hat\theta = 1/2\)</span> is about <span class="math inline">\(25\%\)</span> (it’s about equal to <span class="math inline">\(252\theta^5(1-\theta)^5\)</span>). Of course, the whole point of the poll is to learn something about the unknown value of <span class="math inline">\(\theta\)</span>, so we cannot actually perform this probability calculation in practice. But, consider connecting the probability calculation to our goal. We would like to distinguish between values of <span class="math inline">\(\theta\)</span> that are more or less plausible. Suppose we conduct the poll of <span class="math inline">\(10\)</span> individuals and observe <span class="math inline">\(\hat\theta = 1/2\)</span>. Then, our probability calculation says the probability we observe <span class="math inline">\(\hat\theta = 1/2\)</span> is highest if <span class="math inline">\(\theta = 1/2\)</span>. In other words, <span class="math inline">\(1/2\)</span> is the most plausible value of the population proportion given our observations. Intuitively, we expect values near <span class="math inline">\(1/2\)</span> are more plausible than values far from <span class="math inline">\(1/2\)</span>. This correspondence between the probability calculation and plausible values of the <em>population parameter</em> is called the <em>maximum likelihood principle</em> which we will study in a later chapter.</p>
+<div id="normal-population-mean-example" class="section level2" number="13.2">
+<h2><span class="header-section-number">13.2</span> Normal population mean example</h2>
+<p>Suppose <span class="math inline">\(X_1, \ldots, X_n\)</span> is a random sample from <span class="math inline">\(N(\mu, 1)\)</span>. Let’s find a <span class="math inline">\(100(1-\alpha)\%\)</span> confidence interval (CI) for <span class="math inline">\(\mu\)</span>. Since <span class="math inline">\(\overline X_n\)</span> is a great estimator of <span class="math inline">\(\mu\)</span> it makes sense the endpoints of the interval would depend on <span class="math inline">\(\overline X_n\)</span>. The confidence interval is supposed to be a range of plausible values of <span class="math inline">\(\mu\)</span>; and, <span class="math inline">\(\overline X_n\)</span> seems the most plausible, so the interval ought to look like <span class="math inline">\((\overline X_n - c_1, \, \overline X_n + c_2)\)</span>; in other words, the interval is the sample mean plus or minus something extra. We known <span class="math inline">\(\overline X_n \sim N(\mu, 1/n)\)</span>, which is a symmetric distribution. So, it would make sense for our <span class="math inline">\(\pm \text{ something extra}\)</span> to be symmetric, i.e. the interval should have the form <span class="math inline">\((\overline X_n - c, \overline X_n + c)\)</span> for some <span class="math inline">\(c&gt;0\)</span>. Now, it just remains to specify <span class="math inline">\(c\)</span> such that the interval has the confidence property. We want
+<span class="math display">\[P(\overline X_n - c \leq \mu \leq \overline X_n +c) = 1-\alpha.\]</span>
+Subtract <span class="math inline">\(\overline X_n\)</span> and standardize to get the standard normal probability
+<span class="math display">\[P\left(-\frac{c}{1/\sqrt{n}} \leq \frac{\overline X_n - \mu}{1/\sqrt{n}} \leq \frac{c}{1/\sqrt{n}}\right) = 1-\alpha\]</span>
+<span class="math display">\[P\left(-\frac{c}{1/\sqrt{n}} \leq Z \leq \frac{c}{1/\sqrt{n}}\right) = 1-\alpha.\]</span>
+This means <span class="math inline">\(P(Z\leq \frac{c}{1/\sqrt{n}}) = 1-\alpha/2\)</span> by symmetry of the standard normal distribution. In other words, <span class="math inline">\(\frac{c}{1/\sqrt{n}}\)</span> is the value such that
+<span class="math display">\[1-\alpha/2=F_Z(\frac{c}{1/\sqrt{n}})=\int_{-\infty}^{\frac{c}{1/\sqrt{n}}} \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}z^2}dz.\]</span>
+This defines <span class="math inline">\(\frac{c}{1/\sqrt{n}}\)</span> as the <span class="math inline">\(1-\alpha/2\)</span> standard normal quantile. Given a choice of <span class="math inline">\(\alpha\)</span> it’s not easy to solve for <span class="math inline">\(c\)</span> in the above (integral) equation, but we can use the built-in R function qnorm to find this value. Let <span class="math inline">\(\alpha = 0.025\)</span>, for example, so that the probability our interval contains <span class="math inline">\(\mu\)</span> is <span class="math inline">\(95\%\)</span>. Then, <span class="math inline">\(\frac{c}{1/\sqrt{n}} = qnorm(0.975) = 1.96\)</span> and <span class="math inline">\(c = 1.96\frac{1}{\sqrt{n}}\)</span>. Conclude a <span class="math inline">\(95\%\)</span> CI for <span class="math inline">\(\mu\)</span> is given by
+<span class="math display">\[\left(\overline X_n - 1.96\frac{1}{\sqrt{n}}, \,\overline X_n - 1.96\frac{1}{\sqrt{n}}\right).\]</span>
+More generally, if we denote the <span class="math inline">\(1-\alpha/2\)</span> quantile of the standard normal by <span class="math inline">\(z_{1-\alpha/2}\)</span> then
+<span class="math display">\[\left(\overline X_n - z_{1-\alpha/2}\frac{1}{\sqrt{n}}, \,\overline X_n - z_{1-\alpha/2}\frac{1}{\sqrt{n}}\right)\]</span>
+defines a <span class="math inline">\(100(1-\alpha)\%\)</span> CI for <span class="math inline">\(\mu\)</span>.<br><br></p>
+<p>Remark: It’s not essential that the above CI (or any CI) is symmetric about a point estimator, but when the sampling distribution of the estimator is symmetric this is the best choice. To see this, note that
+<span class="math display">\[\left(\overline X_n - z_{1-\alpha/3}\frac{1}{\sqrt{n}}, \,\overline X_n - z_{1-2\alpha/3}\frac{1}{\sqrt{n}}\right)\]</span>
+is also a <span class="math inline">\(95\%\)</span> CI for <span class="math inline">\(\mu\)</span>, but it is <em>always</em> larger (wider) than the symmetric interval. So, the symmetric interval, which being shorter is more precise, is preferable.</p>
 </div>
-<div id="exercises" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Exercises</h2>
-<ol style="list-style-type: decimal">
-<li><p>Google James Lind’s Scurvy experiments. What was James’ research question? What was the population? Did he obtain a random sample from the population? If not, does that make you suspicious of his findings? Why or why not? Did James use any interventions? If so did he randomize them? Do you think his randomization scheme is reliable? What were his conclusions?<br><br></p></li>
-<li><p>Find a recent example of an experiment in the news or a scientific publication. Describe the research question, population, intervention (if there is one), and response. Is it a random sampling experiment, a random sample randomized intervention experiment, or something else, like an observational study?<br><br></p></li>
-<li><p>The Challenger space shuttle exploded when it experienced o-ring failures thought to be caused by low launch temperature. The launch temperature was 31 degrees Fahrenheit. The following data can be interpreted as a random sample of counts of o-ring failures from a population of launches. Given this data do you think we can make reliable conclusions about launch safety at 31 degrees launch temperature? What concepts discussed in this section are relevant here?</p></li>
-</ol>
-<table>
-<caption><span id="tab:unnamed-chunk-2">Table 2.1: </span>A table of o rings at risk, o ring failires, and launch temperatures of space shuttle flights.</caption>
-<thead>
-<tr class="header">
-<th align="right">at risk</th>
-<th align="right">failed</th>
-<th align="right">launch temp.</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">1</td>
-<td align="right">70</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">69</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">68</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">67</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">72</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">73</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">70</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">1</td>
-<td align="right">57</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">1</td>
-<td align="right">63</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">1</td>
-<td align="right">70</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">78</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">67</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">2</td>
-<td align="right">53</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">67</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">75</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">70</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">81</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">76</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">79</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">75</td>
-</tr>
-<tr class="odd">
-<td align="right">6</td>
-<td align="right">0</td>
-<td align="right">76</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">1</td>
-<td align="right">58</td>
-</tr>
-</tbody>
-</table>
+<div id="other-exact-cis-for-normal-population-mean-and-variance-parameters" class="section level2" number="13.3">
+<h2><span class="header-section-number">13.3</span> Other “Exact” CIs for normal population mean and variance parameters</h2>
+<div id="population-mean-unknown-variance" class="section level3" number="13.3.1">
+<h3><span class="header-section-number">13.3.1</span> Population mean, unknown variance</h3>
+<p>Let <span class="math inline">\(X_1, \ldots, X_n\)</span> be a random sample of size <span class="math inline">\(n\geq 2\)</span> from <span class="math inline">\(N(\mu, \sigma^2)\)</span> where both mean and variance parameters are unknown. We know the studentized mean follows a Student’s <span class="math inline">\(t\)</span> distribution with <span class="math inline">\(n-1\)</span> degrees of freedom:
+<span class="math display">\[T = \frac{\overline X_n - \mu}{\sqrt{S_n^2/n}}\sim t(n-1).\]</span>
+Mirroring the argument from above when <span class="math inline">\(\sigma^2\)</span> is a known value, we assume a <span class="math inline">\(100(1-\alpha)\%\)</span> CI for <span class="math inline">\(\mu\)</span> would be symmetric about <span class="math inline">\(\overline X_n\)</span> with radius <span class="math inline">\(t_{1-\alpha/2}(n-1) \frac{S_n}{\sqrt{n}}\)</span> where <span class="math inline">\(t_{1-\alpha/2}(n-1)\)</span> is the <span class="math inline">\(1-\alpha/2\)</span> quantile of the Student’s <span class="math inline">\(t\)</span> distribution with <span class="math inline">\(n-1\)</span> degrees of freedom:
+<span class="math display">\[P\left(\overline X_n - t_{1-\alpha/2}(n-1) \frac{S_n}{\sqrt{n}} \leq \mu \leq \overline X_n + t_{1-\alpha/2}(n-1) \frac{S_n}{\sqrt{n}}\right) = 1-\alpha.\]</span></p>
+</div>
+<div id="population-variance-unknown-mean" class="section level3" number="13.3.2">
+<h3><span class="header-section-number">13.3.2</span> Population variance, unknown mean</h3>
+<p>Let <span class="math inline">\(X_1, \ldots, X_n\)</span> be a random sample of size <span class="math inline">\(n\geq 2\)</span> from <span class="math inline">\(N(\mu, \sigma^2)\)</span> where both mean and variance parameters are unknown. We know the following transformation is Chi-squared distributed:
+<span class="math display">\[\frac{(n-1)S_n^2)}{\sigma^2}\sim \chi^2(n-1).\]</span>
+Now, the Chi-squared distribution is not symmetric—it’s skewed. There are a number of ways to define a <span class="math inline">\(100(1-\alpha)\%\)</span> CI for <span class="math inline">\(\sigma^2\)</span> based on the above sampling distribution. Since <span class="math inline">\(\sigma^2 &gt; 0\)</span> we can define a one-sided interval starting from zero:
+<span class="math display">\[\left(0, \, \frac{(n-1)S_n^2}{\chi^2_{\alpha}(n-1)}\right)\]</span>
+where <span class="math inline">\(\chi^2_{1-\alpha}(n-1)\)</span> is the <span class="math inline">\(100(1-\alpha)\)</span> quantile of a Chi-squared r.v. with <span class="math inline">\((n-1)\)</span> degrees of freedom. Then,
+<span class="math display">\[\begin{align*}
+P(0 \leq \sigma^2 \leq \frac{(n-1)S_n^2}{\chi^2_{\alpha}(n-1)}) &amp;= P(0\leq \frac{(n-1)S_n^2}{\sigma^2} \leq \chi^2_{1-\alpha}(n-1))\\
+&amp; = P(\chi^2(n-1) \geq \chi^2_{\alpha}(n-1))\\
+&amp;= 1-\alpha
+\end{align*}\]</span>
+by definition of the quantile. <br><br></p>
+<p>We can define two-sided intervals as well. The “equi-tailed” interval is not the shortest possible interval, but it has a simple form:
+<span class="math display">\[\left(\frac{(n-1)S_n^2}{\chi^2_{1-\alpha/2}(n-1)}, \, \frac{(n-1)S_n^2}{\chi^2_{\alpha/2}(n-1)}\right).\]</span></p>
+<p>In order to find the shortest possible <span class="math inline">\(100(1-\alpha)\%\)</span> CI one could draw a horizontal line slicing across the Chi-squared density such that the area under both the line and the density equals <span class="math inline">\(\alpha\)</span>. Then, the intersection points of the line and the density would give the lower and upper Chi-squared quantiles to use in the two-sided interval. Since the density is not symmetric this interval generally would not be based on the <span class="math inline">\(1-\alpha/2\)</span> and <span class="math inline">\(\alpha/2\)</span> quantiles like the equi-tailed interval. For example, the shortest <span class="math inline">\(95\%\)</span> CI when <span class="math inline">\(df=10\)</span> is based on quantile values of about 1.284 and 25.05. The following plot illustrates this.</p>
+<pre><code>## 0.04998856 with absolute error &lt; 8.5e-05</code></pre>
+<pre><code>## [1] 0.001862438</code></pre>
+<pre><code>## [1] 0.001863508</code></pre>
+<p><img src="12-Confidence-Intervals_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="two-normal-samples-comparing-means" class="section level3" number="13.3.3">
+<h3><span class="header-section-number">13.3.3</span> Two normal samples, comparing means</h3>
+<p>Let’s tackle the next topic by way of an example. Suppose infant walking time — the age in months at which babies can walk on their own — is normally distributed. Generally, parents are excited for their infants to begin walking and some parents “take steps” to encourage their infants to walk. We’ll assume it is reasonable to model the population of infant walking times among those infants whose parents no not intervene in walking skills development as a random sample from a normal distribution with mean <span class="math inline">\(\mu_x\)</span> and variance <span class="math inline">\(sigma_x^2\)</span>; likewise we model the corresponding population of infant walking times influenced by parent behavior by a normal distribution with mean <span class="math inline">\(\mu_y\)</span> and variance <span class="math inline">\(sigma_y^2\)</span>. Assume this parental influence factor represents a more-or-less standard “treatment”; for example, parents might spend 60 minutes a day encouraging their infant to crawl and stand with assistance or play in a bounce seat to build lower body strength. Child development researchers would be interested to know whether such parental interventions influence infant walking times. <br><br></p>
+<p>Given observations from an experiment comparing these two groups of infants, how would we answer the researchers’ question? One answer comes in the form of a CI for the difference of means <span class="math inline">\(\mu_x - \mu_y\)</span>. In this case a negative difference indicates some impact of parental involvement. And, if a <span class="math inline">\(95\%\)</span> CI does not contain zero, then the CI reflects strong evidence in the data that the true means are different. <br><br></p>
+<p>Based on our knowledge of sampling distributions we know that if <span class="math inline">\(\sigma_x^2 = \sigma_y^2\)</span> the following statistic has a Student’s <span class="math inline">\(t\)</span> distribution with <span class="math inline">\(n+m-2\)</span> df where <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span> are the sample sizes in each group:
+<span class="math display">\[\frac{\overline X - \overline Y - (\mu_x - \mu_y)}{\sqrt{S_p^2\left(\frac{1}{n} + \frac{1}{m}\right)}}\]</span>
+where <span class="math inline">\(S_p^2\)</span> denotes the pooled (sample-size weighted average) sample variance. As a result, the following probability statement is exact:
+<span class="math display">\[\begin{align*}
+1-\alpha &amp; = P\left(t_{\alpha/2, n+m-2} \leq \frac{\overline X - \overline Y - (\mu_x - \mu_y)}{\sqrt{S_p^2\left(\frac{1}{n} + \frac{1}{m}\right)}} \leq t_{1-\alpha/2, n+m-2}\right)\\
+&amp; = P\left(t_{\alpha/2, n+m-2}\sqrt{S_p^2\left(\frac{1}{n} + \frac{1}{m}\right)}\leq \overline X - \overline Y - (\mu_x - \mu_y) \leq t_{1-\alpha/2, n+m-2}\sqrt{S_p^2\left(\frac{1}{n} + \frac{1}{m}\right)}\right)\\
+&amp; = P\left(-(\overline X - \overline Y)+t_{\alpha/2, n+m-2}\sqrt{S_p^2\left(\frac{1}{n} + \frac{1}{m}\right)}\leq  - (\mu_x - \mu_y) \leq -(\overline X - \overline Y)+ t_{1-\alpha/2, n+m-2}\sqrt{S_p^2\left(\frac{1}{n} + \frac{1}{m}\right)}\right)\\
+&amp; = P\left((\overline X - \overline Y)-t_{1-\alpha/2, n+m-2}\sqrt{S_p^2\left(\frac{1}{n} + \frac{1}{m}\right)}\leq   (\mu_x - \mu_y) \leq (\overline X - \overline Y)+ t_{1-\alpha/2, n+m-2}\sqrt{S_p^2\left(\frac{1}{n} + \frac{1}{m}\right)}\right)
+\end{align*}\]</span>
+where the last line follows from multiplying by <span class="math inline">\(-1\)</span> and noting <span class="math inline">\(t_{1-\alpha/2, n+m-2} = -t_{\alpha/2, n+m-2}\)</span> by symmetry. Therefore, a <span class="math inline">\(100(1-\alpha)\%\)</span> CI for the difference of means <span class="math inline">\(\mu_x - \mu_y\)</span> is given by
+<span class="math display">\[\left((\overline X - \overline Y)-t_{1-\alpha/2, n+m-2}\sqrt{S_p^2\left(\frac{1}{n} + \frac{1}{m}\right)}, \, (\overline X - \overline Y)+t_{1-\alpha/2, n+m-2}\sqrt{S_p^2\left(\frac{1}{n} + \frac{1}{m}\right)}\right).\]</span>
+Suppose we conduct the infant walking time experiment and observe the following data:
+<span class="math display">\[X:\,\,\, 13.2\,\,\, 16.6\,\,\, 16.7\,\,\, 16.8\,\,\, 17.0\,\,\, 17.1\,\,\, 17.3\,\,\, 17.4\,\,\, 17.4\,\,\, 17.7\,\,\, 17.9 \]</span>
+<span class="math display">\[Y: \,\,\, 16.8\,\,\, 17.1\,\,\, 17.6\,\,\, 17.7\,\,\, 18.8\,\,\, 18.8\,\,\, 19.3\,\,\, 19.6\,\,\, 21.0\,\,\, 21.2\,\,\, 21.5\,\,\, 22.1\,\,\, 22.8\]</span>
+Computing the sample statistics we find <span class="math inline">\(\overline x = 16.83\)</span>, <span class="math inline">\(\overline y = 19.56\)</span>, <span class="math inline">\(s_x^2 = 1.61\)</span>, and <span class="math inline">\(s_y^2 = 3.97\)</span>. The pooled sample variance is <span class="math inline">\((10s_x^2+12s_y^2)/22 = 2.90\)</span>. The <span class="math inline">\(0.975\)</span> quantile of the Student’s <span class="math inline">\(t\)</span> distribution with 22 df can be found using “qt(0.975, 22)” and equals about 2.07. Plugging all these values into the CI formula, the <span class="math inline">\(95\%\)</span> CI for the difference in mean infant walking times is<br />
+<span class="math display">\[(-4.18, \, -1.29)\]</span>
+We conclude the mean infant walking times in the group with parental intervention were between about 1.3 and 4.2 months shorter than in the non-intervention group. (Note this is made-up “data” only for illustration purposes.)
+<br><br></p>
+<p>The careful reader may be concerned that our CI method used above relies on the two normal populations having identical variances but our sample variances are substantially different. This equal-variance CI procedure is often referred to as Welch’s two-sample CI, in contrast to an alternative method that can be used when variances are unequal called Student’s two-sample CI. Recall the studentized difference of sample means when variances are unequal approximately (not exactly) follows a Student’s <span class="math inline">\(t\)</span> distribution with Satterthwaite’s choice of degrees of freedom:
+<span class="math display">\[\frac{\overline X_n - \overline Y_m - (\mu_X - \mu_Y)}{\sqrt{\frac{S_X^2}{n}+\frac{S_Y^2}{m}}}\stackrel{\cdot}{\sim}t(\nu)\]</span>
+where
+<span class="math display">\[\nu = \frac{\left(\frac{S_X^2}{n}+\frac{S_Y^2}{m}\right)^2}{\frac{1}{n-1}\left(\frac{S_X^2}{n}\right)^2 + \frac{1}{m-1}\left(\frac{S_Y^2}{m}\right)^2}.\]</span>
+Following the same argument as above, this implies an <em>approximate</em> <span class="math inline">\(100(1-\alpha)\%\)</span> CI for the difference of means is given by
+<span class="math display">\[\left((\overline X - \overline Y)-t_{1-\alpha/2, \nu}\sqrt{\left(\frac{S_x^2}{n} + \frac{S_y^2}{m}\right)}, \, (\overline X - \overline Y)+t_{1-\alpha/2, \nu}\sqrt{S_p^2\left(\frac{S_x^2}{n} + \frac{S_y^2}{m}\right)}\right).\]</span>
+Plugging in the relevant sample statistics, we get <span class="math inline">\(\nu = 20\)</span> so that we use the quantile <span class="math inline">\(t_{0.975}(20) = 2.086\)</span>. Student’s two-sample approximate <span class="math inline">\(95\%\)</span> interval is
+<span class="math display">\[(-4.14, \,-1.33)\]</span>
+which is hardly different than Welch’s interval. We’ll investigate the comparative perfomrances of these two intervals further in lab.</p>
+</div>
+<div id="two-normal-samples-comparing-variances" class="section level3" number="13.3.4">
+<h3><span class="header-section-number">13.3.4</span> Two normal samples, comparing variances</h3>
+<p>In some applications it is either more important or at least of equal importance to compare population variances rather than means. For example, consider one or more manufacturing processes for producing optical lenses—these might be for glasses or contacts. Lenses have many dimensional quantities that determine their properties, for example, the refraction index of the lens material and the thickness of the lens, which both contribute to the power of the lens. Suppose a manufacturing process is supposed to produce a lens of a given thickness. A small tolerance is allowable but any lenses produced with thickness outside the tolerance must be rejected. We can think of the difference between the specified, target lens thickness and the population mean thickness of lenses produced by a specific process as <em>bias</em>. Then, our preference between two or more production processes is a question about bias-variance tradeoff. A production process with no bias but a high variance in lens thickness will result in many lenses being rejected—perhaps even more than a manufacturing process that produces biased lenses with very low variability in thickness. Clearly, for choosing between processes we need to evaluate both process bias and process variance.<br><br></p>
+<p>For comparing two process variances (where the underlying popualtions are normal) we use a ratio statistic. The sampling distribution of the following ratio of sample variances has an <em>F distribution</em> when the population variances are equal:
+<span class="math display">\[\frac{S_x^2}{S_y^2} \sim F(n-1, m-1).\]</span>
+Recall that $(n-1)S_x^2/_x^2 <span class="math inline">\(Chi-squared\)</span>(n-1)$ and $(m-1)S_y^2/_y^2 <span class="math inline">\(Chi-squared\)</span>(m-1)$. The ratio of two independent, Chi-squared r.v.’s divided by the dfs defines an F random variable with two parameters which are the degrees of freedom of the numerator and denominator Chi-squared r.v.’s. When <span class="math inline">\(\sigma_x^2 = \sigma_y^2\)</span>, we have
+<span class="math display">\[\frac{\frac{(n-1)S_x^2}{\sigma_x^2(n-1)}}{\frac{(m-1)S_y^2}{\sigma_y^2(m-1)}} = \frac{\frac{(n-1)S_x^2}{(n-1)}}{\frac{(m-1)S_y^2}{(m-1)}} = \frac{\text{Chi-squared(n-1)/(n-1)}}{\text{Chi-squared(m-1)/(m-1)}} = \frac{S_x^2}{S_y^2} =  F(n-1, m-1).\]</span>
+And, when the variances are not equal, we simply have
+<span class="math display">\[\frac{S_x^2 \sigma_y^2}{S_y^2 \sigma_x^2} \sim F(n-1, m-1).\]</span>
+We can invert this relationship to find a CI for <span class="math inline">\(\sigma_y^2 / \sigma_x^2\)</span> using the following probability computation:
+<span class="math display">\[\begin{align*}
+1-\alpha &amp; = P(F_{\alpha/2}(n-1, m-1) \leq \frac{S_x^2 \sigma_y^2}{S_y^2 \sigma_x^2} \leq F_{1-\alpha/2}(n-1, m-1))\\
+&amp; = P(\frac{S_y^2}{S_x^2}F_{\alpha/2}(n-1, m-1) \leq \sigma_y^2/\sigma_x^2 \leq \frac{S_y^2}{S_x^2}F_{1-\alpha/2}(n-1, m-1))\\
+&amp; = P(\frac{S_y^2}{S_x^2}\frac{1}{F_{1-\alpha/2}(m-1, n-1)} \leq \sigma_y^2/\sigma_x^2 \leq \frac{S_y^2}{S_x^2}F_{1-\alpha/2}(n-1, m-1)),
+\end{align*}\]</span>
+where the last line uses a reciprocal-equality property of F distributions with swapped degrees of freedom, namely <span class="math inline">\(F_{\alpha}(df1, df2) = 1/(F_{1-\alpha}(df2, df1))\)</span>. This is not essential if you are using R to compute F quantiles but is helpful for using F tables, which typically only list upper tail quantiles. Then, a <span class="math inline">\(100(1-\alpha)\%\)</span> CI for the ratio <span class="math inline">\(\sigma_y^2/\sigma_x^2\)</span> is given by
+<span class="math display">\[\left(\frac{S_y^2}{S_x^2}\frac{1}{F_{1-\alpha/2}(m-1, n-1)}, \,\frac{S_y^2}{S_x^2}F_{1-\alpha/2}(n-1, m-1)\right).\]</span>
+Given the following observations (in nanometers) of lens thickness using two different production methods, compute <span class="math inline">\(95\%\)</span> CIs for the difference in means (use Welch’s method) and the ratio of variances:
+<span class="math display">\[X: 2.9859\,\,\, 3.0042\,\,\, 3.0055 \,\,\,3.0083 \,\,\,3.0113 \,\,\,3.0124\,\,\, 3.0150\,\,\, 3.0214\]</span>
+<span class="math display">\[Y: 2.9964\,\,\, 3.0011 \,\,\,3.0099\,\,\, 3.0110\,\,\, 3.0124\,\,\, 3.0130\,\,\, 3.0140\,\,\, 3.0205\]</span>
+The <span class="math inline">\(95\%\)</span> CI for the difference in population mean thicknesses is
+<span class="math display">\[(-0.0116, \, 0.0080).\]</span>
+The <span class="math inline">\(95\%\)</span> CI for the ratio of population variances <span class="math inline">\(\sigma_y^2/\sigma_x^2\)</span> is
+<span class="math display">\[(0.1058, \, 2.6394).\]</span></p>
+</div>
+</div>
+<div id="approximate-cis-based-on-mles" class="section level2" number="13.4">
+<h2><span class="header-section-number">13.4</span> Approximate CIs based on MLEs</h2>
 
 </div>
 </div>
@@ -480,8 +438,8 @@ For every possible sample of <span class="math inline">\(n\)</span> voters, ther
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="probability-and-counting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="statistical-estimation.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -512,7 +470,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-intro.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/12-Confidence-Intervals.Rmd",
 "text": "Edit"
 },
 "history": {

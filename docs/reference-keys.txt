@@ -89,3 +89,12 @@ consistency
 finding-estimators---method-of-moments
 method-of-maximum-likelihood
 properties-of-mles
+confidence-intervals
+why-want-interval-valued-estimates
+normal-population-mean-example
+other-exact-cis-for-normal-population-mean-and-variance-parameters
+population-mean-unknown-variance
+population-variance-unknown-mean
+two-normal-samples-comparing-means
+two-normal-samples-comparing-variances
+approximate-cis-based-on-mles
