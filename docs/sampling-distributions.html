@@ -24,7 +24,7 @@
 <meta name="author" content="Nick Syring" />
 
 
-<meta name="date" content="2022-04-19" />
+<meta name="date" content="2022-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -305,7 +305,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-testing-outcomes"><i class="fa fa-check"></i><b>14.2</b> Hypothesis testing outcomes</a></li>
 <li class="chapter" data-level="14.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#tests-based-on-a-normal-population"><i class="fa fa-check"></i><b>14.3</b> Tests based on a normal population</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#tests-for-a-normal-mean-when-the-variance-is-known"><i class="fa fa-check"></i><b>14.3.1</b> Tests for a normal mean when the variance is known</a></li>
+<li class="chapter" data-level="14.3.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-a-normal-mean-when-the-variance-is-known"><i class="fa fa-check"></i><b>14.3.1</b> Test for a normal mean when the variance is known</a></li>
+<li class="chapter" data-level="14.3.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-a-normal-mean-when-the-variance-is-unknown"><i class="fa fa-check"></i><b>14.3.2</b> Test for a normal mean when the variance is unknown</a></li>
+<li class="chapter" data-level="14.3.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-a-normal-population-variance"><i class="fa fa-check"></i><b>14.3.3</b> Test for a normal population variance</a></li>
+<li class="chapter" data-level="14.3.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#tests-for-a-difference-of-normal-population-means"><i class="fa fa-check"></i><b>14.3.4</b> Tests for a difference of normal population means</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -387,7 +390,7 @@ where <span class="math inline">\(Z_i = (X_i - \mu)^2\)</span>. The latter expre
 <span class="math display">\[T_n:=\frac{\overline X_n - \mu}{\sqrt{S_n^2 / n}}\]</span>
 denote the “studentized sample mean.” <span class="math inline">\(T_n\)</span> is the standardized sample mean—<span class="math inline">\(\overline X_n\)</span> minus <span class="math inline">\(\mu\)</span> and divided by <span class="math inline">\(\sqrt{\sigma^2/n}\)</span>—with the true variance replaced by its estimate, the sample variance.<br><br></p>
 <p>The standardized sample mean has a standard normal distribution (even approximately so for non-normal random samples by the CLT), but the studentized sample mean is <em>not</em> normally-distributed. Rather, the studentized sample mean has a Student’s <span class="math inline">\(t\)</span> distribution with <span class="math inline">\((n-1)\)</span> degrees of freedom.<br><br></p>
-<p>A Student’s <span class="math inline">\(t\)</span> random variable is defined in the following way: If <span class="math inline">\(Z\)</span> is standard normal and independent of $V <span class="math inline">\(Chi-Squared\)</span>(n-1)$, then
+<p>A Student’s <span class="math inline">\(t\)</span> random variable is defined in the following way: If <span class="math inline">\(Z\)</span> is standard normal and independent of <span class="math inline">\(V \sim\)</span> Chi-Squared <span class="math inline">\((n-1)\)</span>, then
 <span class="math display">\[T:=\frac{Z}{\sqrt{V/(n-1)}}\]</span>
 is a Student’s <span class="math inline">\(t\)</span> random variable with <span class="math inline">\(n-1\)</span> degrees of freedom. <br><br></p>
 <p>Rewriting the studentized sample mean, we have
@@ -435,7 +438,7 @@ Since the degrees of freedom is an integer-valued parameter the result of this f
 <div id="ratios-of-sample-variances" class="section level2" number="11.5">
 <h2><span class="header-section-number">11.5</span> Ratios of Sample Variances</h2>
 <p>As above, consider a random sample <span class="math inline">\(X_1, X_2, \ldots, X_{n}\)</span> from a normal distribution with mean and variance <span class="math inline">\(\mu_X\)</span> and <span class="math inline">\(\sigma_X^2\)</span> and another random sample <span class="math inline">\(Y_1, Y_2, \ldots, Y_m\)</span> from a different normal distribution with mean and variance <span class="math inline">\(\mu_Y\)</span> and <span class="math inline">\(\sigma_Y^2\)</span>.<br><br></p>
-<p>If $U$Chi-Squared with df <span class="math inline">\(n-1\)</span> and $V$Chi-Squared with df <span class="math inline">\(m-1\)</span> and <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> are independent, then
+<p>If <span class="math inline">\(U\sim\)</span> Chi-Squared with df <span class="math inline">\(n-1\)</span> and <span class="math inline">\(V\sim\)</span> Chi-Squared with df <span class="math inline">\(m-1\)</span> and <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> are independent, then
 <span class="math display">\[F := \frac{U/(n-1)}{V/(m-1)}\]</span>
 has an F distribution with two degrees of freedom parameters <span class="math inline">\(df1 = n-1\)</span> and <span class="math inline">\(df2 = m-1\)</span>, often called the numerator and denominator degrees of freedom.<br><br></p>
 <p>If <span class="math inline">\(S_X^2\)</span> and <span class="math inline">\(S_Y^2\)</span> are sample variances, then

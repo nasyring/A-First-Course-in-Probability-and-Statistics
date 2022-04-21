@@ -75,7 +75,7 @@ denote the "studentized sample mean".  $T_n$ is the standardized sample mean---$
 
 The standardized sample mean has a standard normal distribution (even approximately so for non-normal random samples by the CLT), but the studentized sample mean is *not* normally-distributed.  Rather, the studentized sample mean has a Student's $t$ distribution with $(n-1)$ degrees of freedom.<br><br>
 
-A Student's $t$ random variable is defined in the following way: If $Z$ is standard normal and independent of $V \sim $Chi-Squared$(n-1)$, then
+A Student's $t$ random variable is defined in the following way: If $Z$ is standard normal and independent of $V \sim$ Chi-Squared $(n-1)$, then
 \[T:=\frac{Z}{\sqrt{V/(n-1)}}\]
 is a Student's $t$ random variable with $n-1$ degrees of freedom.  <br><br>
 
@@ -125,7 +125,7 @@ Since the degrees of freedom is an integer-valued parameter the result of this f
 
 As above, consider a random sample $X_1, X_2, \ldots, X_{n}$ from a normal distribution with mean and variance $\mu_X$ and $\sigma_X^2$ and another random sample $Y_1, Y_2, \ldots, Y_m$ from a different normal distribution with mean and variance $\mu_Y$ and $\sigma_Y^2$.<br><br>
 
-If $U\sim $Chi-Squared with df $n-1$ and $V\sim $Chi-Squared with df $m-1$ and $U$ and $V$ are independent, then
+If $U\sim$ Chi-Squared with df $n-1$ and $V\sim$ Chi-Squared with df $m-1$ and $U$ and $V$ are independent, then
 \[F := \frac{U/(n-1)}{V/(m-1)}\]
 has an F distribution with two degrees of freedom parameters $df1 = n-1$ and $df2 = m-1$, often called the numerator and denominator degrees of freedom.<br><br>
 

@@ -6,7 +6,7 @@
 ]{book}
 \title{A First Course in Probability and Statistics}
 \author{Nick Syring}
-\date{2022-04-19}
+\date{2022-04-21}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -1514,7 +1514,7 @@ denote the ``studentized sample mean''. \(T_n\) is the standardized sample mean-
 
 The standardized sample mean has a standard normal distribution (even approximately so for non-normal random samples by the CLT), but the studentized sample mean is \emph{not} normally-distributed. Rather, the studentized sample mean has a Student's \(t\) distribution with \((n-1)\) degrees of freedom.
 
-A Student's \(t\) random variable is defined in the following way: If \(Z\) is standard normal and independent of \$V \sim \(Chi-Squared\)(n-1)\$, then
+A Student's \(t\) random variable is defined in the following way: If \(Z\) is standard normal and independent of \(V \sim\) Chi-Squared \((n-1)\), then
 \[T:=\frac{Z}{\sqrt{V/(n-1)}}\]
 is a Student's \(t\) random variable with \(n-1\) degrees of freedom.
 
@@ -1570,7 +1570,7 @@ Since the degrees of freedom is an integer-valued parameter the result of this f
 
 As above, consider a random sample \(X_1, X_2, \ldots, X_{n}\) from a normal distribution with mean and variance \(\mu_X\) and \(\sigma_X^2\) and another random sample \(Y_1, Y_2, \ldots, Y_m\) from a different normal distribution with mean and variance \(\mu_Y\) and \(\sigma_Y^2\).
 
-If \$U\sim \$Chi-Squared with df \(n-1\) and \$V\sim \$Chi-Squared with df \(m-1\) and \(U\) and \(V\) are independent, then
+If \(U\sim\) Chi-Squared with df \(n-1\) and \(V\sim\) Chi-Squared with df \(m-1\) and \(U\) and \(V\) are independent, then
 \[F := \frac{U/(n-1)}{V/(m-1)}\]
 has an F distribution with two degrees of freedom parameters \(df1 = n-1\) and \(df2 = m-1\), often called the numerator and denominator degrees of freedom.
 
@@ -1903,7 +1903,7 @@ In some applications it is either more important or at least of equal importance
 
 For comparing two process variances (where the underlying popualtions are normal) we use a ratio statistic. The sampling distribution of the following ratio of sample variances has an \emph{F distribution} when the population variances are equal:
 \[\frac{S_x^2}{S_y^2} \sim F(n-1, m-1).\]
-Recall that \$(n-1)S\_x\^{}2/\sigma\_x\^{}2 \sim \(Chi-squared\)(n-1)\$ and \$(m-1)S\_y\^{}2/\sigma\_y\^{}2 \sim \(Chi-squared\)(m-1)\$. The ratio of two independent, Chi-squared r.v.'s divided by the dfs defines an F random variable with two parameters which are the degrees of freedom of the numerator and denominator Chi-squared r.v.'s. When \(\sigma_x^2 = \sigma_y^2\), we have
+Recall that \((n-1)S_x^2/\sigma_x^2 \sim\) Chi-squared\((n-1)\) and \((m-1)S_y^2/\sigma_y^2 \sim\) Chi-squared\((m-1)\). The ratio of two independent, Chi-squared r.v.'s divided by the dfs defines an F random variable with two parameters which are the degrees of freedom of the numerator and denominator Chi-squared r.v.'s. When \(\sigma_x^2 = \sigma_y^2\), we have
 \[\frac{\frac{(n-1)S_x^2}{\sigma_x^2(n-1)}}{\frac{(m-1)S_y^2}{\sigma_y^2(m-1)}} = \frac{\frac{(n-1)S_x^2}{(n-1)}}{\frac{(m-1)S_y^2}{(m-1)}} = \frac{\text{Chi-squared(n-1)/(n-1)}}{\text{Chi-squared(m-1)/(m-1)}} = \frac{S_x^2}{S_y^2} =  F(n-1, m-1).\]
 And, when the variances are not equal, we simply have
 \[\frac{S_x^2 \sigma_y^2}{S_y^2 \sigma_x^2} \sim F(n-1, m-1).\]
@@ -2059,19 +2059,190 @@ As we will see, it is possible to construct hypothesis tests with an explicit ca
 \hypertarget{tests-based-on-a-normal-population}{%
 \section{Tests based on a normal population}\label{tests-based-on-a-normal-population}}
 
-\hypertarget{tests-for-a-normal-mean-when-the-variance-is-known}{%
-\subsection{Tests for a normal mean when the variance is known}\label{tests-for-a-normal-mean-when-the-variance-is-known}}
+\hypertarget{test-for-a-normal-mean-when-the-variance-is-known}{%
+\subsection{Test for a normal mean when the variance is known}\label{test-for-a-normal-mean-when-the-variance-is-known}}
 
 Suppose a given population is known to follow a normal distribution with an unknown mean and a known variance \(\sigma^2\). We wish to test the point null hypothesis \(H_0:\mu = \mu_0\) for some given number \(\mu_0\) versus the alternative \(H_a:\mu \ne \mu_0\). And, we wish our test to limit the Type 1 error rate to a given level \(\alpha\), say, \(5\%\).
 
 We obtain a random sample of size \(n\) from the population. How should we proceed? If \(H_0\) is true, then our data should look like it came from \(N(\mu_0, \sigma^2)\); specifically, the sample mean should be ``close'' to \(\mu_0\). If \(\overline X\) is close to \(\mu_0\), then \(H_0\) seems plausible, otherwise not. Our intuition says our test should look like: ``reject \(H_0\) if \(|\overline X-\mu_0|>c\)'' for some cutoff \(c>0\). The constraint on Type 1 error rate to be no more than \(\alpha\) is enough to determine \(c\):
 \begin{align*}
-1-\alpha &= P(-c\leq \overline X - \mu_0 \leq c)
+1-\alpha &= P(-c\leq \overline X - \mu_0 \leq c)\\
 & = P(-c/\sqrt{\sigma^2/n} \leq Z \leq c/\sqrt{\sigma^2/n})
 \end{align*}
 This implies we should reject \(H_0\) if \(|Z|>z_{1-\alpha/2}\) where
 \[Z = \frac{\overline X - \mu_0}{\sqrt{\sigma^2/n}}\]
 is the standardized sample mean assuming \(H_0\) is true (often it is said, ``under \(H_0\)'').
+
+Next, we investigate the power of this test. Recall the power is the probability the test rejects the null hypothesis when the null is false. For most tests, like the current one, the null hypothesis may be false in many ways. If \(H_0\) is false then \(\mu\ne \mu_0\), so \(\mu\) is some other number, lets say \(y\). Intuitively, for \(y\) values close to \(\mu_0\) we would not necessarily expect to notice \(H_0\) is false, but for \(y\) values far from \(\mu_0\) we would expect \(\overline X\) to be far from \(\mu_0\) and for the test to reject \(\mu_0\). So, we expect the power to be a function of \(y\) and to be increasing as a function of \(|y-\mu_0|\). Below we compute this power function:
+\begin{align*}
+P\left(\frac{\overline X - \mu_0}{\sigma/\sqrt{n}} < z_{\alpha/2}|\mu = y\right) & =  P\left(\frac{\overline X - y}{\sigma/\sqrt{n}} < z_{\alpha/2}+\frac{\mu_0-y}{\sigma/\sqrt{n}}\right)\\
+& = P\left(Z < z_{\alpha/2}+\frac{\mu_0-y}{\sigma/\sqrt{n}}\right).
+\end{align*}
+\begin{align*}
+P\left(z_{1-\alpha/2} < \frac{\overline X - \mu_0}{\sigma/\sqrt{n}}|\mu = y\right) & =  P\left(z_{1-\alpha/2}+\frac{\mu_0-y}{\sigma/\sqrt{n}}<\frac{\overline X - y}{\sigma/\sqrt{n}}\right)\\
+& = P\left(z_{1-\alpha/2}+\frac{\mu_0-y}{\sigma/\sqrt{n}} < Z\right)\\
+& = 1-P\left(Z < z_{1-\alpha/2}+\frac{\mu_0-y}{\sigma/\sqrt{n}}\right).
+\end{align*}
+Therefore, the power as a function of \(y\) is
+\[(1-\beta) = P\left(Z < z_{\alpha/2}+\frac{\mu_0-y}{\sigma/\sqrt{n}}\right)+1-P\left(Z < z_{1-\alpha/2}+\frac{\mu_0-y}{\sigma/\sqrt{n}}\right).\]
+We illustrate this power function below for \(H_0:\mu = 1\) where \(\sigma^2 = 2\), \(n=10\), and \(\alpha = 0.05\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alpha }\OtherTok{\textless{}{-}} \FloatTok{0.05}
+\NormalTok{mu0 }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{sigma2 }\OtherTok{\textless{}{-}} \DecValTok{2}
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{10}
+\NormalTok{power }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(y) }\FunctionTok{pnorm}\NormalTok{(}\FunctionTok{qnorm}\NormalTok{(alpha}\SpecialCharTok{/}\DecValTok{2}\NormalTok{)}\SpecialCharTok{+}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{y)}\SpecialCharTok{/}\FunctionTok{sqrt}\NormalTok{(sigma2}\SpecialCharTok{/}\NormalTok{n))}\SpecialCharTok{+}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{pnorm}\NormalTok{(}\FunctionTok{qnorm}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{alpha}\SpecialCharTok{/}\DecValTok{2}\NormalTok{)}\SpecialCharTok{+}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{y)}\SpecialCharTok{/}\FunctionTok{sqrt}\NormalTok{(sigma2}\SpecialCharTok{/}\NormalTok{n))}
+\FunctionTok{curve}\NormalTok{(power, }\AttributeTok{from =} \SpecialCharTok{{-}}\DecValTok{5}\NormalTok{, }\AttributeTok{to =} \DecValTok{6}\NormalTok{, }\AttributeTok{xlab =} \StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{, }\AttributeTok{ylab =} \StringTok{\textquotesingle{}power(y)\textquotesingle{}}\NormalTok{)  }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+The power is minimized (and equal to 0.05) at \(y = \mu_0\) where the test only rejects at rate \(\alpha\) by design. The power increases smoothly and symetrically as a function of \(|y-\mu_0|\) until the test has nearly a \(100\%\) chance of rejecting \(H_0\) for true mean sufficiently far from \(\mu_0\).
+
+\hypertarget{test-for-a-normal-mean-when-the-variance-is-unknown}{%
+\subsection{Test for a normal mean when the variance is unknown}\label{test-for-a-normal-mean-when-the-variance-is-unknown}}
+
+As we have discussed many times when the population variance is unknown the Studentized sample mean has a Student's \(t\) distribution with \(n-1\) degrees of freedom. A Student's \(t-\)based test for \(H_0:\mu = \mu_0\) versus \(H_a:\mu\ne\mu_0\) is essentially the same as the above test but based on the \(T\) statistic, \(T = \frac{\overline X - \mu_0}{S/\sqrt{n}}\) rather than the \(Z\) statistic \(Z = \frac{\overline X - \mu_0}{\sigma/\sqrt{n}}\). A level-\(\alpha\) test rejects \(H_0\) if \(T > t_{1-\alpha/2}(n-1)\) or \(T < t_{\alpha/2}(n-1)\), where \(t_\alpha(df)\) is the Student's \(t\) lower \(\alpha\) quantile with \(df\) degrees of freedom.
+
+For a different angle, consider the test of the one-sided (composite) hypotheses \(H_0:\mu \leq \mu_0\) versus \(H_a:\mu > \mu_0\). Naturally, values of \(\overline X\) smaller than \(\mu_0\) lend support to the null hypothesis, so a level \(\alpha\) test of \(H_0\) only rejects the null if \(T > t_{1-\alpha}(n-1)\). Consider the power of this one-sided test. Since the test only rejects for large values of \(\overline X\), the power should increase as \(T\) increases. Mimicking (half of) our power calculation for the \(Z\) test above we have
+\[1-\beta = P\left(\frac{\overline X - y}{S/\sqrt{n}} + \frac{y - \mu_0}{S/\sqrt{n}} > t_{1-\alpha}(n-1)\right).\]
+The random variable \(\frac{\overline X - y}{S/\sqrt{n}} + \frac{y - \mu_0}{S/\sqrt{n}}\) has a Student's \(t\) distribution with \(n-1\) degrees of freedom and \textbf{non-centrality parameter} \(y-\mu_0\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alpha }\OtherTok{\textless{}{-}} \FloatTok{0.05}
+\NormalTok{mu0 }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{sigma2 }\OtherTok{\textless{}{-}} \DecValTok{2}
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{10}
+\NormalTok{power }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(y)  }\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{pt}\NormalTok{(}\FunctionTok{qt}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{alpha, n}\DecValTok{{-}1}\NormalTok{), }\AttributeTok{df =}\NormalTok{ n}\DecValTok{{-}1}\NormalTok{, }\AttributeTok{ncp =}\NormalTok{ y }\SpecialCharTok{{-}}\NormalTok{ mu0)}
+\FunctionTok{curve}\NormalTok{(power, }\AttributeTok{from =} \SpecialCharTok{{-}}\DecValTok{5}\NormalTok{, }\AttributeTok{to =} \DecValTok{6}\NormalTok{, }\AttributeTok{xlab =} \StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{, }\AttributeTok{ylab =} \StringTok{\textquotesingle{}power(y)\textquotesingle{}}\NormalTok{)  }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in pt(qt(1 - alpha, n - 1), df = n - 1, ncp = y - mu0): full precision
+## may not have been achieved in 'pnt{final}'
+
+## Warning in pt(qt(1 - alpha, n - 1), df = n - 1, ncp = y - mu0): full precision
+## may not have been achieved in 'pnt{final}'
+
+## Warning in pt(qt(1 - alpha, n - 1), df = n - 1, ncp = y - mu0): full precision
+## may not have been achieved in 'pnt{final}'
+
+## Warning in pt(qt(1 - alpha, n - 1), df = n - 1, ncp = y - mu0): full precision
+## may not have been achieved in 'pnt{final}'
+
+## Warning in pt(qt(1 - alpha, n - 1), df = n - 1, ncp = y - mu0): full precision
+## may not have been achieved in 'pnt{final}'
+
+## Warning in pt(qt(1 - alpha, n - 1), df = n - 1, ncp = y - mu0): full precision
+## may not have been achieved in 'pnt{final}'
+
+## Warning in pt(qt(1 - alpha, n - 1), df = n - 1, ncp = y - mu0): full precision
+## may not have been achieved in 'pnt{final}'
+
+## Warning in pt(qt(1 - alpha, n - 1), df = n - 1, ncp = y - mu0): full precision
+## may not have been achieved in 'pnt{final}'
+
+## Warning in pt(qt(1 - alpha, n - 1), df = n - 1, ncp = y - mu0): full precision
+## may not have been achieved in 'pnt{final}'
+\end{verbatim}
+
+\includegraphics{13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+\hypertarget{test-for-a-normal-population-variance}{%
+\subsection{Test for a normal population variance}\label{test-for-a-normal-population-variance}}
+
+Consider a test that rejects the null hypothesis \(H_0:\sigma^2 \leq \sigma_0^2\) if \(\frac{(n-1)S^2}{\sigma_0^2} \geq \chi^2_{1-\alpha}(n-1)\) where \(\chi^2_{\alpha}(df)\) is the Chi-squared lower \(\alpha\) quantile for a Chi-squared distribution with df degrees of freedom. Such a rejection rule defines a level-\(\alpha\) test:
+\[P\left(\frac{(n-1)S^2}{\sigma_0^2} \geq  \chi^2_{1-\alpha}(n-1)|\sigma^2 = \sigma_0^2\right) = P\left(\chi^{2}(n-1) \geq  \chi^2_{1-\alpha}(n-1)\right) = \alpha,\]
+by definition. We can compute the power curve of such a test:
+\begin{align*}
+P\left(\frac{(n-1)S^2}{\sigma_0^2} \geq  \chi^2_{1-\alpha}(n-1)|\sigma^2 = y\right) & = P\left(\frac{(n-1)S^2}{y} \geq  \frac{\sigma_0^2}{y}\chi^2_{1-\alpha}(n-1)\right)\\
+& = P\left(\chi^2(n-1) \geq  \frac{\sigma_0^2}{y}\chi^2_{1-\alpha}(n-1)\right)
+\end{align*}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alpha }\OtherTok{\textless{}{-}} \FloatTok{0.05}
+\NormalTok{mu0 }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{sigma2 }\OtherTok{\textless{}{-}} \DecValTok{2}
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{10}
+\NormalTok{power }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(y)  }\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{pchisq}\NormalTok{((}\DecValTok{2}\SpecialCharTok{/}\NormalTok{y)}\SpecialCharTok{*}\FunctionTok{qchisq}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{alpha, n}\DecValTok{{-}1}\NormalTok{),n}\DecValTok{{-}1}\NormalTok{)}
+\FunctionTok{curve}\NormalTok{(power, }\AttributeTok{from =} \DecValTok{2}\NormalTok{, }\AttributeTok{to =} \DecValTok{14}\NormalTok{, }\AttributeTok{xlab =} \StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{, }\AttributeTok{ylab =} \StringTok{\textquotesingle{}power(y)\textquotesingle{}}\NormalTok{)  }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\hypertarget{tests-for-a-difference-of-normal-population-means}{%
+\subsection{Tests for a difference of normal population means}\label{tests-for-a-difference-of-normal-population-means}}
+
+Suppose \(X_1, \ldots, X_n\) and \(Y_1, \ldots, Y_m\) are random samples from two normal populations with unknown means and variances \(\mu_x\), \(\mu_y\), \(\sigma_x^2\), and \(\sigma_y^2\). Consider testing the point-null hypothesis \(H_0:\mu_x - \mu_y = \Delta\) versus \(H_a:\mu_x - \mu_y \ne \Delta\) for a given constant \(\Delta\). Following our previous strategies, the test decision should be based on one of the two statistics
+\[T = \frac{\overline X - \overline Y - \Delta}{\sqrt{S_x^2/n + S_y^2/m}} \quad \text{or}\quad T_p = \frac{\overline X - \overline Y - \Delta}{\sqrt{S_p^2\left(1/n+1/m\right)}}.\]
+Under the null hypothesis, \(T_p\) is exactly \(t\) distributed with \(n+m-2\) df if \(\sigma_x^2 = \sigma_y^2\), and under the null hypothesis \(T\) is approximately \(t\) distributed with the Welch-Satterthwaite choice of df. These two statistics, \(T_p\) and \(T\), are the basis for the pooled Student's \(t\) test and Welch's unpooled test for \(\mu_x - \mu_y\). For either test, we reject \(H_0\) if the test statistic is too large in absolute value, i.e., \(|T_p|>t_{1-\alpha/2}(n+m-2)\). The Welch test is usually the better choice because, as we have previously seen, Student's pooled CIs perform may poorly when \(n\ne m\) and \(\sigma_x^2 \ne \sigma_y^2\), and the Student's \(t\) test experiences the same problems.
+
+These two-sample t-tests may be performed using R's built-in t.test function:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{12345}\NormalTok{)}
+\NormalTok{X }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{13}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{Y }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{19}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\CommentTok{\# testing a point null with Delta = 1, alpha = 0.05}
+\FunctionTok{t.test}\NormalTok{(X,Y,}\AttributeTok{alternative =} \StringTok{\textquotesingle{}two.sided\textquotesingle{}}\NormalTok{,}\AttributeTok{mu=}\DecValTok{1}\NormalTok{,}\AttributeTok{var.equal=}\ConstantTok{FALSE}\NormalTok{,}\AttributeTok{conf.level =} \FloatTok{0.95}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  X and Y
+## t = -0.23467, df = 17.877, p-value = 0.8171
+## alternative hypothesis: true difference in means is not equal to 1
+## 95 percent confidence interval:
+##  -0.2897301  2.0306764
+## sample estimates:
+## mean of x mean of y 
+##  5.114192  4.243719
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(X,Y,}\AttributeTok{alternative =} \StringTok{\textquotesingle{}two.sided\textquotesingle{}}\NormalTok{,}\AttributeTok{mu=}\DecValTok{1}\NormalTok{,}\AttributeTok{var.equal=}\ConstantTok{TRUE}\NormalTok{,}\AttributeTok{conf.level =} \FloatTok{0.95}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Two Sample t-test
+## 
+## data:  X and Y
+## t = -0.25733, df = 30, p-value = 0.7987
+## alternative hypothesis: true difference in means is not equal to 1
+## 95 percent confidence interval:
+##  -0.1574864  1.8984327
+## sample estimates:
+## mean of x mean of y 
+##  5.114192  4.243719
+\end{verbatim}
+
+The t.test function returns a ``p-value'' which is defined as the null-hypothesis-true probability of observing the observed test statistic or a more extreme value. In other words, it is equal to the equivalent \(\alpha\) for which the observed test statistic lies on the boundary of the reject/retain criterion. For example, Welch's test gives a p-value of 0.8171. The test statistic is
+\[T = \frac{5.114192-4.243719-1}{\sqrt{3.18206/13 + 1.137897/19}}=-0.2346661.\]
+And, the Welch-Satterthwaite df is 17.877 according to t.test. For a test statistic value of -0.2346661 to be borderline for rejection means the upper \(t(17.877)\) quantile for rejection would equal 0.2346661. Using the \(pt\) function we have \((1-pt(0.2346661,17.877)) = 0.4085673\) which constitutes the probability on one half of the symmetric ``rejection region'', so that the p-value is twice this number, or \(0.8171347\), as given by t.test.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{pt}\NormalTok{(}\FloatTok{0.2346661}\NormalTok{,}\FloatTok{17.877}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4085673
+\end{verbatim}
 
   \bibliography{book.bib,packages.bib}
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.3.1)  19 APR 2022 12:24
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.3.1)  21 APR 2022 11:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -928,12 +928,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1456--1457
 ] [74]
 File: 10-Sampling-Distributions_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file (type pdf)
 <use 10-Sampling-Distributions_files/figure-latex/unnamed-chunk-2-1.pdf>
-[75] [76]
-Missing character: There is no ∼ (U+223C) in font [lmroman10-regular]:mapping=tex-text;!
-[77] [78] [79]
-Missing character: There is no ∼ (U+223C) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ∼ (U+223C) in font [lmroman10-regular]:mapping=tex-text;!
-[80]
+[75] [76] [77] [78] [79] [80]
 Chapter 12.
 
 Underfull \vbox (badness 1215) has occurred while \output is active []
@@ -983,12 +978,7 @@ Overfull \hbox (123.95013pt too wide) has occurred while \output is active
 \TU/lmr/m/sl/10 13.3.  OTHER “EXACT” CIS FOR NORMAL POPULATION MEAN AND VARIANCE PARAMETERS \TU/lmr/m/n/10 97
  []
 
-[97]
-Missing character: There is no 𝜎 (U+1D70E) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ∼ (U+223C) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 𝜎 (U+1D70E) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ∼ (U+223C) in font [lmroman10-regular]:mapping=tex-text;!
-[98] [99]
+[97] [98] [99]
 Overfull \hbox (51.94887pt too wide) detected at line 1958
 [] []
  []
@@ -1015,19 +1005,84 @@ Overfull \hbox (16.51198pt too wide) detected at line 2026
 Chapter 14.
 [105
 
-] [106]
+] [106] [107]
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 2096.
+File: 13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-1-1.pdf Graphic file (type pdf)
+<use 13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-1-1.pdf>
+[108]
+Overfull \hbox (80.25pt too wide) in paragraph at lines 2152--2152
+[]\TU/lmtt/m/n/10 ## Warning in pt(qt(1 - alpha, n - 1), df = n - 1, ncp = y - mu0): full precision[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 2152--2152
+[]\TU/lmtt/m/n/10 ## Warning in pt(qt(1 - alpha, n - 1), df = n - 1, ncp = y - mu0): full precision[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 2152--2152
+[]\TU/lmtt/m/n/10 ## Warning in pt(qt(1 - alpha, n - 1), df = n - 1, ncp = y - mu0): full precision[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 2152--2152
+[]\TU/lmtt/m/n/10 ## Warning in pt(qt(1 - alpha, n - 1), df = n - 1, ncp = y - mu0): full precision[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 2152--2152
+[]\TU/lmtt/m/n/10 ## Warning in pt(qt(1 - alpha, n - 1), df = n - 1, ncp = y - mu0): full precision[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 2152--2152
+[]\TU/lmtt/m/n/10 ## Warning in pt(qt(1 - alpha, n - 1), df = n - 1, ncp = y - mu0): full precision[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 2152--2152
+[]\TU/lmtt/m/n/10 ## Warning in pt(qt(1 - alpha, n - 1), df = n - 1, ncp = y - mu0): full precision[] 
+ []
+
+[109]
+Overfull \hbox (80.25pt too wide) in paragraph at lines 2152--2152
+[]\TU/lmtt/m/n/10 ## Warning in pt(qt(1 - alpha, n - 1), df = n - 1, ncp = y - mu0): full precision[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 2152--2152
+[]\TU/lmtt/m/n/10 ## Warning in pt(qt(1 - alpha, n - 1), df = n - 1, ncp = y - mu0): full precision[] 
+ []
+
+File: 13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file (type pdf)
+<use 13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-2-1.pdf>
+[110]
+File: 13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type pdf)
+<use 13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-3-1.pdf>
+[111]
+Overfull \hbox (17.25pt too wide) in paragraph at lines 2211--2211
+[]\TU/lmtt/m/n/10 ## alternative hypothesis: true difference in means is not equal to 1[] 
+ []
+
+
+Overfull \hbox (17.25pt too wide) in paragraph at lines 2231--2231
+[]\TU/lmtt/m/n/10 ## alternative hypothesis: true difference in means is not equal to 1[] 
+ []
+
+[112]
 No file _main.bbl.
-[107] (./_main.aux)
+[113] (./_main.aux)
 Package rerunfilecheck Info: File `_main.out' has not changed.
 (rerunfilecheck)             Checksum: 67BE59A2C092CB776C46D262E90FC573;13124.
  ) 
 Here is how much of TeX's memory you used:
- 17600 strings out of 478179
- 328839 string characters out of 5852733
- 814168 words of memory out of 5000000
- 37960 multiletter control sequences out of 15000+600000
- 476719 words of font info for 93 fonts, out of 8000000 for 9000
+ 17629 strings out of 478179
+ 330554 string characters out of 5852733
+ 815418 words of memory out of 5000000
+ 37986 multiletter control sequences out of 15000+600000
+ 476727 words of font info for 94 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 86i,12n,121p,2424b,427s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 86i,12n,121p,2424b,472s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on _main.pdf (107 pages).
+Output written on _main.pdf (113 pages).

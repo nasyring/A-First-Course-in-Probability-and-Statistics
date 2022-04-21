@@ -151,7 +151,7 @@ In some applications it is either more important or at least of equal importance
 
 For comparing two process variances (where the underlying popualtions are normal) we use a ratio statistic.  The sampling distribution of the following ratio of sample variances has an *F distribution* when the population variances are equal:
 \[\frac{S_x^2}{S_y^2} \sim F(n-1, m-1).\]
-Recall that $(n-1)S_x^2/\sigma_x^2 \sim $Chi-squared$(n-1)$ and $(m-1)S_y^2/\sigma_y^2 \sim $Chi-squared$(m-1)$.  The ratio of two independent, Chi-squared r.v.'s divided by the dfs defines an F random variable with two parameters which are the degrees of freedom of the numerator and denominator Chi-squared r.v.'s.  When $\sigma_x^2 = \sigma_y^2$, we have
+Recall that $(n-1)S_x^2/\sigma_x^2 \sim$ Chi-squared$(n-1)$ and $(m-1)S_y^2/\sigma_y^2 \sim$ Chi-squared$(m-1)$.  The ratio of two independent, Chi-squared r.v.'s divided by the dfs defines an F random variable with two parameters which are the degrees of freedom of the numerator and denominator Chi-squared r.v.'s.  When $\sigma_x^2 = \sigma_y^2$, we have
 \[\frac{\frac{(n-1)S_x^2}{\sigma_x^2(n-1)}}{\frac{(m-1)S_y^2}{\sigma_y^2(m-1)}} = \frac{\frac{(n-1)S_x^2}{(n-1)}}{\frac{(m-1)S_y^2}{(m-1)}} = \frac{\text{Chi-squared(n-1)/(n-1)}}{\text{Chi-squared(m-1)/(m-1)}} = \frac{S_x^2}{S_y^2} =  F(n-1, m-1).\]
 And, when the variances are not equal, we simply have
 \[\frac{S_x^2 \sigma_y^2}{S_y^2 \sigma_x^2} \sim F(n-1, m-1).\]

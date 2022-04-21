@@ -107,4 +107,7 @@ hypothesis-testing
 notation
 hypothesis-testing-outcomes
 tests-based-on-a-normal-population
-tests-for-a-normal-mean-when-the-variance-is-known
+test-for-a-normal-mean-when-the-variance-is-known
+test-for-a-normal-mean-when-the-variance-is-unknown
+test-for-a-normal-population-variance
+tests-for-a-difference-of-normal-population-means
