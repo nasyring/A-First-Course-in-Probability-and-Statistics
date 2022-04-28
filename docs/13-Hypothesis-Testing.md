@@ -207,6 +207,360 @@ And, the Welch-Satterthwaite df is 17.877 according to t.test.  For a test stati
 ```
 
 
+### Test for equality of normal population variances
+
+Let $X_1, \ldots, X_n$ be iid $N(\mu_x, \sigma_x^2)$ and $Y_1, \ldots, Y_m$ be iid $N(\mu_y, \sigma_y^2)$ and consider testing $H_0:\sigma_x^2/\sigma_y^2 = 1$ versus $H_a: \sigma_x^2/\sigma_y^2 \ne 1$.  As we have seen previously
+\[\frac{S_x^2/\sigma_x^2}{S_y^2/\sigma_y^2}\sim F(n-1, m-1)\]
+and, under the null hypothesis, we have
+\[\frac{S_x^2}{S_y^2}\stackrel{H_0}{\sim} F(n-1, m-1),\]
+so that a level $\alpha$ test rejects the null hypothesis if $F = \frac{S_x^2}{S_y^2} > F_{1-\alpha/2}(n-1, m-1)$ or $F < F_{\alpha/2}(n-1, m-1)$.  <br><br>
+Example: Suppose we obtain the following two random samples of $X$ and $Y$ values:
+
+\[x:25.20,\,\,\, 23.53,\,\,\, 18.02,\,\,\, 18.96,\,\,\, 15.70, \,\,\,10.35, \,\,\,24.07,\,\,\, 17.10, \,\,\,21.51, \,\,\, 7.48, \,\,\,12.76 \]
+\[y: 19.16,\,\,\, 20.05, \,\,\,16.99,\,\,\, 19.83,\,\,\, 21.07,\,\,\, 21.47,\,\,\, 25.44,\,\,\, 11.96,\,\,\, 19.45\]
+
+
+
+```r
+x <- c(25.20, 23.53, 18.02, 18.96, 15.70, 10.35, 24.07, 17.10, 21.51,  7.48, 12.76)
+y <- c(19.16, 20.05, 16.99, 19.83, 21.07, 21.47, 25.44, 11.96, 19.45)
+F <- var(x)/var(y)
+F
+```
+
+```
+## [1] 2.539221
+```
+
+```r
+F.curve <- function(x) df(x, 10, 8)
+curve(F.curve, 0, 10)
+points(F, F.curve(F), pch = '*', col = 'red')
+points(F, 0, pch = '*', col = 'red')
+lines(c(F,F), c(0,F.curve(F)), col = 'red')
+```
+
+![](13-Hypothesis-Testing_files/figure-epub3/unnamed-chunk-6-1.png)<!-- -->
+
+```r
+1-pf(F, 10, 8)
+```
+
+```
+## [1] 0.09989054
+```
+
+```r
+2*(1-pf(F, 10, 8))
+```
+
+```
+## [1] 0.1997811
+```
+
+```r
+qf(0.09989054, 10,8)
+```
+
+```
+## [1] 0.4204884
+```
+
+```r
+curve(F.curve, 0, 10)
+points(F, F.curve(F), pch = '*', col = 'red')
+points(F, 0, pch = '*', col = 'red')
+lines(c(F,F), c(0,F.curve(F)), col = 'red')
+lines(c(qf(0.09989054, 10,8),qf(0.09989054, 10,8)), c(0,F.curve(qf(0.09989054, 10,8))), col = 'red')
+```
+
+![](13-Hypothesis-Testing_files/figure-epub3/unnamed-chunk-6-2.png)<!-- -->
+
+```r
+curve(F.curve, 0, 10)
+lines(c(qf(0.025, 10,8),qf(0.025, 10,8)), c(0,F.curve(qf(0.025, 10,8))), col = 'blue')
+lines(c(qf(0.975, 10,8),qf(0.975, 10,8)), c(0,F.curve(qf(0.975, 10,8))), col = 'blue')
+```
+
+![](13-Hypothesis-Testing_files/figure-epub3/unnamed-chunk-6-3.png)<!-- -->
+
+
+
+
+## Likelihood-based Tests
+
+In our discussions of point and interval estimation we found likelihood-based methods provided a general means of deriving estimators with (at least) good large-sample performance.  The same is true with respect to testing.  However, there's more than one way to use the likelihood function to define a test, and we'll discuss two strategies.    
+
+### Wald type tests
+
+Wald-type tests follow the strategy we've been using.  The test is based on a point estimator and its distribution.  The testing rule is essentially to reject the null if the point estimator sufficiently disagrees with the null where ``sufficiently" is determined by the estimator's distribution.  In the case of likelihood-based Wald tests the point estimator is the MLE and the distribution is the (asymptotic/approximate) normal distribution of the MLE.  Therefore, all Wald-type likelihood-based tests of $H_0:\theta = \theta_0$ versus $H_a:\theta\ne \theta_0$  are of the form "Reject $H_0$ if:"
+\[\theta_0 \notin (\hat\theta \pm z_{1-\alpha/2}[nI(\theta_0)]^{-1/2}),\]
+because
+\[\frac{\hat\theta - \theta_0}{[nI(\theta_0)]^{-1/2}}\stackrel{H_0}{\sim}N(0,1)\]
+where $\theta$ is a scalar.  <br>
+Note: for point null tests $H_0:\theta=\theta_0$ for $p\times 1$ vector parameters $(\hat\theta-\theta_0)[nI(\theta_0)]^{-1/2}$ is a p-variate standard normal and the quadratic form $(\hat\theta-\theta_0)^{\top}[nI(\theta_0)]^{-1} (\hat\theta-\theta_0)$ has a Chi-squared distribution with $p$ degrees of freedom.  And, the Wald test is based on quantiles of this Chi-squared distribution.  
+
+<br><br>
+Example: Suppose $X_1, \ldots, X_n$ is a random sample from an Exponential distribution with scale parameter $\lambda$ and consider testing $H_0:\lambda \leq \lambda_0$ versus $H_a:\lambda > \lambda_0$.  The sample mean is the MLE of $\lambda$, and $n\overline X= \sum_{i=1}^nX_i \sim$ Gamma$(n, \lambda)$.  Therefore, an exact test is based on the Gamma distribution, while a likelihood-based Wald test is based on $\overline X \stackrel{H_0}{\sim}N(\lambda_0,\lambda_0^2/n)$, approximately. Suppose $\lambda_0 = 5$ and we observe the following random sample of size 12:
+\[x : 12.57,\,\,\,  1.83,\,\,\,  2.10,\,\,\,  3.00,\,\,\,  0.65,\,\,\,  2.74,\,\,\, 14.21,\,\,\,  1.72,\,\,\,  3.13,\,\,\,  1.63,\,\,\,  2.42,\,\,\,  9.33\]
+
+
+```r
+x = c(12.57,  1.83,  2.10,  3.00,  0.65,  2.74, 14.21,  1.72,  3.13,  1.63,  2.42,  9.33)
+xbar <- mean(x)
+xbar
+```
+
+```
+## [1] 4.610833
+```
+
+```r
+c(xbar - 1.96*5/sqrt(12), xbar + 1.96*5/sqrt(12))
+```
+
+```
+## [1] 1.781817 7.439850
+```
+
+```r
+5
+```
+
+```
+## [1] 5
+```
+
+```r
+c(qgamma(0.025, shape = 12, scale = 5), qgamma(0.975, shape = 12, scale = 5))
+```
+
+```
+## [1] 31.00288 98.41019
+```
+
+```r
+xbar * 12
+```
+
+```
+## [1] 55.33
+```
+
+```r
+c(qgamma(0.025, shape = 12, scale = 5), qgamma(0.975, shape = 12, scale = 5))/12
+```
+
+```
+## [1] 2.583573 8.200849
+```
+
+```r
+xbar
+```
+
+```
+## [1] 4.610833
+```
+
+Simulation of Type 1 error rates:
+
+
+```r
+reps <- 10000
+errors <- matrix(0, reps, 2)
+for(r in 1:reps){
+  x <- rexp(12,rate = 1/5)
+  xbar <- mean(x)
+  rr.wald <- c(xbar - 1.96*5/sqrt(12), xbar + 1.96*5/sqrt(12))
+  rr.exact <- c(qgamma(0.025, shape = 12, scale = 5), qgamma(0.975, shape = 12, scale = 5))/12
+  errors[r, ] <- c(ifelse(5>rr.wald[1] & 5<rr.wald[2],0,1), ifelse(xbar>rr.exact[1] & xbar<rr.exact[2],0,1))
+}
+colMeans(errors)
+```
+
+```
+## [1] 0.0487 0.0536
+```
+
+
+
+
+
+### Likelihood ratio tests
+
+
+Likelihood ratio tests (LRTs) operate a little differently compared to Wald tests.  The LRT idea is that parameter values with corresponding likelihood values near the maximum are plausible, while those with low likelihood values are implausible.  For testing $H_0:\theta = \theta_0$ versus $H_a:\theta\ne \theta_0$ this means if $\frac{L(\theta_0)}{L(\hat\theta)}$ is close to 1 the null is supported while if the ratio is close to zero the alternative is supported.  How "close" is close again depends on the null-hypothesis distribution of the likelihood ratio.  A general asymptotic result holds that for scalar parameters 
+\[-2[\ell(\theta_0) - \ell(\hat\theta)] \stackrel{H_0}{\sim} Chi-squared(1)\]
+approximately.  This result also holds for general composite hypotheses $H_0:\theta\in \Theta_0$ versus $H_a: \theta\in \Theta \cap \Theta_0^c$ so that
+\[-2[\sup_{\theta\in \Theta_0}\{\ell(\theta)\} - \ell(\hat\theta)]\stackrel{H_0}{\sim} Chi-squared(df)\]
+where $df$ is equal to the difference in dimensions of the parameter space.  
+
+
+<br><br>
+
+Example: Consider a test for $H_0:\mu = \mu_0$ versus $H_a:\mu \ne \mu_0$ for a normal population with unknown variance.  In that case $\Theta$ is the two-dimensional parameter space for $(\mu, \sigma^2)$ which is $\mathbb{R}\times \mathbb{R}^+$ and $\Theta_0$ is the one-dimensional subspace $\{\mu_0\}\times \mathbb{R}^+$.  The unrestricted MLEs are $\overline x$ and $\hat\sigma^2 = n^{-1}\sum_{i=1}^n(x_i - \overline x)^2$. It's not hard to show the restriced MLE for $\sigma^2$ under the null hypothesis is $\hat\sigma_0^2 = n^{-1}\sum_{i=1}^n (x_i - \mu_0)^2$.  To test $H_0$ we compute the test statistic
+\[\Lambda := -2[\ell(\mu_0, \hat\sigma_0^2) - \ell(\overline x, \hat\sigma^2)]\]
+and reject the null hypothesis if $\Lambda > \chi^2_{1-\alpha}(1)$, the $1-\alpha$ lower quantile of the Chi squared distribution with 1 degree of freedom.  Let's perform the test given the following sample:
+
+
+```r
+x <- rnorm(22, 8, 6)
+x
+```
+
+```
+##  [1]  4.0634008  9.1198213 13.6167056  7.1889954 13.9577182 10.2795735
+##  [7]  7.8406222  6.1487191  0.2090839  0.7775581 10.5912890 10.3346847
+## [13] 19.6868480  0.8674458 12.9657995  8.1965838  2.9815080  7.5730705
+## [19]  8.2187202  2.9247010  4.4469792  3.5998290
+```
+
+```r
+xbar <- mean(x)
+xbar
+```
+
+```
+## [1] 7.526803
+```
+
+```r
+mu0 <- 7
+mle <- (1/22)*sum((x-xbar)^2)
+mle
+```
+
+```
+## [1] 23.11427
+```
+
+```r
+mle0 <- (1/22)*sum((x - mu0)^2)
+mle0
+```
+
+```
+## [1] 23.39179
+```
+
+```r
+loglhood <- function(mu, sigma2)  sum(dnorm(x,mu,sqrt(sigma2),log = TRUE))
+Lambda <- (-2)*(loglhood(mu0,mle0) - loglhood(xbar,mle)) 
+Lambda
+```
+
+```
+## [1] 0.2625694
+```
+
+```r
+qchisq(0.95, 1)
+```
+
+```
+## [1] 3.841459
+```
+
+
+<br><br>
+Example: Consider the following data on cell phone battery charge times
+\[8.0, \,\,\, 8.1, \,\,\, 8.9, \,\,\, 9.1, \,\,\, 9.2, \,\,\, 9.3, \,\,\, 9.4, \,\,\, 9.4\]
+Assuming these times constitute a random sample from a normal population test the hypothesis $H_0:\sigma^2 \leq 0.2$ versus $H_a:\sigma^2 > 0.2$ using an LRT at $\alpha = 0.05$.  <br>
+<br>
+The loglikelihood, again, is
+\[\ell(\mu, \sigma^2; x) = -(n/2)\log [2\pi\sigma^2] - \frac{1}{2\sigma^2}\sum_{i=1}^n(x_i - \mu)^2.\]
+The unrestricted MLEs are $\overline x = 8.925$ and $\hat\sigma^2 = 0.28$.  Under the null hypothesis the MLE of $\mu$ remains $\overline x = 8.925$ because the derivative of the loglikelihood w.r.t. $\mu$ is proportional to $\sigma^2$; i.e., it equals $\frac{1}{\sigma^2}\sum_{i=1}^n (x_i - \mu)$.  Then, setting equal to zero we see the MLE for $\mu$ is still $\overline x$.  To find the restricted MLE of $\sigma^2$ under $H_0$, plot the loglikelihood as a function of $\sigma^2$ with $\mu = \overline x$ below and note that it is maximized at $0.2$ over the set $\sigma^2 \leq 0.2$.  The test statistic is
+\[-2(\ell(8.925,0.2;x) - \ell(8.925,0.28;x)) = 0.501\]
+which is below the cutoff of 3.84, the $95\%$ quantile of the Chi-squared distribution with 1 degree of freedom (the difference in two versus one free parameter in the alternative versus null hypothesis). 
+
+
+```r
+x <- c(8.0,8.1,8.9,9.1,9.2,9.3,9.4,9.4)
+ell <- function(sig2) sum(dnorm(x,mean(x),sqrt(sig2),log = TRUE))
+app.ell <- function(sig2) apply(matrix(sig2,length(sig2),1),1,ell)
+curve(app.ell,0,2)  
+abline(v = 0.2, col = 'red')
+```
+
+![](13-Hypothesis-Testing_files/figure-epub3/unnamed-chunk-10-1.png)<!-- -->
+
+```r
+test.stat <- -2*(ell(0.2)-ell(0.28))
+test.stat
+```
+
+```
+## [1] 0.5010792
+```
+
+```r
+qchisq(0.95,1)
+```
+
+```
+## [1] 3.841459
+```
+
+
+
+
+
+## Chi Squared tests for tabulated data
+
+To this point most of our experiments have dealt with continuous data.  But, a common type of data encountered in experiments is tabulated or cross-classified data.  For example, consider the following data on phsychologists' opinions concerning the causes of schizophrenia:
+
+|                |          |    Origin   |             |     |
+|:--------------:|:--------:|:-----------:|:-----------:|:---:|
+|     School     | Biogenic | Environment | Combination |     |
+|    Eclectic    |    90    |      12     |      78     | 180 |
+|     Medical    |    13    |      1      |      6      |  20 |
+| Psychoanalytic |    19    |      13     |      50     |  82 |
+|                |    122   |      26     |     134     | 282 |
+
+A test of interest is whether the psychologists' schools of thought are related to their responses.  Statistically, this can be interpreted as a test of independence between the variables "school" and "cause".  A test of this hypothesis of independence may be based on a multinomial sampling distribution where the 282 respondents are assumed to be a random sample from a multinomial distribution with 9 cross-classified categories based on "school" and "cause".  This distribution has 8 free parameters for the category memberships.  Under the null hypothesis, the joint probabilities are products of the marginal "school" and "cause" probabilities, so that there are only 4 free parameters.   <br><br>
+
+A Chi-squared test for independence is based on the following test statistic:
+\[\chi^2 = \sum_{i=1}^I (O_i - E_i)^2 / E_i\]
+where $O_i$ is the observed category count and $E_i$ is the expected category count under $H_0$.  Under the hypothesis of independence we expect the category counts to be $n = 282$ times the products of marginal category probabilities.  For example, we expect to find $282 *(180/282)*(122/282) = 77.87$ counts in the Biogenic-Eclectic category; we observe 90.  Similarly, we expect $26*20/282 = 1.84$ counts in the Medical-Environment category; we observe 1.  The first summand in the test statistic is $(77.87 - 90)^2 / 77.87 = 1.88952$.  Following along this way, we compute the test statistic to be $\chi^2 = 22.37769$.  The $chi^2$ test statistic is approximately Chi-squared distributed with df equal to the difference in the number of free parameters in $H_0$ and $H_a$.  In this case, that is $8 - 4 = 4$.  Since the $95\%$ quantile of the Chi-squared distribution with 4 df is 9.487729, we reject the null hypothesis of independence.
+<br><br>
+We could also perform an LRT of the independence hypothesis based on the multinomial distribution of the cell counts. The MLEs of the cell proportions are simply the observed cell proportions.  The multinomial loglikelihood is given by
+\[\ell(p;x_1, \ldots, x_n) = \log \frac{n!}{x_1!\times \cdots \times x_9!} + \sum_{j=1}^9 x_j\log p_j.\]
+In R, we can simply use "dmultinom" with option log = TRUE to compute the loglikleihood.
+
+
+```r
+test.stat <- -2*(dmultinom(c(90,12,78,13,1,6,19,13,50),prob = c(180*122, 180*26, 180*134, 20*122, 20*26, 20*134, 82*122, 82*26, 82*134)/(282*282), log = TRUE)-dmultinom(c(90,12,78,13,1,6,19,13,50),prob = c(90,12,78,13,1,6,19,13,50)/282, log = TRUE))
+test.stat
+```
+
+```
+## [1] 23.03619
+```
+
+```r
+qchisq(0.95,4)
+```
+
+```
+## [1] 9.487729
+```
+
+For completeness, let's show the MLEs of multinomial cell probabilities are the corresponding sample proportions.  The loglikelihood is equal to
+\[\ell(p;x) = \log \left(\frac{n!}{x_1!\times x_2!\times \cdots\times x_9!} + x_1\log(p_1) \times \cdots \times x_8 \log(p_8) + (n-x_1-x_2-\cdots -x_8)\log(1-p_1-\cdots -p_8)\right).\]
+Take the derivative of the loglikelihood w.r.t. $p_1$, set equal to zero, and find
+\[\frac{1 - p_1 - p_2 - \cdots - p_8}{p_1} - \frac{n-x_1-x_2-\cdots -x_8}{x_1}\]
+Divide the right-hand-side by $n$ in both the numerator and denominator to find
+\[\frac{1 - p_1 - p_2 - \cdots - p_8}{p_1} = \frac{1-\frac{x_1}{n} - \frac{x_2}{n}-\cdots - \frac{x_8}{n}}{\frac{x_1}{n}}.\]
+That this holds simultaneously for derivatives with respect to $p_2$ through $p_8$ implies the MLEs of the cell probabilitites are exactly the sample cell proportions.  A similar argument can be made under $H_0$ to show the MLEs under $H_0$ are the sample marginal cell proportions.
+
+
+
+
+
+
+
+
 
 
 

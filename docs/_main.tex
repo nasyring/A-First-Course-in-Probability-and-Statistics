@@ -6,7 +6,7 @@
 ]{book}
 \title{A First Course in Probability and Statistics}
 \author{Nick Syring}
-\date{2022-04-21}
+\date{2022-04-28}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -2243,6 +2243,388 @@ And, the Welch-Satterthwaite df is 17.877 according to t.test. For a test statis
 \begin{verbatim}
 ## [1] 0.4085673
 \end{verbatim}
+
+\hypertarget{test-for-equality-of-normal-population-variances}{%
+\subsection{Test for equality of normal population variances}\label{test-for-equality-of-normal-population-variances}}
+
+Let \(X_1, \ldots, X_n\) be iid \(N(\mu_x, \sigma_x^2)\) and \(Y_1, \ldots, Y_m\) be iid \(N(\mu_y, \sigma_y^2)\) and consider testing \(H_0:\sigma_x^2/\sigma_y^2 = 1\) versus \(H_a: \sigma_x^2/\sigma_y^2 \ne 1\). As we have seen previously
+\[\frac{S_x^2/\sigma_x^2}{S_y^2/\sigma_y^2}\sim F(n-1, m-1)\]
+and, under the null hypothesis, we have
+\[\frac{S_x^2}{S_y^2}\stackrel{H_0}{\sim} F(n-1, m-1),\]
+so that a level \(\alpha\) test rejects the null hypothesis if \(F = \frac{S_x^2}{S_y^2} > F_{1-\alpha/2}(n-1, m-1)\) or \(F < F_{\alpha/2}(n-1, m-1)\).
+Example: Suppose we obtain the following two random samples of \(X\) and \(Y\) values:
+
+\[x:25.20,\,\,\, 23.53,\,\,\, 18.02,\,\,\, 18.96,\,\,\, 15.70, \,\,\,10.35, \,\,\,24.07,\,\,\, 17.10, \,\,\,21.51, \,\,\, 7.48, \,\,\,12.76 \]
+\[y: 19.16,\,\,\, 20.05, \,\,\,16.99,\,\,\, 19.83,\,\,\, 21.07,\,\,\, 21.47,\,\,\, 25.44,\,\,\, 11.96,\,\,\, 19.45\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{25.20}\NormalTok{, }\FloatTok{23.53}\NormalTok{, }\FloatTok{18.02}\NormalTok{, }\FloatTok{18.96}\NormalTok{, }\FloatTok{15.70}\NormalTok{, }\FloatTok{10.35}\NormalTok{, }\FloatTok{24.07}\NormalTok{, }\FloatTok{17.10}\NormalTok{, }\FloatTok{21.51}\NormalTok{,  }\FloatTok{7.48}\NormalTok{, }\FloatTok{12.76}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{19.16}\NormalTok{, }\FloatTok{20.05}\NormalTok{, }\FloatTok{16.99}\NormalTok{, }\FloatTok{19.83}\NormalTok{, }\FloatTok{21.07}\NormalTok{, }\FloatTok{21.47}\NormalTok{, }\FloatTok{25.44}\NormalTok{, }\FloatTok{11.96}\NormalTok{, }\FloatTok{19.45}\NormalTok{)}
+\NormalTok{F }\OtherTok{\textless{}{-}} \FunctionTok{var}\NormalTok{(x)}\SpecialCharTok{/}\FunctionTok{var}\NormalTok{(y)}
+\NormalTok{F}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.539221
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{F.curve }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{df}\NormalTok{(x, }\DecValTok{10}\NormalTok{, }\DecValTok{8}\NormalTok{)}
+\FunctionTok{curve}\NormalTok{(F.curve, }\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(F, }\FunctionTok{F.curve}\NormalTok{(F), }\AttributeTok{pch =} \StringTok{\textquotesingle{}*\textquotesingle{}}\NormalTok{, }\AttributeTok{col =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(F, }\DecValTok{0}\NormalTok{, }\AttributeTok{pch =} \StringTok{\textquotesingle{}*\textquotesingle{}}\NormalTok{, }\AttributeTok{col =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(}\FunctionTok{c}\NormalTok{(F,F), }\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FunctionTok{F.curve}\NormalTok{(F)), }\AttributeTok{col =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{pf}\NormalTok{(F, }\DecValTok{10}\NormalTok{, }\DecValTok{8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.09989054
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{pf}\NormalTok{(F, }\DecValTok{10}\NormalTok{, }\DecValTok{8}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1997811
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{qf}\NormalTok{(}\FloatTok{0.09989054}\NormalTok{, }\DecValTok{10}\NormalTok{,}\DecValTok{8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4204884
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{curve}\NormalTok{(F.curve, }\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(F, }\FunctionTok{F.curve}\NormalTok{(F), }\AttributeTok{pch =} \StringTok{\textquotesingle{}*\textquotesingle{}}\NormalTok{, }\AttributeTok{col =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(F, }\DecValTok{0}\NormalTok{, }\AttributeTok{pch =} \StringTok{\textquotesingle{}*\textquotesingle{}}\NormalTok{, }\AttributeTok{col =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(}\FunctionTok{c}\NormalTok{(F,F), }\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FunctionTok{F.curve}\NormalTok{(F)), }\AttributeTok{col =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FunctionTok{qf}\NormalTok{(}\FloatTok{0.09989054}\NormalTok{, }\DecValTok{10}\NormalTok{,}\DecValTok{8}\NormalTok{),}\FunctionTok{qf}\NormalTok{(}\FloatTok{0.09989054}\NormalTok{, }\DecValTok{10}\NormalTok{,}\DecValTok{8}\NormalTok{)), }\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FunctionTok{F.curve}\NormalTok{(}\FunctionTok{qf}\NormalTok{(}\FloatTok{0.09989054}\NormalTok{, }\DecValTok{10}\NormalTok{,}\DecValTok{8}\NormalTok{))), }\AttributeTok{col =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-6-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{curve}\NormalTok{(F.curve, }\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FunctionTok{qf}\NormalTok{(}\FloatTok{0.025}\NormalTok{, }\DecValTok{10}\NormalTok{,}\DecValTok{8}\NormalTok{),}\FunctionTok{qf}\NormalTok{(}\FloatTok{0.025}\NormalTok{, }\DecValTok{10}\NormalTok{,}\DecValTok{8}\NormalTok{)), }\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FunctionTok{F.curve}\NormalTok{(}\FunctionTok{qf}\NormalTok{(}\FloatTok{0.025}\NormalTok{, }\DecValTok{10}\NormalTok{,}\DecValTok{8}\NormalTok{))), }\AttributeTok{col =} \StringTok{\textquotesingle{}blue\textquotesingle{}}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FunctionTok{qf}\NormalTok{(}\FloatTok{0.975}\NormalTok{, }\DecValTok{10}\NormalTok{,}\DecValTok{8}\NormalTok{),}\FunctionTok{qf}\NormalTok{(}\FloatTok{0.975}\NormalTok{, }\DecValTok{10}\NormalTok{,}\DecValTok{8}\NormalTok{)), }\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FunctionTok{F.curve}\NormalTok{(}\FunctionTok{qf}\NormalTok{(}\FloatTok{0.975}\NormalTok{, }\DecValTok{10}\NormalTok{,}\DecValTok{8}\NormalTok{))), }\AttributeTok{col =} \StringTok{\textquotesingle{}blue\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-6-3.pdf}
+
+\hypertarget{likelihood-based-tests}{%
+\section{Likelihood-based Tests}\label{likelihood-based-tests}}
+
+In our discussions of point and interval estimation we found likelihood-based methods provided a general means of deriving estimators with (at least) good large-sample performance. The same is true with respect to testing. However, there's more than one way to use the likelihood function to define a test, and we'll discuss two strategies.
+
+\hypertarget{wald-type-tests}{%
+\subsection{Wald type tests}\label{wald-type-tests}}
+
+Wald-type tests follow the strategy we've been using. The test is based on a point estimator and its distribution. The testing rule is essentially to reject the null if the point estimator sufficiently disagrees with the null where ``sufficiently'' is determined by the estimator's distribution. In the case of likelihood-based Wald tests the point estimator is the MLE and the distribution is the (asymptotic/approximate) normal distribution of the MLE. Therefore, all Wald-type likelihood-based tests of \(H_0:\theta = \theta_0\) versus \(H_a:\theta\ne \theta_0\) are of the form ``Reject \(H_0\) if:''
+\[\theta_0 \notin (\hat\theta \pm z_{1-\alpha/2}[nI(\theta_0)]^{-1/2}),\]
+because
+\[\frac{\hat\theta - \theta_0}{[nI(\theta_0)]^{-1/2}}\stackrel{H_0}{\sim}N(0,1)\]
+where \(\theta\) is a scalar.
+Note: for point null tests \(H_0:\theta=\theta_0\) for \(p\times 1\) vector parameters \((\hat\theta-\theta_0)[nI(\theta_0)]^{-1/2}\) is a p-variate standard normal and the quadratic form \((\hat\theta-\theta_0)^{\top}[nI(\theta_0)]^{-1} (\hat\theta-\theta_0)\) has a Chi-squared distribution with \(p\) degrees of freedom. And, the Wald test is based on quantiles of this Chi-squared distribution.
+
+Example: Suppose \(X_1, \ldots, X_n\) is a random sample from an Exponential distribution with scale parameter \(\lambda\) and consider testing \(H_0:\lambda \leq \lambda_0\) versus \(H_a:\lambda > \lambda_0\). The sample mean is the MLE of \(\lambda\), and \(n\overline X= \sum_{i=1}^nX_i \sim\) Gamma\((n, \lambda)\). Therefore, an exact test is based on the Gamma distribution, while a likelihood-based Wald test is based on \(\overline X \stackrel{H_0}{\sim}N(\lambda_0,\lambda_0^2/n)\), approximately. Suppose \(\lambda_0 = 5\) and we observe the following random sample of size 12:
+\[x : 12.57,\,\,\,  1.83,\,\,\,  2.10,\,\,\,  3.00,\,\,\,  0.65,\,\,\,  2.74,\,\,\, 14.21,\,\,\,  1.72,\,\,\,  3.13,\,\,\,  1.63,\,\,\,  2.42,\,\,\,  9.33\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\FloatTok{12.57}\NormalTok{,  }\FloatTok{1.83}\NormalTok{,  }\FloatTok{2.10}\NormalTok{,  }\FloatTok{3.00}\NormalTok{,  }\FloatTok{0.65}\NormalTok{,  }\FloatTok{2.74}\NormalTok{, }\FloatTok{14.21}\NormalTok{,  }\FloatTok{1.72}\NormalTok{,  }\FloatTok{3.13}\NormalTok{,  }\FloatTok{1.63}\NormalTok{,  }\FloatTok{2.42}\NormalTok{,  }\FloatTok{9.33}\NormalTok{)}
+\NormalTok{xbar }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(x)}
+\NormalTok{xbar}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.610833
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(xbar }\SpecialCharTok{{-}} \FloatTok{1.96}\SpecialCharTok{*}\DecValTok{5}\SpecialCharTok{/}\FunctionTok{sqrt}\NormalTok{(}\DecValTok{12}\NormalTok{), xbar }\SpecialCharTok{+} \FloatTok{1.96}\SpecialCharTok{*}\DecValTok{5}\SpecialCharTok{/}\FunctionTok{sqrt}\NormalTok{(}\DecValTok{12}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.781817 7.439850
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(}\FunctionTok{qgamma}\NormalTok{(}\FloatTok{0.025}\NormalTok{, }\AttributeTok{shape =} \DecValTok{12}\NormalTok{, }\AttributeTok{scale =} \DecValTok{5}\NormalTok{), }\FunctionTok{qgamma}\NormalTok{(}\FloatTok{0.975}\NormalTok{, }\AttributeTok{shape =} \DecValTok{12}\NormalTok{, }\AttributeTok{scale =} \DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 31.00288 98.41019
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{xbar }\SpecialCharTok{*} \DecValTok{12}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 55.33
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(}\FunctionTok{qgamma}\NormalTok{(}\FloatTok{0.025}\NormalTok{, }\AttributeTok{shape =} \DecValTok{12}\NormalTok{, }\AttributeTok{scale =} \DecValTok{5}\NormalTok{), }\FunctionTok{qgamma}\NormalTok{(}\FloatTok{0.975}\NormalTok{, }\AttributeTok{shape =} \DecValTok{12}\NormalTok{, }\AttributeTok{scale =} \DecValTok{5}\NormalTok{))}\SpecialCharTok{/}\DecValTok{12}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.583573 8.200849
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{xbar}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.610833
+\end{verbatim}
+
+Simulation of Type 1 error rates:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{reps }\OtherTok{\textless{}{-}} \DecValTok{10000}
+\NormalTok{errors }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, reps, }\DecValTok{2}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{(r }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{reps)\{}
+\NormalTok{  x }\OtherTok{\textless{}{-}} \FunctionTok{rexp}\NormalTok{(}\DecValTok{12}\NormalTok{,}\AttributeTok{rate =} \DecValTok{1}\SpecialCharTok{/}\DecValTok{5}\NormalTok{)}
+\NormalTok{  xbar }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(x)}
+\NormalTok{  rr.wald }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(xbar }\SpecialCharTok{{-}} \FloatTok{1.96}\SpecialCharTok{*}\DecValTok{5}\SpecialCharTok{/}\FunctionTok{sqrt}\NormalTok{(}\DecValTok{12}\NormalTok{), xbar }\SpecialCharTok{+} \FloatTok{1.96}\SpecialCharTok{*}\DecValTok{5}\SpecialCharTok{/}\FunctionTok{sqrt}\NormalTok{(}\DecValTok{12}\NormalTok{))}
+\NormalTok{  rr.exact }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{qgamma}\NormalTok{(}\FloatTok{0.025}\NormalTok{, }\AttributeTok{shape =} \DecValTok{12}\NormalTok{, }\AttributeTok{scale =} \DecValTok{5}\NormalTok{), }\FunctionTok{qgamma}\NormalTok{(}\FloatTok{0.975}\NormalTok{, }\AttributeTok{shape =} \DecValTok{12}\NormalTok{, }\AttributeTok{scale =} \DecValTok{5}\NormalTok{))}\SpecialCharTok{/}\DecValTok{12}
+\NormalTok{  errors[r, ] }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{ifelse}\NormalTok{(}\DecValTok{5}\SpecialCharTok{\textgreater{}}\NormalTok{rr.wald[}\DecValTok{1}\NormalTok{] }\SpecialCharTok{\&} \DecValTok{5}\SpecialCharTok{\textless{}}\NormalTok{rr.wald[}\DecValTok{2}\NormalTok{],}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{), }\FunctionTok{ifelse}\NormalTok{(xbar}\SpecialCharTok{\textgreater{}}\NormalTok{rr.exact[}\DecValTok{1}\NormalTok{] }\SpecialCharTok{\&}\NormalTok{ xbar}\SpecialCharTok{\textless{}}\NormalTok{rr.exact[}\DecValTok{2}\NormalTok{],}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\NormalTok{\}}
+\FunctionTok{colMeans}\NormalTok{(errors)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.0487 0.0536
+\end{verbatim}
+
+\hypertarget{likelihood-ratio-tests}{%
+\subsection{Likelihood ratio tests}\label{likelihood-ratio-tests}}
+
+Likelihood ratio tests (LRTs) operate a little differently compared to Wald tests. The LRT idea is that parameter values with corresponding likelihood values near the maximum are plausible, while those with low likelihood values are implausible. For testing \(H_0:\theta = \theta_0\) versus \(H_a:\theta\ne \theta_0\) this means if \(\frac{L(\theta_0)}{L(\hat\theta)}\) is close to 1 the null is supported while if the ratio is close to zero the alternative is supported. How ``close'' is close again depends on the null-hypothesis distribution of the likelihood ratio. A general asymptotic result holds that for scalar parameters
+\[-2[\ell(\theta_0) - \ell(\hat\theta)] \stackrel{H_0}{\sim} Chi-squared(1)\]
+approximately. This result also holds for general composite hypotheses \(H_0:\theta\in \Theta_0\) versus \(H_a: \theta\in \Theta \cap \Theta_0^c\) so that
+\[-2[\sup_{\theta\in \Theta_0}\{\ell(\theta)\} - \ell(\hat\theta)]\stackrel{H_0}{\sim} Chi-squared(df)\]
+where \(df\) is equal to the difference in dimensions of the parameter space.
+
+Example: Consider a test for \(H_0:\mu = \mu_0\) versus \(H_a:\mu \ne \mu_0\) for a normal population with unknown variance. In that case \(\Theta\) is the two-dimensional parameter space for \((\mu, \sigma^2)\) which is \(\mathbb{R}\times \mathbb{R}^+\) and \(\Theta_0\) is the one-dimensional subspace \(\{\mu_0\}\times \mathbb{R}^+\). The unrestricted MLEs are \(\overline x\) and \(\hat\sigma^2 = n^{-1}\sum_{i=1}^n(x_i - \overline x)^2\). It's not hard to show the restriced MLE for \(\sigma^2\) under the null hypothesis is \(\hat\sigma_0^2 = n^{-1}\sum_{i=1}^n (x_i - \mu_0)^2\). To test \(H_0\) we compute the test statistic
+\[\Lambda := -2[\ell(\mu_0, \hat\sigma_0^2) - \ell(\overline x, \hat\sigma^2)]\]
+and reject the null hypothesis if \(\Lambda > \chi^2_{1-\alpha}(1)\), the \(1-\alpha\) lower quantile of the Chi squared distribution with 1 degree of freedom. Let's perform the test given the following sample:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{22}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{6}\NormalTok{)}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  4.0634008  9.1198213 13.6167056  7.1889954 13.9577182 10.2795735
+##  [7]  7.8406222  6.1487191  0.2090839  0.7775581 10.5912890 10.3346847
+## [13] 19.6868480  0.8674458 12.9657995  8.1965838  2.9815080  7.5730705
+## [19]  8.2187202  2.9247010  4.4469792  3.5998290
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{xbar }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(x)}
+\NormalTok{xbar}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7.526803
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mu0 }\OtherTok{\textless{}{-}} \DecValTok{7}
+\NormalTok{mle }\OtherTok{\textless{}{-}}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{/}\DecValTok{22}\NormalTok{)}\SpecialCharTok{*}\FunctionTok{sum}\NormalTok{((x}\SpecialCharTok{{-}}\NormalTok{xbar)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\NormalTok{mle}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 23.11427
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mle0 }\OtherTok{\textless{}{-}}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{/}\DecValTok{22}\NormalTok{)}\SpecialCharTok{*}\FunctionTok{sum}\NormalTok{((x }\SpecialCharTok{{-}}\NormalTok{ mu0)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\NormalTok{mle0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 23.39179
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{loglhood }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(mu, sigma2)  }\FunctionTok{sum}\NormalTok{(}\FunctionTok{dnorm}\NormalTok{(x,mu,}\FunctionTok{sqrt}\NormalTok{(sigma2),}\AttributeTok{log =} \ConstantTok{TRUE}\NormalTok{))}
+\NormalTok{Lambda }\OtherTok{\textless{}{-}}\NormalTok{ (}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{)}\SpecialCharTok{*}\NormalTok{(}\FunctionTok{loglhood}\NormalTok{(mu0,mle0) }\SpecialCharTok{{-}} \FunctionTok{loglhood}\NormalTok{(xbar,mle)) }
+\NormalTok{Lambda}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2625694
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{qchisq}\NormalTok{(}\FloatTok{0.95}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.841459
+\end{verbatim}
+
+Example: Consider the following data on cell phone battery charge times
+\[8.0, \,\,\, 8.1, \,\,\, 8.9, \,\,\, 9.1, \,\,\, 9.2, \,\,\, 9.3, \,\,\, 9.4, \,\,\, 9.4\]
+Assuming these times constitute a random sample from a normal population test the hypothesis \(H_0:\sigma^2 \leq 0.2\) versus \(H_a:\sigma^2 > 0.2\) using an LRT at \(\alpha = 0.05\).
+The loglikelihood, again, is
+\[\ell(\mu, \sigma^2; x) = -(n/2)\log [2\pi\sigma^2] - \frac{1}{2\sigma^2}\sum_{i=1}^n(x_i - \mu)^2.\]
+The unrestricted MLEs are \(\overline x = 8.925\) and \(\hat\sigma^2 = 0.28\). Under the null hypothesis the MLE of \(\mu\) remains \(\overline x = 8.925\) because the derivative of the loglikelihood w.r.t. \(\mu\) is proportional to \(\sigma^2\); i.e., it equals \(\frac{1}{\sigma^2}\sum_{i=1}^n (x_i - \mu)\). Then, setting equal to zero we see the MLE for \(\mu\) is still \(\overline x\). To find the restricted MLE of \(\sigma^2\) under \(H_0\), plot the loglikelihood as a function of \(\sigma^2\) with \(\mu = \overline x\) below and note that it is maximized at \(0.2\) over the set \(\sigma^2 \leq 0.2\). The test statistic is
+\[-2(\ell(8.925,0.2;x) - \ell(8.925,0.28;x)) = 0.501\]
+which is below the cutoff of 3.84, the \(95\%\) quantile of the Chi-squared distribution with 1 degree of freedom (the difference in two versus one free parameter in the alternative versus null hypothesis).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{8.0}\NormalTok{,}\FloatTok{8.1}\NormalTok{,}\FloatTok{8.9}\NormalTok{,}\FloatTok{9.1}\NormalTok{,}\FloatTok{9.2}\NormalTok{,}\FloatTok{9.3}\NormalTok{,}\FloatTok{9.4}\NormalTok{,}\FloatTok{9.4}\NormalTok{)}
+\NormalTok{ell }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(sig2) }\FunctionTok{sum}\NormalTok{(}\FunctionTok{dnorm}\NormalTok{(x,}\FunctionTok{mean}\NormalTok{(x),}\FunctionTok{sqrt}\NormalTok{(sig2),}\AttributeTok{log =} \ConstantTok{TRUE}\NormalTok{))}
+\NormalTok{app.ell }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(sig2) }\FunctionTok{apply}\NormalTok{(}\FunctionTok{matrix}\NormalTok{(sig2,}\FunctionTok{length}\NormalTok{(sig2),}\DecValTok{1}\NormalTok{),}\DecValTok{1}\NormalTok{,ell)}
+\FunctionTok{curve}\NormalTok{(app.ell,}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{)  }
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v =} \FloatTok{0.2}\NormalTok{, }\AttributeTok{col =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test.stat }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{*}\NormalTok{(}\FunctionTok{ell}\NormalTok{(}\FloatTok{0.2}\NormalTok{)}\SpecialCharTok{{-}}\FunctionTok{ell}\NormalTok{(}\FloatTok{0.28}\NormalTok{))}
+\NormalTok{test.stat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5010792
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{qchisq}\NormalTok{(}\FloatTok{0.95}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.841459
+\end{verbatim}
+
+\hypertarget{chi-squared-tests-for-tabulated-data}{%
+\section{Chi Squared tests for tabulated data}\label{chi-squared-tests-for-tabulated-data}}
+
+To this point most of our experiments have dealt with continuous data. But, a common type of data encountered in experiments is tabulated or cross-classified data. For example, consider the following data on phsychologists' opinions concerning the causes of schizophrenia:
+
+\begin{longtable}[]{@{}ccccc@{}}
+\toprule
+& & Origin & & \\
+\midrule
+\endhead
+School & Biogenic & Environment & Combination & \\
+Eclectic & 90 & 12 & 78 & 180 \\
+Medical & 13 & 1 & 6 & 20 \\
+Psychoanalytic & 19 & 13 & 50 & 82 \\
+& 122 & 26 & 134 & 282 \\
+\bottomrule
+\end{longtable}
+
+A test of interest is whether the psychologists' schools of thought are related to their responses. Statistically, this can be interpreted as a test of independence between the variables ``school'' and ``cause''. A test of this hypothesis of independence may be based on a multinomial sampling distribution where the 282 respondents are assumed to be a random sample from a multinomial distribution with 9 cross-classified categories based on ``school'' and ``cause''. This distribution has 8 free parameters for the category memberships. Under the null hypothesis, the joint probabilities are products of the marginal ``school'' and ``cause'' probabilities, so that there are only 4 free parameters.
+
+A Chi-squared test for independence is based on the following test statistic:
+\[\chi^2 = \sum_{i=1}^I (O_i - E_i)^2 / E_i\]
+where \(O_i\) is the observed category count and \(E_i\) is the expected category count under \(H_0\). Under the hypothesis of independence we expect the category counts to be \(n = 282\) times the products of marginal category probabilities. For example, we expect to find \(282 *(180/282)*(122/282) = 77.87\) counts in the Biogenic-Eclectic category; we observe 90. Similarly, we expect \(26*20/282 = 1.84\) counts in the Medical-Environment category; we observe 1. The first summand in the test statistic is \((77.87 - 90)^2 / 77.87 = 1.88952\). Following along this way, we compute the test statistic to be \(\chi^2 = 22.37769\). The \(chi^2\) test statistic is approximately Chi-squared distributed with df equal to the difference in the number of free parameters in \(H_0\) and \(H_a\). In this case, that is \(8 - 4 = 4\). Since the \(95\%\) quantile of the Chi-squared distribution with 4 df is 9.487729, we reject the null hypothesis of independence.
+We could also perform an LRT of the independence hypothesis based on the multinomial distribution of the cell counts. The MLEs of the cell proportions are simply the observed cell proportions. The multinomial loglikelihood is given by
+\[\ell(p;x_1, \ldots, x_n) = \log \frac{n!}{x_1!\times \cdots \times x_9!} + \sum_{j=1}^9 x_j\log p_j.\]
+In R, we can simply use ``dmultinom'' with option log = TRUE to compute the loglikleihood.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test.stat }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{*}\NormalTok{(}\FunctionTok{dmultinom}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{90}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{78}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{50}\NormalTok{),}\AttributeTok{prob =} \FunctionTok{c}\NormalTok{(}\DecValTok{180}\SpecialCharTok{*}\DecValTok{122}\NormalTok{, }\DecValTok{180}\SpecialCharTok{*}\DecValTok{26}\NormalTok{, }\DecValTok{180}\SpecialCharTok{*}\DecValTok{134}\NormalTok{, }\DecValTok{20}\SpecialCharTok{*}\DecValTok{122}\NormalTok{, }\DecValTok{20}\SpecialCharTok{*}\DecValTok{26}\NormalTok{, }\DecValTok{20}\SpecialCharTok{*}\DecValTok{134}\NormalTok{, }\DecValTok{82}\SpecialCharTok{*}\DecValTok{122}\NormalTok{, }\DecValTok{82}\SpecialCharTok{*}\DecValTok{26}\NormalTok{, }\DecValTok{82}\SpecialCharTok{*}\DecValTok{134}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{282}\SpecialCharTok{*}\DecValTok{282}\NormalTok{), }\AttributeTok{log =} \ConstantTok{TRUE}\NormalTok{)}\SpecialCharTok{{-}}\FunctionTok{dmultinom}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{90}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{78}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{50}\NormalTok{),}\AttributeTok{prob =} \FunctionTok{c}\NormalTok{(}\DecValTok{90}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{78}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{50}\NormalTok{)}\SpecialCharTok{/}\DecValTok{282}\NormalTok{, }\AttributeTok{log =} \ConstantTok{TRUE}\NormalTok{))}
+\NormalTok{test.stat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 23.03619
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{qchisq}\NormalTok{(}\FloatTok{0.95}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9.487729
+\end{verbatim}
+
+For completeness, let's show the MLEs of multinomial cell probabilities are the corresponding sample proportions. The loglikelihood is equal to
+\[\ell(p;x) = \log \left(\frac{n!}{x_1!\times x_2!\times \cdots\times x_9!} + x_1\log(p_1) \times \cdots \times x_8 \log(p_8) + (n-x_1-x_2-\cdots -x_8)\log(1-p_1-\cdots -p_8)\right).\]
+Take the derivative of the loglikelihood w.r.t. \(p_1\), set equal to zero, and find
+\[\frac{1 - p_1 - p_2 - \cdots - p_8}{p_1} - \frac{n-x_1-x_2-\cdots -x_8}{x_1}\]
+Divide the right-hand-side by \(n\) in both the numerator and denominator to find
+\[\frac{1 - p_1 - p_2 - \cdots - p_8}{p_1} = \frac{1-\frac{x_1}{n} - \frac{x_2}{n}-\cdots - \frac{x_8}{n}}{\frac{x_1}{n}}.\]
+That this holds simultaneously for derivatives with respect to \(p_2\) through \(p_8\) implies the MLEs of the cell probabilitites are exactly the sample cell proportions. A similar argument can be made under \(H_0\) to show the MLEs under \(H_0\) are the sample marginal cell proportions.
 
   \bibliography{book.bib,packages.bib}
 

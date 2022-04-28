@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.3.1)  21 APR 2022 11:55
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.3.1)  28 APR 2022 14:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1071,18 +1071,56 @@ Overfull \hbox (17.25pt too wide) in paragraph at lines 2231--2231
  []
 
 [112]
+Overfull \hbox (9.75839pt too wide) detected at line 2257
+[] [] [][][][][][]    [][][][][][]    [][][][][][]    [][][][][][]    [][][][][][]    [][][][][][]    [][][][][][]    [][][][][][]    [][][][][][]    [][][][][]    [][][][][]
+ []
+
+File: 13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file (type pdf)
+<use 13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-6-1.pdf>
+[113]
+File: 13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-6-2.pdf Graphic file (type pdf)
+<use 13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-6-2.pdf>
+
+Underfull \vbox (badness 1024) has occurred while \output is active []
+
+[114]
+File: 13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-6-3.pdf Graphic file (type pdf)
+<use 13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-6-3.pdf>
+[115] [116] [117]
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2473--2473
+[]\TU/lmtt/m/n/10 ##  [1]  4.0634008  9.1198213 13.6167056  7.1889954 13.9577182 10.2795735[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2473--2473
+[]\TU/lmtt/m/n/10 ##  [7]  7.8406222  6.1487191  0.2090839  0.7775581 10.5912890 10.3346847[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2473--2473
+[]\TU/lmtt/m/n/10 ## [13] 19.6868480  0.8674458 12.9657995  8.1965838  2.9815080  7.5730705[] 
+ []
+
+[118] [119]
+File: 13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (type pdf)
+<use 13-Hypothesis-Testing_files/figure-latex/unnamed-chunk-10-1.pdf>
+[120] [121]
+Overfull \hbox (147.40038pt too wide) detected at line 2622
+[][][][] [][] [] [] [] []
+ []
+
 No file _main.bbl.
-[113] (./_main.aux)
+[122] (./_main.aux)
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: 67BE59A2C092CB776C46D262E90FC573;13124.
+(rerunfilecheck)             Checksum: C6A7D92C6842EECEBE9EF31D71EADC4D;13546.
  ) 
 Here is how much of TeX's memory you used:
- 17629 strings out of 478179
- 330554 string characters out of 5852733
- 815418 words of memory out of 5000000
- 37986 multiletter control sequences out of 15000+600000
+ 17667 strings out of 478179
+ 332743 string characters out of 5852733
+ 816261 words of memory out of 5000000
+ 38020 multiletter control sequences out of 15000+600000
  476727 words of font info for 94 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  86i,12n,121p,2424b,472s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on _main.pdf (113 pages).
+Output written on _main.pdf (122 pages).
