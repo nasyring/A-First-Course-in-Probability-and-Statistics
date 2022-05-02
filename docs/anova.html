@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Joint Distributions | A First Course in Probability and Statistics</title>
+  <title>Chapter 15 ANOVA | A First Course in Probability and Statistics</title>
   <meta name="description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Joint Distributions | A First Course in Probability and Statistics" />
+  <meta property="og:title" content="Chapter 15 ANOVA | A First Course in Probability and Statistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Joint Distributions | A First Course in Probability and Statistics" />
+  <meta name="twitter:title" content="Chapter 15 ANOVA | A First Course in Probability and Statistics" />
   
   <meta name="twitter:description" content="These are a collection of notes related to STAT 588 and 341/342 at Iowa State University. This is a work in progress." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="expectation-of-random-variables.html"/>
-<link rel="next" href="special-discrete-distributions.html"/>
+<link rel="prev" href="hypothesis-testing.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -284,166 +284,137 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="joint-distributions" class="section level1">
-<h1><span class="header-section-number">Chapter 7</span> Joint Distributions</h1>
-<div id="jointly-distributed-discrete-random-variables" class="section level2">
-<h2><span class="header-section-number">7.1</span> Jointly distributed discrete random variables</h2>
-Suppose <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> denote two discrete random variables. We want to compute the probability each takes a specific value <em>at the same time</em> or <em>simultaneously</em>. Denote this <em>joint</em> probability by <span class="math inline">\(P(X_1 = x_1, \, X_2 = x_2)\)</span>. As we've previously seen, probabilities of discrete random variables behave just like probabilities of events, so this joint probability is analogous to <span class="math inline">\(P(A\cap B)\)</span>. Joint probabilities are assigned by a joint PMF. In cases where the two (or more) random variables take on only finitely many values, their joint PMF can be displayed in a table. <br><br> Example: An insurance company randomly selects one of their customers and records <span class="math inline">\(X_1\)</span>, the value of their deductible on their auto policy and <span class="math inline">\(X_2\)</span>, the value of their deductible on their home policy. Suppose the following PMF characterizes the joint probabilities of <span class="math inline">\((X_1, X_2)\)</span>:<br>
-<center>
-<div class="figure">
-<img src="joint_pmf.PNG" style="width:20.0%" />
+<div id="anova" class="section level1">
+<h1><span class="header-section-number">Chapter 15</span> ANOVA</h1>
+<p>One of the most important experiments we've discussed in the course involves the comparison of two populations in terms of their means. This kind of comparison motivated our study of the two-sample t-test and CI for the difference of two population means. These are very useful statistical methods, but why stop at comparing two populations? Often, we would like to compare three or more populations. For example, suppose a company marketing laundry detergent wants to compare 4 product designs (the detergent container and its labeling) in a pilot study. Using t-tests or CIs we could make pairwise comparisons (there are 4 choose 2, or, 6 pf these) but this causes some issues. Specifically, suppose there are no difference in the product designs and suppose we conduct 6 pairwise <span class="math inline">\(t\)</span> tests at <span class="math inline">\(\alpha = 0.05\)</span>. If the 6 tests are independent (the test statistics are mutually independen r.v.'s) then the chance we make at least 1 Type 1 error is <span class="math inline">\(1-0.95^6 = 0.265\)</span>! Even if there are no deifferences, there's a good chance we'll find at least one difference by chance alone. In order to avoid the Type 1 error inflation caused by <em>multiple testing</em> one strategy---called Bonferroni correction---requires that we conduct each test at level <span class="math inline">\(\alpha / 6 = 0.00833\)</span> so that the <em>family-wise</em> Type 1 error rate is no more than <span class="math inline">\(1-(1-0.00833)^6 = 0.041 \leq 0.05\)</span>. This fixes our Type 1 error inflation problem, but it also means our power to detect fale null hypotheses (detect differences in response for different product designs) is severely hampered. Can we do better? Fortunately, the answer is yes! The alternative, improved strategy for comparing multiple population means is called ANOVA (analysis of variance) and its the focus of this section.</p>
+<div id="analysis-of-variance" class="section level2">
+<h2><span class="header-section-number">15.1</span> Analysis of variance</h2>
+<p>The general setup is as follows: we conduct an experiment in which we observe a random sample of size <span class="math inline">\(n\)</span> from each of <span class="math inline">\(J\)</span> populations so that the total sample size is <span class="math inline">\(N=nJ\)</span>. Dentoe the samples by <span class="math inline">\(X_{ij}\)</span> for individual <span class="math inline">\(i=1, \ldots, n\)</span> in the sample from population <span class="math inline">\(j=1,\ldots, J\)</span>. (It's possible, of course, to consider random samples of different sizes, but for simplicity we consider only the <em>balanced</em> case). Our goal in this experiemnt is to evaluate the null hypothesis <span class="math inline">\(H_0: \mu_j = \mu\)</span> for all <span class="math inline">\(\j = 1,\ldots, J\)</span>, meaning that all the populations have the same mean. Further, we assume populations are normal with equal variance; this means that the populations are, essentially, equivalent under <span class="math inline">\(H_0\)</span>. The alternative hypothesis is that at least one population mean differs from the others.<br><br></p>
+<p>Rather than comparing sample means to evaluate <span class="math inline">\(H_0\)</span> we (somewhat counterintuitively) compare two estimators of the population variance. Consider the following decomposition:</p>
+<p><span class="math display">\[\sum_{i=1}^n\sum_{j=1}^J(X_{ij} - \overline X)^2 = \sum_{i=1}^n\sum_{j=1}^J (X_{ij} - \overline X_j)^2 + n\sum_{j=1}^J (\overline X_j - \overline X)^2.\]</span> The left hand side of the equals sign in the above display is called the total sum of squares TSS and it decomposes into the sum of the error sum of squares ESS (or residual sum of squares) and the treatment sum of squares TrSS. Under the null hypothesis all three of these sums of squares can be used to estimate <span class="math inline">\(\sigma^2\)</span>, the common variance among the <span class="math inline">\(J\)</span> populations. Further, the error sum of squares and treatment sum of squares are independent and satisfy <span class="math display">\[\frac{TrSS}{ESS} \stackrel{H_0}{\sim}F(J-1, J(n-1)).\]</span> The ANOVA F-test rejects the null hypothesis of equality of group means if <span class="math inline">\(F = TrSS/ESS\)</span> is more extreme than the upper <span class="math inline">\(1-\alpha\)</span> quantile of the F distribution with df <span class="math inline">\(J-1\)</span> and <span class="math inline">\(J(n-1)\)</span>. <br><br></p>
+</div>
+<div id="crop-data-in-depth-example" class="section level2">
+<h2><span class="header-section-number">15.2</span> Crop data in-depth example</h2>
+<a href="data:text/csv;base64,ImRlbnNpdHkiLCJibG9jayIsImZlcnRpbGl6ZXIiLCJ5aWVsZCINCiIxIiwiMSIsIjEiLDE3Ny4yMjg2OTIyNzg2ODgNCiIyIiwiMiIsIjEiLDE3Ny41NTAwNDEyNjU0MjYNCiIxIiwiMyIsIjEiLDE3Ni40MDg0NjE4NTIzNzENCiIyIiwiNCIsIjEiLDE3Ny43MDM2MjU0Nzg5MTgNCiIxIiwiMSIsIjEiLDE3Ny4xMjU0ODYzNDM1ODQNCiIyIiwiMiIsIjEiLDE3Ni43NzgzNDI0ODE0MzUNCiIxIiwiMyIsIjEiLDE3Ni43NDYzMDE4OTU2MzINCiIyIiwiNCIsIjEiLDE3Ny4wNjExNjQyMjEwNTkNCiIxIiwiMSIsIjEiLDE3Ni4yNzQ5NDkyOTcyNzcNCiIyIiwiMiIsIjEiLDE3Ny45NjcyMDI5Mjk1NzYNCiIxIiwiMyIsIjEiLDE3Ni42MDEyOTk4MzQ0OTQNCiIyIiwiNCIsIjEiLDE3Ny4wMzA1NDI4MDI5MTgNCiIxIiwiMSIsIjEiLDE3Ny40Nzk1MDcxNjA1ODgNCiIyIiwiMiIsIjEiLDE3Ni44NzQxMjk4MDE0NTINCiIxIiwiMyIsIjEiLDE3Ni4xMTQzODgzMTU5MjcNCiIyIiwiNCIsIjEiLDE3Ni4wMDgzOTQ1MTE1MzENCiIxIiwiMSIsIjEiLDE3Ni4xMDgzMTI1ODk2NTQNCiIyIiwiMiIsIjEiLDE3OC4zNTc0NDA5MTQyNQ0KIjEiLCIzIiwiMSIsMTc3LjI2MjQ0NTA4NDI3MQ0KIjIiLCI0IiwiMSIsMTc2LjkxODg0NDkzODk3Mg0KIjEiLCIxIiwiMSIsMTc2LjIzOTAxNTc3NTIyNQ0KIjIiLCIyIiwiMSIsMTc2LjU3MzA2OTc1NDg3Mw0KIjEiLCIzIiwiMSIsMTc2LjAzOTI5NzkzOTg0Mw0KIjIiLCI0IiwiMSIsMTc2LjgxNzkyMjE2NTQ5OQ0KIjEiLCIxIiwiMSIsMTc2LjE2MDU4NjUwMjgxNg0KIjIiLCIyIiwiMSIsMTc3LjIyNjQyNDEzMTM5Nw0KIjEiLCIzIiwiMSIsMTc1LjkzODUzMzAzMDAwNA0KIjIiLCI0IiwiMSIsMTc3LjE2NDkzNjY4MjgxDQoiMSIsIjEiLCIxIiwxNzUuMzYwODM5NTk4NjQ3DQoiMiIsIjIiLCIxIiwxNzcuMjc2OTk1NjgxMDI2DQoiMSIsIjMiLCIxIiwxNzUuOTQ1NDQzNzk1NDI1DQoiMiIsIjQiLCIxIiwxNzUuODgyNzc5NjE4NTU2DQoiMSIsIjEiLCIyIiwxNzYuNDc5MzQwOTE5ODE0DQoiMiIsIjIiLCIyIiwxNzYuMDQ0MzQyMTIwNQ0KIjEiLCIzIiwiMiIsMTc3LjQxMjQ2MTc0OTAwOQ0KIjIiLCI0IiwiMiIsMTc3LjM2MDgxODIzOTUzNQ0KIjEiLCIxIiwiMiIsMTc3LjM4NTQ5OTE4MDgzNg0KIjIiLCIyIiwiMiIsMTc2Ljk3NTgwNzY5NjM5Mw0KIjEiLCIzIiwiMiIsMTc3LjM3OTc3ODY4OTU3Nw0KIjIiLCI0IiwiMiIsMTc3Ljk5Nzk5NTA2NDI5DQoiMSIsIjEiLCIyIiwxNzYuNDM0ODYyNTY1ODY3DQoiMiIsIjIiLCIyIiwxNzYuOTMzMjY1MDkyMTQyDQoiMSIsIjMiLCIyIiwxNzUuOTgzNDgwMTY5OTkyDQoiMiIsIjQiLCIyIiwxNzcuMDM0MDkyNjU5MzU1DQoiMSIsIjEiLCIyIiwxNzYuNDM2NzYyMzY4MTgxDQoiMiIsIjIiLCIyIiwxNzYuMDY3NzQ0OTcwMzUNCiIxIiwiMyIsIjIiLDE3Ny4xMjEwNDg2MzI3ODYNCiIyIiwiNCIsIjIiLDE3Ny4xOTc3MjEzNjczODYNCiIxIiwiMSIsIjIiLDE3Ni42MDM3MjQwODA0OQ0KIjIiLCIyIiwiMiIsMTc3LjIwODE3MTQzMTA1OA0KIjEiLCIzIiwiMiIsMTc3LjE0ODgyODU5NTEwNw0KIjIiLCI0IiwiMiIsMTc2LjgxOTA3NjY5NTI2OA0KIjEiLCIxIiwiMiIsMTc2Ljk5OTA2Njk0OTk0Ng0KIjIiLCIyIiwiMiIsMTc4LjEzNDYwNDU4MjM0OA0KIjEiLCIzIiwiMiIsMTc2LjQyOTE1NjAwMjc1Nw0KIjIiLCI0IiwiMiIsMTc2LjY2ODMyMjkzNTA4Mg0KIjEiLCIxIiwiMiIsMTc2Ljg5NTg2Njg1OTg1OQ0KIjIiLCIyIiwiMiIsMTc3Ljc3OTQ5Mjg2MDI2Ng0KIjEiLCIzIiwiMiIsMTc2LjQxNDQ5NTAwMjI0Ng0KIjIiLCI0IiwiMiIsMTc2Ljg3ODg5Nzc0MzM5NA0KIjEiLCIxIiwiMiIsMTc3LjU4MDY4MzA3ODExMg0KIjIiLCIyIiwiMiIsMTc2Ljk1NzI2ODkyMDE5Mw0KIjEiLCIzIiwiMiIsMTc1Ljc0NzU0NTU4Mjg4Mw0KIjIiLCI0IiwiMiIsMTc3LjM1MjU5NTA3OTAxNQ0KIjEiLCIxIiwiMyIsMTc3LjEwNDE4NjM5ODg2NQ0KIjIiLCIyIiwiMyIsMTc4LjA3OTYzNTE2ODI3OA0KIjEiLCIzIiwiMyIsMTc2LjkwMzQyMjE0NTUzNQ0KIjIiLCI0IiwiMyIsMTc3LjU0MDI4NDE2MTQ5Mw0KIjEiLCIxIiwiMyIsMTc3LjAzMjcwOTY5NjUyDQoiMiIsIjIiLCIzIiwxNzguMjg2MDQxOTIxNTcNCiIxIiwiMyIsIjMiLDE3Ni40MDU0MTAyMzA0NzENCiIyIiwiNCIsIjMiLDE3Ni40MzA4MzAxMjY2ODYNCiIxIiwiMSIsIjMiLDE3Ny4zOTYzMzA2MzUwMjENCiIyIiwiMiIsIjMiLDE3Ni45MjU1NzU3NzgzNQ0KIjEiLCIzIiwiMyIsMTc3LjA1NTA0NTc3ODY5NQ0KIjIiLCI0IiwiMyIsMTc3LjM0NDE2Mzk0NjMzNQ0KIjEiLCIxIiwiMyIsMTc3LjEyODM2NzUzMTc2MQ0KIjIiLCIyIiwiMyIsMTc3LjE2ODMwMjIwNDUzMw0KIjEiLCIzIiwiMyIsMTc2LjM1Mzk0MDY0Mjg1OA0KIjIiLCI0IiwiMyIsMTc5LjA2MDg5OTAzNjkxNQ0KIjEiLCIxIiwiMyIsMTc2LjMwMDUxNzA1MDM2Ng0KIjIiLCIyIiwiMyIsMTc3LjU5MzM1MjM3NjA1DQoiMSIsIjMiLCIzIiwxNzcuMTE1MjQ1MjQxODM3DQoiMiIsIjQiLCIzIiwxNzcuNzk0NDU3NDM1NDg1DQoiMSIsIjEiLCIzIiwxNzcuMDA0MDM4MTAyNDk1DQoiMiIsIjIiLCIzIiwxNzguMDM2ODU4MzY2NDQ4DQoiMSIsIjMiLCIzIiwxNzcuNzAxMzY2MjgzMDM4DQoiMiIsIjQiLCIzIiwxNzcuNjMyODA4MjYzNjEzDQoiMSIsIjEiLCIzIiwxNzcuNjUyMjc0NjA4MDE3DQoiMiIsIjIiLCIzIiwxNzcuMTAwNDE3ODU3NzM4DQoiMSIsIjMiLCIzIiwxNzcuMTg3OTY3MDMxMDczDQoiMiIsIjQiLCIzIiwxNzcuNDA1MjkxODU1OTQzDQoiMSIsIjEiLCIzIiwxNzguMTQxNjQ0MzU2NzkNCiIyIiwiMiIsIjMiLDE3Ny43MTA2MTI1NDAzMzUNCiIxIiwiMyIsIjMiLDE3Ny42ODcyNjQzNTY4MzQNCiIyIiwiNCIsIjMiLDE3Ny4xMTgxNzU5Nzc2MTQNCg==" download="crop.data.csv">Download crop.data.csv</a>
+<p>The embedded data comes from an experiment examining the effects of three types of fertilizer on crop yield. According to the data below there are 96 observations of yield, 32 each from each fertilizer type. And, the mean yields for the three fertilizer types are all very close to 177.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crops &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;crop.data.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">colClasses =</span> <span class="kw">c</span>(<span class="st">&quot;factor&quot;</span>, <span class="st">&quot;factor&quot;</span>, <span class="st">&quot;factor&quot;</span>, <span class="st">&quot;numeric&quot;</span>))
+m &lt;-<span class="st"> </span><span class="kw">mean</span>(crops$yield)
+m1 &lt;-<span class="st"> </span><span class="kw">mean</span>(crops$yield[crops$fertilizer ==<span class="st"> </span><span class="dv">1</span>])
+m2 &lt;-<span class="st"> </span><span class="kw">mean</span>(crops$yield[crops$fertilizer ==<span class="st"> </span><span class="dv">2</span>])
+m3 &lt;-<span class="st"> </span><span class="kw">mean</span>(crops$yield[crops$fertilizer ==<span class="st"> </span><span class="dv">3</span>])
 
-</div>
-</center>
-<p>Then, for example, the probability the customer's auto deductible is 250 and home deductible is 100 is <span class="math inline">\(P(X_1 = 250, \, X_2 = 100) = p(250,100) = 0.15\)</span>.</p>
-<p>In other cases joint PMFs may be derived using counting rules as the following example illustrates. <br><br></p>
-<p>Example: Previously we used counting rules to find the PMF of the number of heads (or tails) in <span class="math inline">\(n\)</span> flips of a coin with heads probability of <span class="math inline">\(p\)</span> (usually <span class="math inline">\(p=1/2\)</span>). That PMF is <span class="math inline">\(p(x) = {n \choose x}p^x (1-p)^{n-x}\)</span>. Now, suppose we roll a fair, six-sided die <span class="math inline">\(n\)</span> times, and let <span class="math inline">\(X_1\)</span> denote the number of 1's and <span class="math inline">\(X_2\)</span> denote the number of 2's. What is the PMF of the probability we get <span class="math inline">\(x_1\)</span> 1's and <span class="math inline">\(x_2\)</span> 2's?<br><br></p>
-<p>Solution: The chance of rolling a 1 is 1/6, and so is the chance of rolling a 2. So, provided <span class="math inline">\(x_1 + x_2 \leq n\)</span> we have <span class="math inline">\((\tfrac16)^{x_1}(\tfrac16)^{x_2}(\tfrac46)^{n-x_1-x_2}\)</span> probability of any string of rolls of <span class="math inline">\(x_1\)</span> 1's, <span class="math inline">\(x_2\)</span> 2's, and remaining rolls. Then, we have to count the number of ways of arranging said strings of rolls, and for this we use the formula for counting arrangements of distinguishable and indistinguishable objects --- that is, <span class="math inline">\(\frac{n!}{x_1! x_2! (n-x_1 -x_2)!}\)</span>. Therefore, the PMF is given by <span class="math display">\[p(x_1, x_2) = \frac{n!}{x_1! x_2! (n-x_1 -x_2)!}(\tfrac16)^{x_1}(\tfrac16)^{x_2}(\tfrac46)^{n-x_1-x_2}\]</span></p>
-<div id="marginal-pmfs" class="section level3">
-<h3><span class="header-section-number">7.1.1</span> Marginal PMFs</h3>
-<p>Given a joint PMF <span class="math inline">\(p(x_1, x_2)\)</span> for r.v.'s <span class="math inline">\((X_1, X_2)\)</span> we can <em>marginalize</em> to either r.v., meaning we can compute the probabilities associated with just one of them. The ways we do this is by the law of total probability that we previously used to find probabilities of events using partitions. The marginal PMF of <span class="math inline">\(X_1\)</span> given <span class="math inline">\(p(x_1, x_2)\)</span> is given by <span class="math display">\[p(x_1) = \sum_{x_2} p(x_1, \, x_2) = \sum_{x_2} P(X_1 = x_1, \, X_2 = x_2).\]</span> What we're doing here is partitioning the event <span class="math inline">\(\{X_1 = x_1\}\)</span> by values of <span class="math inline">\(X_2\)</span>, i.e., <span class="math display">\[\{X_1 = x_1\} = \bigcup_{x_2}\{\{X_1 = x_1\}\cap\{X_2 = x_2\}\}.\]</span> <br> Example: The marginal PMF of auto deductible is given by <span class="math display">\[p(100) = p(100,0)+p(100,100)+p(100,200) = 0.20+0.10+0.20=0.50\]</span> <span class="math display">\[p(250) = p(250,0)+p(250,100)+p(250,200) = 0.05+0.15+0.30=0.50\]</span> <br></p>
-<p>Example: In the die rolling example above we could find the PMF of the number of 1's by using the general formula. On the other hand it's easier if we recognize that the experiment in which we roll a die <span class="math inline">\(n\)</span> times and record the number of 1's is equivalent to a coin-slipping experiment with a biased/unfair coin. Then, it must be that the PMF is <span class="math display">\[p(x_1) = {n \choose x_1}(\tfrac16)^{x_1}(\tfrac56)^{n-x_1}.\]</span></p>
-</div>
-<div id="conditional-pmfs" class="section level3">
-<h3><span class="header-section-number">7.1.2</span> Conditional PMFs</h3>
-<p>The conditional PMF <span class="math inline">\(p(x_1|x_2)\)</span> assigns probabilities to the events <span class="math inline">\(\{X_1 = x_1\}\)</span> within the sample space <span class="math inline">\(\mathcal{S}\cap \{X_2 = x_2\}\)</span>. Since probabilities of discrete random variables behave just like probabilities of events, we have <span class="math display">\[p(x_1|x_2) = \frac{p(x_1, \, x_2)}{p(x_2)},\]</span> i.e., the conditional PMF of <span class="math inline">\(X_1\)</span> given <span class="math inline">\(X_2 = x_2\)</span> is the ratio of the joint PMF to the marginal PMF of <span class="math inline">\(X_2\)</span>. <br><br></p>
-<p>Example: The conditional PMF of home deductible given auto deductible is given by the following table. And, notice the conditional PMF sums to 1 across rows because the rows represent the conditional sample spaces.</p>
-<center>
-<img src="cond_pmf.PNG" style="width:40.0%" />
-</center>
-<br> Example: Using the formula, we can compute the conditional PMF of the number of 2's in <span class="math inline">\(n\)</span> dice rolls given the number of 1's (<span class="math inline">\(X_2\)</span> given <span class="math inline">\(X_1\)</span>).<br />
+m</code></pre></div>
+<pre><code>## [1] 177.0155</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m1</code></pre></div>
+<pre><code>## [1] 176.757</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m2</code></pre></div>
+<pre><code>## [1] 176.9332</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m3</code></pre></div>
+<pre><code>## [1] 177.3562</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(crops$yield)</code></pre></div>
+<pre><code>## [1] 96</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(crops$fertilizer ==<span class="st"> </span><span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] 32</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(crops$fertilizer ==<span class="st"> </span><span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 32</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(crops$fertilizer ==<span class="st"> </span><span class="dv">3</span>)</code></pre></div>
+<pre><code>## [1] 32</code></pre>
+<p>We can compute the ANOVA F-test &quot;by hand&quot; in R by computing the component sums of squares and comparing to the appropriate lower and upper F quantiles using the qf function or by computing the p-value.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SSE</span>
 
-<span class="math display">\[\begin{align*}
-p(x_2|x_1) &amp;= \frac{\frac{n!}{x_1! x_2! (n-x_1 -x_2)!}(\tfrac16)^{x_1}(\tfrac16)^{x_2}(\tfrac46)^{n-x_1-x_2}}{{n \choose x_1}(\tfrac16)^{x_1}(\tfrac56)^{n-x_1}}\\
-&amp; = \frac{\frac{n!}{x_1! x_2! (n-x_1 -x_2)!}(\tfrac16)^{x_1}(\tfrac16)^{x_2}(\tfrac46)^{n-x_1-x_2}}{\frac{n!}{x_1!(n-x_1)!}(\tfrac16)^{x_1}(\tfrac56)^{n-x_1}}\\
-&amp; = \frac{(n-x_1)!}{x_2!(n-x_1-x_2)!}(\tfrac16)^{x_2}(\tfrac46)^{n-x_1-x_2}(\tfrac65)^{n-x_1}\\
-&amp;=\frac{(n-x_1)!}{x_2!(n-x_1-x_2)!}(\tfrac14)^{x_2}(\tfrac45)^{n-x_1}\\
-&amp; = \frac{(n-x_1)!}{x_2!(n-x_1-x_2)!}(\tfrac14)^{x_2}(\tfrac45)^{n-x_1-x_2}(\tfrac{4}{5})^{x_2}\\
-&amp; = \frac{(n-x_1)!}{x_2!(n-x_1-x_2)!}(\tfrac15)^{x_2}(\tfrac45)^{n-x_1-x_2}
-\end{align*}\]</span>
-<p>In other words, the conditional distribution is the same as the probability of <span class="math inline">\(x_2\)</span> 2's in <span class="math inline">\(n-x_1\)</span> rolls of a fair five-sided die with no 1-side!</p>
-</div>
-<div id="independence-of-discrete-random-variables" class="section level3">
-<h3><span class="header-section-number">7.1.3</span> Independence of discrete random variables</h3>
-<p>Two random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent if their conditional PMF (either one) is equal to the corresponding marginal PMF. This implies the product rule holds, and that their Joint PMF is the product of their marginal PMFs. That is,</p>
-<p><span class="math display">\[p(x_1|x_2) = p(x_1)\quad\text{or, equivalently}\quad p(x_1,x_2)=p(x_1)p(x_2), \quad \forall (x_1,x_2).\]</span> <br></p>
-<p>Example: Let <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> denote score ranges for two players on a bowling team. suppose that if the player scores less than 100 they denote it with a zero, between 100 and 200 a 1 and better than 200 a 3. Determine whether their performances are independent given their joint PMF:</p>
-<center>
-<div class="figure">
-<img src="joint_pmf_ind.PNG" style="width:20.0%" />
+SSE &lt;-<span class="st"> </span><span class="kw">sum</span>((crops$yield[crops$fertilizer ==<span class="st"> </span><span class="dv">1</span>] -<span class="st"> </span>m1)^<span class="dv">2</span>)+<span class="kw">sum</span>((crops$yield[crops$fertilizer ==<span class="st"> </span><span class="dv">2</span>] -<span class="st"> </span>m2)^<span class="dv">2</span>)+<span class="kw">sum</span>((crops$yield[crops$fertilizer ==<span class="st"> </span><span class="dv">3</span>] -<span class="st"> </span>m3)^<span class="dv">2</span>)
+SSE</code></pre></div>
+<pre><code>## [1] 35.88619</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SSTr</span>
+n &lt;-<span class="st"> </span><span class="kw">sum</span>(crops$fertilizer ==<span class="st"> </span><span class="dv">1</span>)
+n</code></pre></div>
+<pre><code>## [1] 32</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SSTr &lt;-<span class="st"> </span>n*((m1-m)^<span class="dv">2</span>)+n*((m2-m)^<span class="dv">2</span>)+n*((m3-m)^<span class="dv">2</span>)
+SSTr</code></pre></div>
+<pre><code>## [1] 6.068047</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># F test</span>
+J &lt;-<span class="st"> </span><span class="dv">3</span>
+F &lt;-<span class="st"> </span>(SSTr /<span class="st"> </span>(J<span class="dv">-1</span>)) /<span class="st"> </span>(SSE /<span class="st"> </span>(J*(n<span class="dv">-1</span>)))
+F</code></pre></div>
+<pre><code>## [1] 7.862752</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">MSE &lt;-<span class="st"> </span>(SSE /<span class="st"> </span>(J*(n<span class="dv">-1</span>)))
 
-</div>
-</center>
-<p>By summing over the rows we obtain the marginal PMF of <span class="math inline">\(X_1\)</span>, given by <span class="math inline">\(p(x_1) = 0.1,\, 0.4,\, 0.5\)</span> for values <span class="math inline">\(0\)</span>, 1, and 2, respectively. Summing over columns we find the same marginal PMF for <span class="math inline">\(X_2\)</span>. Then, we have <span class="math inline">\(p(0,0) = 0.01 = 0.1\times 0.1 = p_{x_1}(0)p_{x_2}(0)\)</span>, <span class="math inline">\(p(1,0) = 0.04 = 0.4\times 0.1 = p_{x_1}(1)p_{x_2}(0)\)</span>, etc. If we check each of the 9 joint PMF values, we find that in <strong>every case</strong> the joint PMF equals the product of marginal PMF values. Conclude <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent.</p>
-</div>
-<div id="expectations-involving-multiple-discrete-random-variables" class="section level3">
-<h3><span class="header-section-number">7.1.4</span> Expectations involving multiple discrete random variables</h3>
-<p>Let <span class="math inline">\(g\)</span> be a function involving two random variables <span class="math inline">\(g:(X_1,X_2)\mapsto \mathbb{R}\)</span>. Then, the expectation of <span class="math inline">\(g(X_1,X_2)\)</span> is given by <span class="math display">\[E(g(X_1,X_2)) = \sum_{x_1,x_2} g(x_1,x_2)p(x_1,x_2).\]</span></p>
-<p><br><br></p>
-<p>The covariance of <span class="math inline">\(X_1\)</span> amd <span class="math inline">\(X_2\)</span>, denoted <span class="math inline">\(Cov(X_1,X_2)\)</span> is defined <span class="math inline">\(E[(X_1 - E(X_1))(X_2 - E(X_2))]\)</span> where <span class="math inline">\(E(X_1)\)</span> and <span class="math inline">\(E(X_2)\)</span> are the marginal expectations, i.e., <span class="math inline">\(E(X_1) = \sum_{x_1} x_1 p(x_1)\)</span>. Covariance may be equivalently defined <span class="math inline">\(Cov(X_1, X_2) = E(X_1X_2)-E(X_1)E(X_2)\)</span>. If <span class="math inline">\((X_1,X_2)\)</span> are independent, then <span class="math inline">\(Cov(X_1,X_2) = 0\)</span>.</p>
-<p><br><br></p>
-<p>Example: Find the covariance of auto and home deductibles.<br> The marginal distribution of home deductible is <span class="math inline">\(p(0) = 0.25\)</span>, <span class="math inline">\(p(100) = 0.25\)</span>, and <span class="math inline">\(p(200) = 0.50\)</span>. Then, the mean values of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are <span class="math inline">\(E(X_1) = 100*0.5 + 250 * 0.5 = 175\)</span> and <span class="math inline">\(E(X_2) = 125\)</span>. The expectation of their product is <span class="math display">\[E(X_1X_2) = 0*100*0.2 + 100*100*0.1 + 100*200*0.2 + 0.*250*0.05 + 100*250*0.15 + 200*250*0.30=23750\]</span> Their covariance is <span class="math inline">\(23750-175*125 = 1875\)</span>.</p>
-<p>Like the variance, the covariance has units equal to the product of the units of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>, which may or may not be interpretable. A unitless alternative to covarianceis <em>correlation</em> which divides covariance by the product of standard deviations of the random variables: <span class="math display">\[Corr(X_1, X_2) = \frac{Cov(X_1,X_2)}{\sigma_{X_1}\sigma_{X_2}}.\]</span> Like covariance, correlation is zero for independent random variables. Unlike covariance, correlation is always between -1 and 1 and has no units. This gives it a meaningful scale for interpretation across applications.<br></p>
-<p><br></p>
-<p>Example: Find the correlation of auto and home deductibles.<br> We need the variances of the auto and home deductibles, which we can compute by finding the second raw moments. <span class="math display">\[E(X_1^2) = 100^2*0.5 + 250^2 * 0.5 = 36250\]</span> So, <span class="math inline">\(\sigma_{X_1}^2 = 36250-175^2 = 5625\)</span>. And, <span class="math display">\[E(X_2^2) = 100^2*0.25 + 200^2 * 0.5 = 22500\]</span> so that <span class="math inline">\(\sigma_{X_2}^2 = 22500 - 125^2 = 6875\)</span>. Their correlation is <span class="math inline">\(1875/(\sqrt{5625*6875}) \approx 0.3015\)</span>.</p>
-</div>
-</div>
-<div id="jointly-distributed-continuous-random-variables" class="section level2">
-<h2><span class="header-section-number">7.2</span> Jointly distributed continuous random variables</h2>
-Analogously to univariate continuous r.v.'s, the joint distribution of two (or more) continuous r.v.'s is characterized by its joint PDF <span class="math inline">\(f(x_1, x_2)\)</span>, and corresponding joint CDF <span class="math inline">\(F(x_1, x_2)\)</span> which determine joint probabilities via integration: <span class="math display">\[P(X_1\leq x_1, X_2\leq x_2) =: F(x_1,x_2) = \int_{-\infty}^{x_1}\int_{-\infty}^{x_2}f(x_1,x_2)\,dx_2\,dx_1.\]</span> <br> Example: A business takes both online and in-person orders. Let <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> be the waiting times for the next two orders to be placed. Suppose <span class="math display">\[f(x_1,x_2) = 2e^{-x_1-x_2}, \,\,0&lt;x_1&lt;x_2&lt;\infty.\]</span> Find <span class="math inline">\(P(X_1\leq 1, X_2\leq 2)\)</span>.<br />
+p.value &lt;-<span class="st"> </span><span class="dv">1</span>-<span class="kw">pf</span>(<span class="kw">abs</span>(F), J<span class="dv">-1</span>, J*(n<span class="dv">-1</span>))
+p.value</code></pre></div>
+<pre><code>## [1] 0.0006999158</code></pre>
+<p>We can also use built-in R functions to compute the ANOVA F-test. Note the matching p-values.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">aov</span>(yield ~<span class="st"> </span>fertilizer, <span class="dt">data =</span> crops))</code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## fertilizer   2   6.07  3.0340   7.863  7e-04 ***
+## Residuals   93  35.89  0.3859                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A &lt;-<span class="st"> </span><span class="kw">aov</span>(yield ~<span class="st"> </span>fertilizer, <span class="dt">data =</span> crops)
+A</code></pre></div>
+<pre><code>## Call:
+##    aov(formula = yield ~ fertilizer, data = crops)
+## 
+## Terms:
+##                 fertilizer Residuals
+## Sum of Squares     6.06805  35.88619
+## Deg. of Freedom          2        93
+## 
+## Residual standard error: 0.6211867
+## Estimated effects may be unbalanced</code></pre>
+<p>An important part of applying ANOVA is checking the normalitay and equal variance assumptions are reasonable. If they are not, then the F-test may be misleading because the test statistic may not have an F distribution under the null. The best way to check for normality is to examine the <em>residuals</em>---the values <span class="math inline">\(x_{ij} - \overline x_{j}\)</span>; under the null and assuming equal variance these <span class="math inline">\(N\)</span> values are approximately normally distributed with variance <span class="math inline">\(\sigma^2\)</span>. We can also examine the Studentized resisduals by normalizing the residuals by the sample standard deviation---these should look approximately standard normal for a large sample (otherwise approximately Student's t with n-1 df).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(A$residuals)</code></pre></div>
+<p><img src="14-ANOVA_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(A$residuals)
+<span class="kw">qqline</span>(A$residuals)</code></pre></div>
+<p><img src="14-ANOVA_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<p>Finally, we can also check the group-wise variances for equality. A formal method for checking these is Levene's test, which amounts to performing ANOVA on the absolute values of the residuals themselves. The null hypothesis of Leven's ANOVA is equality of variances over groups/populations.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(crops$yield[crops$fertilizer==<span class="dv">1</span>])</code></pre></div>
+<pre><code>## [1] 0.6849233</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(crops$yield[crops$fertilizer==<span class="dv">2</span>])</code></pre></div>
+<pre><code>## [1] 0.5740668</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(crops$yield[crops$fertilizer==<span class="dv">3</span>])</code></pre></div>
+<pre><code>## [1] 0.5991214</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crops$resid &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">abs</span>(crops$yield[crops$fertilizer==<span class="dv">1</span>]-<span class="kw">mean</span>(crops$yield[crops$fertilizer==<span class="dv">1</span>])),
+<span class="kw">abs</span>(crops$yield[crops$fertilizer==<span class="dv">2</span>]-<span class="kw">mean</span>(crops$yield[crops$fertilizer==<span class="dv">2</span>])),
+<span class="kw">abs</span>(crops$yield[crops$fertilizer==<span class="dv">3</span>]-<span class="kw">mean</span>(crops$yield[crops$fertilizer==<span class="dv">3</span>])))
 
-<span class="math display">\[\begin{align*}
-P(X_1\leq 1, X_2\leq 2) &amp;= F(1,2) = \int_0^1\int_{x_1}^2 2e^{-x_1-x_2} \,dx_2\, dx_1\\
-&amp; = 2\int_0^1 e^{-x_1}\left[\int_{x_1}^2 e^{-x_2} \,dx_2\right]\, dx_1\\
-&amp; = 2\int_0^1 e^{-x_1} \left[ - e^{-x_2}|_{x_1}^2\right]dx_1\\
-&amp; = 2\int_0^1 e^{-x_1}(e^{-x_1} - e^{-2})dx_1\\
-&amp; = 2\int_0^1 e^{-2x_1} - e^{-x_1-2}dx_1\\
-&amp; = 2[-\tfrac12 e^{-2x_1} + e^{-x_1-2}]|_{0}^1\\
-&amp; = -e^{-2}+2e^{-3}+e^{-0}-2e^{-2}\\
-&amp; \approx 0.693568
-\end{align*}\]</span>
-<div id="marginal-densities" class="section level3">
-<h3><span class="header-section-number">7.2.1</span> Marginal densities</h3>
-Given a joint PDF of <span class="math inline">\((X_1, X_2)\)</span> the marginal PDFs determine the probabilities associated with each r.v. individually. That is, for <span class="math inline">\(X_1\)</span> <span class="math display">\[f_{X_1}(x_1) = \int_{-\infty}^\infty f(x_1, x_2) dx_2\]</span> is the marginal density of <span class="math inline">\(X_1\)</span> so that integration of the marginal PDF provides <span class="math display">\[P(X_1\leq x_1) = F_{X_1}(x_1) = \int_{-\infty}^{x_1} f_{X_1}(t)dt.\]</span> <br> Example: For the above joint probability density of waiting times we get the marginal density of <span class="math inline">\(X_1\)</span>:
-<span class="math display">\[\begin{align*}
-f_{X_1}(x_1) &amp;=  2e^{-x_1}\int_{x_1}^{\infty}e^{-x_2}dx_2\\
-&amp; = 2e^{-x_1}[-e^{-x_2}]|_{x_1}^\infty\\
-&amp; = 2e^{-x_1}[0 + e^{-x_1}]\\
-&amp; = 2e^{-2x_1}, \quad x_1&gt;0.
-\end{align*}\]</span>
-<p><br> From the marginal PDF we can compute any kind of marginal expectation we want, like <span class="math inline">\(E(X_1)\)</span>, <span class="math inline">\(V(X_1)\)</span>, or <span class="math inline">\(M_{X_1}(t)\)</span>.</p>
-<br> Example: The moment generating function of the first arrival time is given by
-<span class="math display">\[\begin{align*}
-M_{X_1}(t) &amp;= \int_{0}^\infty 2e^{tx}e^{-2x}dx\\
-&amp; = \int_{0}^\infty 2e^{-x(2-t)}dx \\
-&amp; = 2\frac{e^{-x(2-t)}}{-(2-t)}|_{0}^\infty\\
-&amp; = \frac{2}{2-t}, \quad t&lt;2.
-\end{align*}\]</span>
-And, the first (raw) moment then equals
-<span class="math display">\[\begin{align*}
-E(X_1) &amp;= \frac{d}{dt}[\frac{2}{2-t}]|_{t=0}\\
-&amp;= \frac{2}{(2-t)^2}|_{t=0}\\
-&amp; = 1/2.
-\end{align*}\]</span>
-</div>
-<div id="conditional-densities" class="section level3">
-<h3><span class="header-section-number">7.2.2</span> Conditional densities</h3>
-<p>Given the joint and marginal densities <span class="math inline">\(f(x_1, x_2)\)</span> and <span class="math inline">\(f_{X_1}(x_1)\)</span> we can define the conditional density of <span class="math inline">\(X_2\)</span> given <span class="math inline">\(X_1=x_1\)</span> by <span class="math display">\[f(x_2|x_1) = \frac{f(x_1, x_2)}{f_{X_1}(x_1)}\]</span> which defines the probabilities <span class="math display">\[P(X_2\leq x_2|X_1=x_1) = \int_{-\infty}^{x_2} f(t|x_1)dt.\]</span> <br></p>
-<p>Example: Given the first order arrives at time 1, what is the probability the second order arrives before time 2? <span class="math display">\[f(x_2|x_1) = \frac{2e^{-x_1-x_2}}{2e^{-2x_1}} = \frac{e^{-x_2}}{e^{-x_1}}, \quad x_2&gt;x_1.\]</span></p>
-<span class="math display">\[\begin{align*}
-P(X_2\leq 2|X_1=1) &amp;= \int_{1}^2 \frac{e^{-x_2}}{e^{-1}}dx_2\\
-&amp;= e^{1}[-e^{-x_2}]|_1^2\\
-&amp; = e^{1}(e^{-1}-e^{-2})\\
-&amp; = 1-e^{-1}\\
-&amp; \approx 0.63212
-\end{align*}\]</span>
-<p>Example: Find the mean of the second arrival time, given the first arrival time is 1.</p>
-<span class="math display">\[\begin{align*}
-E(X_2|X_1=1) &amp;= \int_{1}^\infty x_2\frac{e^{-x_2}}{e^{-1}}dx_2\\
-&amp; = e^{1}\int_{1}^\infty x_2e^{-x_2}dx_2\\
-&amp; = e^1[-x_2e^{-x_2}|_1^\infty + \int_1^\infty e^{-x_2}dx_2] \quad \text{use by-parts}\\
-&amp; = e^1[e^{-1} - e^{-x_2|_1^\infty}]\\
-&amp; = 2
-\end{align*}\]</span>
-</div>
-<div id="independence-of-jointly-distributed-continuous-r.v.s" class="section level3">
-<h3><span class="header-section-number">7.2.3</span> Independence of jointly-distributed continuous r.v.'s</h3>
-<p>Random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent if <span class="math inline">\(f(x_1|x_2) = f_{X_1}(x_1)\)</span> for every <span class="math inline">\(x_2\)</span>; or, equivalently, if <span class="math inline">\(f(x_2|x_1) = f_{X_2}(x_2)\)</span> for every <span class="math inline">\(x_1\)</span>. <br><br></p>
-<p>Example: A randomly selected student's verbal score <span class="math inline">\(X_1\)</span> and quantitative score <span class="math inline">\(X_2\)</span> on a college entrance exam have the joint PDF <span class="math display">\[f(x_1, x_2) = \tfrac25 (2x_1+3x_2), \quad 0\leq x_1\leq 1, \, 0\leq x_2\leq 1.\]</span> Are they independent?</p>
-<p><br><br> Solution: The marginal density of <span class="math inline">\(X_1\)</span> is given by <span class="math display">\[\int_{0}^1 \tfrac25 (2x_1+3x_2)dx_2 = \tfrac25[2x_1x_2+1.5x_2^2]|_0^1 = \tfrac45 x_1 + 1.5\]</span></p>
-<p>The marginal density of <span class="math inline">\(X_2\)</span> is given by <span class="math display">\[\int_{0}^1 \tfrac25 (2x_1+3x_2)dx_1 = \tfrac25[\tfrac12x_1^2+3x_2x_1]|_0^1 = \tfrac15  + \tfrac65 x_2.\]</span> The conditional density of <span class="math inline">\(X_2|X_1=x_1\)</span> is <span class="math display">\[\frac{\tfrac25(2x_1+3x_2)}{\tfrac45 x_1+1.5} \ne f_{X_2}(x_2).\]</span> They are not independent.</p>
-Example: For the waiting time distribution above, the marginal density of <span class="math inline">\(X_2\)</span> equals
-<span class="math display">\[\begin{align*}
-f_{X_2}(x_2) &amp;= \int_0^{x_2} 2e^{-x_1-x_2}dx_1\\
-&amp; = 2e^{-x_2} - 2e^{-2x_2}, \quad x_2&gt;0.
-\end{align*}\]</span>
-<p>We previously found the conditional density <span class="math inline">\(f(x_2|x_1) = \frac{e^{-x_2}}{e^{-x_1}}, \,\,x_2&gt;x_1\)</span>. These two densities---the conditional and the <span class="math inline">\(X_2-\)</span>marginal--- are not equal, so <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are not independent. Of course, it is clear they are dependent just by looking at their domain---since <span class="math inline">\(x_2\geq x_1\)</span> they must be dependent.</p>
-</div>
-<div id="expectations-involving-more-than-one-continuous-r.v." class="section level3">
-<h3><span class="header-section-number">7.2.4</span> Expectations involving more than one continuous r.v.</h3>
-<p>As in the discrete case, we can compute expectations of functions of two or more continuous r.v.'s: <span class="math display">\[E(g(X_1,X_2)) = \int_{-\infty}^\infty\int_{-\infty}^\infty g(x,y)f(x,y) dxdy.\]</span></p>
-Example: Using the order times example we compute <span class="math inline">\(Cov(X_1, X_2)\)</span>, the covariance of the order times of the first and second orders:
-<span class="math display">\[\begin{align*}
-E(X_1X_2) &amp;= \int_0^\infty \int_{x_1}^\infty 2x_1x_2e^{-x_1-x_2} dx_2 dx_1\\
-&amp; = 2\int_0^\infty x_1e^{-x_1} \left [\int_{x_1}^\infty x_2e^{-x_2}dx_2\right ] dx_1 \quad \text{use by-parts}\\
-&amp; \text{set }u=x_2\, du = dx_2\, dv = e^{-x_2}\, v = -e^{-x_2}\, \\
-&amp; = 2\int_0^\infty x_1e^{-x_1} \left [uv|_{x_1}^\infty - \int_{x_1}^\infty vdu \right] dx_1\\
-&amp; = 2\int_0^\infty x_1e^{-x_1}(1+x_1)e^{-x_1}dx_1 \, \text{ have to do by-parts twice...}\\
-&amp; = 1
-\end{align*}\]</span>
-The mean of <span class="math inline">\(X_1\)</span> is
-<span class="math display">\[\begin{align*}
-E(X_1) &amp;= \int_0^{\infty} x_12e^{-2x_1} dx_1\\
-&amp; = 1/2.
-\end{align*}\]</span>
-Then,
-<span class="math display">\[\begin{align*}
-E(X_2) &amp;= \int_0^\infty 2x_2(e^{-x_2}-e^{-2x_2}) dx_2 \\
-&amp; = 3/2 \quad \text{apply integratioon by parts}
-\end{align*}\]</span>
-<p>The covariance of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> is <span class="math inline">\(1 - (3/2)(1/2) =1/4\)</span>.</p>
+<span class="kw">summary</span>(<span class="kw">aov</span>(resid ~<span class="st"> </span>fertilizer, <span class="dt">data =</span> crops))</code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
+## fertilizer   2   0.24  0.1197    0.88  0.418
+## Residuals   93  12.65  0.1360</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ml &lt;-<span class="st"> </span><span class="kw">mean</span>(crops$resid)
+m1l &lt;-<span class="st"> </span><span class="kw">mean</span>(crops$resid[crops$fertilizer ==<span class="st"> </span><span class="dv">1</span>])
+m2l &lt;-<span class="st"> </span><span class="kw">mean</span>(crops$resid[crops$fertilizer ==<span class="st"> </span><span class="dv">2</span>])
+m3l &lt;-<span class="st"> </span><span class="kw">mean</span>(crops$resid[crops$fertilizer ==<span class="st"> </span><span class="dv">3</span>])
 
-</div>
+ml</code></pre></div>
+<pre><code>## [1] 0.4894152</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m1l</code></pre></div>
+<pre><code>## [1] 0.5596244</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m2l</code></pre></div>
+<pre><code>## [1] 0.4475853</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m3l</code></pre></div>
+<pre><code>## [1] 0.4610358</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SSE</span>
+
+SSE.L &lt;-<span class="st"> </span><span class="kw">sum</span>((crops$resid[crops$fertilizer ==<span class="st"> </span><span class="dv">1</span>] -<span class="st"> </span>m1l)^<span class="dv">2</span>)+<span class="kw">sum</span>((crops$resid[crops$fertilizer ==<span class="st"> </span><span class="dv">2</span>] -<span class="st"> </span>m2l)^<span class="dv">2</span>)+<span class="kw">sum</span>((crops$resid[crops$fertilizer ==<span class="st"> </span><span class="dv">3</span>] -<span class="st"> </span>m3l)^<span class="dv">2</span>)
+SSE.L</code></pre></div>
+<pre><code>## [1] 12.65207</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SSTr</span>
+n &lt;-<span class="st"> </span><span class="kw">sum</span>(crops$fertilizer ==<span class="st"> </span><span class="dv">1</span>)
+n</code></pre></div>
+<pre><code>## [1] 32</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SSTr.L &lt;-<span class="st"> </span>n*((m1l-ml)^<span class="dv">2</span>)+n*((m2l-ml)^<span class="dv">2</span>)+n*((m3l-ml)^<span class="dv">2</span>)
+SSTr.L</code></pre></div>
+<pre><code>## [1] 0.2395029</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Levene F test</span>
+J &lt;-<span class="st"> </span><span class="dv">3</span>
+F.L &lt;-<span class="st"> </span>(SSTr.L /<span class="st"> </span>(J<span class="dv">-1</span>)) /<span class="st"> </span>(SSE.L /<span class="st"> </span>(J*(n<span class="dv">-1</span>)))
+F.L</code></pre></div>
+<pre><code>## [1] 0.880242</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qf</span>(.<span class="dv">95</span>, J<span class="dv">-1</span>, J*(n<span class="dv">-1</span>))</code></pre></div>
+<pre><code>## [1] 3.094337</code></pre>
+
 </div>
 </div>
             </section>
@@ -451,8 +422,8 @@ E(X_2) &amp;= \int_0^\infty 2x_2(e^{-x_2}-e^{-2x_2}) dx_2 \\
           </div>
         </div>
       </div>
-<a href="expectation-of-random-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="special-discrete-distributions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="hypothesis-testing.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -483,7 +454,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-Joint-Distributions-of-Random-Variables.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/14-ANOVA.Rmd",
 "text": "Edit"
 },
 "history": {

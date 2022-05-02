@@ -116,3 +116,7 @@ likelihood-based-tests
 wald-type-tests
 likelihood-ratio-tests
 chi-squared-tests-for-tabulated-data
+goodness-of-fit-tests
+anova
+analysis-of-variance
+crop-data-in-depth-example

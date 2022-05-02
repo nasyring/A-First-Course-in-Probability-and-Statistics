@@ -24,7 +24,7 @@
 <meta name="author" content="Nick Syring" />
 
 
-<meta name="date" content="2022-04-28" />
+<meta name="date" content="2022-05-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,6 @@
   
 
 
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -56,68 +55,41 @@
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 
@@ -138,22 +110,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a></li>
-<li class="chapter" data-level="2" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html"><i class="fa fa-check"></i><b>2</b> Experiments and the role of probability</a>
-<ul>
+<li class="chapter" data-level="2" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html"><i class="fa fa-check"></i><b>2</b> Experiments and the role of probability</a><ul>
 <li class="chapter" data-level="2.1" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html#experiments"><i class="fa fa-check"></i><b>2.1</b> Experiments</a></li>
 <li class="chapter" data-level="2.2" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html#the-role-of-probability"><i class="fa fa-check"></i><b>2.2</b> The role of probability</a></li>
 <li class="chapter" data-level="2.3" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html#exercises"><i class="fa fa-check"></i><b>2.3</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="probability-and-counting.html"><a href="probability-and-counting.html"><i class="fa fa-check"></i><b>3</b> Probability and Counting</a>
-<ul>
+<li class="chapter" data-level="3" data-path="probability-and-counting.html"><a href="probability-and-counting.html"><i class="fa fa-check"></i><b>3</b> Probability and Counting</a><ul>
 <li class="chapter" data-level="3.1" data-path="probability-and-counting.html"><a href="probability-and-counting.html#terminology"><i class="fa fa-check"></i><b>3.1</b> Terminology</a></li>
-<li class="chapter" data-level="3.2" data-path="probability-and-counting.html"><a href="probability-and-counting.html#set-relations"><i class="fa fa-check"></i><b>3.2</b> Set relations</a>
-<ul>
+<li class="chapter" data-level="3.2" data-path="probability-and-counting.html"><a href="probability-and-counting.html#set-relations"><i class="fa fa-check"></i><b>3.2</b> Set relations</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="probability-and-counting.html"><a href="probability-and-counting.html#sample-space-example"><i class="fa fa-check"></i><b>3.2.1</b> Sample space example</a></li>
 <li class="chapter" data-level="3.2.2" data-path="probability-and-counting.html"><a href="probability-and-counting.html#set-relations-example"><i class="fa fa-check"></i><b>3.2.2</b> Set relations example</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="probability-and-counting.html"><a href="probability-and-counting.html#probability-axioms"><i class="fa fa-check"></i><b>3.3</b> Probability Axioms</a>
-<ul>
+<li class="chapter" data-level="3.3" data-path="probability-and-counting.html"><a href="probability-and-counting.html#probability-axioms"><i class="fa fa-check"></i><b>3.3</b> Probability Axioms</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="probability-and-counting.html"><a href="probability-and-counting.html#example-of-using-the-probability-axioms"><i class="fa fa-check"></i><b>3.3.1</b> Example of using the probability axioms</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="probability-and-counting.html"><a href="probability-and-counting.html#equally-likely-outcomes"><i class="fa fa-check"></i><b>3.4</b> Equally likely outcomes</a></li>
@@ -161,113 +129,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6" data-path="probability-and-counting.html"><a href="probability-and-counting.html#applications-to-random-sampling"><i class="fa fa-check"></i><b>3.6</b> Applications to random sampling</a></li>
 <li class="chapter" data-level="3.7" data-path="probability-and-counting.html"><a href="probability-and-counting.html#exercises-1"><i class="fa fa-check"></i><b>3.7</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html"><i class="fa fa-check"></i><b>4</b> Conditional probabilities of events</a>
-<ul>
+<li class="chapter" data-level="4" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html"><i class="fa fa-check"></i><b>4</b> Conditional probabilities of events</a><ul>
 <li class="chapter" data-level="4.0.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example"><i class="fa fa-check"></i><b>4.0.1</b> Example</a></li>
 <li class="chapter" data-level="4.0.2" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example-1"><i class="fa fa-check"></i><b>4.0.2</b> Example</a></li>
 <li class="chapter" data-level="4.0.3" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example-2"><i class="fa fa-check"></i><b>4.0.3</b> Example</a></li>
-<li class="chapter" data-level="4.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#bayes-rule"><i class="fa fa-check"></i><b>4.1</b> Bayes’ rule</a>
-<ul>
+<li class="chapter" data-level="4.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#bayes-rule"><i class="fa fa-check"></i><b>4.1</b> Bayes' rule</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example-3"><i class="fa fa-check"></i><b>4.1.1</b> Example</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#independence"><i class="fa fa-check"></i><b>4.2</b> Independence</a></li>
 <li class="chapter" data-level="4.3" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#exercises-2"><i class="fa fa-check"></i><b>4.3</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>5</b> Random Variables</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="random-variables.html"><a href="random-variables.html#random-variables-1"><i class="fa fa-check"></i><b>5.1</b> Random variables</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="random-variables.html"><a href="random-variables.html#examples-of-discrete-r.v.s"><i class="fa fa-check"></i><b>5.1.1</b> Examples of Discrete r.v.’s</a></li>
+<li class="chapter" data-level="5" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>5</b> Random Variables</a><ul>
+<li class="chapter" data-level="5.1" data-path="random-variables.html"><a href="random-variables.html#random-variables-1"><i class="fa fa-check"></i><b>5.1</b> Random variables</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="random-variables.html"><a href="random-variables.html#examples-of-discrete-r.v.s"><i class="fa fa-check"></i><b>5.1.1</b> Examples of Discrete r.v.'s</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="random-variables.html"><a href="random-variables.html#probability-mass-functions"><i class="fa fa-check"></i><b>5.2</b> Probability Mass Functions</a></li>
 <li class="chapter" data-level="5.3" data-path="random-variables.html"><a href="random-variables.html#cumulative-mass-functions"><i class="fa fa-check"></i><b>5.3</b> Cumulative Mass Functions</a></li>
-<li class="chapter" data-level="5.4" data-path="random-variables.html"><a href="random-variables.html#examples-of-continuous-r.v.s"><i class="fa fa-check"></i><b>5.4</b> Examples of Continuous r.v.’s</a></li>
-<li class="chapter" data-level="5.5" data-path="random-variables.html"><a href="random-variables.html#probability-assignments-for-continuous-r.v.s"><i class="fa fa-check"></i><b>5.5</b> Probability assignments for continuous r.v.’s</a></li>
+<li class="chapter" data-level="5.4" data-path="random-variables.html"><a href="random-variables.html#examples-of-continuous-r.v.s"><i class="fa fa-check"></i><b>5.4</b> Examples of Continuous r.v.'s</a></li>
+<li class="chapter" data-level="5.5" data-path="random-variables.html"><a href="random-variables.html#probability-assignments-for-continuous-r.v.s"><i class="fa fa-check"></i><b>5.5</b> Probability assignments for continuous r.v.'s</a></li>
 <li class="chapter" data-level="5.6" data-path="random-variables.html"><a href="random-variables.html#transformations-of-random-variables"><i class="fa fa-check"></i><b>5.6</b> Transformations of random variables</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html"><i class="fa fa-check"></i><b>6</b> Expectation of Random Variables</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#mean-of-a-random-variable"><i class="fa fa-check"></i><b>6.1</b> Mean of a Random Variable</a>
-<ul>
+<li class="chapter" data-level="6" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html"><i class="fa fa-check"></i><b>6</b> Expectation of Random Variables</a><ul>
+<li class="chapter" data-level="6.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#mean-of-a-random-variable"><i class="fa fa-check"></i><b>6.1</b> Mean of a Random Variable</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#examples"><i class="fa fa-check"></i><b>6.1.1</b> Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#variance-of-a-random-variable"><i class="fa fa-check"></i><b>6.2</b> Variance of a random variable</a>
-<ul>
+<li class="chapter" data-level="6.2" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#variance-of-a-random-variable"><i class="fa fa-check"></i><b>6.2</b> Variance of a random variable</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#examples-1"><i class="fa fa-check"></i><b>6.2.1</b> Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#special-uses-of-mean-and-variance"><i class="fa fa-check"></i><b>6.3</b> Special uses of mean and variance</a>
-<ul>
+<li class="chapter" data-level="6.3" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#special-uses-of-mean-and-variance"><i class="fa fa-check"></i><b>6.3</b> Special uses of mean and variance</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#examples-2"><i class="fa fa-check"></i><b>6.3.1</b> Examples</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#expectations-of-functions-of-random-variables"><i class="fa fa-check"></i><b>6.4</b> Expectations of functions of random variables</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="joint-distributions.html"><a href="joint-distributions.html"><i class="fa fa-check"></i><b>7</b> Joint Distributions</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-discrete-random-variables"><i class="fa fa-check"></i><b>7.1</b> Jointly distributed discrete random variables</a>
-<ul>
+<li class="chapter" data-level="7" data-path="joint-distributions.html"><a href="joint-distributions.html"><i class="fa fa-check"></i><b>7</b> Joint Distributions</a><ul>
+<li class="chapter" data-level="7.1" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-discrete-random-variables"><i class="fa fa-check"></i><b>7.1</b> Jointly distributed discrete random variables</a><ul>
 <li class="chapter" data-level="7.1.1" data-path="joint-distributions.html"><a href="joint-distributions.html#marginal-pmfs"><i class="fa fa-check"></i><b>7.1.1</b> Marginal PMFs</a></li>
 <li class="chapter" data-level="7.1.2" data-path="joint-distributions.html"><a href="joint-distributions.html#conditional-pmfs"><i class="fa fa-check"></i><b>7.1.2</b> Conditional PMFs</a></li>
 <li class="chapter" data-level="7.1.3" data-path="joint-distributions.html"><a href="joint-distributions.html#independence-of-discrete-random-variables"><i class="fa fa-check"></i><b>7.1.3</b> Independence of discrete random variables</a></li>
 <li class="chapter" data-level="7.1.4" data-path="joint-distributions.html"><a href="joint-distributions.html#expectations-involving-multiple-discrete-random-variables"><i class="fa fa-check"></i><b>7.1.4</b> Expectations involving multiple discrete random variables</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-continuous-random-variables"><i class="fa fa-check"></i><b>7.2</b> Jointly distributed continuous random variables</a>
-<ul>
+<li class="chapter" data-level="7.2" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-continuous-random-variables"><i class="fa fa-check"></i><b>7.2</b> Jointly distributed continuous random variables</a><ul>
 <li class="chapter" data-level="7.2.1" data-path="joint-distributions.html"><a href="joint-distributions.html#marginal-densities"><i class="fa fa-check"></i><b>7.2.1</b> Marginal densities</a></li>
 <li class="chapter" data-level="7.2.2" data-path="joint-distributions.html"><a href="joint-distributions.html#conditional-densities"><i class="fa fa-check"></i><b>7.2.2</b> Conditional densities</a></li>
-<li class="chapter" data-level="7.2.3" data-path="joint-distributions.html"><a href="joint-distributions.html#independence-of-jointly-distributed-continuous-r.v.s"><i class="fa fa-check"></i><b>7.2.3</b> Independence of jointly-distributed continuous r.v.’s</a></li>
+<li class="chapter" data-level="7.2.3" data-path="joint-distributions.html"><a href="joint-distributions.html#independence-of-jointly-distributed-continuous-r.v.s"><i class="fa fa-check"></i><b>7.2.3</b> Independence of jointly-distributed continuous r.v.'s</a></li>
 <li class="chapter" data-level="7.2.4" data-path="joint-distributions.html"><a href="joint-distributions.html#expectations-involving-more-than-one-continuous-r.v."><i class="fa fa-check"></i><b>7.2.4</b> Expectations involving more than one continuous r.v.</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html"><i class="fa fa-check"></i><b>8</b> Special Discrete Distributions</a>
-<ul>
+<li class="chapter" data-level="8" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html"><i class="fa fa-check"></i><b>8</b> Special Discrete Distributions</a><ul>
 <li class="chapter" data-level="8.1" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>8.1</b> Bernoulli Distribution</a></li>
 <li class="chapter" data-level="8.2" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#categorical-distribution"><i class="fa fa-check"></i><b>8.2</b> Categorical Distribution</a></li>
 <li class="chapter" data-level="8.3" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>8.3</b> Binomial distribution</a></li>
 <li class="chapter" data-level="8.4" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#multinomial-distribution"><i class="fa fa-check"></i><b>8.4</b> Multinomial Distribution</a></li>
 <li class="chapter" data-level="8.5" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#hypergeometric-distribution"><i class="fa fa-check"></i><b>8.5</b> Hypergeometric distribution</a></li>
 <li class="chapter" data-level="8.6" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#negative-binomial-distribution"><i class="fa fa-check"></i><b>8.6</b> Negative Binomial Distribution</a></li>
-<li class="chapter" data-level="8.7" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>8.7</b> Poisson Distribution</a>
-<ul>
+<li class="chapter" data-level="8.7" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>8.7</b> Poisson Distribution</a><ul>
 <li class="chapter" data-level="8.7.1" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#example-1-poisson-process"><i class="fa fa-check"></i><b>8.7.1</b> Example 1: Poisson process</a></li>
 <li class="chapter" data-level="8.7.2" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#example-2-poisson-approximation-to-binomial"><i class="fa fa-check"></i><b>8.7.2</b> Example 2: Poisson approximation to Binomial</a></li>
 </ul></li>
 <li class="chapter" data-level="8.8" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#optional-derivation-of-the-poisson-pmf-using-differential-equations"><i class="fa fa-check"></i><b>8.8</b> Optional: Derivation of the Poisson PMF using differential equations</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html"><i class="fa fa-check"></i><b>9</b> Special Continuous Distributions</a>
-<ul>
+<li class="chapter" data-level="9" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html"><i class="fa fa-check"></i><b>9</b> Special Continuous Distributions</a><ul>
 <li class="chapter" data-level="9.1" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>9.1</b> Exponential Distribution</a></li>
 <li class="chapter" data-level="9.2" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#poisson-interarrival-times-are-iid-exponentiallambda"><i class="fa fa-check"></i><b>9.2</b> Poisson Interarrival times are iid Exponential(<span class="math inline">\(\lambda\)</span>)</a></li>
 <li class="chapter" data-level="9.3" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#gamma-distribution"><i class="fa fa-check"></i><b>9.3</b> Gamma Distribution</a></li>
-<li class="chapter" data-level="9.4" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#normal-gaussian-distribution"><i class="fa fa-check"></i><b>9.4</b> Normal (Gaussian) Distribution</a>
-<ul>
+<li class="chapter" data-level="9.4" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#normal-gaussian-distribution"><i class="fa fa-check"></i><b>9.4</b> Normal (Gaussian) Distribution</a><ul>
 <li class="chapter" data-level="9.4.1" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#example-poll-and-binomial-normal-approximation"><i class="fa fa-check"></i><b>9.4.1</b> Example: Poll and Binomial-Normal approximation</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="central-limit-theorem.html"><a href="central-limit-theorem.html"><i class="fa fa-check"></i><b>10</b> Central Limit Theorem</a></li>
-<li class="chapter" data-level="11" data-path="sampling-distributions.html"><a href="sampling-distributions.html"><i class="fa fa-check"></i><b>11</b> Sampling Distributions</a>
-<ul>
+<li class="chapter" data-level="11" data-path="sampling-distributions.html"><a href="sampling-distributions.html"><i class="fa fa-check"></i><b>11</b> Sampling Distributions</a><ul>
 <li class="chapter" data-level="11.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sample-mean"><i class="fa fa-check"></i><b>11.1</b> Sample Mean</a></li>
-<li class="chapter" data-level="11.2" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sample-variance"><i class="fa fa-check"></i><b>11.2</b> Sample Variance</a>
-<ul>
+<li class="chapter" data-level="11.2" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sample-variance"><i class="fa fa-check"></i><b>11.2</b> Sample Variance</a><ul>
 <li class="chapter" data-level="11.2.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#large-sample-sampling-distribution-of-sample-variance"><i class="fa fa-check"></i><b>11.2.1</b> Large-sample sampling distribution of sample variance</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sampling-distribution-of-studentized-sample-mean"><i class="fa fa-check"></i><b>11.3</b> Sampling distribution of studentized sample mean</a>
-<ul>
-<li class="chapter" data-level="11.3.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#part-of-students-theorem---indepndence-of-overline-x_n-and-s_n2"><i class="fa fa-check"></i><b>11.3.1</b> Part of Student’s Theorem - Indepndence of <span class="math inline">\(\overline X_n\)</span> and <span class="math inline">\(S_n^2\)</span></a></li>
+<li class="chapter" data-level="11.3" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sampling-distribution-of-studentized-sample-mean"><i class="fa fa-check"></i><b>11.3</b> Sampling distribution of studentized sample mean</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#part-of-students-theorem---indepndence-of-overline-x_n-and-s_n2"><i class="fa fa-check"></i><b>11.3.1</b> Part of Student's Theorem - Indepndence of <span class="math inline">\(\overline X_n\)</span> and <span class="math inline">\(S_n^2\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="sampling-distributions.html"><a href="sampling-distributions.html#differences-of-sample-means"><i class="fa fa-check"></i><b>11.4</b> Differences of Sample Means</a>
-<ul>
+<li class="chapter" data-level="11.4" data-path="sampling-distributions.html"><a href="sampling-distributions.html#differences-of-sample-means"><i class="fa fa-check"></i><b>11.4</b> Differences of Sample Means</a><ul>
 <li class="chapter" data-level="11.4.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#standarized-difference"><i class="fa fa-check"></i><b>11.4.1</b> Standarized difference</a></li>
 <li class="chapter" data-level="11.4.2" data-path="sampling-distributions.html"><a href="sampling-distributions.html#studentized-difference-equal-variances"><i class="fa fa-check"></i><b>11.4.2</b> Studentized difference, equal variances</a></li>
 <li class="chapter" data-level="11.4.3" data-path="sampling-distributions.html"><a href="sampling-distributions.html#studentized-difference-unequal-variances"><i class="fa fa-check"></i><b>11.4.3</b> Studentized difference, unequal variances</a></li>
 </ul></li>
 <li class="chapter" data-level="11.5" data-path="sampling-distributions.html"><a href="sampling-distributions.html#ratios-of-sample-variances"><i class="fa fa-check"></i><b>11.5</b> Ratios of Sample Variances</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="statistical-estimation.html"><a href="statistical-estimation.html"><i class="fa fa-check"></i><b>12</b> Statistical Estimation</a>
-<ul>
+<li class="chapter" data-level="12" data-path="statistical-estimation.html"><a href="statistical-estimation.html"><i class="fa fa-check"></i><b>12</b> Statistical Estimation</a><ul>
 <li class="chapter" data-level="12.1" data-path="statistical-estimation.html"><a href="statistical-estimation.html#vocabulary"><i class="fa fa-check"></i><b>12.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="12.2" data-path="statistical-estimation.html"><a href="statistical-estimation.html#properties-of-estimators"><i class="fa fa-check"></i><b>12.2</b> Properties of Estimators</a>
-<ul>
+<li class="chapter" data-level="12.2" data-path="statistical-estimation.html"><a href="statistical-estimation.html#properties-of-estimators"><i class="fa fa-check"></i><b>12.2</b> Properties of Estimators</a><ul>
 <li class="chapter" data-level="12.2.1" data-path="statistical-estimation.html"><a href="statistical-estimation.html#bias-and-unbiasedness"><i class="fa fa-check"></i><b>12.2.1</b> Bias and Unbiasedness</a></li>
 <li class="chapter" data-level="12.2.2" data-path="statistical-estimation.html"><a href="statistical-estimation.html#minimum-variance-unbiased-estimators"><i class="fa fa-check"></i><b>12.2.2</b> Minimum Variance Unbiased Estimators</a></li>
 <li class="chapter" data-level="12.2.3" data-path="statistical-estimation.html"><a href="statistical-estimation.html#mean-squared-error-and-bias-variance-tradeoff"><i class="fa fa-check"></i><b>12.2.3</b> Mean Squared Error and Bias-Variance tradeoff</a></li>
@@ -277,46 +224,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.4" data-path="statistical-estimation.html"><a href="statistical-estimation.html#method-of-maximum-likelihood"><i class="fa fa-check"></i><b>12.4</b> Method of Maximum Likelihood</a></li>
 <li class="chapter" data-level="12.5" data-path="statistical-estimation.html"><a href="statistical-estimation.html#properties-of-mles"><i class="fa fa-check"></i><b>12.5</b> Properties of MLEs</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>13</b> Confidence Intervals</a>
-<ul>
+<li class="chapter" data-level="13" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>13</b> Confidence Intervals</a><ul>
 <li class="chapter" data-level="13.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#why-want-interval-valued-estimates"><i class="fa fa-check"></i><b>13.1</b> Why want interval-valued estimates?</a></li>
 <li class="chapter" data-level="13.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#normal-population-mean-example"><i class="fa fa-check"></i><b>13.2</b> Normal population mean example</a></li>
-<li class="chapter" data-level="13.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#other-exact-cis-for-normal-population-mean-and-variance-parameters"><i class="fa fa-check"></i><b>13.3</b> Other “Exact” CIs for normal population mean and variance parameters</a>
-<ul>
+<li class="chapter" data-level="13.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#other-exact-cis-for-normal-population-mean-and-variance-parameters"><i class="fa fa-check"></i><b>13.3</b> Other &quot;Exact&quot; CIs for normal population mean and variance parameters</a><ul>
 <li class="chapter" data-level="13.3.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#population-mean-unknown-variance"><i class="fa fa-check"></i><b>13.3.1</b> Population mean, unknown variance</a></li>
 <li class="chapter" data-level="13.3.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#population-variance-unknown-mean"><i class="fa fa-check"></i><b>13.3.2</b> Population variance, unknown mean</a></li>
 <li class="chapter" data-level="13.3.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#two-normal-samples-comparing-means"><i class="fa fa-check"></i><b>13.3.3</b> Two normal samples, comparing means</a></li>
 <li class="chapter" data-level="13.3.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#two-normal-samples-comparing-variances"><i class="fa fa-check"></i><b>13.3.4</b> Two normal samples, comparing variances</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#cis-for-proportions"><i class="fa fa-check"></i><b>13.4</b> CIs for proportions</a>
-<ul>
+<li class="chapter" data-level="13.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#cis-for-proportions"><i class="fa fa-check"></i><b>13.4</b> CIs for proportions</a><ul>
 <li class="chapter" data-level="13.4.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#a-single-bernoulli-proportion"><i class="fa fa-check"></i><b>13.4.1</b> A single Bernoulli proportion</a></li>
 <li class="chapter" data-level="13.4.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#difference-of-two-bernoulli-proportions"><i class="fa fa-check"></i><b>13.4.2</b> Difference of two Bernoulli proportions</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="confidence-intervals.html"><a href="confidence-intervals.html#approximate-cis-based-on-mles"><i class="fa fa-check"></i><b>13.5</b> Approximate CIs based on MLEs</a>
-<ul>
+<li class="chapter" data-level="13.5" data-path="confidence-intervals.html"><a href="confidence-intervals.html#approximate-cis-based-on-mles"><i class="fa fa-check"></i><b>13.5</b> Approximate CIs based on MLEs</a><ul>
 <li class="chapter" data-level="13.5.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#multivariate-case"><i class="fa fa-check"></i><b>13.5.1</b> Multivariate case</a></li>
 <li class="chapter" data-level="13.5.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#the-delta-method"><i class="fa fa-check"></i><b>13.5.2</b> The Delta method</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>14</b> Hypothesis Testing</a>
-<ul>
+<li class="chapter" data-level="14" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>14</b> Hypothesis Testing</a><ul>
 <li class="chapter" data-level="14.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#notation"><i class="fa fa-check"></i><b>14.1</b> Notation</a></li>
 <li class="chapter" data-level="14.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-testing-outcomes"><i class="fa fa-check"></i><b>14.2</b> Hypothesis testing outcomes</a></li>
-<li class="chapter" data-level="14.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#tests-based-on-a-normal-population"><i class="fa fa-check"></i><b>14.3</b> Tests based on a normal population</a>
-<ul>
+<li class="chapter" data-level="14.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#tests-based-on-a-normal-population"><i class="fa fa-check"></i><b>14.3</b> Tests based on a normal population</a><ul>
 <li class="chapter" data-level="14.3.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-a-normal-mean-when-the-variance-is-known"><i class="fa fa-check"></i><b>14.3.1</b> Test for a normal mean when the variance is known</a></li>
 <li class="chapter" data-level="14.3.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-a-normal-mean-when-the-variance-is-unknown"><i class="fa fa-check"></i><b>14.3.2</b> Test for a normal mean when the variance is unknown</a></li>
 <li class="chapter" data-level="14.3.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-a-normal-population-variance"><i class="fa fa-check"></i><b>14.3.3</b> Test for a normal population variance</a></li>
 <li class="chapter" data-level="14.3.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#tests-for-a-difference-of-normal-population-means"><i class="fa fa-check"></i><b>14.3.4</b> Tests for a difference of normal population means</a></li>
 <li class="chapter" data-level="14.3.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-equality-of-normal-population-variances"><i class="fa fa-check"></i><b>14.3.5</b> Test for equality of normal population variances</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-based-tests"><i class="fa fa-check"></i><b>14.4</b> Likelihood-based Tests</a>
-<ul>
+<li class="chapter" data-level="14.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-based-tests"><i class="fa fa-check"></i><b>14.4</b> Likelihood-based Tests</a><ul>
 <li class="chapter" data-level="14.4.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#wald-type-tests"><i class="fa fa-check"></i><b>14.4.1</b> Wald type tests</a></li>
 <li class="chapter" data-level="14.4.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-tests"><i class="fa fa-check"></i><b>14.4.2</b> Likelihood ratio tests</a></li>
 </ul></li>
-<li class="chapter" data-level="14.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#chi-squared-tests-for-tabulated-data"><i class="fa fa-check"></i><b>14.5</b> Chi Squared tests for tabulated data</a></li>
+<li class="chapter" data-level="14.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#chi-squared-tests-for-tabulated-data"><i class="fa fa-check"></i><b>14.5</b> Chi Squared tests for tabulated data</a><ul>
+<li class="chapter" data-level="14.5.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#goodness-of-fit-tests"><i class="fa fa-check"></i><b>14.5.1</b> Goodness of fit tests</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>15</b> ANOVA</a><ul>
+<li class="chapter" data-level="15.1" data-path="anova.html"><a href="anova.html#analysis-of-variance"><i class="fa fa-check"></i><b>15.1</b> Analysis of variance</a></li>
+<li class="chapter" data-level="15.2" data-path="anova.html"><a href="anova.html#crop-data-in-depth-example"><i class="fa fa-check"></i><b>15.2</b> Crop data in-depth example</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -409,7 +355,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))

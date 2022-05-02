@@ -24,7 +24,7 @@
 <meta name="author" content="Nick Syring" />
 
 
-<meta name="date" content="2022-04-28" />
+<meta name="date" content="2022-05-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,6 @@
   
 <link rel="prev" href="joint-distributions.html"/>
 <link rel="next" href="special-continuous-distributions.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -56,68 +55,41 @@
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 
@@ -138,22 +110,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a></li>
-<li class="chapter" data-level="2" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html"><i class="fa fa-check"></i><b>2</b> Experiments and the role of probability</a>
-<ul>
+<li class="chapter" data-level="2" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html"><i class="fa fa-check"></i><b>2</b> Experiments and the role of probability</a><ul>
 <li class="chapter" data-level="2.1" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html#experiments"><i class="fa fa-check"></i><b>2.1</b> Experiments</a></li>
 <li class="chapter" data-level="2.2" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html#the-role-of-probability"><i class="fa fa-check"></i><b>2.2</b> The role of probability</a></li>
 <li class="chapter" data-level="2.3" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html#exercises"><i class="fa fa-check"></i><b>2.3</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="probability-and-counting.html"><a href="probability-and-counting.html"><i class="fa fa-check"></i><b>3</b> Probability and Counting</a>
-<ul>
+<li class="chapter" data-level="3" data-path="probability-and-counting.html"><a href="probability-and-counting.html"><i class="fa fa-check"></i><b>3</b> Probability and Counting</a><ul>
 <li class="chapter" data-level="3.1" data-path="probability-and-counting.html"><a href="probability-and-counting.html#terminology"><i class="fa fa-check"></i><b>3.1</b> Terminology</a></li>
-<li class="chapter" data-level="3.2" data-path="probability-and-counting.html"><a href="probability-and-counting.html#set-relations"><i class="fa fa-check"></i><b>3.2</b> Set relations</a>
-<ul>
+<li class="chapter" data-level="3.2" data-path="probability-and-counting.html"><a href="probability-and-counting.html#set-relations"><i class="fa fa-check"></i><b>3.2</b> Set relations</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="probability-and-counting.html"><a href="probability-and-counting.html#sample-space-example"><i class="fa fa-check"></i><b>3.2.1</b> Sample space example</a></li>
 <li class="chapter" data-level="3.2.2" data-path="probability-and-counting.html"><a href="probability-and-counting.html#set-relations-example"><i class="fa fa-check"></i><b>3.2.2</b> Set relations example</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="probability-and-counting.html"><a href="probability-and-counting.html#probability-axioms"><i class="fa fa-check"></i><b>3.3</b> Probability Axioms</a>
-<ul>
+<li class="chapter" data-level="3.3" data-path="probability-and-counting.html"><a href="probability-and-counting.html#probability-axioms"><i class="fa fa-check"></i><b>3.3</b> Probability Axioms</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="probability-and-counting.html"><a href="probability-and-counting.html#example-of-using-the-probability-axioms"><i class="fa fa-check"></i><b>3.3.1</b> Example of using the probability axioms</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="probability-and-counting.html"><a href="probability-and-counting.html#equally-likely-outcomes"><i class="fa fa-check"></i><b>3.4</b> Equally likely outcomes</a></li>
@@ -161,113 +129,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6" data-path="probability-and-counting.html"><a href="probability-and-counting.html#applications-to-random-sampling"><i class="fa fa-check"></i><b>3.6</b> Applications to random sampling</a></li>
 <li class="chapter" data-level="3.7" data-path="probability-and-counting.html"><a href="probability-and-counting.html#exercises-1"><i class="fa fa-check"></i><b>3.7</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html"><i class="fa fa-check"></i><b>4</b> Conditional probabilities of events</a>
-<ul>
+<li class="chapter" data-level="4" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html"><i class="fa fa-check"></i><b>4</b> Conditional probabilities of events</a><ul>
 <li class="chapter" data-level="4.0.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example"><i class="fa fa-check"></i><b>4.0.1</b> Example</a></li>
 <li class="chapter" data-level="4.0.2" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example-1"><i class="fa fa-check"></i><b>4.0.2</b> Example</a></li>
 <li class="chapter" data-level="4.0.3" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example-2"><i class="fa fa-check"></i><b>4.0.3</b> Example</a></li>
-<li class="chapter" data-level="4.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#bayes-rule"><i class="fa fa-check"></i><b>4.1</b> Bayes’ rule</a>
-<ul>
+<li class="chapter" data-level="4.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#bayes-rule"><i class="fa fa-check"></i><b>4.1</b> Bayes' rule</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example-3"><i class="fa fa-check"></i><b>4.1.1</b> Example</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#independence"><i class="fa fa-check"></i><b>4.2</b> Independence</a></li>
 <li class="chapter" data-level="4.3" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#exercises-2"><i class="fa fa-check"></i><b>4.3</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>5</b> Random Variables</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="random-variables.html"><a href="random-variables.html#random-variables-1"><i class="fa fa-check"></i><b>5.1</b> Random variables</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="random-variables.html"><a href="random-variables.html#examples-of-discrete-r.v.s"><i class="fa fa-check"></i><b>5.1.1</b> Examples of Discrete r.v.’s</a></li>
+<li class="chapter" data-level="5" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>5</b> Random Variables</a><ul>
+<li class="chapter" data-level="5.1" data-path="random-variables.html"><a href="random-variables.html#random-variables-1"><i class="fa fa-check"></i><b>5.1</b> Random variables</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="random-variables.html"><a href="random-variables.html#examples-of-discrete-r.v.s"><i class="fa fa-check"></i><b>5.1.1</b> Examples of Discrete r.v.'s</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="random-variables.html"><a href="random-variables.html#probability-mass-functions"><i class="fa fa-check"></i><b>5.2</b> Probability Mass Functions</a></li>
 <li class="chapter" data-level="5.3" data-path="random-variables.html"><a href="random-variables.html#cumulative-mass-functions"><i class="fa fa-check"></i><b>5.3</b> Cumulative Mass Functions</a></li>
-<li class="chapter" data-level="5.4" data-path="random-variables.html"><a href="random-variables.html#examples-of-continuous-r.v.s"><i class="fa fa-check"></i><b>5.4</b> Examples of Continuous r.v.’s</a></li>
-<li class="chapter" data-level="5.5" data-path="random-variables.html"><a href="random-variables.html#probability-assignments-for-continuous-r.v.s"><i class="fa fa-check"></i><b>5.5</b> Probability assignments for continuous r.v.’s</a></li>
+<li class="chapter" data-level="5.4" data-path="random-variables.html"><a href="random-variables.html#examples-of-continuous-r.v.s"><i class="fa fa-check"></i><b>5.4</b> Examples of Continuous r.v.'s</a></li>
+<li class="chapter" data-level="5.5" data-path="random-variables.html"><a href="random-variables.html#probability-assignments-for-continuous-r.v.s"><i class="fa fa-check"></i><b>5.5</b> Probability assignments for continuous r.v.'s</a></li>
 <li class="chapter" data-level="5.6" data-path="random-variables.html"><a href="random-variables.html#transformations-of-random-variables"><i class="fa fa-check"></i><b>5.6</b> Transformations of random variables</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html"><i class="fa fa-check"></i><b>6</b> Expectation of Random Variables</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#mean-of-a-random-variable"><i class="fa fa-check"></i><b>6.1</b> Mean of a Random Variable</a>
-<ul>
+<li class="chapter" data-level="6" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html"><i class="fa fa-check"></i><b>6</b> Expectation of Random Variables</a><ul>
+<li class="chapter" data-level="6.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#mean-of-a-random-variable"><i class="fa fa-check"></i><b>6.1</b> Mean of a Random Variable</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#examples"><i class="fa fa-check"></i><b>6.1.1</b> Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#variance-of-a-random-variable"><i class="fa fa-check"></i><b>6.2</b> Variance of a random variable</a>
-<ul>
+<li class="chapter" data-level="6.2" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#variance-of-a-random-variable"><i class="fa fa-check"></i><b>6.2</b> Variance of a random variable</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#examples-1"><i class="fa fa-check"></i><b>6.2.1</b> Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#special-uses-of-mean-and-variance"><i class="fa fa-check"></i><b>6.3</b> Special uses of mean and variance</a>
-<ul>
+<li class="chapter" data-level="6.3" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#special-uses-of-mean-and-variance"><i class="fa fa-check"></i><b>6.3</b> Special uses of mean and variance</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#examples-2"><i class="fa fa-check"></i><b>6.3.1</b> Examples</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#expectations-of-functions-of-random-variables"><i class="fa fa-check"></i><b>6.4</b> Expectations of functions of random variables</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="joint-distributions.html"><a href="joint-distributions.html"><i class="fa fa-check"></i><b>7</b> Joint Distributions</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-discrete-random-variables"><i class="fa fa-check"></i><b>7.1</b> Jointly distributed discrete random variables</a>
-<ul>
+<li class="chapter" data-level="7" data-path="joint-distributions.html"><a href="joint-distributions.html"><i class="fa fa-check"></i><b>7</b> Joint Distributions</a><ul>
+<li class="chapter" data-level="7.1" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-discrete-random-variables"><i class="fa fa-check"></i><b>7.1</b> Jointly distributed discrete random variables</a><ul>
 <li class="chapter" data-level="7.1.1" data-path="joint-distributions.html"><a href="joint-distributions.html#marginal-pmfs"><i class="fa fa-check"></i><b>7.1.1</b> Marginal PMFs</a></li>
 <li class="chapter" data-level="7.1.2" data-path="joint-distributions.html"><a href="joint-distributions.html#conditional-pmfs"><i class="fa fa-check"></i><b>7.1.2</b> Conditional PMFs</a></li>
 <li class="chapter" data-level="7.1.3" data-path="joint-distributions.html"><a href="joint-distributions.html#independence-of-discrete-random-variables"><i class="fa fa-check"></i><b>7.1.3</b> Independence of discrete random variables</a></li>
 <li class="chapter" data-level="7.1.4" data-path="joint-distributions.html"><a href="joint-distributions.html#expectations-involving-multiple-discrete-random-variables"><i class="fa fa-check"></i><b>7.1.4</b> Expectations involving multiple discrete random variables</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-continuous-random-variables"><i class="fa fa-check"></i><b>7.2</b> Jointly distributed continuous random variables</a>
-<ul>
+<li class="chapter" data-level="7.2" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-continuous-random-variables"><i class="fa fa-check"></i><b>7.2</b> Jointly distributed continuous random variables</a><ul>
 <li class="chapter" data-level="7.2.1" data-path="joint-distributions.html"><a href="joint-distributions.html#marginal-densities"><i class="fa fa-check"></i><b>7.2.1</b> Marginal densities</a></li>
 <li class="chapter" data-level="7.2.2" data-path="joint-distributions.html"><a href="joint-distributions.html#conditional-densities"><i class="fa fa-check"></i><b>7.2.2</b> Conditional densities</a></li>
-<li class="chapter" data-level="7.2.3" data-path="joint-distributions.html"><a href="joint-distributions.html#independence-of-jointly-distributed-continuous-r.v.s"><i class="fa fa-check"></i><b>7.2.3</b> Independence of jointly-distributed continuous r.v.’s</a></li>
+<li class="chapter" data-level="7.2.3" data-path="joint-distributions.html"><a href="joint-distributions.html#independence-of-jointly-distributed-continuous-r.v.s"><i class="fa fa-check"></i><b>7.2.3</b> Independence of jointly-distributed continuous r.v.'s</a></li>
 <li class="chapter" data-level="7.2.4" data-path="joint-distributions.html"><a href="joint-distributions.html#expectations-involving-more-than-one-continuous-r.v."><i class="fa fa-check"></i><b>7.2.4</b> Expectations involving more than one continuous r.v.</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html"><i class="fa fa-check"></i><b>8</b> Special Discrete Distributions</a>
-<ul>
+<li class="chapter" data-level="8" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html"><i class="fa fa-check"></i><b>8</b> Special Discrete Distributions</a><ul>
 <li class="chapter" data-level="8.1" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>8.1</b> Bernoulli Distribution</a></li>
 <li class="chapter" data-level="8.2" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#categorical-distribution"><i class="fa fa-check"></i><b>8.2</b> Categorical Distribution</a></li>
 <li class="chapter" data-level="8.3" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>8.3</b> Binomial distribution</a></li>
 <li class="chapter" data-level="8.4" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#multinomial-distribution"><i class="fa fa-check"></i><b>8.4</b> Multinomial Distribution</a></li>
 <li class="chapter" data-level="8.5" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#hypergeometric-distribution"><i class="fa fa-check"></i><b>8.5</b> Hypergeometric distribution</a></li>
 <li class="chapter" data-level="8.6" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#negative-binomial-distribution"><i class="fa fa-check"></i><b>8.6</b> Negative Binomial Distribution</a></li>
-<li class="chapter" data-level="8.7" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>8.7</b> Poisson Distribution</a>
-<ul>
+<li class="chapter" data-level="8.7" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>8.7</b> Poisson Distribution</a><ul>
 <li class="chapter" data-level="8.7.1" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#example-1-poisson-process"><i class="fa fa-check"></i><b>8.7.1</b> Example 1: Poisson process</a></li>
 <li class="chapter" data-level="8.7.2" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#example-2-poisson-approximation-to-binomial"><i class="fa fa-check"></i><b>8.7.2</b> Example 2: Poisson approximation to Binomial</a></li>
 </ul></li>
 <li class="chapter" data-level="8.8" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#optional-derivation-of-the-poisson-pmf-using-differential-equations"><i class="fa fa-check"></i><b>8.8</b> Optional: Derivation of the Poisson PMF using differential equations</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html"><i class="fa fa-check"></i><b>9</b> Special Continuous Distributions</a>
-<ul>
+<li class="chapter" data-level="9" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html"><i class="fa fa-check"></i><b>9</b> Special Continuous Distributions</a><ul>
 <li class="chapter" data-level="9.1" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>9.1</b> Exponential Distribution</a></li>
 <li class="chapter" data-level="9.2" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#poisson-interarrival-times-are-iid-exponentiallambda"><i class="fa fa-check"></i><b>9.2</b> Poisson Interarrival times are iid Exponential(<span class="math inline">\(\lambda\)</span>)</a></li>
 <li class="chapter" data-level="9.3" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#gamma-distribution"><i class="fa fa-check"></i><b>9.3</b> Gamma Distribution</a></li>
-<li class="chapter" data-level="9.4" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#normal-gaussian-distribution"><i class="fa fa-check"></i><b>9.4</b> Normal (Gaussian) Distribution</a>
-<ul>
+<li class="chapter" data-level="9.4" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#normal-gaussian-distribution"><i class="fa fa-check"></i><b>9.4</b> Normal (Gaussian) Distribution</a><ul>
 <li class="chapter" data-level="9.4.1" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#example-poll-and-binomial-normal-approximation"><i class="fa fa-check"></i><b>9.4.1</b> Example: Poll and Binomial-Normal approximation</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="central-limit-theorem.html"><a href="central-limit-theorem.html"><i class="fa fa-check"></i><b>10</b> Central Limit Theorem</a></li>
-<li class="chapter" data-level="11" data-path="sampling-distributions.html"><a href="sampling-distributions.html"><i class="fa fa-check"></i><b>11</b> Sampling Distributions</a>
-<ul>
+<li class="chapter" data-level="11" data-path="sampling-distributions.html"><a href="sampling-distributions.html"><i class="fa fa-check"></i><b>11</b> Sampling Distributions</a><ul>
 <li class="chapter" data-level="11.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sample-mean"><i class="fa fa-check"></i><b>11.1</b> Sample Mean</a></li>
-<li class="chapter" data-level="11.2" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sample-variance"><i class="fa fa-check"></i><b>11.2</b> Sample Variance</a>
-<ul>
+<li class="chapter" data-level="11.2" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sample-variance"><i class="fa fa-check"></i><b>11.2</b> Sample Variance</a><ul>
 <li class="chapter" data-level="11.2.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#large-sample-sampling-distribution-of-sample-variance"><i class="fa fa-check"></i><b>11.2.1</b> Large-sample sampling distribution of sample variance</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sampling-distribution-of-studentized-sample-mean"><i class="fa fa-check"></i><b>11.3</b> Sampling distribution of studentized sample mean</a>
-<ul>
-<li class="chapter" data-level="11.3.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#part-of-students-theorem---indepndence-of-overline-x_n-and-s_n2"><i class="fa fa-check"></i><b>11.3.1</b> Part of Student’s Theorem - Indepndence of <span class="math inline">\(\overline X_n\)</span> and <span class="math inline">\(S_n^2\)</span></a></li>
+<li class="chapter" data-level="11.3" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sampling-distribution-of-studentized-sample-mean"><i class="fa fa-check"></i><b>11.3</b> Sampling distribution of studentized sample mean</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#part-of-students-theorem---indepndence-of-overline-x_n-and-s_n2"><i class="fa fa-check"></i><b>11.3.1</b> Part of Student's Theorem - Indepndence of <span class="math inline">\(\overline X_n\)</span> and <span class="math inline">\(S_n^2\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="sampling-distributions.html"><a href="sampling-distributions.html#differences-of-sample-means"><i class="fa fa-check"></i><b>11.4</b> Differences of Sample Means</a>
-<ul>
+<li class="chapter" data-level="11.4" data-path="sampling-distributions.html"><a href="sampling-distributions.html#differences-of-sample-means"><i class="fa fa-check"></i><b>11.4</b> Differences of Sample Means</a><ul>
 <li class="chapter" data-level="11.4.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#standarized-difference"><i class="fa fa-check"></i><b>11.4.1</b> Standarized difference</a></li>
 <li class="chapter" data-level="11.4.2" data-path="sampling-distributions.html"><a href="sampling-distributions.html#studentized-difference-equal-variances"><i class="fa fa-check"></i><b>11.4.2</b> Studentized difference, equal variances</a></li>
 <li class="chapter" data-level="11.4.3" data-path="sampling-distributions.html"><a href="sampling-distributions.html#studentized-difference-unequal-variances"><i class="fa fa-check"></i><b>11.4.3</b> Studentized difference, unequal variances</a></li>
 </ul></li>
 <li class="chapter" data-level="11.5" data-path="sampling-distributions.html"><a href="sampling-distributions.html#ratios-of-sample-variances"><i class="fa fa-check"></i><b>11.5</b> Ratios of Sample Variances</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="statistical-estimation.html"><a href="statistical-estimation.html"><i class="fa fa-check"></i><b>12</b> Statistical Estimation</a>
-<ul>
+<li class="chapter" data-level="12" data-path="statistical-estimation.html"><a href="statistical-estimation.html"><i class="fa fa-check"></i><b>12</b> Statistical Estimation</a><ul>
 <li class="chapter" data-level="12.1" data-path="statistical-estimation.html"><a href="statistical-estimation.html#vocabulary"><i class="fa fa-check"></i><b>12.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="12.2" data-path="statistical-estimation.html"><a href="statistical-estimation.html#properties-of-estimators"><i class="fa fa-check"></i><b>12.2</b> Properties of Estimators</a>
-<ul>
+<li class="chapter" data-level="12.2" data-path="statistical-estimation.html"><a href="statistical-estimation.html#properties-of-estimators"><i class="fa fa-check"></i><b>12.2</b> Properties of Estimators</a><ul>
 <li class="chapter" data-level="12.2.1" data-path="statistical-estimation.html"><a href="statistical-estimation.html#bias-and-unbiasedness"><i class="fa fa-check"></i><b>12.2.1</b> Bias and Unbiasedness</a></li>
 <li class="chapter" data-level="12.2.2" data-path="statistical-estimation.html"><a href="statistical-estimation.html#minimum-variance-unbiased-estimators"><i class="fa fa-check"></i><b>12.2.2</b> Minimum Variance Unbiased Estimators</a></li>
 <li class="chapter" data-level="12.2.3" data-path="statistical-estimation.html"><a href="statistical-estimation.html#mean-squared-error-and-bias-variance-tradeoff"><i class="fa fa-check"></i><b>12.2.3</b> Mean Squared Error and Bias-Variance tradeoff</a></li>
@@ -277,46 +224,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.4" data-path="statistical-estimation.html"><a href="statistical-estimation.html#method-of-maximum-likelihood"><i class="fa fa-check"></i><b>12.4</b> Method of Maximum Likelihood</a></li>
 <li class="chapter" data-level="12.5" data-path="statistical-estimation.html"><a href="statistical-estimation.html#properties-of-mles"><i class="fa fa-check"></i><b>12.5</b> Properties of MLEs</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>13</b> Confidence Intervals</a>
-<ul>
+<li class="chapter" data-level="13" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>13</b> Confidence Intervals</a><ul>
 <li class="chapter" data-level="13.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#why-want-interval-valued-estimates"><i class="fa fa-check"></i><b>13.1</b> Why want interval-valued estimates?</a></li>
 <li class="chapter" data-level="13.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#normal-population-mean-example"><i class="fa fa-check"></i><b>13.2</b> Normal population mean example</a></li>
-<li class="chapter" data-level="13.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#other-exact-cis-for-normal-population-mean-and-variance-parameters"><i class="fa fa-check"></i><b>13.3</b> Other “Exact” CIs for normal population mean and variance parameters</a>
-<ul>
+<li class="chapter" data-level="13.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#other-exact-cis-for-normal-population-mean-and-variance-parameters"><i class="fa fa-check"></i><b>13.3</b> Other &quot;Exact&quot; CIs for normal population mean and variance parameters</a><ul>
 <li class="chapter" data-level="13.3.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#population-mean-unknown-variance"><i class="fa fa-check"></i><b>13.3.1</b> Population mean, unknown variance</a></li>
 <li class="chapter" data-level="13.3.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#population-variance-unknown-mean"><i class="fa fa-check"></i><b>13.3.2</b> Population variance, unknown mean</a></li>
 <li class="chapter" data-level="13.3.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#two-normal-samples-comparing-means"><i class="fa fa-check"></i><b>13.3.3</b> Two normal samples, comparing means</a></li>
 <li class="chapter" data-level="13.3.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#two-normal-samples-comparing-variances"><i class="fa fa-check"></i><b>13.3.4</b> Two normal samples, comparing variances</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#cis-for-proportions"><i class="fa fa-check"></i><b>13.4</b> CIs for proportions</a>
-<ul>
+<li class="chapter" data-level="13.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#cis-for-proportions"><i class="fa fa-check"></i><b>13.4</b> CIs for proportions</a><ul>
 <li class="chapter" data-level="13.4.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#a-single-bernoulli-proportion"><i class="fa fa-check"></i><b>13.4.1</b> A single Bernoulli proportion</a></li>
 <li class="chapter" data-level="13.4.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#difference-of-two-bernoulli-proportions"><i class="fa fa-check"></i><b>13.4.2</b> Difference of two Bernoulli proportions</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="confidence-intervals.html"><a href="confidence-intervals.html#approximate-cis-based-on-mles"><i class="fa fa-check"></i><b>13.5</b> Approximate CIs based on MLEs</a>
-<ul>
+<li class="chapter" data-level="13.5" data-path="confidence-intervals.html"><a href="confidence-intervals.html#approximate-cis-based-on-mles"><i class="fa fa-check"></i><b>13.5</b> Approximate CIs based on MLEs</a><ul>
 <li class="chapter" data-level="13.5.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#multivariate-case"><i class="fa fa-check"></i><b>13.5.1</b> Multivariate case</a></li>
 <li class="chapter" data-level="13.5.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#the-delta-method"><i class="fa fa-check"></i><b>13.5.2</b> The Delta method</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>14</b> Hypothesis Testing</a>
-<ul>
+<li class="chapter" data-level="14" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>14</b> Hypothesis Testing</a><ul>
 <li class="chapter" data-level="14.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#notation"><i class="fa fa-check"></i><b>14.1</b> Notation</a></li>
 <li class="chapter" data-level="14.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-testing-outcomes"><i class="fa fa-check"></i><b>14.2</b> Hypothesis testing outcomes</a></li>
-<li class="chapter" data-level="14.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#tests-based-on-a-normal-population"><i class="fa fa-check"></i><b>14.3</b> Tests based on a normal population</a>
-<ul>
+<li class="chapter" data-level="14.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#tests-based-on-a-normal-population"><i class="fa fa-check"></i><b>14.3</b> Tests based on a normal population</a><ul>
 <li class="chapter" data-level="14.3.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-a-normal-mean-when-the-variance-is-known"><i class="fa fa-check"></i><b>14.3.1</b> Test for a normal mean when the variance is known</a></li>
 <li class="chapter" data-level="14.3.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-a-normal-mean-when-the-variance-is-unknown"><i class="fa fa-check"></i><b>14.3.2</b> Test for a normal mean when the variance is unknown</a></li>
 <li class="chapter" data-level="14.3.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-a-normal-population-variance"><i class="fa fa-check"></i><b>14.3.3</b> Test for a normal population variance</a></li>
 <li class="chapter" data-level="14.3.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#tests-for-a-difference-of-normal-population-means"><i class="fa fa-check"></i><b>14.3.4</b> Tests for a difference of normal population means</a></li>
 <li class="chapter" data-level="14.3.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-equality-of-normal-population-variances"><i class="fa fa-check"></i><b>14.3.5</b> Test for equality of normal population variances</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-based-tests"><i class="fa fa-check"></i><b>14.4</b> Likelihood-based Tests</a>
-<ul>
+<li class="chapter" data-level="14.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-based-tests"><i class="fa fa-check"></i><b>14.4</b> Likelihood-based Tests</a><ul>
 <li class="chapter" data-level="14.4.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#wald-type-tests"><i class="fa fa-check"></i><b>14.4.1</b> Wald type tests</a></li>
 <li class="chapter" data-level="14.4.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-tests"><i class="fa fa-check"></i><b>14.4.2</b> Likelihood ratio tests</a></li>
 </ul></li>
-<li class="chapter" data-level="14.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#chi-squared-tests-for-tabulated-data"><i class="fa fa-check"></i><b>14.5</b> Chi Squared tests for tabulated data</a></li>
+<li class="chapter" data-level="14.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#chi-squared-tests-for-tabulated-data"><i class="fa fa-check"></i><b>14.5</b> Chi Squared tests for tabulated data</a><ul>
+<li class="chapter" data-level="14.5.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#goodness-of-fit-tests"><i class="fa fa-check"></i><b>14.5.1</b> Goodness of fit tests</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>15</b> ANOVA</a><ul>
+<li class="chapter" data-level="15.1" data-path="anova.html"><a href="anova.html#analysis-of-variance"><i class="fa fa-check"></i><b>15.1</b> Analysis of variance</a></li>
+<li class="chapter" data-level="15.2" data-path="anova.html"><a href="anova.html#crop-data-in-depth-example"><i class="fa fa-check"></i><b>15.2</b> Crop data in-depth example</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -338,44 +284,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="special-discrete-distributions" class="section level1" number="8">
+<div id="special-discrete-distributions" class="section level1">
 <h1><span class="header-section-number">Chapter 8</span> Special Discrete Distributions</h1>
-<div id="bernoulli-distribution" class="section level2" number="8.1">
+<div id="bernoulli-distribution" class="section level2">
 <h2><span class="header-section-number">8.1</span> Bernoulli Distribution</h2>
 <p><span class="math inline">\(X\)</span> is a Bernoulli random variable if it only takes values <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>. Denoting <span class="math inline">\(p:=P(X=1)\)</span> the PMF can be written <span class="math inline">\(p(x) = p^x(1-p)^{1-x}\)</span>. The mean and variance are easily found to be <span class="math inline">\(E(X) = p\)</span> and <span class="math inline">\(V(X) = p(1-p)\)</span>. The MGF is <span class="math inline">\(M_X(t) = 1-p+pe^t\)</span>.<br><br></p>
-<p>The Bernoulli distribution can describe two different experiments:<br>
-1. One random sample is taken from a finite population of size <span class="math inline">\(N\)</span> of <span class="math inline">\(Np\)</span> 1’s and <span class="math inline">\(N(1-p)\)</span> 0’s (or any binary attribute), it’s value is recorded, and it is then replaced. <br>
-2. One random sample is taken, without replacement, from an infinite population of 1’s and 0’s in proportions of <span class="math inline">\(p\)</span> and <span class="math inline">\(1-p\)</span>.</p>
+<p>The Bernoulli distribution can describe two different experiments:<br> 1. One random sample is taken from a finite population of size <span class="math inline">\(N\)</span> of <span class="math inline">\(Np\)</span> 1's and <span class="math inline">\(N(1-p)\)</span> 0's (or any binary attribute), it's value is recorded, and it is then replaced. <br> 2. One random sample is taken, without replacement, from an infinite population of 1's and 0's in proportions of <span class="math inline">\(p\)</span> and <span class="math inline">\(1-p\)</span>.</p>
 </div>
-<div id="categorical-distribution" class="section level2" number="8.2">
+<div id="categorical-distribution" class="section level2">
 <h2><span class="header-section-number">8.2</span> Categorical Distribution</h2>
-<p>The categorical distribution generalizes the Bernoulli distribution to more than two values (more than two categories). <span class="math inline">\(X\)</span> is a categorical random variable if it takes values in a finite set of integers, usually <span class="math inline">\(\{1,2,\ldots,k\}\)</span> for <span class="math inline">\(k\geq 3\)</span>. Let <span class="math inline">\(p_i:=P(X=i)\)</span> so that <span class="math inline">\(0\leq p_i\leq 1\)</span> and <span class="math inline">\(\sum_{i=1}^k p_i = 1\)</span>. Note we only need specify <span class="math inline">\(p_1,\ldots p_{k-1}\)</span> and then <span class="math inline">\(p_k = 1- \sum_{i=1}^{k-1}p_i\)</span>. The categorical PMF is
-<span class="math display">\[p(x_1,x_2,\ldots,x_{k-1}) = \prod_{i=1}^{k} p_i^{x_i} = \left\{(1-\sum_{i=1}^{k-1} p_i)^{1-\sum_{i=1}^{k-1} x_i}\right\} \prod_{i=1}^{k-1} p_i^{x_i}.\]</span></p>
+<p>The categorical distribution generalizes the Bernoulli distribution to more than two values (more than two categories). <span class="math inline">\(X\)</span> is a categorical random variable if it takes values in a finite set of integers, usually <span class="math inline">\(\{1,2,\ldots,k\}\)</span> for <span class="math inline">\(k\geq 3\)</span>. Let <span class="math inline">\(p_i:=P(X=i)\)</span> so that <span class="math inline">\(0\leq p_i\leq 1\)</span> and <span class="math inline">\(\sum_{i=1}^k p_i = 1\)</span>. Note we only need specify <span class="math inline">\(p_1,\ldots p_{k-1}\)</span> and then <span class="math inline">\(p_k = 1- \sum_{i=1}^{k-1}p_i\)</span>. The categorical PMF is <span class="math display">\[p(x_1,x_2,\ldots,x_{k-1}) = \prod_{i=1}^{k} p_i^{x_i} = \left\{(1-\sum_{i=1}^{k-1} p_i)^{1-\sum_{i=1}^{k-1} x_i}\right\} \prod_{i=1}^{k-1} p_i^{x_i}.\]</span></p>
 <p>The categorical distribution can describe the same two types of experiments as the Bernoulli, except where the number of categories/values is now <span class="math inline">\(k\)</span> rather than <span class="math inline">\(2\)</span>.</p>
 </div>
-<div id="binomial-distribution" class="section level2" number="8.3">
+<div id="binomial-distribution" class="section level2">
 <h2><span class="header-section-number">8.3</span> Binomial distribution</h2>
-<p>If <span class="math inline">\(X_1,X_2,\ldots, X_n\)</span> is a random sample of <span class="math inline">\(n\)</span> Bernoulli random variables with parameter <span class="math inline">\(p\)</span>, then <span class="math inline">\(Y = \sum_{i=1}^n X_i\)</span> is a Binomial random variable with PMF
-<span class="math display">\[p(y) = {n \choose y}p^y(1-p)^{n-y}, \,\, y\in \{0, 1,\ldots, n\}.\]</span></p>
-<p>The easiest way to determine moments of the Binomial distribution is to consider its MGF. Using the fact the Binomial is a sum of independent and identically distributed (same <span class="math inline">\(p\)</span>) Bernoulli r.v.’s we have
+<p>If <span class="math inline">\(X_1,X_2,\ldots, X_n\)</span> is a random sample of <span class="math inline">\(n\)</span> Bernoulli random variables with parameter <span class="math inline">\(p\)</span>, then <span class="math inline">\(Y = \sum_{i=1}^n X_i\)</span> is a Binomial random variable with PMF <span class="math display">\[p(y) = {n \choose y}p^y(1-p)^{n-y}, \,\, y\in \{0, 1,\ldots, n\}.\]</span></p>
+The easiest way to determine moments of the Binomial distribution is to consider its MGF. Using the fact the Binomial is a sum of independent and identically distributed (same <span class="math inline">\(p\)</span>) Bernoulli r.v.'s we have
 <span class="math display">\[\begin{align*}
 E(e^{tY}) &amp; = E(e^{t\sum X_i}) \\
 &amp; = E\left\{\prod_{i=1}^n e^{t X_i}\right\}\\
 &amp; \stackrel{ind.}{=} \prod_{i=1}^n (1-p + pe^t)\\
 &amp; = (1-p + pe^t)^n.
 \end{align*}\]</span>
-Then, by differentiating once and twice:
-<span class="math display">\[E(Y) = npe^t(1-p + pe^t)^{n-1}|_{t=0} = np\]</span>
-<span class="math display">\[E(Y^2) = npe^t(1-p + pe^t)^{n-1} + npe^t(n-1)pe^t((1-p + pe^t)^{n-2})|_{t=0} = np+(np)^2-np^2\]</span>
-<span class="math display">\[V(Y) = np(1-p).\]</span></p>
-<p>The Binomial distribution describes the outcomes of a repeated random sampling of Bernoulli r.v.’s. For example, in a poll of eligible voters with a binary “yes” or “no” vote a Bernoulli random variable represents one voter’s outcome/vote and a Binomial random variable represents the sum of outcomes in the entire poll of <span class="math inline">\(n\)</span> voters. Often, rather than the sum total we are interested in the sample proportion of yes/no votes, which is the transformation <span class="math inline">\(Z = Y/n\)</span>. Probabilities of <span class="math inline">\(Z\)</span> are easily deduced from <span class="math inline">\(Y\)</span> by <span class="math inline">\(P(Z = z) = P(Y = nz)\)</span>. Likewise, <span class="math inline">\(E(Z^q) = \frac{1}{n^q}E(Y)\)</span> for positive integers <span class="math inline">\(q\)</span>. For example, the mean and variance of the sample proportion is <span class="math inline">\(E(Z) = p\)</span> and <span class="math inline">\(V(Z) = \frac{p(1-p)}{n}\)</span>.</p>
+<p>Then, by differentiating once and twice: <span class="math display">\[E(Y) = npe^t(1-p + pe^t)^{n-1}|_{t=0} = np\]</span> <span class="math display">\[E(Y^2) = npe^t(1-p + pe^t)^{n-1} + npe^t(n-1)pe^t((1-p + pe^t)^{n-2})|_{t=0} = np+(np)^2-np^2\]</span> <span class="math display">\[V(Y) = np(1-p).\]</span></p>
+<p>The Binomial distribution describes the outcomes of a repeated random sampling of Bernoulli r.v.'s. For example, in a poll of eligible voters with a binary &quot;yes&quot; or &quot;no&quot; vote a Bernoulli random variable represents one voter's outcome/vote and a Binomial random variable represents the sum of outcomes in the entire poll of <span class="math inline">\(n\)</span> voters. Often, rather than the sum total we are interested in the sample proportion of yes/no votes, which is the transformation <span class="math inline">\(Z = Y/n\)</span>. Probabilities of <span class="math inline">\(Z\)</span> are easily deduced from <span class="math inline">\(Y\)</span> by <span class="math inline">\(P(Z = z) = P(Y = nz)\)</span>. Likewise, <span class="math inline">\(E(Z^q) = \frac{1}{n^q}E(Y)\)</span> for positive integers <span class="math inline">\(q\)</span>. For example, the mean and variance of the sample proportion is <span class="math inline">\(E(Z) = p\)</span> and <span class="math inline">\(V(Z) = \frac{p(1-p)}{n}\)</span>.</p>
 </div>
-<div id="multinomial-distribution" class="section level2" number="8.4">
+<div id="multinomial-distribution" class="section level2">
 <h2><span class="header-section-number">8.4</span> Multinomial Distribution</h2>
 <p>Let <span class="math inline">\(X_i\)</span> be a categorical random variable encoded as a binary vector in <span class="math inline">\(\mathbb{R}^k\)</span> with <span class="math inline">\(\|X_i\|_1 = 1\)</span>. That is, <span class="math inline">\(X_i\)</span> is a vector of zeroes and one 1 at the <span class="math inline">\(j^{th}\)</span> index if <span class="math inline">\(X_i\)</span> takes value <span class="math inline">\(j \in \{1,\ldots, k\}\)</span>. This is a different representation than simply taking <span class="math inline">\(X_i\)</span> equal to its category, as represented by an integer. Then, if <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> is a random sample (a set of independent and identically distributed) categorical random variables (as represented by binary <span class="math inline">\(k-\)</span>vectors), then <span class="math inline">\(Y = \sum_{i=1}^n X_i\)</span> is a Multinomial random variable. Note <span class="math inline">\(Y\)</span> is a <span class="math inline">\(k0-\)</span>vector with integer entries representing the counts of each category appearing in the random sample. So, the Multinomial is analogous to the Binomial as the categorical is to the Bernoulli. The PMF of <span class="math inline">\(Y\)</span> is</p>
-<p><span class="math display">\[p(y_1, y_2, \ldots, y_{k}) = \frac{n!}{y_1!\times y_2!\times \cdots \times y_k!}p_1^{y_1}\times \cdots \times p_k^{y_k}\]</span>
-where <span class="math inline">\(n = \sum_{i=1}^k y_i\)</span>, <span class="math inline">\(p_k = 1 - \sum_{i=1}^k p_i\)</span>.</p>
-<p>Using the representation of the Multinomial in terms of sums of categorical random variables helps in computing moments. Let’s compute the covariance of <span class="math inline">\(Y_\ell\)</span> and <span class="math inline">\(Y_j\)</span>, which represent the counts of categories <span class="math inline">\(\ell\)</span> and <span class="math inline">\(j\)</span>. For each count, write <span class="math inline">\(Y_j = \sum_{i=1}^nX_{ij}\)</span>, the sum of the <span class="math inline">\(j^{th}\)</span> index of the X categorical random variable vectors. Then,
+<p><span class="math display">\[p(y_1, y_2, \ldots, y_{k}) = \frac{n!}{y_1!\times y_2!\times \cdots \times y_k!}p_1^{y_1}\times \cdots \times p_k^{y_k}\]</span> where <span class="math inline">\(n = \sum_{i=1}^k y_i\)</span>, <span class="math inline">\(p_k = 1 - \sum_{i=1}^k p_i\)</span>.</p>
+Using the representation of the Multinomial in terms of sums of categorical random variables helps in computing moments. Let's compute the covariance of <span class="math inline">\(Y_\ell\)</span> and <span class="math inline">\(Y_j\)</span>, which represent the counts of categories <span class="math inline">\(\ell\)</span> and <span class="math inline">\(j\)</span>. For each count, write <span class="math inline">\(Y_j = \sum_{i=1}^nX_{ij}\)</span>, the sum of the <span class="math inline">\(j^{th}\)</span> index of the X categorical random variable vectors. Then,
 <span class="math display">\[\begin{align*}
 E(Y_\ell Y_j) &amp;= E\{(\sum_{i=1}^n X_{i\ell})(\sum_{i=1}^n X_{ij})\}\\
 &amp; = E(\sum_{i=1}^n X_{i\ell}X_{ij}) + E(\sum_{i=1,i\ne i&#39;}^n X_{i\ell}X_{i&#39;j})\\
@@ -383,120 +321,56 @@ E(Y_\ell Y_j) &amp;= E\{(\sum_{i=1}^n X_{i\ell})(\sum_{i=1}^n X_{ij})\}\\
 &amp; \stackrel{ind.}{=}  \sum_{i=1,i\ne i&#39;}^n E(X_{i\ell})E(X_{i&#39;j})\\
 &amp; = n(n-1)p_\ell p_j.
 \end{align*}\]</span>
-The marginal expectations are easier to compute:
-<span class="math display">\[E(Y_\ell) = E\left\{\sum_{i=1}^n X_{i\ell}\right\} = np_\ell.\]</span>
-Therefore, the covariance is
-<span class="math display">\[Cov(Y_\ell, Y_j) = -np_\ell p_j,\]</span>
-which makes sense — for <span class="math inline">\(n\)</span> samples if there are more samples in category <span class="math inline">\(\ell\)</span> then there necessarily are fewer in category <span class="math inline">\(j\)</span>, and vice versa. <br><br></p>
-<p>The Multinomial distribution is special for the fact its marginal and conditional distributions are also multi/binomial. Consider the marginal distribution of the first category count <span class="math inline">\(Y_1\)</span>. Using the total probability formula, we can compute its marginal probabilities:
-<span class="math display">\[P(Y_1 = y_1) = \sum_{\mathbb{Y}}P(Y_1 = y_1, Y_2 = y_2, Y_3 = y_3, \ldots,Y_k = y_k),\]</span>
-where <span class="math inline">\(\mathbb{Y} = \{(y_2, \ldots, y_k): n-y_1 =\sum_{2}^k y_j\}\)</span>. In other words,
-<span class="math display">\[P(Y_1 = y_1) = P(Y_1 = y_1, \sum_2^k Y_j = n - y_1).\]</span>
-This reveals that the marginal probability of <span class="math inline">\(Y_1\)</span> is a Binomial probability—the only “categories” that matter to the computation are “1” and “not 1.” Therefore, <span class="math inline">\(Y_j \sim\)</span>Binomial<span class="math inline">\((n,p_j)\)</span> for <span class="math inline">\(j \in \{1,\ldots,k\}\)</span>. <br><br></p>
+<p>The marginal expectations are easier to compute: <span class="math display">\[E(Y_\ell) = E\left\{\sum_{i=1}^n X_{i\ell}\right\} = np_\ell.\]</span> Therefore, the covariance is <span class="math display">\[Cov(Y_\ell, Y_j) = -np_\ell p_j,\]</span> which makes sense --- for <span class="math inline">\(n\)</span> samples if there are more samples in category <span class="math inline">\(\ell\)</span> then there necessarily are fewer in category <span class="math inline">\(j\)</span>, and vice versa. <br><br></p>
+<p>The Multinomial distribution is special for the fact its marginal and conditional distributions are also multi/binomial. Consider the marginal distribution of the first category count <span class="math inline">\(Y_1\)</span>. Using the total probability formula, we can compute its marginal probabilities: <span class="math display">\[P(Y_1 = y_1) = \sum_{\mathbb{Y}}P(Y_1 = y_1, Y_2 = y_2, Y_3 = y_3, \ldots,Y_k = y_k),\]</span> where <span class="math inline">\(\mathbb{Y} = \{(y_2, \ldots, y_k): n-y_1 =\sum_{2}^k y_j\}\)</span>. In other words, <span class="math display">\[P(Y_1 = y_1) = P(Y_1 = y_1, \sum_2^k Y_j = n - y_1).\]</span> This reveals that the marginal probability of <span class="math inline">\(Y_1\)</span> is a Binomial probability---the only &quot;categories&quot; that matter to the computation are &quot;1&quot; and &quot;not 1&quot;. Therefore, <span class="math inline">\(Y_j \sim\)</span>Binomial<span class="math inline">\((n,p_j)\)</span> for <span class="math inline">\(j \in \{1,\ldots,k\}\)</span>. <br><br></p>
 <p>Given the one-dimensional marginal distributions are Binomial, we can compute the conditional PMF of <span class="math inline">\(Y_2,\ldots, Y_k|Y_1 = y_1\)</span> as the ratio of joint to marginal PMFs:</p>
-<p><span class="math display">\[\begin{align*}
+<span class="math display">\[\begin{align*}
 p(y_2, \ldots, y_k|y_1) &amp;= \frac{\frac{n!}{y_1!\times \cdots \times y_k!} p_1^{y_1}\times \cdots \times p_k^{y_k}}{ \frac{n!}{y_1! (n-y_1)!} p_1^{y_1}(1-p_1)^{n-y_1}}\\
 &amp; = \frac{(n-y_1)!}{y_2!\times \cdots y_k!}\left(\frac{p_2}{1-p_1}\right)^{y_2}\times \cdots \times \left(\frac{p_k}{1-p_1}\right)^{y_k}.
-\end{align*}\]</span></p>
+\end{align*}\]</span>
 </div>
-<div id="hypergeometric-distribution" class="section level2" number="8.5">
+<div id="hypergeometric-distribution" class="section level2">
 <h2><span class="header-section-number">8.5</span> Hypergeometric distribution</h2>
 <p>The Hypergeometric distribution describes sampling from a finite population without replacement. Traditionally, the distribution describes binary outcomes, but the idea is generalizeable.<br><br></p>
-<p>Suppose there are <span class="math inline">\(n = n_1 + n_2\)</span> individuals, <span class="math inline">\(n_1\)</span> 1s and <span class="math inline">\(n_2\)</span> 0s. If <span class="math inline">\(k\)</span> individuals are randomly selected without replacement, then the probability <span class="math inline">\(j\)</span> of them are 1s is
-<span class="math display">\[P(X = j) = p(j) = \frac{{n_1 \choose j}{n_2 \choose k-j}}{{n \choose k}}, \, \, 0\leq j\leq \min(k,n_1).\]</span></p>
-<p>The calculations of moments of the Hypergeometric distribution requires repeated use of the Binomial Theorem, and does not provide much insight about the distribution, but the formulas for the Hypergeometric mean and variance are insightful, so we include them here.
-<span class="math display">\[E(X) = k\frac{n_1}{n}\quad V(X) = k\frac{n_1}{n}\frac{n_2}{n}\frac{n-n_1}{n-1}.\]</span>
-The mean of <span class="math inline">\(X\)</span> is very similar to the mean of a Binomial r.v. In this case the population proportion of 1s is exactly <span class="math inline">\(n_1/n\)</span>, which is analogous to <span class="math inline">\(p\)</span> in the Binomial case, so the formula is virtually the same. On the other hand, the variance for the Hypergeometric is like <span class="math inline">\(np(1-p)\)</span> times a “correction term” <span class="math inline">\(\frac{n-n_1}{n-1}\)</span>. We can understand the correction term as accounting for the finite-ness of the population/sampling without replacement versus sampling with replacement, as in the case of a Binomial experiment. If <span class="math inline">\(n\)</span> is large relative to <span class="math inline">\(n_1\)</span>, then this term is negligible, and there is little difference between the variances of the two distributions.</p>
+<p>Suppose there are <span class="math inline">\(n = n_1 + n_2\)</span> individuals, <span class="math inline">\(n_1\)</span> 1s and <span class="math inline">\(n_2\)</span> 0s. If <span class="math inline">\(k\)</span> individuals are randomly selected without replacement, then the probability <span class="math inline">\(j\)</span> of them are 1s is <span class="math display">\[P(X = j) = p(j) = \frac{{n_1 \choose j}{n_2 \choose k-j}}{{n \choose k}}, \, \, 0\leq j\leq \min(k,n_1).\]</span></p>
+<p>The calculations of moments of the Hypergeometric distribution requires repeated use of the Binomial Theorem, and does not provide much insight about the distribution, but the formulas for the Hypergeometric mean and variance are insightful, so we include them here. <span class="math display">\[E(X) = k\frac{n_1}{n}\quad V(X) = k\frac{n_1}{n}\frac{n_2}{n}\frac{n-n_1}{n-1}.\]</span> The mean of <span class="math inline">\(X\)</span> is very similar to the mean of a Binomial r.v. In this case the population proportion of 1s is exactly <span class="math inline">\(n_1/n\)</span>, which is analogous to <span class="math inline">\(p\)</span> in the Binomial case, so the formula is virtually the same. On the other hand, the variance for the Hypergeometric is like <span class="math inline">\(np(1-p)\)</span> times a &quot;correction term&quot; <span class="math inline">\(\frac{n-n_1}{n-1}\)</span>. We can understand the correction term as accounting for the finite-ness of the population/sampling without replacement versus sampling with replacement, as in the case of a Binomial experiment. If <span class="math inline">\(n\)</span> is large relative to <span class="math inline">\(n_1\)</span>, then this term is negligible, and there is little difference between the variances of the two distributions.</p>
 <p><br><br></p>
 <p>Consider extending the hypergeometric to more than two categories. Let <span class="math inline">\(Y_1\)</span>, <span class="math inline">\(Y_2\)</span>, and <span class="math inline">\(Y_3\)</span> denote the counts of observations in each of three possible categories. These are sums of categorical random variable vectors sampled without replacement. Then,</p>
-<p><span class="math display">\[P(Y_1 = y_1, Y_2 = y_2, Y_3 = y_3) = \frac{{n_1\choose y_1}{n_2\choose y_2}{n_3\choose y_3}}{{n \choose y}}\]</span>
-where <span class="math inline">\(n = n_1+n_2+n_3\)</span> represent the population category counts, <span class="math inline">\(y_1 + y_2 + y_3 = y \leq n\)</span>, and <span class="math inline">\(0\leq y_i\leq n_i\)</span> for <span class="math inline">\(i=1,2,3\)</span>.</p>
+<p><span class="math display">\[P(Y_1 = y_1, Y_2 = y_2, Y_3 = y_3) = \frac{{n_1\choose y_1}{n_2\choose y_2}{n_3\choose y_3}}{{n \choose y}}\]</span> where <span class="math inline">\(n = n_1+n_2+n_3\)</span> represent the population category counts, <span class="math inline">\(y_1 + y_2 + y_3 = y \leq n\)</span>, and <span class="math inline">\(0\leq y_i\leq n_i\)</span> for <span class="math inline">\(i=1,2,3\)</span>.</p>
 </div>
-<div id="negative-binomial-distribution" class="section level2" number="8.6">
+<div id="negative-binomial-distribution" class="section level2">
 <h2><span class="header-section-number">8.6</span> Negative Binomial Distribution</h2>
-<p>Let <span class="math inline">\(X_1, X_2, \ldots\)</span> represent independent, identically distributed Bernoulli r.v.’s and define <span class="math inline">\(Y\)</span> to be the number of 1’s observed when the <span class="math inline">\(k^{th}\)</span> 0 is observed; <span class="math inline">\(k\)</span> is a fixed parameter. Then, the PMF of <span class="math inline">\(Y\)</span> is
-<span class="math display">\[p(y) = {k + y - 1 \choose k-1}(1-p)^kp^{y}, \, y\geq 0.\]</span>
-We say <span class="math inline">\(Y\)</span> is a Negative Binomial r.v. In the special case that <span class="math inline">\(k=1\)</span> <span class="math inline">\(Y\)</span> is called a Geometric r.v. and the PMF simplifies to
-<span class="math display">\[p(y) = (1-p)p^y\]</span>
-<br><br>
-The Negative Binomial is closely related to the binomial distribution. Both involve sequences of iid Bernoulli r.v.’s, but count different types of outcomes. The Binomial counts “successes” while the Negative Binomial counts “trials” until the <span class="math inline">\(k^{th}\)</span> failure. Notice that there is a built-in conditioning inherent in the negative binomial because we know the last trial is a failure. This accounts for the “counting term” appearing in the PMF—the last trial is fixed as a failure, so there are only the previous <span class="math inline">\(k+y - 1\)</span> trials that can be arranged in any order. <br><br></p>
-<p>The Negative Binomial for <span class="math inline">\(k\)</span> “failures” can be represented as a sum of <span class="math inline">\(k\)</span> independent Geometric r.v.’s, much like the Binomial is a sum of <span class="math inline">\(n\)</span> Bernoulli r.v.’s. This makes computing moments much simpler. If <span class="math inline">\(X\)</span> is a Geometric r.v., then
-<span class="math display">\[E(X) = \sum_{x=0}^\infty x \, p^x (1-p) = \frac{(1-p)p}{(1-p)^2} = \frac{p}{1-p}.\]</span>
-Then, if <span class="math inline">\(Y\)</span> is Negative Binomial with parameter <span class="math inline">\(k\)</span>, <span class="math inline">\(E(Y) = \frac{kp}{1-p}\)</span>.</p>
+<p>Let <span class="math inline">\(X_1, X_2, \ldots\)</span> represent independent, identically distributed Bernoulli r.v.'s and define <span class="math inline">\(Y\)</span> to be the number of 1's observed when the <span class="math inline">\(k^{th}\)</span> 0 is observed; <span class="math inline">\(k\)</span> is a fixed parameter. Then, the PMF of <span class="math inline">\(Y\)</span> is <span class="math display">\[p(y) = {k + y - 1 \choose k-1}(1-p)^kp^{y}, \, y\geq 0.\]</span> We say <span class="math inline">\(Y\)</span> is a Negative Binomial r.v. In the special case that <span class="math inline">\(k=1\)</span> <span class="math inline">\(Y\)</span> is called a Geometric r.v. and the PMF simplifies to <span class="math display">\[p(y) = (1-p)p^y\]</span> <br><br> The Negative Binomial is closely related to the binomial distribution. Both involve sequences of iid Bernoulli r.v.'s, but count different types of outcomes. The Binomial counts &quot;successes&quot; while the Negative Binomial counts &quot;trials&quot; until the <span class="math inline">\(k^{th}\)</span> failure. Notice that there is a built-in conditioning inherent in the negative binomial because we know the last trial is a failure. This accounts for the &quot;counting term&quot; appearing in the PMF---the last trial is fixed as a failure, so there are only the previous <span class="math inline">\(k+y - 1\)</span> trials that can be arranged in any order. <br><br></p>
+<p>The Negative Binomial for <span class="math inline">\(k\)</span> &quot;failures&quot; can be represented as a sum of <span class="math inline">\(k\)</span> independent Geometric r.v.'s, much like the Binomial is a sum of <span class="math inline">\(n\)</span> Bernoulli r.v.'s. This makes computing moments much simpler. If <span class="math inline">\(X\)</span> is a Geometric r.v., then <span class="math display">\[E(X) = \sum_{x=0}^\infty x \, p^x (1-p) = \frac{(1-p)p}{(1-p)^2} = \frac{p}{1-p}.\]</span> Then, if <span class="math inline">\(Y\)</span> is Negative Binomial with parameter <span class="math inline">\(k\)</span>, <span class="math inline">\(E(Y) = \frac{kp}{1-p}\)</span>.</p>
 </div>
-<div id="poisson-distribution" class="section level2" number="8.7">
+<div id="poisson-distribution" class="section level2">
 <h2><span class="header-section-number">8.7</span> Poisson Distribution</h2>
-<p>Consider an experiment in which you count the number of “events” that happen since time zero to time <span class="math inline">\(t&gt;0\)</span>. For example, you might count shooting stars from your campsite at Big Creek State Park. This doesn’t sound like other experiments we’ve discussed. For one, how would you compute <span class="math inline">\(P(X_t = 5)\)</span>, the chance the number of shooting stars observed by time <span class="math inline">\(t\)</span> is 5? It’s not clear how a counting argument would apply to this situation. As we’ll show below, with a few assumptions we can use a counting argument to derive this probability, and, once again, the Bernoulli distribution is key…<br><br></p>
-<p>For a little more structure, let’s assume the following:<br>
-1. If we consider a very small time interval, <span class="math inline">\((0, \delta t)\)</span> for a fixed <span class="math inline">\(t&gt;0\)</span> and a small number <span class="math inline">\(\delta&gt;0\)</span> we assume no more than one event can be observed in the interval. Essentially, this means events cannot occur <em>simultaneously</em>. <br>
-2. The probability of one event in and interval of time length <span class="math inline">\(\delta t\)</span> is proportional to <span class="math inline">\(\delta t\)</span>, that is, the probability equals <span class="math inline">\(\lambda \delta t\)</span> for some constant <span class="math inline">\(\lambda &gt;0\)</span>.<br>
-3. For any two disjoint time intervals, the counts of events in those two intervals are independent.
-<br><br></p>
-<p>These assumptions allow us to make the following argument: the time interval <span class="math inline">\((0,t)\)</span> can be partitioned into the union of disjoint intervals
-<span class="math display">\[(0,t) = \bigcup_{j=1}^{1/\delta} ((j-1)\delta t, \, j\delta t).\]</span>
-And, the probability of <span class="math inline">\(k\)</span> events in <span class="math inline">\((0,t)\)</span> is now a Binomial r.v.
-<span class="math display">\[\text{``}P(X = k) = {1/\delta\choose k} (\lambda \delta t)^k (1- \lambda \delta t)^{1/\delta - k}.\text{&quot;}\]</span>
-I’ve written the previous probability in quotes for a couple of reasons… First, since <span class="math inline">\(1/\delta\)</span> may not be an integer, it doesn’t really make sense. Second, <span class="math inline">\(\delta\)</span> is not really a constant. Our assumption truly is that no two events happen simultaneously, which implies our treatment of intervals as Bernoulli random variables is only valid in a limiting sense as the width of the intervals is taken to be arbitrarily small. We can incorporate this limit by evaluating the limit of the PMF in quotes above as <span class="math inline">\(\delta \rightarrow 0\)</span>. Equivalently, we can evaluate the limit of the corresponding Binomial MGF as <span class="math inline">\((1/\delta)\rightarrow \infty\)</span>, which is slightly easier. Recall the Binomial MGF in this context is
-<span class="math display">\[M_X(u) = (1- \lambda \delta t + \lambda \delta t e^u)^{1/\delta}.\]</span>
-Then, its limit satisfies (defining <span class="math inline">\(v = 1/\delta\)</span>)
+<p>Consider an experiment in which you count the number of &quot;events&quot; that happen since time zero to time <span class="math inline">\(t&gt;0\)</span>. For example, you might count shooting stars from your campsite at Big Creek State Park. This doesn't sound like other experiments we've discussed. For one, how would you compute <span class="math inline">\(P(X_t = 5)\)</span>, the chance the number of shooting stars observed by time <span class="math inline">\(t\)</span> is 5? It's not clear how a counting argument would apply to this situation. As we'll show below, with a few assumptions we can use a counting argument to derive this probability, and, once again, the Bernoulli distribution is key...<br><br></p>
+<p>For a little more structure, let's assume the following:<br> 1. If we consider a very small time interval, <span class="math inline">\((0, \delta t)\)</span> for a fixed <span class="math inline">\(t&gt;0\)</span> and a small number <span class="math inline">\(\delta&gt;0\)</span> we assume no more than one event can be observed in the interval. Essentially, this means events cannot occur <em>simultaneously</em>. <br> 2. The probability of one event in and interval of time length <span class="math inline">\(\delta t\)</span> is proportional to <span class="math inline">\(\delta t\)</span>, that is, the probability equals <span class="math inline">\(\lambda \delta t\)</span> for some constant <span class="math inline">\(\lambda &gt;0\)</span>.<br> 3. For any two disjoint time intervals, the counts of events in those two intervals are independent. <br><br></p>
+These assumptions allow us to make the following argument: the time interval <span class="math inline">\((0,t)\)</span> can be partitioned into the union of disjoint intervals <span class="math display">\[(0,t) = \bigcup_{j=1}^{1/\delta} ((j-1)\delta t, \, j\delta t).\]</span> And, the probability of <span class="math inline">\(k\)</span> events in <span class="math inline">\((0,t)\)</span> is now a Binomial r.v. <span class="math display">\[\text{``}P(X = k) = {1/\delta\choose k} (\lambda \delta t)^k (1- \lambda \delta t)^{1/\delta - k}.\text{&quot;}\]</span> I've written the previous probability in quotes for a couple of reasons... First, since <span class="math inline">\(1/\delta\)</span> may not be an integer, it doesn't really make sense. Second, <span class="math inline">\(\delta\)</span> is not really a constant. Our assumption truly is that no two events happen simultaneously, which implies our treatment of intervals as Bernoulli random variables is only valid in a limiting sense as the width of the intervals is taken to be arbitrarily small. We can incorporate this limit by evaluating the limit of the PMF in quotes above as <span class="math inline">\(\delta \rightarrow 0\)</span>. Equivalently, we can evaluate the limit of the corresponding Binomial MGF as <span class="math inline">\((1/\delta)\rightarrow \infty\)</span>, which is slightly easier. Recall the Binomial MGF in this context is <span class="math display">\[M_X(u) = (1- \lambda \delta t + \lambda \delta t e^u)^{1/\delta}.\]</span> Then, its limit satisfies (defining <span class="math inline">\(v = 1/\delta\)</span>)
 <span class="math display">\[\begin{align*}
 \lim_{v \rightarrow \infty} \left(1+ \frac{\lambda t(e^u -1)}{v}\right)^{v}\\
 &amp; = e^{\lambda t(e^u - 1)}
 \end{align*}\]</span>
-using the fact <span class="math inline">\(\lim_n\rightarrow \infty (1+x/n)^n = e^x.\)</span>
-<br><br>
-This function is the MGF of the Poisson distribution, and has corresponding PMF
-<span class="math display">\[p(x) = \frac{(\lambda t)^x e^{-\lambda t}}{x!},\, x=0,1,\ldots\]</span></p>
-<div id="example-1-poisson-process" class="section level3" number="8.7.1">
+<p>using the fact <span class="math inline">\(\lim_n\rightarrow \infty (1+x/n)^n = e^x.\)</span> <br><br> This function is the MGF of the Poisson distribution, and has corresponding PMF <span class="math display">\[p(x) = \frac{(\lambda t)^x e^{-\lambda t}}{x!},\, x=0,1,\ldots\]</span></p>
+<div id="example-1-poisson-process" class="section level3">
 <h3><span class="header-section-number">8.7.1</span> Example 1: Poisson process</h3>
 <p>Shoppers enter Hyvee according to a Poisson process with intensity <span class="math inline">\(\lambda = 6\)</span> per minute. What is the chance that in the next 15 seconds either 0, 1, or 2 customers enter?<br><br></p>
 <p>Solution: First, find the intensity for a 15 second period, <span class="math inline">\(6\)</span> per minute means <span class="math inline">\(1.5\)</span> per 15 seconds. Then, compute</p>
-<p><span class="math display">\[p(0)+p(1)+p(2) = \frac{\lambda^0e^{-\lambda}}{0!}+\frac{\lambda^1e^{-\lambda}}{1!}+\frac{\lambda^2e^{-\lambda}}{2!}\]</span>
-<span class="math display">\[e^{-1.5}\left\{1+a.5 + \frac{1.5^2}{2}\right\}\]</span>
-<span class="math display">\[ \approx 0.809\]</span></p>
+<p><span class="math display">\[p(0)+p(1)+p(2) = \frac{\lambda^0e^{-\lambda}}{0!}+\frac{\lambda^1e^{-\lambda}}{1!}+\frac{\lambda^2e^{-\lambda}}{2!}\]</span> <span class="math display">\[e^{-1.5}\left\{1+a.5 + \frac{1.5^2}{2}\right\}\]</span> <span class="math display">\[ \approx 0.809\]</span></p>
 </div>
-<div id="example-2-poisson-approximation-to-binomial" class="section level3" number="8.7.2">
+<div id="example-2-poisson-approximation-to-binomial" class="section level3">
 <h3><span class="header-section-number">8.7.2</span> Example 2: Poisson approximation to Binomial</h3>
-<p>Let <span class="math inline">\(X\sim Binomial(n,p)\)</span>. When the number of trials is ``large” and the Bernoulli success probability <span class="math inline">\(p\)</span> is small, <span class="math inline">\(p(x)\)</span> can be approximated by the Poisson PMF <span class="math inline">\(p(y)\)</span> where <span class="math inline">\(Y\sim Poisson(\lambda = np)\)</span>. A rule of thumb provided by the Freund textbook says the approximation is good when <span class="math inline">\(n\geq 20\)</span> and <span class="math inline">\(p\leq 0.05\)</span>. <br><br></p>
+<p>Let <span class="math inline">\(X\sim Binomial(n,p)\)</span>. When the number of trials is ``large&quot; and the Bernoulli success probability <span class="math inline">\(p\)</span> is small, <span class="math inline">\(p(x)\)</span> can be approximated by the Poisson PMF <span class="math inline">\(p(y)\)</span> where <span class="math inline">\(Y\sim Poisson(\lambda = np)\)</span>. A rule of thumb provided by the Freund textbook says the approximation is good when <span class="math inline">\(n\geq 20\)</span> and <span class="math inline">\(p\leq 0.05\)</span>. <br><br></p>
 <p>Suppose in a population of drivers about <span class="math inline">\(5\%\)</span> will have an accident in the coming year. Let <span class="math inline">\(X\)</span> be the number of accidents among a random sample of 150 of these drivers. Find <span class="math inline">\(p(5)\)</span>, the probability there will be 5 accidents among the sampled drivers. Use the Binomial and its Poisson approximation and compare the answers.<br><br></p>
-<p>Solution:
-<span class="math display">\[p_X(5) = {150 \choose 5}(0.05)^5(0.95)^{145} = dbinom(5,150,0.05) \approx 0.109. \]</span>
-Let <span class="math inline">\(Y \sim Poisson(7.5)\)</span>.
-<span class="math display">\[p_Y(5) = \frac{7.5^5 e^{-7.5}}{5!} = dpois(5,7.5) \approx 0.109. \]</span></p>
+<p>Solution: <span class="math display">\[p_X(5) = {150 \choose 5}(0.05)^5(0.95)^{145} = dbinom(5,150,0.05) \approx 0.109. \]</span> Let <span class="math inline">\(Y \sim Poisson(7.5)\)</span>. <span class="math display">\[p_Y(5) = \frac{7.5^5 e^{-7.5}}{5!} = dpois(5,7.5) \approx 0.109. \]</span></p>
 </div>
 </div>
-<div id="optional-derivation-of-the-poisson-pmf-using-differential-equations" class="section level2" number="8.8">
+<div id="optional-derivation-of-the-poisson-pmf-using-differential-equations" class="section level2">
 <h2><span class="header-section-number">8.8</span> Optional: Derivation of the Poisson PMF using differential equations</h2>
 <p>We begin with the same three assumptions as before: in a very small time intervals (of length <span class="math inline">\(\delta t\)</span>) the number of events is Bernoulli with <span class="math inline">\(p=\lambda\delta t\)</span>, and counts in disjoint time intervals are independent.<br><br></p>
-<p>Next, consider the probability of zero events in the time interval <span class="math inline">\((0, t+\delta t)\)</span>. This is equal the probability of no events in <span class="math inline">\((0,t)\)</span> and no events in <span class="math inline">\((t, t+\delta t)\)</span>, two disjoint time intervals. We can write this probability as
-<span class="math display">\[P(0; t+\delta t) = P(0;t)(1-\lambda \delta t)\]</span>
-using the fact the probability in the second, small interval is Bernoulli. Rewrite this as
-<span class="math display">\[\frac{P(0;t+\delta t)-P(0;t)}{\delta t} = -\lambda P(0;t),\]</span>
-and, taking limits as <span class="math inline">\(\delta t \rightarrow 0\)</span> we obtain the separable ODE
-<span class="math display">\[\frac{dP(0;t)}{dt} - \lambda P(0;t).\]</span>
-Integrating both sides we find
-<span class="math display">\[P(0;t) = Ce^{-\lambda t}\]</span>
-for a constant <span class="math inline">\(C&gt;0\)</span>. The ``initial condition” says <span class="math inline">\(P(0;0) = 1\)</span> because no events can happen in a time interval of length zero, which implies <span class="math inline">\(C=1\)</span>. <br><br></p>
-<p>So far we have found the probability of zero events in time interval <span class="math inline">\((0,t)\)</span>. What about generalizing this to <span class="math inline">\(n\)</span> events? Use the same technique and represent the interval <span class="math inline">\((0, t+\delta t)\)</span> as the union of <span class="math inline">\((0,t)\)</span> and <span class="math inline">\((t, t+\delta t)\)</span>. For the probability there are <span class="math inline">\(n\)</span> events in time <span class="math inline">\((0,t+\delta t)\)</span> there are two possibilities: <span class="math inline">\(n-1\)</span> events in <span class="math inline">\((0,1)\)</span> and <span class="math inline">\(1\)</span> in <span class="math inline">\((t, t+\delta t)\)</span> or <span class="math inline">\(n\)</span> events in <span class="math inline">\((0,t)\)</span> and none in <span class="math inline">\((t, t+\delta t)\)</span> and this happens with probability
-<span class="math display">\[P(n;t+\delta t)  = P(n;t)(1-\lambda \delta t) + P(n-1;t)\lambda\delta t.\]</span>
-Again, taking the limit as <span class="math inline">\(\delta t \rightarrow 0\)</span> we obtain the ODE
-<span class="math display">\[\frac{d P(n;t)}{dt} + \lambda P(n;t) = \lambda P(n-1;t).\]</span>
-The ``integrating factor” approach can be used to solve this ODE. The goal is to find a function <span class="math inline">\(g(t)\)</span> such that
-<span class="math display">\[g(t)\left\{\frac{d P(n;t)}{dt} + \lambda P(n;t)\right\} = \frac{d}{dt}\{g(t)P(n;t)\}.\]</span>
-A little intuition suggests <span class="math inline">\(e^{\lambda t}\)</span>, which works. We have
-<span class="math display">\[\frac{d}{dt}\{e^{\lambda t}P(n;t)\} = \lambda e^{\lambda t}P(n-1;t).\]</span>
-Plugging in <span class="math inline">\(n=1\)</span> we see that
-<span class="math display">\[\frac{d}{dt}\{e^{\lambda t}P(1;t)\} = \lambda e^{\lambda t}P(0;t) = \lambda e^{\lambda t}e^{-\lambda t} = \lambda.\]</span>
-And, integrating both sides above we get
-<span class="math display">\[e^{\lambda t}P(1;t) = \lambda t + C,\]</span>
-where <span class="math inline">\(C = 0\)</span> is implied by the fact <span class="math inline">\(P(1;0) = 0\)</span>, the chance of 1 count in no time is zero. <br><br>
-So far, we have found <span class="math inline">\(P(0;t) = e^{-\lambda t}\)</span> and <span class="math inline">\(P(1;t) = \lambda t e^{-\lambda t}\)</span>. For general <span class="math inline">\(n\)</span>, the idea is to repeat this argument inductively, assuming <span class="math inline">\(P(n;t) = \frac{(\lambda t)^n e^{-\lambda t}}{n!}\)</span>. For the inductive step, we need only show that assuming the above will show <span class="math inline">\(P(n+1;t) = \frac{(\lambda t)^{n+1} e^{-\lambda t}}{(n+1)!}\)</span> and we’re done. This follows from the differential equation:
-<span class="math display">\[\frac{d}{dt}\left\{e^{\lambda t}P(n+1;t)\right\} = \lambda e^{\lambda t}P(n;t) = \lambda e^{\lambda t} \frac{(\lambda t)^n e^{-\lambda t}}{n!} = \lambda \frac{(\lambda t)^n}{n!}.\]</span>
-Integrating both sides we obtain
-<span class="math display">\[e^{\lambda t}P(n+1;t) = \frac{(\lambda t)^{n+1}}{(n+1)!}+C\]</span>
-where, again, <span class="math inline">\(C=0\)</span> follows from <span class="math inline">\(P(n+1;0) = 0\)</span>. Therefore, solving for <span class="math inline">\(P(n+1;t)\)</span> we obtain
-<span class="math display">\[P(n+1;t) = \frac{(\lambda t)^{n+1}e^{-\lambda t}}{(n+1)!}\]</span>
-as claimed.</p>
+<p>Next, consider the probability of zero events in the time interval <span class="math inline">\((0, t+\delta t)\)</span>. This is equal the probability of no events in <span class="math inline">\((0,t)\)</span> and no events in <span class="math inline">\((t, t+\delta t)\)</span>, two disjoint time intervals. We can write this probability as <span class="math display">\[P(0; t+\delta t) = P(0;t)(1-\lambda \delta t)\]</span> using the fact the probability in the second, small interval is Bernoulli. Rewrite this as <span class="math display">\[\frac{P(0;t+\delta t)-P(0;t)}{\delta t} = -\lambda P(0;t),\]</span> and, taking limits as <span class="math inline">\(\delta t \rightarrow 0\)</span> we obtain the separable ODE <span class="math display">\[\frac{dP(0;t)}{dt} - \lambda P(0;t).\]</span> Integrating both sides we find <span class="math display">\[P(0;t) = Ce^{-\lambda t}\]</span> for a constant <span class="math inline">\(C&gt;0\)</span>. The ``initial condition&quot; says <span class="math inline">\(P(0;0) = 1\)</span> because no events can happen in a time interval of length zero, which implies <span class="math inline">\(C=1\)</span>. <br><br></p>
+<p>So far we have found the probability of zero events in time interval <span class="math inline">\((0,t)\)</span>. What about generalizing this to <span class="math inline">\(n\)</span> events? Use the same technique and represent the interval <span class="math inline">\((0, t+\delta t)\)</span> as the union of <span class="math inline">\((0,t)\)</span> and <span class="math inline">\((t, t+\delta t)\)</span>. For the probability there are <span class="math inline">\(n\)</span> events in time <span class="math inline">\((0,t+\delta t)\)</span> there are two possibilities: <span class="math inline">\(n-1\)</span> events in <span class="math inline">\((0,1)\)</span> and <span class="math inline">\(1\)</span> in <span class="math inline">\((t, t+\delta t)\)</span> or <span class="math inline">\(n\)</span> events in <span class="math inline">\((0,t)\)</span> and none in <span class="math inline">\((t, t+\delta t)\)</span> and this happens with probability <span class="math display">\[P(n;t+\delta t)  = P(n;t)(1-\lambda \delta t) + P(n-1;t)\lambda\delta t.\]</span> Again, taking the limit as <span class="math inline">\(\delta t \rightarrow 0\)</span> we obtain the ODE <span class="math display">\[\frac{d P(n;t)}{dt} + \lambda P(n;t) = \lambda P(n-1;t).\]</span> The ``integrating factor&quot; approach can be used to solve this ODE. The goal is to find a function <span class="math inline">\(g(t)\)</span> such that <span class="math display">\[g(t)\left\{\frac{d P(n;t)}{dt} + \lambda P(n;t)\right\} = \frac{d}{dt}\{g(t)P(n;t)\}.\]</span> A little intuition suggests <span class="math inline">\(e^{\lambda t}\)</span>, which works. We have <span class="math display">\[\frac{d}{dt}\{e^{\lambda t}P(n;t)\} = \lambda e^{\lambda t}P(n-1;t).\]</span> Plugging in <span class="math inline">\(n=1\)</span> we see that <span class="math display">\[\frac{d}{dt}\{e^{\lambda t}P(1;t)\} = \lambda e^{\lambda t}P(0;t) = \lambda e^{\lambda t}e^{-\lambda t} = \lambda.\]</span> And, integrating both sides above we get <span class="math display">\[e^{\lambda t}P(1;t) = \lambda t + C,\]</span> where <span class="math inline">\(C = 0\)</span> is implied by the fact <span class="math inline">\(P(1;0) = 0\)</span>, the chance of 1 count in no time is zero. <br><br> So far, we have found <span class="math inline">\(P(0;t) = e^{-\lambda t}\)</span> and <span class="math inline">\(P(1;t) = \lambda t e^{-\lambda t}\)</span>. For general <span class="math inline">\(n\)</span>, the idea is to repeat this argument inductively, assuming <span class="math inline">\(P(n;t) = \frac{(\lambda t)^n e^{-\lambda t}}{n!}\)</span>. For the inductive step, we need only show that assuming the above will show <span class="math inline">\(P(n+1;t) = \frac{(\lambda t)^{n+1} e^{-\lambda t}}{(n+1)!}\)</span> and we're done. This follows from the differential equation: <span class="math display">\[\frac{d}{dt}\left\{e^{\lambda t}P(n+1;t)\right\} = \lambda e^{\lambda t}P(n;t) = \lambda e^{\lambda t} \frac{(\lambda t)^n e^{-\lambda t}}{n!} = \lambda \frac{(\lambda t)^n}{n!}.\]</span> Integrating both sides we obtain <span class="math display">\[e^{\lambda t}P(n+1;t) = \frac{(\lambda t)^{n+1}}{(n+1)!}+C\]</span> where, again, <span class="math inline">\(C=0\)</span> follows from <span class="math inline">\(P(n+1;0) = 0\)</span>. Therefore, solving for <span class="math inline">\(P(n+1;t)\)</span> we obtain <span class="math display">\[P(n+1;t) = \frac{(\lambda t)^{n+1}e^{-\lambda t}}{(n+1)!}\]</span> as claimed.</p>
 
 </div>
 </div>
@@ -565,7 +439,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
