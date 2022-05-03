@@ -568,35 +568,35 @@ Example: Suppose an experiment records the number of customers entering a salon 
 We decide to perform a goodness of fit test to determine whether the data fit a Poisson distribution.  It the data appear to be a Poisson random sample, then that implies there is not a strong temporal pattern in the data.  On the other hand if the data do not fit a Poisson distribution the lack of fit may be caused by a temporal pattern (so that the data are not iid).  Based on the computation below, we see we reject the null hypothesis that the data are a Poisson random sample at $\alpha$ level $5\%$.
 <br><br>
 
-Below we bin the data into categories of 0:9 counts and 10+ counts.
+Below we bin the data into categories of 0-3 counts, 4-7 counts, 8-11, and 12+.
 
 
 ```r
 x <- c(3,6,14,11,6,4,4,3,8,11,3)
 n <- 11
-bins <- c(0,0,0,3,2,0,2,0,0,0,3)
-eis <- n*c(dpois(0:9, mean(x)),1-ppois(9,mean(x)))
+bins <- c(3,4,3,1)
+eis <- n*c(sum(dpois(0:3, mean(x))),sum(dpois(4:7, mean(x))),sum(dpois(8:11, mean(x))),   1-ppois(11,mean(x)))
 sum(((bins - eis)^2)/eis)
 ```
 
 ```
-## [1] 15.6481
+## [1] 4.610001
 ```
 
 ```r
-qchisq(0.95,11-1-1)
+qchisq(0.95,4-1-1)
 ```
 
 ```
-## [1] 16.91898
+## [1] 5.991465
 ```
 
 ```r
-1-pchisq(sum(((bins - eis)^2)/eis),11-1-1)
+1-pchisq(sum(((bins - eis)^2)/eis),4-1-1)
 ```
 
 ```
-## [1] 0.07460384
+## [1] 0.09975877
 ```
 
 

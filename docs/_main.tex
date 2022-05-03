@@ -2644,40 +2644,40 @@ Example: Suppose an experiment records the number of customers entering a salon 
 
 We decide to perform a goodness of fit test to determine whether the data fit a Poisson distribution. It the data appear to be a Poisson random sample, then that implies there is not a strong temporal pattern in the data. On the other hand if the data do not fit a Poisson distribution the lack of fit may be caused by a temporal pattern (so that the data are not iid). Based on the computation below, we see we reject the null hypothesis that the data are a Poisson random sample at \(\alpha\) level \(5\%\).
 
-Below we bin the data into categories of 0:9 counts and 10+ counts.
+Below we bin the data into categories of 0-3 counts, 4-7 counts, 8-11, and 12+.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{14}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{3}\NormalTok{)}
 \NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{11}
-\NormalTok{bins }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{3}\NormalTok{)}
-\NormalTok{eis }\OtherTok{\textless{}{-}}\NormalTok{ n}\SpecialCharTok{*}\FunctionTok{c}\NormalTok{(}\FunctionTok{dpois}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{9}\NormalTok{, }\FunctionTok{mean}\NormalTok{(x)),}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{ppois}\NormalTok{(}\DecValTok{9}\NormalTok{,}\FunctionTok{mean}\NormalTok{(x)))}
+\NormalTok{bins }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{eis }\OtherTok{\textless{}{-}}\NormalTok{ n}\SpecialCharTok{*}\FunctionTok{c}\NormalTok{(}\FunctionTok{sum}\NormalTok{(}\FunctionTok{dpois}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\FunctionTok{mean}\NormalTok{(x))),}\FunctionTok{sum}\NormalTok{(}\FunctionTok{dpois}\NormalTok{(}\DecValTok{4}\SpecialCharTok{:}\DecValTok{7}\NormalTok{, }\FunctionTok{mean}\NormalTok{(x))),}\FunctionTok{sum}\NormalTok{(}\FunctionTok{dpois}\NormalTok{(}\DecValTok{8}\SpecialCharTok{:}\DecValTok{11}\NormalTok{, }\FunctionTok{mean}\NormalTok{(x))),   }\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{ppois}\NormalTok{(}\DecValTok{11}\NormalTok{,}\FunctionTok{mean}\NormalTok{(x)))}
 \FunctionTok{sum}\NormalTok{(((bins }\SpecialCharTok{{-}}\NormalTok{ eis)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}\SpecialCharTok{/}\NormalTok{eis)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 15.6481
+## [1] 4.610001
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{qchisq}\NormalTok{(}\FloatTok{0.95}\NormalTok{,}\DecValTok{11{-}1{-}1}\NormalTok{)}
+\FunctionTok{qchisq}\NormalTok{(}\FloatTok{0.95}\NormalTok{,}\DecValTok{4{-}1{-}1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 16.91898
+## [1] 5.991465
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{pchisq}\NormalTok{(}\FunctionTok{sum}\NormalTok{(((bins }\SpecialCharTok{{-}}\NormalTok{ eis)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}\SpecialCharTok{/}\NormalTok{eis),}\DecValTok{11{-}1{-}1}\NormalTok{)}
+\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{pchisq}\NormalTok{(}\FunctionTok{sum}\NormalTok{(((bins }\SpecialCharTok{{-}}\NormalTok{ eis)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}\SpecialCharTok{/}\NormalTok{eis),}\DecValTok{4{-}1{-}1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.07460384
+## [1] 0.09975877
 \end{verbatim}
 
 \hypertarget{anova}{%
