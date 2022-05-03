@@ -24,7 +24,7 @@
 <meta name="author" content="Nick Syring" />
 
 
-<meta name="date" content="2022-05-02" />
+<meta name="date" content="2022-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="sampling-distributions.html"/>
 <link rel="next" href="confidence-intervals.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -55,41 +56,68 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -110,18 +138,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a></li>
-<li class="chapter" data-level="2" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html"><i class="fa fa-check"></i><b>2</b> Experiments and the role of probability</a><ul>
+<li class="chapter" data-level="2" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html"><i class="fa fa-check"></i><b>2</b> Experiments and the role of probability</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html#experiments"><i class="fa fa-check"></i><b>2.1</b> Experiments</a></li>
 <li class="chapter" data-level="2.2" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html#the-role-of-probability"><i class="fa fa-check"></i><b>2.2</b> The role of probability</a></li>
 <li class="chapter" data-level="2.3" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html#exercises"><i class="fa fa-check"></i><b>2.3</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="probability-and-counting.html"><a href="probability-and-counting.html"><i class="fa fa-check"></i><b>3</b> Probability and Counting</a><ul>
+<li class="chapter" data-level="3" data-path="probability-and-counting.html"><a href="probability-and-counting.html"><i class="fa fa-check"></i><b>3</b> Probability and Counting</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="probability-and-counting.html"><a href="probability-and-counting.html#terminology"><i class="fa fa-check"></i><b>3.1</b> Terminology</a></li>
-<li class="chapter" data-level="3.2" data-path="probability-and-counting.html"><a href="probability-and-counting.html#set-relations"><i class="fa fa-check"></i><b>3.2</b> Set relations</a><ul>
+<li class="chapter" data-level="3.2" data-path="probability-and-counting.html"><a href="probability-and-counting.html#set-relations"><i class="fa fa-check"></i><b>3.2</b> Set relations</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="probability-and-counting.html"><a href="probability-and-counting.html#sample-space-example"><i class="fa fa-check"></i><b>3.2.1</b> Sample space example</a></li>
 <li class="chapter" data-level="3.2.2" data-path="probability-and-counting.html"><a href="probability-and-counting.html#set-relations-example"><i class="fa fa-check"></i><b>3.2.2</b> Set relations example</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="probability-and-counting.html"><a href="probability-and-counting.html#probability-axioms"><i class="fa fa-check"></i><b>3.3</b> Probability Axioms</a><ul>
+<li class="chapter" data-level="3.3" data-path="probability-and-counting.html"><a href="probability-and-counting.html#probability-axioms"><i class="fa fa-check"></i><b>3.3</b> Probability Axioms</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="probability-and-counting.html"><a href="probability-and-counting.html#example-of-using-the-probability-axioms"><i class="fa fa-check"></i><b>3.3.1</b> Example of using the probability axioms</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="probability-and-counting.html"><a href="probability-and-counting.html#equally-likely-outcomes"><i class="fa fa-check"></i><b>3.4</b> Equally likely outcomes</a></li>
@@ -129,92 +161,113 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.6" data-path="probability-and-counting.html"><a href="probability-and-counting.html#applications-to-random-sampling"><i class="fa fa-check"></i><b>3.6</b> Applications to random sampling</a></li>
 <li class="chapter" data-level="3.7" data-path="probability-and-counting.html"><a href="probability-and-counting.html#exercises-1"><i class="fa fa-check"></i><b>3.7</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html"><i class="fa fa-check"></i><b>4</b> Conditional probabilities of events</a><ul>
+<li class="chapter" data-level="4" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html"><i class="fa fa-check"></i><b>4</b> Conditional probabilities of events</a>
+<ul>
 <li class="chapter" data-level="4.0.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example"><i class="fa fa-check"></i><b>4.0.1</b> Example</a></li>
 <li class="chapter" data-level="4.0.2" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example-1"><i class="fa fa-check"></i><b>4.0.2</b> Example</a></li>
 <li class="chapter" data-level="4.0.3" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example-2"><i class="fa fa-check"></i><b>4.0.3</b> Example</a></li>
-<li class="chapter" data-level="4.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#bayes-rule"><i class="fa fa-check"></i><b>4.1</b> Bayes' rule</a><ul>
+<li class="chapter" data-level="4.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#bayes-rule"><i class="fa fa-check"></i><b>4.1</b> Bayes’ rule</a>
+<ul>
 <li class="chapter" data-level="4.1.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example-3"><i class="fa fa-check"></i><b>4.1.1</b> Example</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#independence"><i class="fa fa-check"></i><b>4.2</b> Independence</a></li>
 <li class="chapter" data-level="4.3" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#exercises-2"><i class="fa fa-check"></i><b>4.3</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>5</b> Random Variables</a><ul>
-<li class="chapter" data-level="5.1" data-path="random-variables.html"><a href="random-variables.html#random-variables-1"><i class="fa fa-check"></i><b>5.1</b> Random variables</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="random-variables.html"><a href="random-variables.html#examples-of-discrete-r.v.s"><i class="fa fa-check"></i><b>5.1.1</b> Examples of Discrete r.v.'s</a></li>
+<li class="chapter" data-level="5" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>5</b> Random Variables</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="random-variables.html"><a href="random-variables.html#random-variables-1"><i class="fa fa-check"></i><b>5.1</b> Random variables</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="random-variables.html"><a href="random-variables.html#examples-of-discrete-r.v.s"><i class="fa fa-check"></i><b>5.1.1</b> Examples of Discrete r.v.’s</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="random-variables.html"><a href="random-variables.html#probability-mass-functions"><i class="fa fa-check"></i><b>5.2</b> Probability Mass Functions</a></li>
 <li class="chapter" data-level="5.3" data-path="random-variables.html"><a href="random-variables.html#cumulative-mass-functions"><i class="fa fa-check"></i><b>5.3</b> Cumulative Mass Functions</a></li>
-<li class="chapter" data-level="5.4" data-path="random-variables.html"><a href="random-variables.html#examples-of-continuous-r.v.s"><i class="fa fa-check"></i><b>5.4</b> Examples of Continuous r.v.'s</a></li>
-<li class="chapter" data-level="5.5" data-path="random-variables.html"><a href="random-variables.html#probability-assignments-for-continuous-r.v.s"><i class="fa fa-check"></i><b>5.5</b> Probability assignments for continuous r.v.'s</a></li>
+<li class="chapter" data-level="5.4" data-path="random-variables.html"><a href="random-variables.html#examples-of-continuous-r.v.s"><i class="fa fa-check"></i><b>5.4</b> Examples of Continuous r.v.’s</a></li>
+<li class="chapter" data-level="5.5" data-path="random-variables.html"><a href="random-variables.html#probability-assignments-for-continuous-r.v.s"><i class="fa fa-check"></i><b>5.5</b> Probability assignments for continuous r.v.’s</a></li>
 <li class="chapter" data-level="5.6" data-path="random-variables.html"><a href="random-variables.html#transformations-of-random-variables"><i class="fa fa-check"></i><b>5.6</b> Transformations of random variables</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html"><i class="fa fa-check"></i><b>6</b> Expectation of Random Variables</a><ul>
-<li class="chapter" data-level="6.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#mean-of-a-random-variable"><i class="fa fa-check"></i><b>6.1</b> Mean of a Random Variable</a><ul>
+<li class="chapter" data-level="6" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html"><i class="fa fa-check"></i><b>6</b> Expectation of Random Variables</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#mean-of-a-random-variable"><i class="fa fa-check"></i><b>6.1</b> Mean of a Random Variable</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#examples"><i class="fa fa-check"></i><b>6.1.1</b> Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#variance-of-a-random-variable"><i class="fa fa-check"></i><b>6.2</b> Variance of a random variable</a><ul>
+<li class="chapter" data-level="6.2" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#variance-of-a-random-variable"><i class="fa fa-check"></i><b>6.2</b> Variance of a random variable</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#examples-1"><i class="fa fa-check"></i><b>6.2.1</b> Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#special-uses-of-mean-and-variance"><i class="fa fa-check"></i><b>6.3</b> Special uses of mean and variance</a><ul>
+<li class="chapter" data-level="6.3" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#special-uses-of-mean-and-variance"><i class="fa fa-check"></i><b>6.3</b> Special uses of mean and variance</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#examples-2"><i class="fa fa-check"></i><b>6.3.1</b> Examples</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#expectations-of-functions-of-random-variables"><i class="fa fa-check"></i><b>6.4</b> Expectations of functions of random variables</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="joint-distributions.html"><a href="joint-distributions.html"><i class="fa fa-check"></i><b>7</b> Joint Distributions</a><ul>
-<li class="chapter" data-level="7.1" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-discrete-random-variables"><i class="fa fa-check"></i><b>7.1</b> Jointly distributed discrete random variables</a><ul>
+<li class="chapter" data-level="7" data-path="joint-distributions.html"><a href="joint-distributions.html"><i class="fa fa-check"></i><b>7</b> Joint Distributions</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-discrete-random-variables"><i class="fa fa-check"></i><b>7.1</b> Jointly distributed discrete random variables</a>
+<ul>
 <li class="chapter" data-level="7.1.1" data-path="joint-distributions.html"><a href="joint-distributions.html#marginal-pmfs"><i class="fa fa-check"></i><b>7.1.1</b> Marginal PMFs</a></li>
 <li class="chapter" data-level="7.1.2" data-path="joint-distributions.html"><a href="joint-distributions.html#conditional-pmfs"><i class="fa fa-check"></i><b>7.1.2</b> Conditional PMFs</a></li>
 <li class="chapter" data-level="7.1.3" data-path="joint-distributions.html"><a href="joint-distributions.html#independence-of-discrete-random-variables"><i class="fa fa-check"></i><b>7.1.3</b> Independence of discrete random variables</a></li>
 <li class="chapter" data-level="7.1.4" data-path="joint-distributions.html"><a href="joint-distributions.html#expectations-involving-multiple-discrete-random-variables"><i class="fa fa-check"></i><b>7.1.4</b> Expectations involving multiple discrete random variables</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-continuous-random-variables"><i class="fa fa-check"></i><b>7.2</b> Jointly distributed continuous random variables</a><ul>
+<li class="chapter" data-level="7.2" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-continuous-random-variables"><i class="fa fa-check"></i><b>7.2</b> Jointly distributed continuous random variables</a>
+<ul>
 <li class="chapter" data-level="7.2.1" data-path="joint-distributions.html"><a href="joint-distributions.html#marginal-densities"><i class="fa fa-check"></i><b>7.2.1</b> Marginal densities</a></li>
 <li class="chapter" data-level="7.2.2" data-path="joint-distributions.html"><a href="joint-distributions.html#conditional-densities"><i class="fa fa-check"></i><b>7.2.2</b> Conditional densities</a></li>
-<li class="chapter" data-level="7.2.3" data-path="joint-distributions.html"><a href="joint-distributions.html#independence-of-jointly-distributed-continuous-r.v.s"><i class="fa fa-check"></i><b>7.2.3</b> Independence of jointly-distributed continuous r.v.'s</a></li>
+<li class="chapter" data-level="7.2.3" data-path="joint-distributions.html"><a href="joint-distributions.html#independence-of-jointly-distributed-continuous-r.v.s"><i class="fa fa-check"></i><b>7.2.3</b> Independence of jointly-distributed continuous r.v.’s</a></li>
 <li class="chapter" data-level="7.2.4" data-path="joint-distributions.html"><a href="joint-distributions.html#expectations-involving-more-than-one-continuous-r.v."><i class="fa fa-check"></i><b>7.2.4</b> Expectations involving more than one continuous r.v.</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html"><i class="fa fa-check"></i><b>8</b> Special Discrete Distributions</a><ul>
+<li class="chapter" data-level="8" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html"><i class="fa fa-check"></i><b>8</b> Special Discrete Distributions</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>8.1</b> Bernoulli Distribution</a></li>
 <li class="chapter" data-level="8.2" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#categorical-distribution"><i class="fa fa-check"></i><b>8.2</b> Categorical Distribution</a></li>
 <li class="chapter" data-level="8.3" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>8.3</b> Binomial distribution</a></li>
 <li class="chapter" data-level="8.4" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#multinomial-distribution"><i class="fa fa-check"></i><b>8.4</b> Multinomial Distribution</a></li>
 <li class="chapter" data-level="8.5" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#hypergeometric-distribution"><i class="fa fa-check"></i><b>8.5</b> Hypergeometric distribution</a></li>
 <li class="chapter" data-level="8.6" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#negative-binomial-distribution"><i class="fa fa-check"></i><b>8.6</b> Negative Binomial Distribution</a></li>
-<li class="chapter" data-level="8.7" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>8.7</b> Poisson Distribution</a><ul>
+<li class="chapter" data-level="8.7" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>8.7</b> Poisson Distribution</a>
+<ul>
 <li class="chapter" data-level="8.7.1" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#example-1-poisson-process"><i class="fa fa-check"></i><b>8.7.1</b> Example 1: Poisson process</a></li>
 <li class="chapter" data-level="8.7.2" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#example-2-poisson-approximation-to-binomial"><i class="fa fa-check"></i><b>8.7.2</b> Example 2: Poisson approximation to Binomial</a></li>
 </ul></li>
 <li class="chapter" data-level="8.8" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#optional-derivation-of-the-poisson-pmf-using-differential-equations"><i class="fa fa-check"></i><b>8.8</b> Optional: Derivation of the Poisson PMF using differential equations</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html"><i class="fa fa-check"></i><b>9</b> Special Continuous Distributions</a><ul>
+<li class="chapter" data-level="9" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html"><i class="fa fa-check"></i><b>9</b> Special Continuous Distributions</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>9.1</b> Exponential Distribution</a></li>
 <li class="chapter" data-level="9.2" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#poisson-interarrival-times-are-iid-exponentiallambda"><i class="fa fa-check"></i><b>9.2</b> Poisson Interarrival times are iid Exponential(<span class="math inline">\(\lambda\)</span>)</a></li>
 <li class="chapter" data-level="9.3" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#gamma-distribution"><i class="fa fa-check"></i><b>9.3</b> Gamma Distribution</a></li>
-<li class="chapter" data-level="9.4" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#normal-gaussian-distribution"><i class="fa fa-check"></i><b>9.4</b> Normal (Gaussian) Distribution</a><ul>
+<li class="chapter" data-level="9.4" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#normal-gaussian-distribution"><i class="fa fa-check"></i><b>9.4</b> Normal (Gaussian) Distribution</a>
+<ul>
 <li class="chapter" data-level="9.4.1" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#example-poll-and-binomial-normal-approximation"><i class="fa fa-check"></i><b>9.4.1</b> Example: Poll and Binomial-Normal approximation</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="central-limit-theorem.html"><a href="central-limit-theorem.html"><i class="fa fa-check"></i><b>10</b> Central Limit Theorem</a></li>
-<li class="chapter" data-level="11" data-path="sampling-distributions.html"><a href="sampling-distributions.html"><i class="fa fa-check"></i><b>11</b> Sampling Distributions</a><ul>
+<li class="chapter" data-level="11" data-path="sampling-distributions.html"><a href="sampling-distributions.html"><i class="fa fa-check"></i><b>11</b> Sampling Distributions</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sample-mean"><i class="fa fa-check"></i><b>11.1</b> Sample Mean</a></li>
-<li class="chapter" data-level="11.2" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sample-variance"><i class="fa fa-check"></i><b>11.2</b> Sample Variance</a><ul>
+<li class="chapter" data-level="11.2" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sample-variance"><i class="fa fa-check"></i><b>11.2</b> Sample Variance</a>
+<ul>
 <li class="chapter" data-level="11.2.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#large-sample-sampling-distribution-of-sample-variance"><i class="fa fa-check"></i><b>11.2.1</b> Large-sample sampling distribution of sample variance</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sampling-distribution-of-studentized-sample-mean"><i class="fa fa-check"></i><b>11.3</b> Sampling distribution of studentized sample mean</a><ul>
-<li class="chapter" data-level="11.3.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#part-of-students-theorem---indepndence-of-overline-x_n-and-s_n2"><i class="fa fa-check"></i><b>11.3.1</b> Part of Student's Theorem - Indepndence of <span class="math inline">\(\overline X_n\)</span> and <span class="math inline">\(S_n^2\)</span></a></li>
+<li class="chapter" data-level="11.3" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sampling-distribution-of-studentized-sample-mean"><i class="fa fa-check"></i><b>11.3</b> Sampling distribution of studentized sample mean</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#part-of-students-theorem---indepndence-of-overline-x_n-and-s_n2"><i class="fa fa-check"></i><b>11.3.1</b> Part of Student’s Theorem - Indepndence of <span class="math inline">\(\overline X_n\)</span> and <span class="math inline">\(S_n^2\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="sampling-distributions.html"><a href="sampling-distributions.html#differences-of-sample-means"><i class="fa fa-check"></i><b>11.4</b> Differences of Sample Means</a><ul>
+<li class="chapter" data-level="11.4" data-path="sampling-distributions.html"><a href="sampling-distributions.html#differences-of-sample-means"><i class="fa fa-check"></i><b>11.4</b> Differences of Sample Means</a>
+<ul>
 <li class="chapter" data-level="11.4.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#standarized-difference"><i class="fa fa-check"></i><b>11.4.1</b> Standarized difference</a></li>
 <li class="chapter" data-level="11.4.2" data-path="sampling-distributions.html"><a href="sampling-distributions.html#studentized-difference-equal-variances"><i class="fa fa-check"></i><b>11.4.2</b> Studentized difference, equal variances</a></li>
 <li class="chapter" data-level="11.4.3" data-path="sampling-distributions.html"><a href="sampling-distributions.html#studentized-difference-unequal-variances"><i class="fa fa-check"></i><b>11.4.3</b> Studentized difference, unequal variances</a></li>
 </ul></li>
 <li class="chapter" data-level="11.5" data-path="sampling-distributions.html"><a href="sampling-distributions.html#ratios-of-sample-variances"><i class="fa fa-check"></i><b>11.5</b> Ratios of Sample Variances</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="statistical-estimation.html"><a href="statistical-estimation.html"><i class="fa fa-check"></i><b>12</b> Statistical Estimation</a><ul>
+<li class="chapter" data-level="12" data-path="statistical-estimation.html"><a href="statistical-estimation.html"><i class="fa fa-check"></i><b>12</b> Statistical Estimation</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="statistical-estimation.html"><a href="statistical-estimation.html#vocabulary"><i class="fa fa-check"></i><b>12.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="12.2" data-path="statistical-estimation.html"><a href="statistical-estimation.html#properties-of-estimators"><i class="fa fa-check"></i><b>12.2</b> Properties of Estimators</a><ul>
+<li class="chapter" data-level="12.2" data-path="statistical-estimation.html"><a href="statistical-estimation.html#properties-of-estimators"><i class="fa fa-check"></i><b>12.2</b> Properties of Estimators</a>
+<ul>
 <li class="chapter" data-level="12.2.1" data-path="statistical-estimation.html"><a href="statistical-estimation.html#bias-and-unbiasedness"><i class="fa fa-check"></i><b>12.2.1</b> Bias and Unbiasedness</a></li>
 <li class="chapter" data-level="12.2.2" data-path="statistical-estimation.html"><a href="statistical-estimation.html#minimum-variance-unbiased-estimators"><i class="fa fa-check"></i><b>12.2.2</b> Minimum Variance Unbiased Estimators</a></li>
 <li class="chapter" data-level="12.2.3" data-path="statistical-estimation.html"><a href="statistical-estimation.html#mean-squared-error-and-bias-variance-tradeoff"><i class="fa fa-check"></i><b>12.2.3</b> Mean Squared Error and Bias-Variance tradeoff</a></li>
@@ -224,43 +277,52 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12.4" data-path="statistical-estimation.html"><a href="statistical-estimation.html#method-of-maximum-likelihood"><i class="fa fa-check"></i><b>12.4</b> Method of Maximum Likelihood</a></li>
 <li class="chapter" data-level="12.5" data-path="statistical-estimation.html"><a href="statistical-estimation.html#properties-of-mles"><i class="fa fa-check"></i><b>12.5</b> Properties of MLEs</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>13</b> Confidence Intervals</a><ul>
+<li class="chapter" data-level="13" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>13</b> Confidence Intervals</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#why-want-interval-valued-estimates"><i class="fa fa-check"></i><b>13.1</b> Why want interval-valued estimates?</a></li>
 <li class="chapter" data-level="13.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#normal-population-mean-example"><i class="fa fa-check"></i><b>13.2</b> Normal population mean example</a></li>
-<li class="chapter" data-level="13.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#other-exact-cis-for-normal-population-mean-and-variance-parameters"><i class="fa fa-check"></i><b>13.3</b> Other &quot;Exact&quot; CIs for normal population mean and variance parameters</a><ul>
+<li class="chapter" data-level="13.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#other-exact-cis-for-normal-population-mean-and-variance-parameters"><i class="fa fa-check"></i><b>13.3</b> Other “Exact” CIs for normal population mean and variance parameters</a>
+<ul>
 <li class="chapter" data-level="13.3.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#population-mean-unknown-variance"><i class="fa fa-check"></i><b>13.3.1</b> Population mean, unknown variance</a></li>
 <li class="chapter" data-level="13.3.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#population-variance-unknown-mean"><i class="fa fa-check"></i><b>13.3.2</b> Population variance, unknown mean</a></li>
 <li class="chapter" data-level="13.3.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#two-normal-samples-comparing-means"><i class="fa fa-check"></i><b>13.3.3</b> Two normal samples, comparing means</a></li>
 <li class="chapter" data-level="13.3.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#two-normal-samples-comparing-variances"><i class="fa fa-check"></i><b>13.3.4</b> Two normal samples, comparing variances</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#cis-for-proportions"><i class="fa fa-check"></i><b>13.4</b> CIs for proportions</a><ul>
+<li class="chapter" data-level="13.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#cis-for-proportions"><i class="fa fa-check"></i><b>13.4</b> CIs for proportions</a>
+<ul>
 <li class="chapter" data-level="13.4.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#a-single-bernoulli-proportion"><i class="fa fa-check"></i><b>13.4.1</b> A single Bernoulli proportion</a></li>
 <li class="chapter" data-level="13.4.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#difference-of-two-bernoulli-proportions"><i class="fa fa-check"></i><b>13.4.2</b> Difference of two Bernoulli proportions</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="confidence-intervals.html"><a href="confidence-intervals.html#approximate-cis-based-on-mles"><i class="fa fa-check"></i><b>13.5</b> Approximate CIs based on MLEs</a><ul>
+<li class="chapter" data-level="13.5" data-path="confidence-intervals.html"><a href="confidence-intervals.html#approximate-cis-based-on-mles"><i class="fa fa-check"></i><b>13.5</b> Approximate CIs based on MLEs</a>
+<ul>
 <li class="chapter" data-level="13.5.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#multivariate-case"><i class="fa fa-check"></i><b>13.5.1</b> Multivariate case</a></li>
 <li class="chapter" data-level="13.5.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#the-delta-method"><i class="fa fa-check"></i><b>13.5.2</b> The Delta method</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>14</b> Hypothesis Testing</a><ul>
+<li class="chapter" data-level="14" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>14</b> Hypothesis Testing</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#notation"><i class="fa fa-check"></i><b>14.1</b> Notation</a></li>
 <li class="chapter" data-level="14.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-testing-outcomes"><i class="fa fa-check"></i><b>14.2</b> Hypothesis testing outcomes</a></li>
-<li class="chapter" data-level="14.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#tests-based-on-a-normal-population"><i class="fa fa-check"></i><b>14.3</b> Tests based on a normal population</a><ul>
+<li class="chapter" data-level="14.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#tests-based-on-a-normal-population"><i class="fa fa-check"></i><b>14.3</b> Tests based on a normal population</a>
+<ul>
 <li class="chapter" data-level="14.3.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-a-normal-mean-when-the-variance-is-known"><i class="fa fa-check"></i><b>14.3.1</b> Test for a normal mean when the variance is known</a></li>
 <li class="chapter" data-level="14.3.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-a-normal-mean-when-the-variance-is-unknown"><i class="fa fa-check"></i><b>14.3.2</b> Test for a normal mean when the variance is unknown</a></li>
 <li class="chapter" data-level="14.3.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-a-normal-population-variance"><i class="fa fa-check"></i><b>14.3.3</b> Test for a normal population variance</a></li>
 <li class="chapter" data-level="14.3.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#tests-for-a-difference-of-normal-population-means"><i class="fa fa-check"></i><b>14.3.4</b> Tests for a difference of normal population means</a></li>
 <li class="chapter" data-level="14.3.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-equality-of-normal-population-variances"><i class="fa fa-check"></i><b>14.3.5</b> Test for equality of normal population variances</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-based-tests"><i class="fa fa-check"></i><b>14.4</b> Likelihood-based Tests</a><ul>
+<li class="chapter" data-level="14.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-based-tests"><i class="fa fa-check"></i><b>14.4</b> Likelihood-based Tests</a>
+<ul>
 <li class="chapter" data-level="14.4.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#wald-type-tests"><i class="fa fa-check"></i><b>14.4.1</b> Wald type tests</a></li>
 <li class="chapter" data-level="14.4.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-tests"><i class="fa fa-check"></i><b>14.4.2</b> Likelihood ratio tests</a></li>
 </ul></li>
-<li class="chapter" data-level="14.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#chi-squared-tests-for-tabulated-data"><i class="fa fa-check"></i><b>14.5</b> Chi Squared tests for tabulated data</a><ul>
+<li class="chapter" data-level="14.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#chi-squared-tests-for-tabulated-data"><i class="fa fa-check"></i><b>14.5</b> Chi Squared tests for tabulated data</a>
+<ul>
 <li class="chapter" data-level="14.5.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#goodness-of-fit-tests"><i class="fa fa-check"></i><b>14.5.1</b> Goodness of fit tests</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>15</b> ANOVA</a><ul>
+<li class="chapter" data-level="15" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>15</b> ANOVA</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="anova.html"><a href="anova.html#analysis-of-variance"><i class="fa fa-check"></i><b>15.1</b> Analysis of variance</a></li>
 <li class="chapter" data-level="15.2" data-path="anova.html"><a href="anova.html#crop-data-in-depth-example"><i class="fa fa-check"></i><b>15.2</b> Crop data in-depth example</a></li>
 </ul></li>
@@ -284,59 +346,86 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="statistical-estimation" class="section level1">
+<div id="statistical-estimation" class="section level1" number="12">
 <h1><span class="header-section-number">Chapter 12</span> Statistical Estimation</h1>
-<div id="vocabulary" class="section level2">
+<div id="vocabulary" class="section level2" number="12.1">
 <h2><span class="header-section-number">12.1</span> Vocabulary</h2>
-<p>We consider experiments in which a random sample of observations is taken from a population. The sampling distribution of observations is known up to the value(s) of some <em>population parameter(s)</em>. The goal of this chapter is to study <em>estimation</em>---approximation of these unknown parameters by <em>statistics</em>, functions of the sample data. An <em>estimator</em> is the random variable version of a statistic and has a corresponding sampling distribution. By virtue of being called an estimator we assume this statistic is &quot;close&quot; to the true parameter value in some sense. An <em>estimate</em> is a value of an estimator after the data is collected and the estimator computed; it is a fixed, non-random value.</p>
+<p>We consider experiments in which a random sample of observations is taken from a population. The sampling distribution of observations is known up to the value(s) of some <em>population parameter(s)</em>. The goal of this chapter is to study <em>estimation</em>—approximation of these unknown parameters by <em>statistics</em>, functions of the sample data. An <em>estimator</em> is the random variable version of a statistic and has a corresponding sampling distribution. By virtue of being called an estimator we assume this statistic is “close” to the true parameter value in some sense. An <em>estimate</em> is a value of an estimator after the data is collected and the estimator computed; it is a fixed, non-random value.</p>
 <p><br><br></p>
-<p>For example, consider an experiment sampling <span class="math inline">\(n\)</span> iid random samples from a Normal population with unknown mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(1\)</span>. Here <span class="math inline">\(\mu\)</span> is the parameter we wish to estimate. An intuitive estimator is the sample mean statistic <span class="math inline">\(\overline X_n = n^{-1}\sum_{i=1}^n X_i\)</span>. When the data is collected we refer to the calculated sample mean---the estimate of <span class="math inline">\(\mu\)</span>---as lowercase <span class="math inline">\(\overline x_n\)</span>.</p>
+<p>For example, consider an experiment sampling <span class="math inline">\(n\)</span> iid random samples from a Normal population with unknown mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(1\)</span>. Here <span class="math inline">\(\mu\)</span> is the parameter we wish to estimate. An intuitive estimator is the sample mean statistic <span class="math inline">\(\overline X_n = n^{-1}\sum_{i=1}^n X_i\)</span>. When the data is collected we refer to the calculated sample mean—the estimate of <span class="math inline">\(\mu\)</span>—as lowercase <span class="math inline">\(\overline x_n\)</span>.</p>
 </div>
-<div id="properties-of-estimators" class="section level2">
+<div id="properties-of-estimators" class="section level2" number="12.2">
 <h2><span class="header-section-number">12.2</span> Properties of Estimators</h2>
-<p>It will become apparent that estimators are not unique---there are very often several seemingly reasonable estimators for a single parameter. Therefore we ought to be concerned with choosing the &quot;best&quot; estimator according to some criteria. Different criteria will lead to different &quot;best&quot; estimators.</p>
-<div id="bias-and-unbiasedness" class="section level3">
+<p>It will become apparent that estimators are not unique—there are very often several seemingly reasonable estimators for a single parameter. Therefore we ought to be concerned with choosing the “best” estimator according to some criteria. Different criteria will lead to different “best” estimators.</p>
+<div id="bias-and-unbiasedness" class="section level3" number="12.2.1">
 <h3><span class="header-section-number">12.2.1</span> Bias and Unbiasedness</h3>
-Consider a generic parameter denoted <span class="math inline">\(\theta\)</span> and imagine an estimator for <span class="math inline">\(\theta\)</span> called <span class="math inline">\(\hat\theta_n\)</span>, which is a statistic and, hence, a random variable. We say <span class="math inline">\(\hat\theta_n\)</span> is <em>unbiased</em> if <span class="math inline">\(E(\hat\theta_n)=\theta\)</span> where the expectation is taken with respect to the sampling distribution of <span class="math inline">\(\hat\theta_n\)</span>. For example, the sample mean <span class="math inline">\(\overline X_n\)</span> is unbiased for the population mean <span class="math inline">\(\mu\)</span> (so long as the population mean exists):
+<p>Consider a generic parameter denoted <span class="math inline">\(\theta\)</span> and imagine an estimator for <span class="math inline">\(\theta\)</span> called <span class="math inline">\(\hat\theta_n\)</span>, which is a statistic and, hence, a random variable. We say <span class="math inline">\(\hat\theta_n\)</span> is <em>unbiased</em> if <span class="math inline">\(E(\hat\theta_n)=\theta\)</span> where the expectation is taken with respect to the sampling distribution of <span class="math inline">\(\hat\theta_n\)</span>. For example, the sample mean <span class="math inline">\(\overline X_n\)</span> is unbiased for the population mean <span class="math inline">\(\mu\)</span> (so long as the population mean exists):
 <span class="math display">\[\begin{align*}
 E(\overline X_n) &amp;= E\left(n^{-1}\sum_{i=1}^n X_i\right)\\
 &amp; = n^{-1}\sum_{i=1}^n E(X_i)\\
 &amp; = n^{-1}\sum_{i=1}^n \mu\\
 &amp; = \mu.
 \end{align*}\]</span>
-<p>An unbiased estimator commits no systematic errors in estimating the parameter. In contrast, a biased estimator of a univariate real-valued parameter systematically underestimates or overestimates the parameter. Consider biased <span class="math inline">\(\hat\theta_n\)</span> such that <span class="math inline">\(E(\hat\theta_n) = \theta + 1\)</span>. We <strong>expect</strong> <span class="math inline">\(\hat\theta_n\)</span> to be 1 more than <span class="math inline">\(\theta\)</span>---hence we expect it to overestimate.</p>
+An unbiased estimator commits no systematic errors in estimating the parameter. In contrast, a biased estimator of a univariate real-valued parameter systematically underestimates or overestimates the parameter. Consider biased <span class="math inline">\(\hat\theta_n\)</span> such that <span class="math inline">\(E(\hat\theta_n) = \theta + 1\)</span>. We <strong>expect</strong> <span class="math inline">\(\hat\theta_n\)</span> to be 1 more than <span class="math inline">\(\theta\)</span>—hence we expect it to overestimate.</p>
 </div>
-<div id="minimum-variance-unbiased-estimators" class="section level3">
+<div id="minimum-variance-unbiased-estimators" class="section level3" number="12.2.2">
 <h3><span class="header-section-number">12.2.2</span> Minimum Variance Unbiased Estimators</h3>
-<p>Besides a finite mean, estimators often have a finite variance. And, intuitively, we would tend to prefer an estimator with low variance to one with high variance, particularly if both are unbiased. If we insist on an unbiased estimator, then the &quot;best&quot; unbiased estimator is the unbiased estimator with smallest variance among all unbiased estimators. <br><br></p>
+<p>Besides a finite mean, estimators often have a finite variance. And, intuitively, we would tend to prefer an estimator with low variance to one with high variance, particularly if both are unbiased. If we insist on an unbiased estimator, then the “best” unbiased estimator is the unbiased estimator with smallest variance among all unbiased estimators. <br><br></p>
 <p>It is not obvious how one would find the lowest variance estimator among all unbiased estimators. One result, due to CR Rao and Harald Cramer, provides a lower bound on the variance of an unbiased estimator. This lower bound can be checked by computing the variance of a given unbiased estimator, and, if they match, this implies the given estimator is the MVUE. We describe this procedure below.<br><br></p>
-<p>Let <span class="math inline">\(f(x;\theta)\)</span> denote the density of the data and let <span class="math inline">\(\theta\)</span> denote a univariate parameter. Let <span class="math inline">\(\ell(x;\theta) := \log(f(x;\theta))\)</span>, the natural logarithm of the density. Define the <em>Fisher Information</em> for one data point by <span class="math display">\[I(\theta) = E\left[\left(\frac{\partial \ell(x;\theta)}{\partial\theta}\right)^2\right].\]</span> The Fisher information for a random sample of size <span class="math inline">\(n\)</span> is <span class="math inline">\(n\)</span> times <span class="math inline">\(I(\theta)\)</span>. Then, Cramer and Rao showed that if <span class="math inline">\(\hat\theta_n\)</span> is unbiased, its variance cannot be smaller than <span class="math display">\[V(\hat\theta_n)\geq \left[nI(\theta)\right]^{-1}\]</span> where <span class="math inline">\(\theta\)</span> is the true parameter value.</p>
+<p>Let <span class="math inline">\(f(x;\theta)\)</span> denote the density of the data and let <span class="math inline">\(\theta\)</span> denote a univariate parameter. Let <span class="math inline">\(\ell(x;\theta) := \log(f(x;\theta))\)</span>, the natural logarithm of the density. Define the <em>Fisher Information</em> for one data point by
+<span class="math display">\[I(\theta) = E\left[\left(\frac{\partial \ell(x;\theta)}{\partial\theta}\right)^2\right].\]</span>
+The Fisher information for a random sample of size <span class="math inline">\(n\)</span> is <span class="math inline">\(n\)</span> times <span class="math inline">\(I(\theta)\)</span>. Then, Cramer and Rao showed that if <span class="math inline">\(\hat\theta_n\)</span> is unbiased, its variance cannot be smaller than
+<span class="math display">\[V(\hat\theta_n)\geq \left[nI(\theta)\right]^{-1}\]</span>
+where <span class="math inline">\(\theta\)</span> is the true parameter value.</p>
 <p><br><br></p>
-<p>Example: Let <span class="math inline">\(X_1, \ldots, X_n\)</span> be a random sample from a normal population with variance 1 and mean <span class="math inline">\(\mu\)</span> and consider the estimator <span class="math inline">\(\overline X_n\)</span>. The logarithm of the density function is <span class="math display">\[\ell(f(x;\mu)) = -\log(\sqrt{2\pi}) - \tfrac12(x - \mu)^2\]</span> with <span class="math inline">\(\mu-\)</span>derivative <span class="math inline">\(x - \mu\)</span>. Therefore, the Fisher Information is <span class="math display">\[I(\mu) = E[(X - \mu)^2] = 1\]</span> since it is, by definition, equal to the variance. The Cramer-Rao lower bound is <span class="math display">\[V(\hat\theta_n)\geq \frac{1}{n},\]</span> and we know <span class="math inline">\(V(\overline X_n) = 1/n\)</span> so the sample mean <span class="math inline">\(\overline X_n\)</span> is, indeed, the MVUE for this experiment.</p>
+<p>Example: Let <span class="math inline">\(X_1, \ldots, X_n\)</span> be a random sample from a normal population with variance 1 and mean <span class="math inline">\(\mu\)</span> and consider the estimator <span class="math inline">\(\overline X_n\)</span>. The logarithm of the density function is
+<span class="math display">\[\ell(f(x;\mu)) = -\log(\sqrt{2\pi}) - \tfrac12(x - \mu)^2\]</span>
+with <span class="math inline">\(\mu-\)</span>derivative <span class="math inline">\(x - \mu\)</span>. Therefore, the Fisher Information is
+<span class="math display">\[I(\mu) = E[(X - \mu)^2] = 1\]</span>
+since it is, by definition, equal to the variance. The Cramer-Rao lower bound is
+<span class="math display">\[V(\hat\theta_n)\geq \frac{1}{n},\]</span>
+and we know <span class="math inline">\(V(\overline X_n) = 1/n\)</span> so the sample mean <span class="math inline">\(\overline X_n\)</span> is, indeed, the MVUE for this experiment.</p>
 </div>
-<div id="mean-squared-error-and-bias-variance-tradeoff" class="section level3">
+<div id="mean-squared-error-and-bias-variance-tradeoff" class="section level3" number="12.2.3">
 <h3><span class="header-section-number">12.2.3</span> Mean Squared Error and Bias-Variance tradeoff</h3>
-<p>As described above a common strategy is to select an unbiased estimator, preferably one with low (or the lowest) variance. On the other hand, one may prefer a biased estimator over an unbiased one if the bias is low and there is substantial reduction in variance. One way to choose estimators that balance bias and variance is to consider their mean squared error (MSE), defined by <span class="math display">\[MSE(\hat\theta_n) = E[(\hat\theta_n - \theta)^2] = Bias(\theta_n)^2 + V(\hat\theta_n).\]</span> It is left as an exercise to the reader to show the MSE equals the sum of estimator variance and squared bias. For the above reasons the estimator minimizing the MSE may be preferable even to the MVUE.</p>
+<p>As described above a common strategy is to select an unbiased estimator, preferably one with low (or the lowest) variance. On the other hand, one may prefer a biased estimator over an unbiased one if the bias is low and there is substantial reduction in variance. One way to choose estimators that balance bias and variance is to consider their mean squared error (MSE), defined by
+<span class="math display">\[MSE(\hat\theta_n) = E[(\hat\theta_n - \theta)^2] = Bias(\theta_n)^2 + V(\hat\theta_n).\]</span>
+It is left as an exercise to the reader to show the MSE equals the sum of estimator variance and squared bias. For the above reasons the estimator minimizing the MSE may be preferable even to the MVUE.</p>
 <p><br><br></p>
-Example: Estimation of a normal population variance<br> The usual variance estimator is the sample variance <span class="math inline">\(S^2_n = \frac{1}{n-1}\sum_{i=1}^n (X_i - \overline X_n)^2\)</span>. It can be checked this estimator is unbiased. And, it is a bit of a pain, but it can be shown that <span class="math inline">\(V(S_n^2) = \frac{2\sigma^4}{n-1}\)</span>. Now, consider an alternative estimator that is a constant multiple of <span class="math inline">\(S^2_n\)</span>, say <span class="math inline">\(c S_n^2\)</span> for some <span class="math inline">\(c&gt;0\)</span>. The MSE of this estimator is
+<p>Example: Estimation of a normal population variance<br>
+The usual variance estimator is the sample variance <span class="math inline">\(S^2_n = \frac{1}{n-1}\sum_{i=1}^n (X_i - \overline X_n)^2\)</span>. It can be checked this estimator is unbiased. And, it is a bit of a pain, but it can be shown that <span class="math inline">\(V(S_n^2) = \frac{2\sigma^4}{n-1}\)</span>. Now, consider an alternative estimator that is a constant multiple of <span class="math inline">\(S^2_n\)</span>, say <span class="math inline">\(c S_n^2\)</span> for some <span class="math inline">\(c&gt;0\)</span>. The MSE of this estimator is
 <span class="math display">\[\begin{align*}
 MSE(cS_n^2) &amp;= V(cS_n^2) + Bias(cS_n^2)^2\\
 &amp; = c^2\frac{2\sigma^4}{n-1} + [E(cS_n^2) - \sigma^2]^2\\
 &amp; = c^2\frac{2\sigma^4}{n-1} + (c\sigma^2 - \sigma^2)^2\\
 &amp; = c^2\frac{2\sigma^4}{n-1} + \sigma^4(c-1)^2.
 \end{align*}\]</span>
-<p>Differentiate w.r.t. <span class="math inline">\(c\)</span> to find <span class="math display">\[\frac{\partial MSE}{\partial c} = 2c \frac{2\sigma^4}{n-1} + 2(c-1)\sigma^4.\]</span> Set this equal to zero and solve for <span class="math inline">\(c\)</span>. We get <span class="math display">\[c = \frac{2\sigma^4}{\frac{4\sigma^4}{n-1} + 2\sigma^4} = \frac{n-1}{2+n-1} = \frac{n-1}{n+1}.\]</span> This means the minimim MSE estimator (at least among those that are multiples of <span class="math inline">\(S_n^2\)</span>) is actually <span class="math inline">\(\frac{1}{n+1}\sum_{i=1}^n (X_i - \overline X_n)^2\)</span>.</p>
+Differentiate w.r.t. <span class="math inline">\(c\)</span> to find
+<span class="math display">\[\frac{\partial MSE}{\partial c} = 2c \frac{2\sigma^4}{n-1} + 2(c-1)\sigma^4.\]</span>
+Set this equal to zero and solve for <span class="math inline">\(c\)</span>. We get
+<span class="math display">\[c = \frac{2\sigma^4}{\frac{4\sigma^4}{n-1} + 2\sigma^4} = \frac{n-1}{2+n-1} = \frac{n-1}{n+1}.\]</span>
+This means the minimim MSE estimator (at least among those that are multiples of <span class="math inline">\(S_n^2\)</span>) is actually <span class="math inline">\(\frac{1}{n+1}\sum_{i=1}^n (X_i - \overline X_n)^2\)</span>.</p>
 </div>
-<div id="consistency" class="section level3">
+<div id="consistency" class="section level3" number="12.2.4">
 <h3><span class="header-section-number">12.2.4</span> Consistency</h3>
-<p>Besides avoiding systematic estimation errors and having low variance, we would expect that as more and more data is collected an estimator should get better and better---and get &quot;closer&quot; to the true parameter, in some sense. This intuition is captured mathematically by <em>consistency</em>. An estimator is consistent if for any <span class="math inline">\(c&gt;0\)</span>, however small, <span class="math display">\[\lim_{n\rightarrow \infty} P(|\hat\theta_n-\theta|&gt;c) = 0.\]</span> Dissecting this definition from the inside out we first note <span class="math inline">\(|\hat\theta_n - \theta|\)</span> is the random estimation error. Then, <span class="math inline">\(|\hat\theta_n-\theta|&gt;c\)</span> says the error is at least <span class="math inline">\(c\)</span>. Since the error is a random variable we attach a probability to the chance the error is at least <span class="math inline">\(c\)</span>, which is <span class="math inline">\(P(|\hat\theta_n-\theta|&gt;c)\)</span>. And, consistency says this probability must vanish as we accumulate data. So, the chance of an error of any size <span class="math inline">\(c\)</span> or bigger vanishes. Taking complements, this is equivalent to saying <span class="math display">\[\lim_{n\rightarrow \infty} P(|\hat\theta_n-\theta|&lt;c) = 1,\]</span> which means <span class="math inline">\(\hat\theta_n\)</span> is within <span class="math inline">\(c\)</span> of <span class="math inline">\(\theta\)</span> with probability going to 1. <br><br></p>
-<p>One way to show an estimator is consistent is to show it is unbiased and has variance that vanishes as <span class="math inline">\(n\rightarrow 0\)</span>. One example is the sample mean, which is unbiased and has variance <span class="math inline">\(\sigma^2/n\)</span>. Then, consistency follows by Chebyshev's inequality, which says: for any r.v. <span class="math inline">\(X\)</span> with finite mean and variance <span class="math inline">\((\mu, \sigma^2)\)</span>, <span class="math display">\[P(|X - \mu|&gt;c)\leq \frac{\sigma^2}{c^2}\]</span> for any <span class="math inline">\(c&gt;0\)</span>. In the context of estimation, we have <span class="math display">\[P(|\hat\theta_n - E(\hat\theta_n)|&gt;c) \leq \frac{Var(\hat\theta_n)}{c^2}.\]</span> Now, suppose <span class="math inline">\(\hat\theta_n\)</span> is unbiased and its variance vanishes in <span class="math inline">\(n\)</span>. Then, the above statement says <span class="math display">\[P(|\hat\theta_n - \theta|&gt;c) \leq s_n.\]</span> for a sequence <span class="math inline">\(s_n\)</span> satisfying <span class="math inline">\(\lim_{n\rightarrow \infty} s_n = 0\)</span>. Checking the definition we see this means <span class="math inline">\(\hat\theta_n\)</span> is consistent. A similar argument can work for biased estimators as well, provided the bias also vanishes as <span class="math inline">\(n\rightarrow\infty\)</span>. Such estimators are called <em>asymptotically unbiased</em>. One such example is the minimum MSE estimator of <span class="math inline">\(\sigma^2\)</span> from the previous section. It has bias <span class="math inline">\(\sigma^2(\frac{n-1}{n+1}-1)\)</span> which has limit zero.</p>
+<p>Besides avoiding systematic estimation errors and having low variance, we would expect that as more and more data is collected an estimator should get better and better—and get “closer” to the true parameter, in some sense. This intuition is captured mathematically by <em>consistency</em>. An estimator is consistent if for any <span class="math inline">\(c&gt;0\)</span>, however small,
+<span class="math display">\[\lim_{n\rightarrow \infty} P(|\hat\theta_n-\theta|&gt;c) = 0.\]</span>
+Dissecting this definition from the inside out we first note <span class="math inline">\(|\hat\theta_n - \theta|\)</span> is the random estimation error. Then, <span class="math inline">\(|\hat\theta_n-\theta|&gt;c\)</span> says the error is at least <span class="math inline">\(c\)</span>. Since the error is a random variable we attach a probability to the chance the error is at least <span class="math inline">\(c\)</span>, which is <span class="math inline">\(P(|\hat\theta_n-\theta|&gt;c)\)</span>. And, consistency says this probability must vanish as we accumulate data. So, the chance of an error of any size <span class="math inline">\(c\)</span> or bigger vanishes. Taking complements, this is equivalent to saying
+<span class="math display">\[\lim_{n\rightarrow \infty} P(|\hat\theta_n-\theta|&lt;c) = 1,\]</span>
+which means <span class="math inline">\(\hat\theta_n\)</span> is within <span class="math inline">\(c\)</span> of <span class="math inline">\(\theta\)</span> with probability going to 1. <br><br></p>
+<p>One way to show an estimator is consistent is to show it is unbiased and has variance that vanishes as <span class="math inline">\(n\rightarrow 0\)</span>. One example is the sample mean, which is unbiased and has variance <span class="math inline">\(\sigma^2/n\)</span>. Then, consistency follows by Chebyshev’s inequality, which says: for any r.v. <span class="math inline">\(X\)</span> with finite mean and variance <span class="math inline">\((\mu, \sigma^2)\)</span>,
+<span class="math display">\[P(|X - \mu|&gt;c)\leq \frac{\sigma^2}{c^2}\]</span>
+for any <span class="math inline">\(c&gt;0\)</span>. In the context of estimation, we have
+<span class="math display">\[P(|\hat\theta_n - E(\hat\theta_n)|&gt;c) \leq \frac{Var(\hat\theta_n)}{c^2}.\]</span>
+Now, suppose <span class="math inline">\(\hat\theta_n\)</span> is unbiased and its variance vanishes in <span class="math inline">\(n\)</span>. Then, the above statement says
+<span class="math display">\[P(|\hat\theta_n - \theta|&gt;c) \leq s_n.\]</span>
+for a sequence <span class="math inline">\(s_n\)</span> satisfying <span class="math inline">\(\lim_{n\rightarrow \infty} s_n = 0\)</span>. Checking the definition we see this means <span class="math inline">\(\hat\theta_n\)</span> is consistent. A similar argument can work for biased estimators as well, provided the bias also vanishes as <span class="math inline">\(n\rightarrow\infty\)</span>. Such estimators are called <em>asymptotically unbiased</em>. One such example is the minimum MSE estimator of <span class="math inline">\(\sigma^2\)</span> from the previous section. It has bias <span class="math inline">\(\sigma^2(\frac{n-1}{n+1}-1)\)</span> which has limit zero.</p>
 </div>
 </div>
-<div id="finding-estimators---method-of-moments" class="section level2">
+<div id="finding-estimators---method-of-moments" class="section level2" number="12.3">
 <h2><span class="header-section-number">12.3</span> Finding estimators - Method of Moments</h2>
-<p>So far we've discussed desirable properties of estimators but not where these estimators come from. How do we find estimators in the first place? One strategy is based on the fact population parameters often are related to population moments. Then, we can find estimators by replacing population moments by sample moments and referring back to the relationship between the moments and parameters. The simplest example of the method of moments is estimation of the population mean by the sample mean.<br><br></p>
-Example: Suppose a population is modeled as a Gamma distribution with shape and rate parameters <span class="math inline">\((\alpha, \beta)\)</span>. The population mean is <span class="math inline">\(\alpha / \beta\)</span> and the population variance is <span class="math inline">\(\alpha / \beta^2\)</span>. This means the population second raw moment is <span class="math inline">\(\alpha / \beta^2 + (\alpha / \beta)^2\)</span>. We can estimate <span class="math inline">\((\alpha, \beta)\)</span> by matching the sample and population raw moments as follows:
+<p>So far we’ve discussed desirable properties of estimators but not where these estimators come from. How do we find estimators in the first place? One strategy is based on the fact population parameters often are related to population moments. Then, we can find estimators by replacing population moments by sample moments and referring back to the relationship between the moments and parameters. The simplest example of the method of moments is estimation of the population mean by the sample mean.<br><br></p>
+<p>Example: Suppose a population is modeled as a Gamma distribution with shape and rate parameters <span class="math inline">\((\alpha, \beta)\)</span>. The population mean is <span class="math inline">\(\alpha / \beta\)</span> and the population variance is <span class="math inline">\(\alpha / \beta^2\)</span>. This means the population second raw moment is <span class="math inline">\(\alpha / \beta^2 + (\alpha / \beta)^2\)</span>. We can estimate <span class="math inline">\((\alpha, \beta)\)</span> by matching the sample and population raw moments as follows:
 <span class="math display">\[\begin{align*}
 n^{-1}\sum_{i=1}^n X_i &amp;= \alpha/\beta^2\\
 n^{-1}\sum_{i=1}^n X_i^2 &amp;= \alpha/\beta^2 + (\alpha / \beta)^2.
@@ -346,44 +435,51 @@ Solving the system by substitution we have
 \hat\alpha = \frac{\hat\mu_2&#39; - \hat\mu_1&#39;}{\hat\mu_1&#39;}\\
 \hat \beta = \sqrt{\frac{\hat\mu_2&#39; - \hat\mu_1&#39;}{(\hat\mu_1&#39;)^2}},
 \end{align*}\]</span>
-<p>where <span class="math inline">\(\hat\mu_1&#39;\)</span> and <span class="math inline">\(\hat\mu_2&#39;\)</span> indicate the 1st and second raw sample moments <span class="math inline">\(n^{-1}\sum_{i=1}^n X_i\)</span> and <span class="math inline">\(n^{-1}\sum_{i=1}^n X_i^2\)</span>.</p>
+where <span class="math inline">\(\hat\mu_1&#39;\)</span> and <span class="math inline">\(\hat\mu_2&#39;\)</span> indicate the 1st and second raw sample moments <span class="math inline">\(n^{-1}\sum_{i=1}^n X_i\)</span> and <span class="math inline">\(n^{-1}\sum_{i=1}^n X_i^2\)</span>.</p>
 <p><br><br></p>
-Example: Suppose we will take a random sample of size <span class="math inline">\(n\)</span> from a continuous uniform distribution supported on the interval <span class="math inline">\((a,b)\)</span> where the endpoints are unknown. We know that <span class="math inline">\(E(X) = \frac{a+b}{2}\)</span> and <span class="math inline">\(V(X) = \frac{(b-a)^2}{12}\)</span> so that <span class="math inline">\(E(X^2) = \frac{(b-a)^2}{12} + \frac{(a+b)^2}{4}\)</span>. Then, we find estimators for <span class="math inline">\((a,b)\)</span> by solving
+<p>Example: Suppose we will take a random sample of size <span class="math inline">\(n\)</span> from a continuous uniform distribution supported on the interval <span class="math inline">\((a,b)\)</span> where the endpoints are unknown. We know that <span class="math inline">\(E(X) = \frac{a+b}{2}\)</span> and <span class="math inline">\(V(X) = \frac{(b-a)^2}{12}\)</span> so that <span class="math inline">\(E(X^2) = \frac{(b-a)^2}{12} + \frac{(a+b)^2}{4}\)</span>. Then, we find estimators for <span class="math inline">\((a,b)\)</span> by solving
 <span class="math display">\[\begin{align*}
 n^{-1}\sum_{i=1}^n X_i &amp;= \frac{a+b}{2}\\
 n^{-1}\sum_{i=1}^n X_i^2 &amp;= \frac{(b-a)^2}{12} + \frac{(a+b)^2}{4}.
 \end{align*}\]</span>
-<p>With some work, you should find <span class="math inline">\((\hat a, \hat b) = (\hat\mu_1&#39; - \sqrt{3\hat\mu_2&#39;}, \, \hat\mu_1&#39;+\sqrt{3\hat\mu_2&#39;})\)</span>. That's not so intuitive... What about using the sample minimum and maximum...</p>
+With some work, you should find <span class="math inline">\((\hat a, \hat b) = (\hat\mu_1&#39; - \sqrt{3\hat\mu_2&#39;}, \, \hat\mu_1&#39;+\sqrt{3\hat\mu_2&#39;})\)</span>. That’s not so intuitive… What about using the sample minimum and maximum…</p>
 </div>
-<div id="method-of-maximum-likelihood" class="section level2">
+<div id="method-of-maximum-likelihood" class="section level2" number="12.4">
 <h2><span class="header-section-number">12.4</span> Method of Maximum Likelihood</h2>
-<p>Again consider a random sample <span class="math inline">\(X_1, \ldots, X_n\)</span> from a population synonymous with a density function <span class="math inline">\(f(x;\theta)\)</span> for an unknown parameter <span class="math inline">\(\theta\)</span>. For the time being consider only scalar <span class="math inline">\(\theta\)</span>. The <em>likelihood function</em> is the joint PDF of the data viewed as a function of the parameter, and may be treated either as a random function or as a deterministic function depending on whether the data are treates as random variables or as observed values, so pay close attention to the context. For iid data the likelihood can be written <span class="math display">\[L(\theta;X_1, \ldots, X_n) = \prod_{i=1}^n f(X_i;\theta).\]</span></p>
-<p>For the purpose of estimating <span class="math inline">\(\theta\)</span> we view the likelihood as a deterministic function given observations. Then, it acts as a sort of &quot;ranking function&quot; that provides a quantitative comparison of how well different parameter values agree with the observed data. The idea is to select as an estimate the parameter value that maximizes the likelihood/agreement with the data. To explain this concept of agreement with the data a bit more suppose the data come from a discrete population so that <span class="math inline">\(f(x;\theta)\)</span> is a PMF rather than a density---this makes the interpretation easier. Then <span class="math inline">\(\prod_{i=1}^n f(X_i;\theta)\)</span> is a the probability of observing the data for a given parameter value <span class="math inline">\(\theta\)</span>. Choosing <span class="math inline">\(\theta\)</span> to maximize this probability means selecting the distribution that gives the highest probability assignment to the data that was actually observed. <br><br></p>
-Example: Suppose our random sample comes from an Exponential distribution with rate <span class="math inline">\(\lambda\)</span>. The likelihood function equals
+<p>Again consider a random sample <span class="math inline">\(X_1, \ldots, X_n\)</span> from a population synonymous with a density function <span class="math inline">\(f(x;\theta)\)</span> for an unknown parameter <span class="math inline">\(\theta\)</span>. For the time being consider only scalar <span class="math inline">\(\theta\)</span>. The <em>likelihood function</em> is the joint PDF of the data viewed as a function of the parameter, and may be treated either as a random function or as a deterministic function depending on whether the data are treates as random variables or as observed values, so pay close attention to the context. For iid data the likelihood can be written
+<span class="math display">\[L(\theta;X_1, \ldots, X_n) = \prod_{i=1}^n f(X_i;\theta).\]</span></p>
+<p>For the purpose of estimating <span class="math inline">\(\theta\)</span> we view the likelihood as a deterministic function given observations. Then, it acts as a sort of “ranking function” that provides a quantitative comparison of how well different parameter values agree with the observed data. The idea is to select as an estimate the parameter value that maximizes the likelihood/agreement with the data. To explain this concept of agreement with the data a bit more suppose the data come from a discrete population so that <span class="math inline">\(f(x;\theta)\)</span> is a PMF rather than a density—this makes the interpretation easier. Then <span class="math inline">\(\prod_{i=1}^n f(X_i;\theta)\)</span> is a the probability of observing the data for a given parameter value <span class="math inline">\(\theta\)</span>. Choosing <span class="math inline">\(\theta\)</span> to maximize this probability means selecting the distribution that gives the highest probability assignment to the data that was actually observed.
+<br><br></p>
+<p>Example: Suppose our random sample comes from an Exponential distribution with rate <span class="math inline">\(\lambda\)</span>. The likelihood function equals
 <span class="math display">\[\begin{align*}
 L(\lambda, x_1, \ldots, x_n) &amp;= \prod_{i=1}^n \lambda^{-1}e^{-x_i/\lambda}\\
 &amp; = \lambda ^{-n}e^{-\tfrac1\lambda\sum_{i=1}^n x_i}.
-\end{align*}\]</span>
-Take the first derivative of the likleihood with respect to <span class="math inline">\(\lambda\)</span>: <span class="math display">\[\frac{\partial L}{\partial \lambda} = -n\lambda^{-(n+1)}e^{-\tfrac1\lambda \sum_{i=1}^n x_i} + \lambda^{-n}e^{-\tfrac1\lambda\sum_{i=1}^n x_i}\left(\lambda^{-2}\sum_{i=1}^n x_i\right)\]</span> Set <span class="math inline">\(\tfrac{\partial L}{\partial \lambda}\)</span> equal to zero and solve for <span class="math inline">\(\lambda\)</span> to obtain the MLE:
+\end{align*}\]</span></p>
+<p>Take the first derivative of the likleihood with respect to <span class="math inline">\(\lambda\)</span>:
+<span class="math display">\[\frac{\partial L}{\partial \lambda} = -n\lambda^{-(n+1)}e^{-\tfrac1\lambda \sum_{i=1}^n x_i} + \lambda^{-n}e^{-\tfrac1\lambda\sum_{i=1}^n x_i}\left(\lambda^{-2}\sum_{i=1}^n x_i\right)\]</span>
+Set <span class="math inline">\(\tfrac{\partial L}{\partial \lambda}\)</span> equal to zero and solve for <span class="math inline">\(\lambda\)</span> to obtain the MLE:
 <span class="math display">\[\begin{align*}
 \frac{\partial L}{\partial \lambda} = 0 &amp; \Rightarrow -n\lambda^{-1} + \tfrac{1}{\lambda^2}\sum_{i=1}^n x_i = 0\\
 &amp; \Rightarrow n\lambda = \sum_{i=1}^n x_i\\
 &amp; \Rightarrow \hat{\theta}_{MLE} = \overline x_n.
-\end{align*}\]</span>
+\end{align*}\]</span></p>
 <p><br></p>
-Example: Suppose our random sample comes from a Uniform distribution on the interval <span class="math inline">\((0,\theta)\)</span>. The likelihood function equals
+<p>Example: Suppose our random sample comes from a Uniform distribution on the interval <span class="math inline">\((0,\theta)\)</span>. The likelihood function equals
 <span class="math display">\[\begin{align*}
 L(\lambda, x_1, \ldots, x_n) &amp;= \prod_{i=1}^n \frac{1}{\theta}1(0\leq x_i\leq \theta) \\
 &amp; = \theta^{-n}\prod_{i=1}^n 1(0\leq x_i\leq \theta).
-\end{align*}\]</span>
+\end{align*}\]</span></p>
 <p>We cannot simply maximize this likelihood function by taking the first derivative because the indicator functions are not everywhere differentiable w.r.t. <span class="math inline">\(\theta\)</span>. Instead, note that the function <span class="math inline">\(\theta^{-n}\)</span> is monotonically decreasing in <span class="math inline">\(\theta\)</span>; so, this function prefers small <span class="math inline">\(\theta\)</span>. On the other hand, the function <span class="math inline">\(\prod_{i=1}^n 1(0\leq x_i\leq \theta)\)</span> is constant and equal to 1 so long as <span class="math inline">\(\theta \geq \max_{i=1, \ldots, n} x_i\)</span>; otherwise, this function is zero and so is the likelihood (and the likelihood cannot be less than zero!). This means we should choose <span class="math inline">\(\theta = \max_{i=1, \ldots, n} x_i\)</span> to maximize the likelihood. Therefore, the MLE of <span class="math inline">\(\theta\)</span> is <span class="math inline">\(\hat\theta_{MLE} = max_{i=1, \ldots, n} x_i\)</span>. <br><br></p>
-Multivariate Example: Consider estimation of both the mean and variance parameters of a normal population based on a random sample of size <span class="math inline">\(n\)</span> denoted <span class="math inline">\(X^n = (X_1, \ldots, X_n)^\top\)</span>. The likelihood is a function of two parameters <span class="math inline">\((\mu, \sigma^2)\)</span>: <span class="math display">\[L(\mu, \sigma^2;X^n) = (2\pi\sigma^2)^{-n/2}\exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^n (X_i-\mu)^2\right).\]</span> The loglikelihood is easier to maximize so take the log and find <span class="math display">\[\ell(\mu, \sigma^2;X^n) = -\frac{n}{2}\log (2\pi\sigma^2) -\frac{1}{2\sigma^2}\sum_{i=1}^n (X_i-\mu)^2. \]</span> To find the MLEs we need to compute the gradient vector:
+<p>Multivariate Example: Consider estimation of both the mean and variance parameters of a normal population based on a random sample of size <span class="math inline">\(n\)</span> denoted <span class="math inline">\(X^n = (X_1, \ldots, X_n)^\top\)</span>. The likelihood is a function of two parameters <span class="math inline">\((\mu, \sigma^2)\)</span>:
+<span class="math display">\[L(\mu, \sigma^2;X^n) = (2\pi\sigma^2)^{-n/2}\exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^n (X_i-\mu)^2\right).\]</span>
+The loglikelihood is easier to maximize so take the log and find
+<span class="math display">\[\ell(\mu, \sigma^2;X^n) = -\frac{n}{2}\log (2\pi\sigma^2) -\frac{1}{2\sigma^2}\sum_{i=1}^n (X_i-\mu)^2. \]</span>
+To find the MLEs we need to compute the gradient vector:
 <span class="math display">\[\begin{align*}
 \frac{\partial\ell}{\partial \mu} &amp;= \frac{1}{\sigma^2}\sum_{i=1}^n (X_i-\mu)\\
 \frac{\partial\ell}{\partial \sigma^2} &amp;= -\frac{n}{2\sigma^2} + \frac{1}{2\sigma^4}\sum_{i=1}^n (X_i-\mu)^2.
 \end{align*}\]</span>
-Setting <span class="math inline">\(\frac{\partial\ell}{\partial \mu}=0\)</span> we immediately find <span class="math inline">\(\hat\mu_{MLE} = \overline X_n\)</span>. Substituting this estimate for <span class="math inline">\(\mu\)</span> in the second equation we find <span class="math inline">\(\hat\sigma^2_{MLE} = \frac{1}{n}\sum_{i=1}^n (X_i-\overline X_n)^2\)</span>, the version of the sample variance with denominator <span class="math inline">\(n\)</span> instead of <span class="math inline">\(n-1\)</span>. The following result says the MLE has variance approximately equal to the reciprocal of the Fisher information when the parameter is a scalar. In the multivariate setting the analogous quantity is the inverse Fisher information matrix, which is the inverse of the expectation of <span class="math inline">\(-1\)</span> times the matrix of second partial derivatives of the loglikelihood. Let's calculate this variance-covariance matrix next. First, we need to compute the matrix of second partial derivatives of the loglikelihood:<br />
-
+Setting <span class="math inline">\(\frac{\partial\ell}{\partial \mu}=0\)</span> we immediately find <span class="math inline">\(\hat\mu_{MLE} = \overline X_n\)</span>. Substituting this estimate for <span class="math inline">\(\mu\)</span> in the second equation we find <span class="math inline">\(\hat\sigma^2_{MLE} = \frac{1}{n}\sum_{i=1}^n (X_i-\overline X_n)^2\)</span>, the version of the sample variance with denominator <span class="math inline">\(n\)</span> instead of <span class="math inline">\(n-1\)</span>. The following result says the MLE has variance approximately equal to the reciprocal of the Fisher information when the parameter is a scalar. In the multivariate setting the analogous quantity is the inverse Fisher information matrix, which is the inverse of the expectation of <span class="math inline">\(-1\)</span> times the matrix of second partial derivatives of the loglikelihood. Let’s calculate this variance-covariance matrix next. First, we need to compute the matrix of second partial derivatives of the loglikelihood:<br />
 <span class="math display">\[\begin{align*}
 \frac{\partial^2\ell}{\partial \mu^2} &amp;= -\frac{n}{\sigma^2}\\
 \frac{\partial^2\ell}{\partial \mu\partial\sigma^2} &amp;= -\frac{1}{\sigma^4}\sum_{i=1}^n (X_i-\mu)\\
@@ -395,23 +491,40 @@ Next, take the expectation of these partial derivatives and multiply by <span cl
 -E(\frac{\partial^2\ell}{\partial \mu\partial\sigma^2}) &amp;= 0\\
 -E(\frac{\partial^2\ell}{\partial (\sigma^2)^2}) &amp;= -\frac{n}{2\sigma^4} + \frac{n}{\sigma^4} = \frac{n}{2\sigma^4}.
 \end{align*}\]</span>
-<p>Finally, find the inverse of the matrix: <span class="math display">\[\begin{bmatrix}
+Finally, find the inverse of the matrix:
+<span class="math display">\[\begin{bmatrix}
 \frac{n}{\sigma^2} &amp;0 \\
 0 &amp;\frac{n}{2\sigma^4}.
-\end{bmatrix}\]</span> Since this is a diagonal matrix, the inverse is simply the matrix of reciprocal values on the diagonal: <span class="math display">\[Cov(\hat\mu_{MLE}, \hat\sigma^2_{MLE}) \approx \begin{bmatrix}
+\end{bmatrix}\]</span>
+Since this is a diagonal matrix, the inverse is simply the matrix of reciprocal values on the diagonal:
+<span class="math display">\[Cov(\hat\mu_{MLE}, \hat\sigma^2_{MLE}) \approx \begin{bmatrix}
 \frac{\sigma^2}{n} &amp;0 \\
 0 &amp;\frac{2\sigma^4}{n}.
-\end{bmatrix}\]</span> according to the asymptotic results on MLEs given below. Since the unknown parameter <span class="math inline">\(\sigma^2\)</span> shows up in this covariance matrix, in practice we replace it with its estimate, yielding the estimated covariance matrix <span class="math display">\[\widehat {Cov}(\hat\mu_{MLE}, \hat\sigma^2_{MLE}) \approx \begin{bmatrix}
+\end{bmatrix}\]</span>
+according to the asymptotic results on MLEs given below. Since the unknown parameter <span class="math inline">\(\sigma^2\)</span> shows up in this covariance matrix, in practice we replace it with its estimate, yielding the estimated covariance matrix
+<span class="math display">\[\widehat {Cov}(\hat\mu_{MLE}, \hat\sigma^2_{MLE}) \approx \begin{bmatrix}
 \frac{\hat\sigma_{MLE}^2}{n} &amp;0 \\
 0 &amp;\frac{2\hat\sigma_{MLE}^4}{n}.
 \end{bmatrix}\]</span></p>
 </div>
-<div id="properties-of-mles" class="section level2">
+<div id="properties-of-mles" class="section level2" number="12.5">
 <h2><span class="header-section-number">12.5</span> Properties of MLEs</h2>
-<p>Maximum likelihood estimation is a powerful technique because it produces estimators with good properties in a wide range of settings. These properties include consistency, asymptotic unbiasedness, asymptotic efficiency (attainment of the Cramer-Rao lower variance bound), and asymptotic normality; subject to the fulfilment of &quot;regularity conditions&quot;. These conditions include<br> 1. Indentifiability - the CDF <span class="math inline">\(F(x; \theta)\)</span> satisfies <span class="math inline">\(\theta\ne\theta\Rightarrow F(x;\theta)\ne F(x;\theta&#39;)\)</span> for all <span class="math inline">\(x\)</span><br> 2. The sample sapce of the PDF does not depend on <span class="math inline">\(\theta\)</span>.<br> 3. The true <span class="math inline">\(\theta^\star\)</span> is not on the boundary of the domain of <span class="math inline">\(\theta\)</span>.<br> 4. The PDF <span class="math inline">\(f(x;\theta)\)</span> is three-times differentiable in <span class="math inline">\(\theta\)</span>, and for all <span class="math inline">\(\theta\)</span> in a neighborhood of <span class="math inline">\(\theta^\star\)</span> the function <span class="math inline">\(|\frac{\partial^3}{\partial\theta^3}\log f(X;\theta)|\)</span> is bounded by a function <span class="math inline">\(M(X)\)</span> with finite mean.<br> 5. We can differentiate <span class="math inline">\(\int f(x;\theta)dx\)</span> twice wr.t. <span class="math inline">\(\theta\)</span> by exchanging the order of integration and differentiation (limits).<br> <br></p>
+<p>Maximum likelihood estimation is a powerful technique because it produces estimators with good properties in a wide range of settings. These properties include consistency, asymptotic unbiasedness, asymptotic efficiency (attainment of the Cramer-Rao lower variance bound), and asymptotic normality; subject to the fulfilment of “regularity conditions.” These conditions include<br>
+1. Indentifiability - the CDF <span class="math inline">\(F(x; \theta)\)</span> satisfies <span class="math inline">\(\theta\ne\theta\Rightarrow F(x;\theta)\ne F(x;\theta&#39;)\)</span> for all <span class="math inline">\(x\)</span><br>
+2. The sample sapce of the PDF does not depend on <span class="math inline">\(\theta\)</span>.<br>
+3. The true <span class="math inline">\(\theta^\star\)</span> is not on the boundary of the domain of <span class="math inline">\(\theta\)</span>.<br>
+4. The PDF <span class="math inline">\(f(x;\theta)\)</span> is three-times differentiable in <span class="math inline">\(\theta\)</span>, and for all <span class="math inline">\(\theta\)</span> in a neighborhood of <span class="math inline">\(\theta^\star\)</span> the function <span class="math inline">\(|\frac{\partial^3}{\partial\theta^3}\log f(X;\theta)|\)</span> is bounded by a function <span class="math inline">\(M(X)\)</span> with finite mean.<br>
+5. We can differentiate <span class="math inline">\(\int f(x;\theta)dx\)</span> twice wr.t. <span class="math inline">\(\theta\)</span> by exchanging the order of integration and differentiation (limits).<br>
+<br></p>
 <p>Some of these conditions can be weakened, depending on the property one is trying to prove, and in some cases by making more advanced arguments, but these are the conditions we will use to establish asymptotic normality below.<br><br></p>
 <p>Proof sketch of asymptotic normality:<br></p>
-<p>Define the loglikelihood function <span class="math inline">\(\ell(\theta):=\log L(\theta;X_1, \ldots, X_n)\)</span> and expand its first derivative in Taylor series about the MLE <span class="math inline">\(\hat\theta_n\)</span> as follows: <span class="math display">\[\ell&#39;(\hat\theta_n) = \ell&#39;(\theta^\star) + (\hat\theta_n - \theta^\star)\ell&#39;&#39;(\theta^\star) + \tfrac12(\hat\theta_n - \theta^\star)^2\ell&#39;&#39;&#39;(\tilde\theta),\]</span> where <span class="math inline">\(\tilde\theta\)</span> is some value between <span class="math inline">\(\hat\theta_n\)</span> and <span class="math inline">\(\theta^\star\)</span> by Taylor's theorem. Rearranging terms we have <span class="math display">\[\sqrt{n}(\hat\theta_n - \theta^\star) = \frac{n^{-1/2}\ell&#39;(\theta^\star)}{-n^{-1}\ell&#39;&#39;(\theta^\star) - (2n)^{-1}(\hat\theta_n-\theta^\star)\ell&#39;&#39;&#39;(\tilde\theta)}.\]</span> The CLT implies the numerator on the RHS above converges in distribution to <span class="math inline">\(N(0, I(\theta^\star))\)</span>. The weak LLN implies the first term in the denominator converges to <span class="math inline">\(I(\theta^\star)\)</span> in probability. By the fourth regularity condition and the weak LLN the term <span class="math inline">\(\tfrac1n \ell&#39;&#39;&#39;(\tilde\theta)\)</span> in the denominator converges to <span class="math inline">\(E(M(X))\)</span> and hence, is <em>bounded in probability</em>. This term is multiplied by <span class="math inline">\((\hat\theta_n - \theta^\star)\)</span> which converges to zero by consistency, and hence this last product term in the denominator converges to zero in probability. Together, these bounds imply <span class="math display">\[\sqrt{n}(\hat\theta_n - \theta^\star)\rightarrow N(0,I(\theta^\star)^{-1}).\]</span> The formal support for this last claim is provided by Slutsky's Theorem which we'll not cover here. We also used consistency in this proof sketch which we haven't shown. This latter result provides the additional and stronger properties of asymptotic unbiasedness, efficiency, and normality.</p>
+<p>Define the loglikelihood function <span class="math inline">\(\ell(\theta):=\log L(\theta;X_1, \ldots, X_n)\)</span> and expand its first derivative in Taylor series about the MLE <span class="math inline">\(\hat\theta_n\)</span> as follows:
+<span class="math display">\[\ell&#39;(\hat\theta_n) = \ell&#39;(\theta^\star) + (\hat\theta_n - \theta^\star)\ell&#39;&#39;(\theta^\star) + \tfrac12(\hat\theta_n - \theta^\star)^2\ell&#39;&#39;&#39;(\tilde\theta),\]</span>
+where <span class="math inline">\(\tilde\theta\)</span> is some value between <span class="math inline">\(\hat\theta_n\)</span> and <span class="math inline">\(\theta^\star\)</span> by Taylor’s theorem. Rearranging terms we have
+<span class="math display">\[\sqrt{n}(\hat\theta_n - \theta^\star) = \frac{n^{-1/2}\ell&#39;(\theta^\star)}{-n^{-1}\ell&#39;&#39;(\theta^\star) - (2n)^{-1}(\hat\theta_n-\theta^\star)\ell&#39;&#39;&#39;(\tilde\theta)}.\]</span>
+The CLT implies the numerator on the RHS above converges in distribution to <span class="math inline">\(N(0, I(\theta^\star))\)</span>. The weak LLN implies the first term in the denominator converges to <span class="math inline">\(I(\theta^\star)\)</span> in probability. By the fourth regularity condition and the weak LLN the term <span class="math inline">\(\tfrac1n \ell&#39;&#39;&#39;(\tilde\theta)\)</span> in the denominator converges to <span class="math inline">\(E(M(X))\)</span> and hence, is <em>bounded in probability</em>. This term is multiplied by <span class="math inline">\((\hat\theta_n - \theta^\star)\)</span> which converges to zero by consistency, and hence this last product term in the denominator converges to zero in probability. Together, these bounds imply
+<span class="math display">\[\sqrt{n}(\hat\theta_n - \theta^\star)\rightarrow N(0,I(\theta^\star)^{-1}).\]</span>
+The formal support for this last claim is provided by Slutsky’s Theorem which we’ll not cover here. We also used consistency in this proof sketch which we haven’t shown. This latter result provides the additional and stronger properties of asymptotic unbiasedness, efficiency, and normality.</p>
 
 </div>
 </div>
@@ -480,7 +593,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))

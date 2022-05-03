@@ -24,7 +24,7 @@
 <meta name="author" content="Nick Syring" />
 
 
-<meta name="date" content="2022-05-02" />
+<meta name="date" content="2022-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="probability-and-counting.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -55,41 +56,68 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -110,18 +138,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a></li>
-<li class="chapter" data-level="2" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html"><i class="fa fa-check"></i><b>2</b> Experiments and the role of probability</a><ul>
+<li class="chapter" data-level="2" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html"><i class="fa fa-check"></i><b>2</b> Experiments and the role of probability</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html#experiments"><i class="fa fa-check"></i><b>2.1</b> Experiments</a></li>
 <li class="chapter" data-level="2.2" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html#the-role-of-probability"><i class="fa fa-check"></i><b>2.2</b> The role of probability</a></li>
 <li class="chapter" data-level="2.3" data-path="experiments-and-the-role-of-probability.html"><a href="experiments-and-the-role-of-probability.html#exercises"><i class="fa fa-check"></i><b>2.3</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="probability-and-counting.html"><a href="probability-and-counting.html"><i class="fa fa-check"></i><b>3</b> Probability and Counting</a><ul>
+<li class="chapter" data-level="3" data-path="probability-and-counting.html"><a href="probability-and-counting.html"><i class="fa fa-check"></i><b>3</b> Probability and Counting</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="probability-and-counting.html"><a href="probability-and-counting.html#terminology"><i class="fa fa-check"></i><b>3.1</b> Terminology</a></li>
-<li class="chapter" data-level="3.2" data-path="probability-and-counting.html"><a href="probability-and-counting.html#set-relations"><i class="fa fa-check"></i><b>3.2</b> Set relations</a><ul>
+<li class="chapter" data-level="3.2" data-path="probability-and-counting.html"><a href="probability-and-counting.html#set-relations"><i class="fa fa-check"></i><b>3.2</b> Set relations</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="probability-and-counting.html"><a href="probability-and-counting.html#sample-space-example"><i class="fa fa-check"></i><b>3.2.1</b> Sample space example</a></li>
 <li class="chapter" data-level="3.2.2" data-path="probability-and-counting.html"><a href="probability-and-counting.html#set-relations-example"><i class="fa fa-check"></i><b>3.2.2</b> Set relations example</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="probability-and-counting.html"><a href="probability-and-counting.html#probability-axioms"><i class="fa fa-check"></i><b>3.3</b> Probability Axioms</a><ul>
+<li class="chapter" data-level="3.3" data-path="probability-and-counting.html"><a href="probability-and-counting.html#probability-axioms"><i class="fa fa-check"></i><b>3.3</b> Probability Axioms</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="probability-and-counting.html"><a href="probability-and-counting.html#example-of-using-the-probability-axioms"><i class="fa fa-check"></i><b>3.3.1</b> Example of using the probability axioms</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="probability-and-counting.html"><a href="probability-and-counting.html#equally-likely-outcomes"><i class="fa fa-check"></i><b>3.4</b> Equally likely outcomes</a></li>
@@ -129,92 +161,113 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.6" data-path="probability-and-counting.html"><a href="probability-and-counting.html#applications-to-random-sampling"><i class="fa fa-check"></i><b>3.6</b> Applications to random sampling</a></li>
 <li class="chapter" data-level="3.7" data-path="probability-and-counting.html"><a href="probability-and-counting.html#exercises-1"><i class="fa fa-check"></i><b>3.7</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html"><i class="fa fa-check"></i><b>4</b> Conditional probabilities of events</a><ul>
+<li class="chapter" data-level="4" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html"><i class="fa fa-check"></i><b>4</b> Conditional probabilities of events</a>
+<ul>
 <li class="chapter" data-level="4.0.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example"><i class="fa fa-check"></i><b>4.0.1</b> Example</a></li>
 <li class="chapter" data-level="4.0.2" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example-1"><i class="fa fa-check"></i><b>4.0.2</b> Example</a></li>
 <li class="chapter" data-level="4.0.3" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example-2"><i class="fa fa-check"></i><b>4.0.3</b> Example</a></li>
-<li class="chapter" data-level="4.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#bayes-rule"><i class="fa fa-check"></i><b>4.1</b> Bayes' rule</a><ul>
+<li class="chapter" data-level="4.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#bayes-rule"><i class="fa fa-check"></i><b>4.1</b> Bayes’ rule</a>
+<ul>
 <li class="chapter" data-level="4.1.1" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#example-3"><i class="fa fa-check"></i><b>4.1.1</b> Example</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#independence"><i class="fa fa-check"></i><b>4.2</b> Independence</a></li>
 <li class="chapter" data-level="4.3" data-path="conditional-probabilities-of-events.html"><a href="conditional-probabilities-of-events.html#exercises-2"><i class="fa fa-check"></i><b>4.3</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>5</b> Random Variables</a><ul>
-<li class="chapter" data-level="5.1" data-path="random-variables.html"><a href="random-variables.html#random-variables-1"><i class="fa fa-check"></i><b>5.1</b> Random variables</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="random-variables.html"><a href="random-variables.html#examples-of-discrete-r.v.s"><i class="fa fa-check"></i><b>5.1.1</b> Examples of Discrete r.v.'s</a></li>
+<li class="chapter" data-level="5" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>5</b> Random Variables</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="random-variables.html"><a href="random-variables.html#random-variables-1"><i class="fa fa-check"></i><b>5.1</b> Random variables</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="random-variables.html"><a href="random-variables.html#examples-of-discrete-r.v.s"><i class="fa fa-check"></i><b>5.1.1</b> Examples of Discrete r.v.’s</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="random-variables.html"><a href="random-variables.html#probability-mass-functions"><i class="fa fa-check"></i><b>5.2</b> Probability Mass Functions</a></li>
 <li class="chapter" data-level="5.3" data-path="random-variables.html"><a href="random-variables.html#cumulative-mass-functions"><i class="fa fa-check"></i><b>5.3</b> Cumulative Mass Functions</a></li>
-<li class="chapter" data-level="5.4" data-path="random-variables.html"><a href="random-variables.html#examples-of-continuous-r.v.s"><i class="fa fa-check"></i><b>5.4</b> Examples of Continuous r.v.'s</a></li>
-<li class="chapter" data-level="5.5" data-path="random-variables.html"><a href="random-variables.html#probability-assignments-for-continuous-r.v.s"><i class="fa fa-check"></i><b>5.5</b> Probability assignments for continuous r.v.'s</a></li>
+<li class="chapter" data-level="5.4" data-path="random-variables.html"><a href="random-variables.html#examples-of-continuous-r.v.s"><i class="fa fa-check"></i><b>5.4</b> Examples of Continuous r.v.’s</a></li>
+<li class="chapter" data-level="5.5" data-path="random-variables.html"><a href="random-variables.html#probability-assignments-for-continuous-r.v.s"><i class="fa fa-check"></i><b>5.5</b> Probability assignments for continuous r.v.’s</a></li>
 <li class="chapter" data-level="5.6" data-path="random-variables.html"><a href="random-variables.html#transformations-of-random-variables"><i class="fa fa-check"></i><b>5.6</b> Transformations of random variables</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html"><i class="fa fa-check"></i><b>6</b> Expectation of Random Variables</a><ul>
-<li class="chapter" data-level="6.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#mean-of-a-random-variable"><i class="fa fa-check"></i><b>6.1</b> Mean of a Random Variable</a><ul>
+<li class="chapter" data-level="6" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html"><i class="fa fa-check"></i><b>6</b> Expectation of Random Variables</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#mean-of-a-random-variable"><i class="fa fa-check"></i><b>6.1</b> Mean of a Random Variable</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#examples"><i class="fa fa-check"></i><b>6.1.1</b> Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#variance-of-a-random-variable"><i class="fa fa-check"></i><b>6.2</b> Variance of a random variable</a><ul>
+<li class="chapter" data-level="6.2" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#variance-of-a-random-variable"><i class="fa fa-check"></i><b>6.2</b> Variance of a random variable</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#examples-1"><i class="fa fa-check"></i><b>6.2.1</b> Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#special-uses-of-mean-and-variance"><i class="fa fa-check"></i><b>6.3</b> Special uses of mean and variance</a><ul>
+<li class="chapter" data-level="6.3" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#special-uses-of-mean-and-variance"><i class="fa fa-check"></i><b>6.3</b> Special uses of mean and variance</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#examples-2"><i class="fa fa-check"></i><b>6.3.1</b> Examples</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="expectation-of-random-variables.html"><a href="expectation-of-random-variables.html#expectations-of-functions-of-random-variables"><i class="fa fa-check"></i><b>6.4</b> Expectations of functions of random variables</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="joint-distributions.html"><a href="joint-distributions.html"><i class="fa fa-check"></i><b>7</b> Joint Distributions</a><ul>
-<li class="chapter" data-level="7.1" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-discrete-random-variables"><i class="fa fa-check"></i><b>7.1</b> Jointly distributed discrete random variables</a><ul>
+<li class="chapter" data-level="7" data-path="joint-distributions.html"><a href="joint-distributions.html"><i class="fa fa-check"></i><b>7</b> Joint Distributions</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-discrete-random-variables"><i class="fa fa-check"></i><b>7.1</b> Jointly distributed discrete random variables</a>
+<ul>
 <li class="chapter" data-level="7.1.1" data-path="joint-distributions.html"><a href="joint-distributions.html#marginal-pmfs"><i class="fa fa-check"></i><b>7.1.1</b> Marginal PMFs</a></li>
 <li class="chapter" data-level="7.1.2" data-path="joint-distributions.html"><a href="joint-distributions.html#conditional-pmfs"><i class="fa fa-check"></i><b>7.1.2</b> Conditional PMFs</a></li>
 <li class="chapter" data-level="7.1.3" data-path="joint-distributions.html"><a href="joint-distributions.html#independence-of-discrete-random-variables"><i class="fa fa-check"></i><b>7.1.3</b> Independence of discrete random variables</a></li>
 <li class="chapter" data-level="7.1.4" data-path="joint-distributions.html"><a href="joint-distributions.html#expectations-involving-multiple-discrete-random-variables"><i class="fa fa-check"></i><b>7.1.4</b> Expectations involving multiple discrete random variables</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-continuous-random-variables"><i class="fa fa-check"></i><b>7.2</b> Jointly distributed continuous random variables</a><ul>
+<li class="chapter" data-level="7.2" data-path="joint-distributions.html"><a href="joint-distributions.html#jointly-distributed-continuous-random-variables"><i class="fa fa-check"></i><b>7.2</b> Jointly distributed continuous random variables</a>
+<ul>
 <li class="chapter" data-level="7.2.1" data-path="joint-distributions.html"><a href="joint-distributions.html#marginal-densities"><i class="fa fa-check"></i><b>7.2.1</b> Marginal densities</a></li>
 <li class="chapter" data-level="7.2.2" data-path="joint-distributions.html"><a href="joint-distributions.html#conditional-densities"><i class="fa fa-check"></i><b>7.2.2</b> Conditional densities</a></li>
-<li class="chapter" data-level="7.2.3" data-path="joint-distributions.html"><a href="joint-distributions.html#independence-of-jointly-distributed-continuous-r.v.s"><i class="fa fa-check"></i><b>7.2.3</b> Independence of jointly-distributed continuous r.v.'s</a></li>
+<li class="chapter" data-level="7.2.3" data-path="joint-distributions.html"><a href="joint-distributions.html#independence-of-jointly-distributed-continuous-r.v.s"><i class="fa fa-check"></i><b>7.2.3</b> Independence of jointly-distributed continuous r.v.’s</a></li>
 <li class="chapter" data-level="7.2.4" data-path="joint-distributions.html"><a href="joint-distributions.html#expectations-involving-more-than-one-continuous-r.v."><i class="fa fa-check"></i><b>7.2.4</b> Expectations involving more than one continuous r.v.</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html"><i class="fa fa-check"></i><b>8</b> Special Discrete Distributions</a><ul>
+<li class="chapter" data-level="8" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html"><i class="fa fa-check"></i><b>8</b> Special Discrete Distributions</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#bernoulli-distribution"><i class="fa fa-check"></i><b>8.1</b> Bernoulli Distribution</a></li>
 <li class="chapter" data-level="8.2" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#categorical-distribution"><i class="fa fa-check"></i><b>8.2</b> Categorical Distribution</a></li>
 <li class="chapter" data-level="8.3" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>8.3</b> Binomial distribution</a></li>
 <li class="chapter" data-level="8.4" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#multinomial-distribution"><i class="fa fa-check"></i><b>8.4</b> Multinomial Distribution</a></li>
 <li class="chapter" data-level="8.5" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#hypergeometric-distribution"><i class="fa fa-check"></i><b>8.5</b> Hypergeometric distribution</a></li>
 <li class="chapter" data-level="8.6" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#negative-binomial-distribution"><i class="fa fa-check"></i><b>8.6</b> Negative Binomial Distribution</a></li>
-<li class="chapter" data-level="8.7" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>8.7</b> Poisson Distribution</a><ul>
+<li class="chapter" data-level="8.7" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#poisson-distribution"><i class="fa fa-check"></i><b>8.7</b> Poisson Distribution</a>
+<ul>
 <li class="chapter" data-level="8.7.1" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#example-1-poisson-process"><i class="fa fa-check"></i><b>8.7.1</b> Example 1: Poisson process</a></li>
 <li class="chapter" data-level="8.7.2" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#example-2-poisson-approximation-to-binomial"><i class="fa fa-check"></i><b>8.7.2</b> Example 2: Poisson approximation to Binomial</a></li>
 </ul></li>
 <li class="chapter" data-level="8.8" data-path="special-discrete-distributions.html"><a href="special-discrete-distributions.html#optional-derivation-of-the-poisson-pmf-using-differential-equations"><i class="fa fa-check"></i><b>8.8</b> Optional: Derivation of the Poisson PMF using differential equations</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html"><i class="fa fa-check"></i><b>9</b> Special Continuous Distributions</a><ul>
+<li class="chapter" data-level="9" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html"><i class="fa fa-check"></i><b>9</b> Special Continuous Distributions</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#exponential-distribution"><i class="fa fa-check"></i><b>9.1</b> Exponential Distribution</a></li>
 <li class="chapter" data-level="9.2" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#poisson-interarrival-times-are-iid-exponentiallambda"><i class="fa fa-check"></i><b>9.2</b> Poisson Interarrival times are iid Exponential(<span class="math inline">\(\lambda\)</span>)</a></li>
 <li class="chapter" data-level="9.3" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#gamma-distribution"><i class="fa fa-check"></i><b>9.3</b> Gamma Distribution</a></li>
-<li class="chapter" data-level="9.4" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#normal-gaussian-distribution"><i class="fa fa-check"></i><b>9.4</b> Normal (Gaussian) Distribution</a><ul>
+<li class="chapter" data-level="9.4" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#normal-gaussian-distribution"><i class="fa fa-check"></i><b>9.4</b> Normal (Gaussian) Distribution</a>
+<ul>
 <li class="chapter" data-level="9.4.1" data-path="special-continuous-distributions.html"><a href="special-continuous-distributions.html#example-poll-and-binomial-normal-approximation"><i class="fa fa-check"></i><b>9.4.1</b> Example: Poll and Binomial-Normal approximation</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="central-limit-theorem.html"><a href="central-limit-theorem.html"><i class="fa fa-check"></i><b>10</b> Central Limit Theorem</a></li>
-<li class="chapter" data-level="11" data-path="sampling-distributions.html"><a href="sampling-distributions.html"><i class="fa fa-check"></i><b>11</b> Sampling Distributions</a><ul>
+<li class="chapter" data-level="11" data-path="sampling-distributions.html"><a href="sampling-distributions.html"><i class="fa fa-check"></i><b>11</b> Sampling Distributions</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sample-mean"><i class="fa fa-check"></i><b>11.1</b> Sample Mean</a></li>
-<li class="chapter" data-level="11.2" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sample-variance"><i class="fa fa-check"></i><b>11.2</b> Sample Variance</a><ul>
+<li class="chapter" data-level="11.2" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sample-variance"><i class="fa fa-check"></i><b>11.2</b> Sample Variance</a>
+<ul>
 <li class="chapter" data-level="11.2.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#large-sample-sampling-distribution-of-sample-variance"><i class="fa fa-check"></i><b>11.2.1</b> Large-sample sampling distribution of sample variance</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sampling-distribution-of-studentized-sample-mean"><i class="fa fa-check"></i><b>11.3</b> Sampling distribution of studentized sample mean</a><ul>
-<li class="chapter" data-level="11.3.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#part-of-students-theorem---indepndence-of-overline-x_n-and-s_n2"><i class="fa fa-check"></i><b>11.3.1</b> Part of Student's Theorem - Indepndence of <span class="math inline">\(\overline X_n\)</span> and <span class="math inline">\(S_n^2\)</span></a></li>
+<li class="chapter" data-level="11.3" data-path="sampling-distributions.html"><a href="sampling-distributions.html#sampling-distribution-of-studentized-sample-mean"><i class="fa fa-check"></i><b>11.3</b> Sampling distribution of studentized sample mean</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#part-of-students-theorem---indepndence-of-overline-x_n-and-s_n2"><i class="fa fa-check"></i><b>11.3.1</b> Part of Student’s Theorem - Indepndence of <span class="math inline">\(\overline X_n\)</span> and <span class="math inline">\(S_n^2\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="sampling-distributions.html"><a href="sampling-distributions.html#differences-of-sample-means"><i class="fa fa-check"></i><b>11.4</b> Differences of Sample Means</a><ul>
+<li class="chapter" data-level="11.4" data-path="sampling-distributions.html"><a href="sampling-distributions.html#differences-of-sample-means"><i class="fa fa-check"></i><b>11.4</b> Differences of Sample Means</a>
+<ul>
 <li class="chapter" data-level="11.4.1" data-path="sampling-distributions.html"><a href="sampling-distributions.html#standarized-difference"><i class="fa fa-check"></i><b>11.4.1</b> Standarized difference</a></li>
 <li class="chapter" data-level="11.4.2" data-path="sampling-distributions.html"><a href="sampling-distributions.html#studentized-difference-equal-variances"><i class="fa fa-check"></i><b>11.4.2</b> Studentized difference, equal variances</a></li>
 <li class="chapter" data-level="11.4.3" data-path="sampling-distributions.html"><a href="sampling-distributions.html#studentized-difference-unequal-variances"><i class="fa fa-check"></i><b>11.4.3</b> Studentized difference, unequal variances</a></li>
 </ul></li>
 <li class="chapter" data-level="11.5" data-path="sampling-distributions.html"><a href="sampling-distributions.html#ratios-of-sample-variances"><i class="fa fa-check"></i><b>11.5</b> Ratios of Sample Variances</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="statistical-estimation.html"><a href="statistical-estimation.html"><i class="fa fa-check"></i><b>12</b> Statistical Estimation</a><ul>
+<li class="chapter" data-level="12" data-path="statistical-estimation.html"><a href="statistical-estimation.html"><i class="fa fa-check"></i><b>12</b> Statistical Estimation</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="statistical-estimation.html"><a href="statistical-estimation.html#vocabulary"><i class="fa fa-check"></i><b>12.1</b> Vocabulary</a></li>
-<li class="chapter" data-level="12.2" data-path="statistical-estimation.html"><a href="statistical-estimation.html#properties-of-estimators"><i class="fa fa-check"></i><b>12.2</b> Properties of Estimators</a><ul>
+<li class="chapter" data-level="12.2" data-path="statistical-estimation.html"><a href="statistical-estimation.html#properties-of-estimators"><i class="fa fa-check"></i><b>12.2</b> Properties of Estimators</a>
+<ul>
 <li class="chapter" data-level="12.2.1" data-path="statistical-estimation.html"><a href="statistical-estimation.html#bias-and-unbiasedness"><i class="fa fa-check"></i><b>12.2.1</b> Bias and Unbiasedness</a></li>
 <li class="chapter" data-level="12.2.2" data-path="statistical-estimation.html"><a href="statistical-estimation.html#minimum-variance-unbiased-estimators"><i class="fa fa-check"></i><b>12.2.2</b> Minimum Variance Unbiased Estimators</a></li>
 <li class="chapter" data-level="12.2.3" data-path="statistical-estimation.html"><a href="statistical-estimation.html#mean-squared-error-and-bias-variance-tradeoff"><i class="fa fa-check"></i><b>12.2.3</b> Mean Squared Error and Bias-Variance tradeoff</a></li>
@@ -224,43 +277,52 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12.4" data-path="statistical-estimation.html"><a href="statistical-estimation.html#method-of-maximum-likelihood"><i class="fa fa-check"></i><b>12.4</b> Method of Maximum Likelihood</a></li>
 <li class="chapter" data-level="12.5" data-path="statistical-estimation.html"><a href="statistical-estimation.html#properties-of-mles"><i class="fa fa-check"></i><b>12.5</b> Properties of MLEs</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>13</b> Confidence Intervals</a><ul>
+<li class="chapter" data-level="13" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>13</b> Confidence Intervals</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#why-want-interval-valued-estimates"><i class="fa fa-check"></i><b>13.1</b> Why want interval-valued estimates?</a></li>
 <li class="chapter" data-level="13.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#normal-population-mean-example"><i class="fa fa-check"></i><b>13.2</b> Normal population mean example</a></li>
-<li class="chapter" data-level="13.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#other-exact-cis-for-normal-population-mean-and-variance-parameters"><i class="fa fa-check"></i><b>13.3</b> Other &quot;Exact&quot; CIs for normal population mean and variance parameters</a><ul>
+<li class="chapter" data-level="13.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#other-exact-cis-for-normal-population-mean-and-variance-parameters"><i class="fa fa-check"></i><b>13.3</b> Other “Exact” CIs for normal population mean and variance parameters</a>
+<ul>
 <li class="chapter" data-level="13.3.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#population-mean-unknown-variance"><i class="fa fa-check"></i><b>13.3.1</b> Population mean, unknown variance</a></li>
 <li class="chapter" data-level="13.3.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#population-variance-unknown-mean"><i class="fa fa-check"></i><b>13.3.2</b> Population variance, unknown mean</a></li>
 <li class="chapter" data-level="13.3.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#two-normal-samples-comparing-means"><i class="fa fa-check"></i><b>13.3.3</b> Two normal samples, comparing means</a></li>
 <li class="chapter" data-level="13.3.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#two-normal-samples-comparing-variances"><i class="fa fa-check"></i><b>13.3.4</b> Two normal samples, comparing variances</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#cis-for-proportions"><i class="fa fa-check"></i><b>13.4</b> CIs for proportions</a><ul>
+<li class="chapter" data-level="13.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#cis-for-proportions"><i class="fa fa-check"></i><b>13.4</b> CIs for proportions</a>
+<ul>
 <li class="chapter" data-level="13.4.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#a-single-bernoulli-proportion"><i class="fa fa-check"></i><b>13.4.1</b> A single Bernoulli proportion</a></li>
 <li class="chapter" data-level="13.4.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#difference-of-two-bernoulli-proportions"><i class="fa fa-check"></i><b>13.4.2</b> Difference of two Bernoulli proportions</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="confidence-intervals.html"><a href="confidence-intervals.html#approximate-cis-based-on-mles"><i class="fa fa-check"></i><b>13.5</b> Approximate CIs based on MLEs</a><ul>
+<li class="chapter" data-level="13.5" data-path="confidence-intervals.html"><a href="confidence-intervals.html#approximate-cis-based-on-mles"><i class="fa fa-check"></i><b>13.5</b> Approximate CIs based on MLEs</a>
+<ul>
 <li class="chapter" data-level="13.5.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#multivariate-case"><i class="fa fa-check"></i><b>13.5.1</b> Multivariate case</a></li>
 <li class="chapter" data-level="13.5.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#the-delta-method"><i class="fa fa-check"></i><b>13.5.2</b> The Delta method</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>14</b> Hypothesis Testing</a><ul>
+<li class="chapter" data-level="14" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>14</b> Hypothesis Testing</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#notation"><i class="fa fa-check"></i><b>14.1</b> Notation</a></li>
 <li class="chapter" data-level="14.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#hypothesis-testing-outcomes"><i class="fa fa-check"></i><b>14.2</b> Hypothesis testing outcomes</a></li>
-<li class="chapter" data-level="14.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#tests-based-on-a-normal-population"><i class="fa fa-check"></i><b>14.3</b> Tests based on a normal population</a><ul>
+<li class="chapter" data-level="14.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#tests-based-on-a-normal-population"><i class="fa fa-check"></i><b>14.3</b> Tests based on a normal population</a>
+<ul>
 <li class="chapter" data-level="14.3.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-a-normal-mean-when-the-variance-is-known"><i class="fa fa-check"></i><b>14.3.1</b> Test for a normal mean when the variance is known</a></li>
 <li class="chapter" data-level="14.3.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-a-normal-mean-when-the-variance-is-unknown"><i class="fa fa-check"></i><b>14.3.2</b> Test for a normal mean when the variance is unknown</a></li>
 <li class="chapter" data-level="14.3.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-a-normal-population-variance"><i class="fa fa-check"></i><b>14.3.3</b> Test for a normal population variance</a></li>
 <li class="chapter" data-level="14.3.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#tests-for-a-difference-of-normal-population-means"><i class="fa fa-check"></i><b>14.3.4</b> Tests for a difference of normal population means</a></li>
 <li class="chapter" data-level="14.3.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#test-for-equality-of-normal-population-variances"><i class="fa fa-check"></i><b>14.3.5</b> Test for equality of normal population variances</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-based-tests"><i class="fa fa-check"></i><b>14.4</b> Likelihood-based Tests</a><ul>
+<li class="chapter" data-level="14.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-based-tests"><i class="fa fa-check"></i><b>14.4</b> Likelihood-based Tests</a>
+<ul>
 <li class="chapter" data-level="14.4.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#wald-type-tests"><i class="fa fa-check"></i><b>14.4.1</b> Wald type tests</a></li>
 <li class="chapter" data-level="14.4.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-tests"><i class="fa fa-check"></i><b>14.4.2</b> Likelihood ratio tests</a></li>
 </ul></li>
-<li class="chapter" data-level="14.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#chi-squared-tests-for-tabulated-data"><i class="fa fa-check"></i><b>14.5</b> Chi Squared tests for tabulated data</a><ul>
+<li class="chapter" data-level="14.5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#chi-squared-tests-for-tabulated-data"><i class="fa fa-check"></i><b>14.5</b> Chi Squared tests for tabulated data</a>
+<ul>
 <li class="chapter" data-level="14.5.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#goodness-of-fit-tests"><i class="fa fa-check"></i><b>14.5.1</b> Goodness of fit tests</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>15</b> ANOVA</a><ul>
+<li class="chapter" data-level="15" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>15</b> ANOVA</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="anova.html"><a href="anova.html#analysis-of-variance"><i class="fa fa-check"></i><b>15.1</b> Analysis of variance</a></li>
 <li class="chapter" data-level="15.2" data-path="anova.html"><a href="anova.html#crop-data-in-depth-example"><i class="fa fa-check"></i><b>15.2</b> Crop data in-depth example</a></li>
 </ul></li>
@@ -284,36 +346,43 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="experiments-and-the-role-of-probability" class="section level1">
+<div id="experiments-and-the-role-of-probability" class="section level1" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Experiments and the role of probability</h1>
 <p>In this chapter we introduce concepts related to scientific studies, data collection, and random sampling.</p>
-<div id="experiments" class="section level2">
+<div id="experiments" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Experiments</h2>
 <p>There are many settings in which data is collected and studied. In this course we will limit our focus to <em>random sampling experiments</em> and <em>random sampling, randomized intervention experiments</em> defined below.<br><br></p>
-<p>Both of these settings start with a <em>research question</em> of interest in the the context of a <em>population</em> or set of individuals. For example, in a political poll the population is the set of eligible voters and the research question is &quot;which of two candidates has majority support?&quot; <br><br></p>
+<p>Both of these settings start with a <em>research question</em> of interest in the the context of a <em>population</em> or set of individuals. For example, in a political poll the population is the set of eligible voters and the research question is “which of two candidates has majority support?” <br><br></p>
 <p>Experiments like polls necessarily only measure an outcome or <em>response</em> (like voter preference) for a limited number of individuals from the population. The collection of observed individuals is the <em>sample</em>. For many reasons relating to, e.g., cost, time, and access, the size of the sample is small compared to the size of the population. On the other hand, there are rare instances in which a whole population is observed, and we call this a <em>census</em>. In a census, all possible information is gathered, whereas in an experiment only a limited subset of information is obtained. We will be concerned only with experiments and how best to use the limited information gathered in order to answer research questions.<br><br></p>
-<p>When only a sample of a population is available a natural question is &quot;how is the sample determined?&quot; If there is freedom in the choice of sample then &quot;how should the sample be chosen?&quot; Intuitively, if we can only observe some of the individuals belonging to the population then we prefer to observe a <em>representative</em> sample of them. Representative means that the heterogeneities/differences between individuals that exist in the population ought to be more or less accurately reflected in the sample. For example, a poll of eligible voters in Iowa is not representative if it includes only registered Democrats, and we would not expect such a poll to accurately reflect the population preference between two candidates. If we have a representative sample from the population then we assume the results of our experiment are <em>generalizable</em> to the population. In other words, the observations we make are characteristic of the population and we would not expect vastly different observations had we obtained a different, similarly representative sample, or if we had observed the whole population. There are different ways to obtain representative samples. One way is via <em>stratified sampling</em>. For example, suppose we knew or could measure the relative population proportions of all factors relevant to voting preference, say, party affiliation, sex, age, income level, education level, and religious affiliation. Then, we could construct a sample of individuals with values of these demographic variables matching the levels present in the population---a representative sample---by randomly selecting the right number of individuals from each of these subgroupings or <em>strata</em>. However, this takes a lot of information to pull off. Instead, researchers typically attempt to construct a <em>simple random sample</em> of individuals from the population. A simple random sample (SRS) of size <span class="math inline">\(n\)</span> from a finite population means every subset of <span class="math inline">\(n\)</span> individuals is equally likely to be chosen. You can imagine a SRS as pulling numbers out of a hat, so to speak. An SRS of eligible voters could be constructed, for instance, by randomly choosing 100 social security numbers from the list of SSNs of all eligible voters. SRSs are not always trivial to construct---as in the polling example they require a list of population individuals, which may be difficult to obtain.<br />
+<p>When only a sample of a population is available a natural question is “how is the sample determined?” If there is freedom in the choice of sample then “how should the sample be chosen?” Intuitively, if we can only observe some of the individuals belonging to the population then we prefer to observe a <em>representative</em> sample of them. Representative means that the heterogeneities/differences between individuals that exist in the population ought to be more or less accurately reflected in the sample. For example, a poll of eligible voters in Iowa is not representative if it includes only registered Democrats, and we would not expect such a poll to accurately reflect the population preference between two candidates. If we have a representative sample from the population then we assume the results of our experiment are <em>generalizable</em> to the population. In other words, the observations we make are characteristic of the population and we would not expect vastly different observations had we obtained a different, similarly representative sample, or if we had observed the whole population. There are different ways to obtain representative samples. One way is via <em>stratified sampling</em>. For example, suppose we knew or could measure the relative population proportions of all factors relevant to voting preference, say, party affiliation, sex, age, income level, education level, and religious affiliation. Then, we could construct a sample of individuals with values of these demographic variables matching the levels present in the population—a representative sample—by randomly selecting the right number of individuals from each of these subgroupings or <em>strata</em>. However, this takes a lot of information to pull off. Instead, researchers typically attempt to construct a <em>simple random sample</em> of individuals from the population. A simple random sample (SRS) of size <span class="math inline">\(n\)</span> from a finite population means every subset of <span class="math inline">\(n\)</span> individuals is equally likely to be chosen. You can imagine a SRS as pulling numbers out of a hat, so to speak. An SRS of eligible voters could be constructed, for instance, by randomly choosing 100 social security numbers from the list of SSNs of all eligible voters. SRSs are not always trivial to construct—as in the polling example they require a list of population individuals, which may be difficult to obtain.<br />
 <br><br></p>
 <p>We are at the point where we can define a <em>random sampling experiment</em> as the process by which we select a SRS from a population and record a response from sampled individuals for the purpose of answering a research question. As noted, an important example is a poll. <br><br></p>
-<p>Random sampling experiments are valuable, but limited to addressing questions about one variable at a time. In many cases researchers are interested in how one variable affects the value of another, and these questions can often be answered using interventional experiments. An <em>intervention</em> is an act by a researcher intended to affect the value of the response variable in sampled individuals. When an intervention is applied to samples the samples are often referred to as <em>experimental units</em>. An important example of an interventional experiment is a clinical trial. In a basic clinical trial a random sample of patients is recruited from a population of patients with a certain medical condition. Then, a subset of the patients is given a treatment of interest --- the intervention --- while the other patients are given a different treatment or perhaps no treatment at all (maybe a placebo). The response, probably related to the health of patients post-treatment, is then compared between the intervention and non-intervention groups. This experiment is like a random sampling experiment with an added intervention step. The key question is &quot;how do we determine which experimental units receive the intervention?&quot; Recall that when we obtain a sample of individuals from a population we wish to do so in such a way as to obtain a representative sample. The same idea applies to interventions. The group of samples receiving the intervention should be similar to the group not receiving the intervention; that is, both groups should be representative of the total set of sampled individuals. Therefore, it makes sense to <em>randomize</em> the application of the intervention over sampled individuals. <br><br> <img src="rsediagram.PNG" /><!-- --> A <em>random sampling, randomized intervention experiment</em> consists of obtaining a SRS from a population, randomizing an intervention over those samples, and recording a response variable relating to a research question. This type of experiment is often explained by conceptualizing two (or more) different populations. Suppose the experiment is a clinical trial and the intervention consists of receiving a treatment versus no treatment. Then, we can interpret the randomization step as defining two SRSs from two (abstract or hypothetical) populations: a sample from the set of treated patients and a sample from the set of untreated patients. The research question typically concerns the relationship between these two populations, such as, &quot;are treated patients, on average, healthier than untreated patients, with respect to the response variable?&quot;</p>
+<p>Random sampling experiments are valuable, but limited to addressing questions about one variable at a time. In many cases researchers are interested in how one variable affects the value of another, and these questions can often be answered using interventional experiments. An <em>intervention</em> is an act by a researcher intended to affect the value of the response variable in sampled individuals. When an intervention is applied to samples the samples are often referred to as <em>experimental units</em>. An important example of an interventional experiment is a clinical trial. In a basic clinical trial a random sample of patients is recruited from a population of patients with a certain medical condition. Then, a subset of the patients is given a treatment of interest — the intervention — while the other patients are given a different treatment or perhaps no treatment at all (maybe a placebo). The response, probably related to the health of patients post-treatment, is then compared between the intervention and non-intervention groups. This experiment is like a random sampling experiment with an added intervention step. The key question is “how do we determine which experimental units receive the intervention?” Recall that when we obtain a sample of individuals from a population we wish to do so in such a way as to obtain a representative sample. The same idea applies to interventions. The group of samples receiving the intervention should be similar to the group not receiving the intervention; that is, both groups should be representative of the total set of sampled individuals. Therefore, it makes sense to <em>randomize</em> the application of the intervention over sampled individuals. <br><br>
+<img src="rsediagram.PNG" /><!-- -->
+A <em>random sampling, randomized intervention experiment</em> consists of obtaining a SRS from a population, randomizing an intervention over those samples, and recording a response variable relating to a research question. This type of experiment is often explained by conceptualizing two (or more) different populations. Suppose the experiment is a clinical trial and the intervention consists of receiving a treatment versus no treatment. Then, we can interpret the randomization step as defining two SRSs from two (abstract or hypothetical) populations: a sample from the set of treated patients and a sample from the set of untreated patients. The research question typically concerns the relationship between these two populations, such as, “are treated patients, on average, healthier than untreated patients, with respect to the response variable?”</p>
 <p><br><br></p>
-<p>We will only consider randomized interventional experiments. Briefly, consider what can go wrong if we do not randomize intervention. Suppose the patients in our clinical trial consist of both old and young people and that old people are generally more in need of treatment. If we give the treatment to only young(old) people, then we will underestimate(overestimate) the effect of the treatment compared to what its effect would be, on average, over the whole population. In effect, we have <em>confounded</em> the treatment/intervention effect with the effect of age on the response. This may seem like a silly example because we could easily avoid assigning the intervention to only young or only old people. But, not all potential confounding variables are obvious/visible. Unknown confounders, also called <em>lurking variables</em>, can only be systematically accounted for via randomizing the intervention. Of course it is possible for randomized groups not to be representative in a particular occurrence, but, systematically, randomized groups will tend to be representative, so it's a good practice.</p>
-<p>When the intervention is randomized we cautiously assume substantial differences in the observed responses between intervention groups can be attributed to the intervention. In other words, we believe in <em>causation</em>---that the intervention caused the observed differences. When confounding variables are present we never know which variable is responsible for observed differences in responses and we cannot support claims about cause and effect relationships using the data alone.</p>
+<p>We will only consider randomized interventional experiments. Briefly, consider what can go wrong if we do not randomize intervention. Suppose the patients in our clinical trial consist of both old and young people and that old people are generally more in need of treatment. If we give the treatment to only young(old) people, then we will underestimate(overestimate) the effect of the treatment compared to what its effect would be, on average, over the whole population. In effect, we have <em>confounded</em> the treatment/intervention effect with the effect of age on the response. This may seem like a silly example because we could easily avoid assigning the intervention to only young or only old people. But, not all potential confounding variables are obvious/visible. Unknown confounders, also called <em>lurking variables</em>, can only be systematically accounted for via randomizing the intervention. Of course it is possible for randomized groups not to be representative in a particular occurrence, but, systematically, randomized groups will tend to be representative, so it’s a good practice.</p>
+<p>When the intervention is randomized we cautiously assume substantial differences in the observed responses between intervention groups can be attributed to the intervention. In other words, we believe in <em>causation</em>—that the intervention caused the observed differences. When confounding variables are present we never know which variable is responsible for observed differences in responses and we cannot support claims about cause and effect relationships using the data alone.</p>
 <p>In some studies researchers analyze the relationships between variables without performing randomized interventions; these are usually <em>observational studies</em>. For instance, in the Framingham Heart Study, researchers recorded the health and lifestyle choices of Massachusetts residents over several years. By collecting a large amount of data they were able to establish a strong relationship or <em>association</em> between cigarette smoking and cancer. Their data alone is not enough to imply causation, but their study inspired many follow-up experiments like lab experiments on animals, and the development of biochemical theories about tumor development. The combination of these various works leaves little doubt today that tobacco use dramatically increases the likelihood of developing cancer.</p>
 </div>
-<div id="the-role-of-probability" class="section level2">
+<div id="the-role-of-probability" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> The role of probability</h2>
-<p>Consider the example of a political poll on the preferences of voters between two candidates---this is a random sampling experiment. The population consists of all eligible voters in the upcoming election. Each voter can be associated, say, with a 1 or a 0, indicating their preference between the two candidates. Let these 0-1 preferences be denoted <span class="math inline">\(x_1, \ldots, x_N\)</span> where <span class="math inline">\(N\)</span> is the population size. There exists a population level value <span class="math inline">\(\theta\)</span> equal to <span class="math display">\[\theta:=N^{-1}\sum_{j=1}^N x_j\]</span> denoting the population voter preference; this is the <em>population proportion</em>. Most research questions of interest concern the unknown value of <span class="math inline">\(\theta\)</span>. In the polling experiment we observe a random subset of <span class="math inline">\(x_1, \ldots, x_N\)</span> values, say, <span class="math inline">\(X_1, \ldots, X_n\)</span> for <span class="math inline">\(n&lt;N\)</span>---keep in mind these are not the first <span class="math inline">\(n\)</span> x's, but a random subset of <span class="math inline">\(n\)</span> x's. Correspondingly, we can compute the sample voter preference <span class="math display">\[\hat\theta_n := n^{-1}\sum_{i=1}^n X_i.\]</span> For every possible sample of <span class="math inline">\(n\)</span> voters, there is a corresponding value of <span class="math inline">\(\hat\theta_n\)</span>. We can think of the polling experiment as randomly choosing one of these <span class="math inline">\(\hat\theta_n\)</span> values out of a hat containing all of them. Randomly sampling voters causes randomness in the observed <span class="math inline">\(\hat\theta_n\)</span> preference value. The mathematics of <em>probability</em> is used to quantify this randomness, e.g., to be able to compute the chance of <span class="math inline">\(\hat\theta_n\)</span> taking on any particular value, given knowledge of the population. <br><br></p>
-<p>That last phrase &quot;given knowledge of the population&quot; is very important, and illustrates the difference between probability and statistics (inference) quite succinctly. Probability characterizes the chance of observing a particular random sample given the population, whereas statistics seeks to explain some characteristic of the unknown/unobserved population given only one sample (subset of population individuals).</p>
+<p>Consider the example of a political poll on the preferences of voters between two candidates—this is a random sampling experiment. The population consists of all eligible voters in the upcoming election. Each voter can be associated, say, with a 1 or a 0, indicating their preference between the two candidates. Let these 0-1 preferences be denoted <span class="math inline">\(x_1, \ldots, x_N\)</span> where <span class="math inline">\(N\)</span> is the population size. There exists a population level value <span class="math inline">\(\theta\)</span> equal to
+<span class="math display">\[\theta:=N^{-1}\sum_{j=1}^N x_j\]</span>
+denoting the population voter preference; this is the <em>population proportion</em>. Most research questions of interest concern the unknown value of <span class="math inline">\(\theta\)</span>. In the polling experiment we observe a random subset of <span class="math inline">\(x_1, \ldots, x_N\)</span> values, say, <span class="math inline">\(X_1, \ldots, X_n\)</span> for <span class="math inline">\(n&lt;N\)</span>—keep in mind these are not the first <span class="math inline">\(n\)</span> x’s, but a random subset of <span class="math inline">\(n\)</span> x’s. Correspondingly, we can compute the sample voter preference
+<span class="math display">\[\hat\theta_n := n^{-1}\sum_{i=1}^n X_i.\]</span>
+For every possible sample of <span class="math inline">\(n\)</span> voters, there is a corresponding value of <span class="math inline">\(\hat\theta_n\)</span>. We can think of the polling experiment as randomly choosing one of these <span class="math inline">\(\hat\theta_n\)</span> values out of a hat containing all of them. Randomly sampling voters causes randomness in the observed <span class="math inline">\(\hat\theta_n\)</span> preference value. The mathematics of <em>probability</em> is used to quantify this randomness, e.g., to be able to compute the chance of <span class="math inline">\(\hat\theta_n\)</span> taking on any particular value, given knowledge of the population.
+<br><br></p>
+<p>That last phrase “given knowledge of the population” is very important, and illustrates the difference between probability and statistics (inference) quite succinctly. Probability characterizes the chance of observing a particular random sample given the population, whereas statistics seeks to explain some characteristic of the unknown/unobserved population given only one sample (subset of population individuals).</p>
 <p><br><br></p>
 <p>Probability plays a key role in statistics problems, and the first part of our course is devoted to developing methods for computing probabilities of samples in a variety of useful special cases.</p>
 <p><br><br></p>
-<p>Let's illustrate this interplay of probability and statistics by continuing the example of a poll. The population, again, can be represented by <span class="math inline">\(N\)</span> values, each either a <span class="math inline">\(0\)</span> or a <span class="math inline">\(1\)</span> indicating each voter's preferences, and we can label these <span class="math inline">\(x_1, \ldots, x_N\)</span>. A poll is a random sample of <span class="math inline">\(n\)</span> of these values, labeled <span class="math inline">\(X_1, \ldots,X_n\)</span>, without replacement, i.e., once a value <span class="math inline">\(x_j\)</span> is selected and recorded it cannot be selected again (no double voting!). The population preference <span class="math inline">\(\theta\)</span> is the average of <span class="math inline">\(x_j\)</span>'s for <span class="math inline">\(j=1, \ldots, N\)</span>. If we knew the size of the population <span class="math inline">\(N\)</span> and the population proportion <span class="math inline">\(\theta\)</span>, then we could compute the chance of observing any <span class="math inline">\(\hat\theta_n := n^{-1}\sum_{i=1}^n X_i\)</span> value according to the rules of probability (which we will soon study). For example, if <span class="math inline">\(N\)</span> is much larger than <span class="math inline">\(n = 10\)</span> and <span class="math inline">\(\theta = 1/2\)</span>, then the chance of observing exactly <span class="math inline">\(\hat\theta = 1/2\)</span> is about <span class="math inline">\(25\%\)</span> (it's about equal to <span class="math inline">\(252\theta^5(1-\theta)^5\)</span>). Of course, the whole point of the poll is to learn something about the unknown value of <span class="math inline">\(\theta\)</span>, so we cannot actually perform this probability calculation in practice. But, consider connecting the probability calculation to our goal. We would like to distinguish between values of <span class="math inline">\(\theta\)</span> that are more or less plausible. Suppose we conduct the poll of <span class="math inline">\(10\)</span> individuals and observe <span class="math inline">\(\hat\theta = 1/2\)</span>. Then, our probability calculation says the probability we observe <span class="math inline">\(\hat\theta = 1/2\)</span> is highest if <span class="math inline">\(\theta = 1/2\)</span>. In other words, <span class="math inline">\(1/2\)</span> is the most plausible value of the population proportion given our observations. Intuitively, we expect values near <span class="math inline">\(1/2\)</span> are more plausible than values far from <span class="math inline">\(1/2\)</span>. This correspondence between the probability calculation and plausible values of the <em>population parameter</em> is called the <em>maximum likelihood principle</em> which we will study in a later chapter.</p>
+<p>Let’s illustrate this interplay of probability and statistics by continuing the example of a poll. The population, again, can be represented by <span class="math inline">\(N\)</span> values, each either a <span class="math inline">\(0\)</span> or a <span class="math inline">\(1\)</span> indicating each voter’s preferences, and we can label these <span class="math inline">\(x_1, \ldots, x_N\)</span>. A poll is a random sample of <span class="math inline">\(n\)</span> of these values, labeled <span class="math inline">\(X_1, \ldots,X_n\)</span>, without replacement, i.e., once a value <span class="math inline">\(x_j\)</span> is selected and recorded it cannot be selected again (no double voting!). The population preference <span class="math inline">\(\theta\)</span> is the average of <span class="math inline">\(x_j\)</span>’s for <span class="math inline">\(j=1, \ldots, N\)</span>. If we knew the size of the population <span class="math inline">\(N\)</span> and the population proportion <span class="math inline">\(\theta\)</span>, then we could compute the chance of observing any <span class="math inline">\(\hat\theta_n := n^{-1}\sum_{i=1}^n X_i\)</span> value according to the rules of probability (which we will soon study). For example, if <span class="math inline">\(N\)</span> is much larger than <span class="math inline">\(n = 10\)</span> and <span class="math inline">\(\theta = 1/2\)</span>, then the chance of observing exactly <span class="math inline">\(\hat\theta = 1/2\)</span> is about <span class="math inline">\(25\%\)</span> (it’s about equal to <span class="math inline">\(252\theta^5(1-\theta)^5\)</span>). Of course, the whole point of the poll is to learn something about the unknown value of <span class="math inline">\(\theta\)</span>, so we cannot actually perform this probability calculation in practice. But, consider connecting the probability calculation to our goal. We would like to distinguish between values of <span class="math inline">\(\theta\)</span> that are more or less plausible. Suppose we conduct the poll of <span class="math inline">\(10\)</span> individuals and observe <span class="math inline">\(\hat\theta = 1/2\)</span>. Then, our probability calculation says the probability we observe <span class="math inline">\(\hat\theta = 1/2\)</span> is highest if <span class="math inline">\(\theta = 1/2\)</span>. In other words, <span class="math inline">\(1/2\)</span> is the most plausible value of the population proportion given our observations. Intuitively, we expect values near <span class="math inline">\(1/2\)</span> are more plausible than values far from <span class="math inline">\(1/2\)</span>. This correspondence between the probability calculation and plausible values of the <em>population parameter</em> is called the <em>maximum likelihood principle</em> which we will study in a later chapter.</p>
 </div>
-<div id="exercises" class="section level2">
+<div id="exercises" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Exercises</h2>
 <ol style="list-style-type: decimal">
-<li><p>Google James Lind's Scurvy experiments. What was James' research question? What was the population? Did he obtain a random sample from the population? If not, does that make you suspicious of his findings? Why or why not? Did James use any interventions? If so did he randomize them? Do you think his randomization scheme is reliable? What were his conclusions?<br><br></p></li>
+<li><p>Google James Lind’s Scurvy experiments. What was James’ research question? What was the population? Did he obtain a random sample from the population? If not, does that make you suspicious of his findings? Why or why not? Did James use any interventions? If so did he randomize them? Do you think his randomization scheme is reliable? What were his conclusions?<br><br></p></li>
 <li><p>Find a recent example of an experiment in the news or a scientific publication. Describe the research question, population, intervention (if there is one), and response. Is it a random sampling experiment, a random sample randomized intervention experiment, or something else, like an observational study?<br><br></p></li>
 <li><p>The Challenger space shuttle exploded when it experienced o-ring failures thought to be caused by low launch temperature. The launch temperature was 31 degrees Fahrenheit. The following data can be interpreted as a random sample of counts of o-ring failures from a population of launches. Given this data do you think we can make reliable conclusions about launch safety at 31 degrees launch temperature? What concepts discussed in this section are relevant here?</p></li>
 </ol>
@@ -507,7 +576,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
