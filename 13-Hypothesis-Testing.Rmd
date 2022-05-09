@@ -318,7 +318,7 @@ That this holds simultaneously for derivatives with respect to $p_2$ through $p_
 
 ### Goodness of fit tests
 
-The same Chi-squared test used above comparing observed awith expected cell counts is used to test the "goodness of fit" of a model to a data set.  This test is most often used with discrete data, but can be used with continuous data by "binning" or discretizing continuous data in the same fashion as a histogram.  For tabulated data the goodness of fit test statistic has df $k-p$ where $k$ is the number of cells in the table and $p$ is the number of estimated parameters in the null hypothesis.  <br><br>
+The same Chi-squared test used above comparing observed awith expected cell counts is used to test the "goodness of fit" of a model to a data set.  This test is most often used with discrete data, but can be used with continuous data by "binning" or discretizing continuous data in the same fashion as a histogram.  For tabulated data the goodness of fit test statistic has df $k-p-1$ where $k$ is the number of cells in the table and $p$ is the number of estimated parameters in the null hypothesis.  <br><br>
 
 Example: Suppose an experiment records the number of customers entering a salon each hour during a weekday for the purpose of determining staffing requirements. The observed data are as follows:
 
@@ -329,7 +329,7 @@ Example: Suppose an experiment records the number of customers entering a salon 
 We decide to perform a goodness of fit test to determine whether the data fit a Poisson distribution.  It the data appear to be a Poisson random sample, then that implies there is not a strong temporal pattern in the data.  On the other hand if the data do not fit a Poisson distribution the lack of fit may be caused by a temporal pattern (so that the data are not iid).  Based on the computation below, we see we reject the null hypothesis that the data are a Poisson random sample at $\alpha$ level $5\%$.
 <br><br>
 
-Below we bin the data into categories of 0-3 counts, 4-7 counts, 8-11, and 12+.
+Below we bin the data into categories of 0-3 counts, 4-7 counts, 8-11, and 12+.   A good rule of thumb is to choose bins such that the expected counts are not less than 5.
 
 ```{r, echo = T, eval = T}
 x <- c(3,6,14,11,6,4,4,3,8,11,3)

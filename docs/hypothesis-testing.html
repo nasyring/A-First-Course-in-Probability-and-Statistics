@@ -24,7 +24,7 @@
 <meta name="author" content="Nick Syring" />
 
 
-<meta name="date" content="2022-05-03" />
+<meta name="date" content="2022-05-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -709,7 +709,7 @@ Divide the right-hand-side by <span class="math inline">\(n\)</span> in both the
 That this holds simultaneously for derivatives with respect to <span class="math inline">\(p_2\)</span> through <span class="math inline">\(p_8\)</span> implies the MLEs of the cell probabilitites are exactly the sample cell proportions. A similar argument can be made under <span class="math inline">\(H_0\)</span> to show the MLEs under <span class="math inline">\(H_0\)</span> are the sample marginal cell proportions.</p>
 <div id="goodness-of-fit-tests" class="section level3" number="14.5.1">
 <h3><span class="header-section-number">14.5.1</span> Goodness of fit tests</h3>
-<p>The same Chi-squared test used above comparing observed awith expected cell counts is used to test the “goodness of fit” of a model to a data set. This test is most often used with discrete data, but can be used with continuous data by “binning” or discretizing continuous data in the same fashion as a histogram. For tabulated data the goodness of fit test statistic has df <span class="math inline">\(k-p\)</span> where <span class="math inline">\(k\)</span> is the number of cells in the table and <span class="math inline">\(p\)</span> is the number of estimated parameters in the null hypothesis. <br><br></p>
+<p>The same Chi-squared test used above comparing observed awith expected cell counts is used to test the “goodness of fit” of a model to a data set. This test is most often used with discrete data, but can be used with continuous data by “binning” or discretizing continuous data in the same fashion as a histogram. For tabulated data the goodness of fit test statistic has df <span class="math inline">\(k-p-1\)</span> where <span class="math inline">\(k\)</span> is the number of cells in the table and <span class="math inline">\(p\)</span> is the number of estimated parameters in the null hypothesis. <br><br></p>
 <p>Example: Suppose an experiment records the number of customers entering a salon each hour during a weekday for the purpose of determining staffing requirements. The observed data are as follows:</p>
 <table>
 <thead>
@@ -745,7 +745,7 @@ That this holds simultaneously for derivatives with respect to <span class="math
 </table>
 <p>We decide to perform a goodness of fit test to determine whether the data fit a Poisson distribution. It the data appear to be a Poisson random sample, then that implies there is not a strong temporal pattern in the data. On the other hand if the data do not fit a Poisson distribution the lack of fit may be caused by a temporal pattern (so that the data are not iid). Based on the computation below, we see we reject the null hypothesis that the data are a Poisson random sample at <span class="math inline">\(\alpha\)</span> level <span class="math inline">\(5\%\)</span>.
 <br><br></p>
-<p>Below we bin the data into categories of 0-3 counts, 4-7 counts, 8-11, and 12+.</p>
+<p>Below we bin the data into categories of 0-3 counts, 4-7 counts, 8-11, and 12+. A good rule of thumb is to choose bins such that the expected counts are not less than 1/2.</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="hypothesis-testing.html#cb69-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">14</span>,<span class="dv">11</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">8</span>,<span class="dv">11</span>,<span class="dv">3</span>)</span>
 <span id="cb69-2"><a href="hypothesis-testing.html#cb69-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">11</span></span>
 <span id="cb69-3"><a href="hypothesis-testing.html#cb69-3" aria-hidden="true" tabindex="-1"></a>bins <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">1</span>)</span>
